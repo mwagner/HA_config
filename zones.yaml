@@ -1,0 +1,18 @@
+- name: Work
+  latitude: 47.356195
+  longitude: 8.515401
+  radius: 150
+  passive: false
+  icon: mdi:work
+
+- name: Scuol
+  latitude: 46.7969161
+  longitude: 10.3019305
+  radius: 1200
+  passive: true
+
+- name: neighbourhood
+  longitude: 8.608381985686721
+  latitude: 47.245436503902205
+  radius: 135 
+  passive: false
