@@ -1,0 +1,7 @@
+binary_sensor.peq0478568_state:
+  device_class: garage_door
+  friendly_name: "Garage Door"
+
+binary_sensor.0000d8a99e5ae7_state:
+  device_class: door
+  friendly_name: "Balcony Door"
