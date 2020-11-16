@@ -1,0 +1,73 @@
+title: Home
+path: home
+icon: mdi:home-outline
+panel: true
+cards:
+  - type: 'custom:layout-card'
+    layout: vertical
+    cards:
+      - type: weather-forecast
+        entity: weather.home
+
+      - type: sensor
+        entity: sensor.temperature_livingroom_thermostat
+      - type: sensor
+        entity: sensor.temperature_kitchen_thermostat
+      - type: sensor
+        entity: sensor.temperature_office_thermostat
+      - type: sensor
+        entity: sensor.temperature_masterbedroom_thermostat
+      - type: sensor
+        entity: sensor.temperature_guestbedroom_thermostat
+
+      - break
+      - type: horizontal-stack
+        cards:
+          - hold_action:
+              action: call-service
+              service: homeassistant.restart
+              confirmation:
+                text: Are you sure you want to restart?
+            icon: 'mdi:reload'
+            icon_height: 75px
+            name: Restart HA
+            tap_action:
+              action: call-service
+              service: homeassistant.check_config
+            type: button
+          - hold_action:
+              action: none
+            icon: 'mdi:head-sync-outline'
+            icon_height: 75px
+            name: Reload AutoM
+            tap_action:
+              action: call-service
+              service: automation.reload
+            type: button
+
+      - type: 'custom:auto-entities'
+        card:
+          type: entities
+          title: Abfall
+          show_header_toggle: false
+        filter:
+          include:
+            - entity_id: sensor.garbagealert*
+          exclude: null
+        show_empty: true
+        unique: null
+        sort:
+          method: state
+          reverse: true
+          ignore_case: true
+          attribute: state
+
+
+      - break
+      - type: entities
+        entities:
+          - entity: input_boolean.home_occupied
+          - entity: person.marco
+          - entity: person.sharene
+          - entity: person.guests
+

@@ -1,0 +1,14 @@
+lovelace-home:
+  mode: yaml
+  title: Home
+  icon: mdi:home
+  show_in_sidebar: true
+  require_admin: false
+  filename: lovelace/ui-lovelace-home.yaml
+lovelace-yaml:
+  mode: yaml
+  title: Homematic
+  icon: mdi:script
+  show_in_sidebar: true
+  require_admin: true
+  filename: lovelace/ui-lovelace-homematic.yaml

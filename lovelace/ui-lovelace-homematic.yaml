@@ -1,0 +1,23 @@
+views:
+  - title: Heaters
+    path: heaters
+    badges: []
+    cards:
+      - type: thermostat
+        entity: climate.livingroom
+      - type: thermostat
+        entity: climate.kitchen
+      - type: thermostat
+        entity: climate.office
+      - type: thermostat
+        entity: climate.master_bedroom
+      - type: thermostat
+        entity: climate.guest_bedroom
+      - type: entities
+        entities:
+          - entity: climate.livingroom
+          - entity: climate.kitchen
+          - entity: climate.office
+          - entity: climate.master_bedroom
+          - entity: climate.guest_bedroom
+        state_color: true
