@@ -1,0 +1,103 @@
+- id: '1601900765884'
+  alias: Increase room temperature
+  description: Change room temperature while at home
+  trigger:
+  - platform: state
+    entity_id: input_boolean.home_occupied
+    to: 'on'
+    from: 'off'
+  - platform: state
+    entity_id: input_boolean.guest_home
+    to: 'on'
+    from: 'off'
+  - platform: time
+    at: 07:00:00
+  - platform: homeassistant
+    event: start
+  condition:
+  - condition: and
+    conditions:
+    - condition: time
+      after: 07:00:00
+      before: '17:00:00'
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    - condition: state
+      entity_id: input_boolean.home_occupied
+      state: 'on'
+  action:
+  - service: climate.set_temperature
+    data:
+      temperature: 23
+    entity_id: climate.001198a99fac29, climate.000a18a996ee03, climate.000a18a9a3c495, climate.000a1be9966275, climate.001198a99fac1e
+  # - choose:
+  #   - conditions:
+  #     - condition: state
+  #       entity_id: input_boolean.guest_home
+  #       state: 'on'
+  #     sequence:
+  #     - service: climate.set_temperature
+  #       data:
+  #         temperature: 23
+  #       entity_id: climate.001198a99fac1e
+  #   default: []
+  mode: restart
+
+- id: '1602057813240'
+  alias: Lower room temperature
+  description: Change room temperature while not at home
+  trigger:
+  - platform: state
+    entity_id: input_boolean.home_occupied
+    to: 'off'
+    from: 'on'
+  - platform: state
+    entity_id: input_boolean.guest_home
+    to: 'off'
+    from: 'on'
+  condition:
+  - condition: and
+    conditions:
+    - condition: time
+      after: 07:00:00
+      before: '17:00:00'
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.home_occupied
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.guest_home
+        state: 'off'
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_boolean.home_occupied
+        state: 'off'
+      sequence:
+      - service: climate.set_temperature
+        data:
+          temperature: 20
+        entity_id: climate.001198a99fac29, climate.000a18a996ee03, climate.000a18a9a3c495, climate.000a1be9966275, climate.001198a99fac1e
+    # - conditions:
+    #   - condition: state
+    #     entity_id: input_boolean.guest_home
+    #     state: 'off'
+    #   sequence:
+    #   - service: climate.set_temperature
+    #     data:
+    #       temperature: 20
+    #     entity_id: climate.001198a99fac1e
+    # default: []
+  mode: restart

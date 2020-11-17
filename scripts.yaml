@@ -1,0 +1,7 @@
+stop_sonos_players:
+  alias: Stop media players
+  sequence:
+  - service: media_player.media_stop
+    data: {}
+    entity_id: media_player.office
+  mode: single

@@ -1,0 +1,39 @@
+- alias: Notify me when Home Assistant started
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: notify.telegram_marco
+    data:
+      message: System is up.
+  mode: single
+- id: '1602773637304'
+  alias: Notify me when Home Assistant shut down
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: shutdown
+  condition: []
+  action:
+  - service: notify.telegram_marco
+    data:
+      message: System went down.
+  mode: single
+
+- alias: Set HA theme for day and night
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: sun.sun
+    to: above_horizon
+  - platform: state
+    entity_id: sun.sun
+    to: below_horizon
+  action:
+  - service_template: frontend.set_theme
+    data_template:
+      name: "{% if states.sun.sun.state == \"above_horizon\" %}\n  default\n{% else\
+        \ %}\n  Dark - Green\n{% endif %}"

@@ -1,0 +1,70 @@
+- cal_id: !secret google_cal_id1
+  entities:
+  - device_id: Kehricht_und_Sperrgut
+    ignore_availability: true
+    search: "Kehricht & Sperrgut"
+    name: Kehricht & Sperrgut
+    track: true
+    # offset: "!!"
+
+  - device_id: Gruenabfuhr
+    ignore_availability: true
+    search: "#Grünabfuhr"
+    name: Grünabfuhr
+    track: true
+    # offset: "!!"
+
+  - device_id: Papierabfuhr
+    search: "#Altpapier"
+    name: Papierabfuhr
+    track: true
+    # offset: "!!"
+
+  - device_id: Kartonabfuhr
+    ignore_availability: true
+    search: "#Karton"
+    name: Kartonabfuhr
+    track: true
+    # offset: "!!"
+
+  - device_id: Altmetallabfuhr
+    ignore_availability: true
+    search: "#Metalle"
+    name: Altmetallabfuhr
+    track: true
+    # offset: "!!"
+
+  - device_id: Mineralische_Abfaelle
+    ignore_availability: true
+    search: "#Mineralische Abfälle"
+    name: Mineralische Abfälle
+    track: true
+    # offset: "!!"
+
+- cal_id: !secret google_cal_id2
+  entities:
+  - device_id: marco_s_calendar
+    ignore_availability: true
+    name: Marco's calendar
+    track: false
+
+- cal_id: !secret google_cal_id3
+  entities:
+  - device_id: marco_sharene_s_calendar
+    ignore_availability: true
+    name: Marco & Sharene's calendar
+    track: true
+
+- cal_id: !secret google_cal_id4
+  entities:
+  - device_id: contacts
+    ignore_availability: true
+    name: Contacts
+    track: false
+
+- cal_id: !secret google_cal_id5
+  entities:
+  - device_id: holidays_in_switzerland
+    ignore_availability: true
+    name: Holidays in Switzerland
+    track: false

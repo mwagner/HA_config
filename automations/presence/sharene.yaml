@@ -1,0 +1,25 @@
+- alias: Change Sharene to "Away"
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: person.sharene
+    from: home
+  condition: []
+  action:
+  - service: input_boolean.turn_off
+    data: {}
+    entity_id: input_boolean.sharene_home
+  mode: single
+
+- alias: Change Sharene to "At home"
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: person.sharene
+    to: home
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    data: {}
+    entity_id: input_boolean.sharene_home
+  mode: single

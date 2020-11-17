@@ -1,0 +1,24 @@
+- alias: Change Marco to "Away"
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: person.marco
+    from: home
+  condition: []
+  action:
+  - service: input_boolean.turn_off
+    data: {}
+    entity_id: input_boolean.marco_home
+  mode: single
+- alias: Change Marco to "At home"
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: person.marco
+    to: home
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    data: {}
+    entity_id: input_boolean.marco_home
+  mode: single

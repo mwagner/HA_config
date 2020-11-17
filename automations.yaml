@@ -1,1 +1,38 @@
-[]
+- id: '1602835912473'
+  alias: Send me garbage notification
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.garbagealert_papierabfuhr
+  condition: []
+  action:
+  - service: notify.telegram_marco
+    data:
+      message: "{% set trigger = {\n  \"when\": trigger.to_state.state,\n  \"what\"\
+        : trigger.to_state.attributes.friendly_name\n} %} {% if trigger.when == 'Today'\
+        \ %}\n  {% set reminder = 'REMINDER: ' %}\n{% endif %}\n{{ reminder ~ trigger.when\
+        \ }} is {{ trigger.what }}"
+  mode: single
+- alias: Device Tracker - Home Assistant Start create Guest Tracker
+  trigger:
+  - platform: homeassistant
+    event: start
+  action:
+  - delay: 00:01:00
+  - service: device_tracker.see
+    data_template:
+      dev_id: guests
+      host_name: Guests
+      location_name: '{% if is_state(''sensor.guest_count'', ''0'') -%} not_home {%-
+        else -%} home {%- endif %}'
+- alias: Device Tracker - Update Guest Tracker
+  trigger:
+  - platform: state
+    entity_id: sensor.guest_count
+  action:
+  - service: device_tracker.see
+    data_template:
+      dev_id: guests
+      host_name: Guests
+      location_name: '{% if is_state(''sensor.guest_count'', ''0'') -%} not_home {%-
+        else -%} home {%- endif %}'

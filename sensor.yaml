@@ -1,0 +1,191 @@
+- platform: template
+  sensors:
+    guest_count:
+      friendly_name: "Guest Count"
+      value_template: >-
+        {{ states.device_tracker | selectattr('attributes.is_guest', 'eq', true) | list | count }}
+
+    garbagealert_altmetallabfuhr:
+      friendly_name: "Altmetallabfuhr"
+      icon_template: >
+        {% if is_state('binary_sensor.altmetallabfuhr', 'on') %}
+          mdi:delete-alert
+        {% else %}
+          mdi:delete-outline
+        {% endif %}
+      value_template: >-
+        {% set update = states('sensor.date_time') %}
+        {% set calendar = 'calendar.altmetallabfuhr' %}
+
+        {% set midnight = now().date() | as_timestamp %}
+        {% set event = state_attr(calendar,'start_time') | as_timestamp %}
+        {% if event != None %}
+          {% set delta = ((event - midnight) // 86400) | int %}
+          {% set values = [ 'Today', 'Tomorrow', 'Day After Tomorrow' ] %}
+          {{ values[delta] if delta < values | length else 'In %s Days'%delta }}
+        {% else %}
+          {{ "No event found" }}
+        {% endif %}
+
+    garbagealert_gruenabfuhr:
+      friendly_name: "Grünabfuhr"
+      icon_template: >
+        {% if is_state('binary_sensor.gruenabfuhr', 'on') %}
+          mdi:delete-alert
+        {% else %}
+          mdi:delete-outline
+        {% endif %}
+      value_template: >-
+        {% set update = states('sensor.date_time') %}
+        {% set calendar = 'calendar.gruenabfuhr' %}
+
+        {% set midnight = now().date() | as_timestamp %}
+        {% set event = state_attr(calendar,'start_time') | as_timestamp %}
+        {% if event != None %}
+          {% set delta = ((event - midnight) // 86400) | int %}
+          {% set values = [ 'Today', 'Tomorrow', 'Day After Tomorrow' ] %}
+          {{ values[delta] if delta < values | length else 'In %s Days'%delta }}
+        {% else %}
+          {{ "No event found" }}
+        {% endif %}
+
+    garbagealert_kartonabfuhr:
+      friendly_name: "Kartonabfuhr"
+      icon_template: >
+        {% if is_state('binary_sensor.kartonabfuhr', 'on') %}
+          mdi:delete-alert
+        {% else %}
+          mdi:delete-outline
+        {% endif %}
+      value_template: >-
+        {% set update = states('sensor.date_time') %}
+        {% set calendar = 'calendar.kartonabfuhr' %}
+
+        {% set midnight = now().date() | as_timestamp %}
+        {% set event = state_attr(calendar,'start_time') | as_timestamp %}
+        {% if event != None %}
+          {% set delta = ((event - midnight) // 86400) | int %}
+          {% set values = [ 'Today', 'Tomorrow', 'Day After Tomorrow' ] %}
+          {{ values[delta] if delta < values | length else 'In %s Days'%delta }}
+        {% else %}
+          {{ "No event found" }}
+        {% endif %}
+
+    garbagealert_kehricht_und_sperrgut:
+      friendly_name: "Kehricht und Sperrgut"
+      icon_template: >
+        {% if is_state('binary_sensor.kehricht_und_sperrgut', 'on') %}
+          mdi:delete-alert
+        {% else %}
+          mdi:delete-outline
+        {% endif %}
+      value_template: >-
+        {% set update = states('sensor.date_time') %}
+        {% set calendar = 'calendar.kehricht_und_sperrgut' %}
+
+        {% set midnight = now().date() | as_timestamp %}
+        {% set event = state_attr(calendar,'start_time') | as_timestamp %}
+        {% if event != None %}
+          {% set delta = ((event - midnight) // 86400) | int %}
+          {% set values = [ 'Today', 'Tomorrow', 'Day After Tomorrow' ] %}
+          {{ values[delta] if delta < values | length else 'In %s Days'%delta }}
+        {% else %}
+          {{ "No event found" }}
+        {% endif %}
+
+    garbagealert_mineralische_abfaelle:
+      friendly_name: "Mineralische Abfälle"
+      icon_template: >
+        {% if is_state('binary_sensor.mineralische_abfaelle', 'on') %}
+          mdi:delete-alert
+        {% else %}
+          mdi:delete-outline
+        {% endif %}
+      value_template: >-
+        {% set update = states('sensor.date_time') %}
+        {% set calendar = 'calendar.mineralische_abfaelle' %}
+
+        {% set midnight = now().date() | as_timestamp %}
+        {% set event = state_attr(calendar,'start_time') | as_timestamp %}
+        {% if event != None %}
+          {% set delta = ((event - midnight) // 86400) | int %}
+          {% set values = [ 'Today', 'Tomorrow', 'Day After Tomorrow' ] %}
+          {{ values[delta] if delta < values | length else 'In %s Days'%delta }}
+        {% else %}
+          {{ "No event found" }}
+        {% endif %}
+
+    garbagealert_papierabfuhr:
+      friendly_name: "Altpapier"
+      icon_template: >
+        {% if is_state('binary_sensor.papierabfuhr', 'on') %}
+          mdi:delete-alert
+        {% else %}
+          mdi:delete-outline
+        {% endif %}
+      value_template: >-
+        {% set update = states('sensor.date_time') %}
+        {% set calendar = 'calendar.papierabfuhr' %}
+
+        {% set midnight = now().date() | as_timestamp %}
+        {% set event = state_attr(calendar,'start_time') | as_timestamp %}
+        {% if event != None %}
+          {% set delta = ((event - midnight) // 86400) | int %}
+          {% set values = [ 'Today', 'Tomorrow', 'Day After Tomorrow' ] %}
+          {{ values[delta] if delta < values | length else 'In %s Days'%delta }}
+        {% else %}
+          {{ "No event found" }}
+        {% endif %}
+
+
+    temperature_office_thermostat:
+      friendly_name: "Temperature Office"
+      icon_template: mdi:thermometer
+      unit_of_measurement: 'C'
+      value_template: "{{ state_attr('climate.office', 'current_temperature') }}"
+
+    temperature_livingroom_thermostat:
+      friendly_name: "Temperature Livingroom"
+      icon_template: mdi:thermometer
+      unit_of_measurement: 'C'
+      value_template: "{{ state_attr('climate.livingroom', 'current_temperature') }}"
+
+    temperature_kitchen_thermostat:
+      friendly_name: "Temperature Kitchen"
+      icon_template: mdi:thermometer
+      unit_of_measurement: 'C'
+      value_template: "{{ state_attr('climate.kitchen', 'current_temperature') }}"
+      
+    temperature_masterbedroom_thermostat:
+      friendly_name: "Temperature Master Bedroom"
+      icon_template: mdi:thermometer
+      unit_of_measurement: 'C'
+      value_template: "{{ state_attr('climate.master_bedroom', 'current_temperature') }}"
+            
+    temperature_guestbedroom_thermostat:
+      friendly_name: "Temperature Guest Bedroom"
+      icon_template: mdi:thermometer
+      unit_of_measurement: 'C'
+      value_template: "{{ state_attr('climate.guest_bedroom', 'current_temperature') }}"
+
+- platform: time_date
+  display_options:
+    - 'date_time'
+
+- platform: worldclock
+  time_zone: Etc/UTC
+  name: 'UTC'
+
+- platform: mqtt
+  state_topic: "home/officeroom/temperature"
+  name: "Temperature Office Sensor"
+  
+
+
+- platform: google_travel_time
+  name: Travel home to office
+  #friendly_name: "Home to office"
+  api_key: !secret google_distance_api_key
+  origin: zone.home
+  destination: zone.work
+  scan_interval: 300
