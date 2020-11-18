@@ -36,4 +36,4 @@
   - service_template: frontend.set_theme
     data_template:
       name: "{% if states.sun.sun.state == \"above_horizon\" %}\n  default\n{% else\
-        \ %}\n  Dark - Green\n{% endif %}"
+        \ %}\n  default\n{% endif %}"
