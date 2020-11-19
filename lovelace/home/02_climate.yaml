@@ -8,7 +8,7 @@ cards:
     cards:
       # General climate setting
       - type: thermostat
-        entity: climate.office
+        entity: climate.000a18a9a3c495
 
       # Climate Settings
       - type: entities
