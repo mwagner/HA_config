@@ -29,7 +29,26 @@
     - condition: state
       entity_id: input_boolean.home_occupied
       state: 'on'
+    # Run only if
+    # -- not Dev environement or
+    # -- Dev environement AND test exec are active
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.is_dev_env
+        state: 'off'
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: input_boolean.is_dev_env
+          state: 'on'
+        - condition: state
+          entity_id: input_boolean.test_execution
+          state: 'on'
   action:
+  - service: notify.telegram_marco
+    data:
+      message: Increased the rooms temperature to 23℃.
   - service: climate.set_temperature
     data:
       temperature: 23
@@ -79,7 +98,26 @@
       - condition: state
         entity_id: input_boolean.guest_home
         state: 'off'
+    # Run only if
+    # -- not Dev environement or
+    # -- Dev environement AND test exec are active
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.is_dev_env
+        state: 'off'
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: input_boolean.is_dev_env
+          state: 'on'
+        - condition: state
+          entity_id: input_boolean.test_execution
+          state: 'on'
   action:
+  - service: notify.telegram_marco
+    data:
+      message: Changed the climate back to default.
   - choose:
     - conditions:
       - condition: state

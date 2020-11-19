@@ -1,3 +1,8 @@
+is_dev_env:
+  name: Development environment
+test_execution:
+  name: Test execution enabled
+
 heating:
   name: Heating Master Switch
   icon: mdi:radiator
