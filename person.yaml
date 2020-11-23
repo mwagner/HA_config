@@ -12,4 +12,5 @@
 
 - name: Guests
   id: guests
-  device_trackers: []
+  device_trackers: 
+    - device_tracker.guests
