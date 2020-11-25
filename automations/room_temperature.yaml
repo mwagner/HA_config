@@ -1,4 +1,4 @@
-- id: '1601900765884'
+- id: 'e687e951bc0a4359b1b69fad1723959c'
   alias: Increase room temperature
   description: Change room temperature while at home
   trigger:
@@ -66,7 +66,7 @@
   #   default: []
   mode: restart
 
-- id: '1602057813240'
+- id: 'f27b85eb28144217938c9fc4bdcf25e4'
   alias: Lower room temperature
   description: Change room temperature while not at home
   trigger:

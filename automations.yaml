@@ -1,4 +1,4 @@
-- id: '1602835912473'
+- id: 'beace735f1ea4ec0899dd6abe05391ea'
   alias: Send me garbage notification
   description: ''
   trigger:
@@ -13,7 +13,9 @@
         \ %}\n  {% set reminder = 'REMINDER: ' %}\n{% endif %}\n{{ reminder ~ trigger.when\
         \ }} is {{ trigger.what }}"
   mode: single
-- alias: Device Tracker - Home Assistant Start create Guest Tracker
+
+- id: 82a5b9a9369f46369e8d3ad4b8b50030
+  alias: Device Tracker - Home Assistant Start create Guest Tracker
   trigger:
   - platform: homeassistant
     event: start
@@ -25,7 +27,9 @@
       host_name: Guests
       location_name: '{% if is_state(''sensor.guest_count'', ''0'') -%} not_home {%-
         else -%} home {%- endif %}'
-- alias: Device Tracker - Update Guest Tracker
+
+- id: 50b915ee8d20404480ac5d3284d0f66d
+  alias: Device Tracker - Update Guest Tracker
   trigger:
   - platform: state
     entity_id: sensor.guest_count
@@ -36,3 +40,4 @@
       host_name: Guests
       location_name: '{% if is_state(''sensor.guest_count'', ''0'') -%} not_home {%-
         else -%} home {%- endif %}'
+  

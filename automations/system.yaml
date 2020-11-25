@@ -1,4 +1,5 @@
-- alias: Notify me when Home Assistant started
+- id: '8b404bd3bf814bbf9832c375d654838a'
+  alias: Notify me when Home Assistant started
   description: ''
   trigger:
   - platform: homeassistant
@@ -9,7 +10,7 @@
     data:
       message: System is up.
   mode: single
-- id: '1602773637304'
+- id: 'a8ed0a17f21b48f8bfd0aad5b4b0f3c9'
   alias: Notify me when Home Assistant shut down
   description: ''
   trigger:
@@ -22,7 +23,8 @@
       message: System went down.
   mode: single
 
-# - alias: Set HA theme for day and night
+# - id: '7f86032e6fbf473b8c51ad5de049cc94'
+#   alias: Set HA theme for day and night
 #   trigger:
 #   - platform: homeassistant
 #     event: start

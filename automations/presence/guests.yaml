@@ -1,4 +1,5 @@
-- alias: Change Guests to "Away"
+- id: '074baaf89c72494ca9053b3c8b4b5be5'
+  alias: Change Guests to "Away"
   description: ''
   trigger:
   - platform: state
@@ -10,7 +11,9 @@
     data: {}
     entity_id: input_boolean.guest_home
   mode: single
-- alias: Change Guests to "At home"
+
+- id: '2aad92efc02e47e9b8ca8d6b094b4cf3'
+  alias: Change Guests to "At home"
   description: ''
   trigger:
   - platform: state
