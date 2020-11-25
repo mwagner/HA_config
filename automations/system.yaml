@@ -39,3 +39,31 @@
 #     data_template:
 #       name: "{% if states.sun.sun.state == \"above_horizon\" %}\n  default\n{% else\
 #         \ %}\n  default\n{% endif %}"
+
+- id: '0383dfca43264eb7bd43551ebaa1963a'
+  alias: Set Environments
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: sensor.local_ip
+        state: 192.168.1.14
+      sequence:
+      - service: input_boolean.turn_on
+        data: {}
+        entity_id: input_boolean.is_dev_env
+    - conditions:
+      - condition: state
+        entity_id: sensor.local_ip
+        state: 192.168.1.12
+      sequence:
+      - service: input_boolean.turn_off
+        data: {}
+        entity_id: input_boolean.test_execution, input_boolean.is_dev_env
+    default: []
+  mode: single
