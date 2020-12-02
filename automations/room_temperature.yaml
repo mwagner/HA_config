@@ -35,15 +35,15 @@
     - condition: or
       conditions:
       - condition: state
-        entity_id: input_boolean.is_dev_env
+        entity_id: input_boolean.env_isdev
         state: 'off'
       - condition: and
         conditions:
         - condition: state
-          entity_id: input_boolean.is_dev_env
+          entity_id: input_boolean.env_isdev
           state: 'on'
         - condition: state
-          entity_id: input_boolean.test_execution
+          entity_id: input_boolean.env_execcommands
           state: 'on'
   action:
   - service: notify.telegram_marco
@@ -104,15 +104,15 @@
     - condition: or
       conditions:
       - condition: state
-        entity_id: input_boolean.is_dev_env
+        entity_id: input_boolean.env_isdev
         state: 'off'
       - condition: and
         conditions:
         - condition: state
-          entity_id: input_boolean.is_dev_env
+          entity_id: input_boolean.env_isdev
           state: 'on'
         - condition: state
-          entity_id: input_boolean.test_execution
+          entity_id: input_boolean.env_execcommands
           state: 'on'
   action:
   - service: notify.telegram_marco

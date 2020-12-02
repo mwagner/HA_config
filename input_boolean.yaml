@@ -1,6 +1,6 @@
-is_dev_env:
+env_isdev:
   name: Development environment
-test_execution:
+env_execcommands:
   name: Test execution enabled
 
 heating:

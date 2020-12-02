@@ -56,7 +56,7 @@
       sequence:
       - service: input_boolean.turn_on
         data: {}
-        entity_id: input_boolean.is_dev_env
+        entity_id: input_boolean.env_isdev
     - conditions:
       - condition: state
         entity_id: sensor.local_ip
@@ -64,6 +64,6 @@
       sequence:
       - service: input_boolean.turn_off
         data: {}
-        entity_id: input_boolean.test_execution, input_boolean.is_dev_env
+        entity_id: input_boolean.env_execcommands, input_boolean.env_isdev
     default: []
   mode: single
