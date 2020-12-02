@@ -137,5 +137,5 @@
     #     data:
     #       temperature: 20
     #     entity_id: climate.001198a99fac1e
-    # default: []
+    default: []
   mode: restart
