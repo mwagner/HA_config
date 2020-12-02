@@ -106,22 +106,23 @@ api:
 # https://www.home-assistant.io/integrations/logger
 # log_level= critical, fatal, error, warning, warn, info, debug, notset
 logger:
-  default: warning
+  default: info
   logs:
-    homeassistant.core: error
-    homeassistant.components.cast: error
+    homeassistant.core: warning
+    homeassistant.components.cast: warning
     homeassistant.components.mqtt: warning
     homeassistant.components.python_script: warning
     homeassistant.components.pyhomematic: warning
-    homeassistant.components.ipp: fatal
+    homeassistant.components.ipp: warning
+    homeassistant.components.shelly: warning
     #homeassistant.components.device_tracker: debug
     #homeassistant.components.switch.template: debug
     #homeassistant.components.switch.command_line: debug
     #homeassistant.components.python_script.my_new_script.py: debug
-    pychromecast.socket_client: error
+    aioshelly: debug
+    pychromecast.socket_client: warning
     googleapiclient.discovery: warning
-    hamsclient.client: debug
-    custom_components.meteo-swiss: debug
+    hamsclient.client: warning
 
 logbook:
   include:
