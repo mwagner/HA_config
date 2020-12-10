@@ -1,1 +1,15 @@
-[]
+- id: 'beace735f1ea4ec0899dd6abe05391ea'
+  alias: Send me garbage notification
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.garbagealert_papierabfuhr
+  condition: []
+  action:
+  - service: notify.telegram_marco
+    data:
+      message: "{% set trigger = {\n  \"when\": trigger.to_state.state,\n  \"what\"\
+        : trigger.to_state.attributes.friendly_name\n} %} {% if trigger.when == 'Today'\
+        \ %}\n  {% set reminder = 'REMINDER: ' %}\n{% endif %}\n{{ reminder ~ trigger.when\
+        \ }} is {{ trigger.what }}"
+  mode: single

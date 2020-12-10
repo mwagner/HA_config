@@ -1,0 +1,16 @@
+- name: Marco
+  id: marco
+  user_id: !secret userid_marco
+  device_trackers:
+    - device_tracker.sm_g975f
+
+- name: Sharene
+  id: sharene
+  user_id: !secret userid_sharene
+  device_trackers:
+    - device_tracker.sharenes_iphone
+
+- name: Guests
+  id: guests
+  device_trackers: 
+    - device_tracker.guests

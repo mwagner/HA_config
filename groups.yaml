@@ -1,0 +1,22 @@
+livingroom:
+  name: Living Room
+  entities: climate.000a18a996ee03
+kitchen:
+  entities: climate.001198a99fac29
+master_bedroom:
+  entities: climate.000a1be9966275
+guest_bedroom:
+  entities: climate.001198a99fac1e
+office:
+  entities: climate.000a18a9a3c495
+garage:
+  entities: 
+
+climate:
+  name: Thermostats
+  entities:
+    - climate.000a18a996ee03
+    - climate.001198a99fac29
+    - climate.000a1be9966275
+    - climate.001198a99fac1e
+    - climate.000a18a9a3c495

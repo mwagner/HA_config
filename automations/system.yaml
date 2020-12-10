@@ -1,0 +1,96 @@
+- id: '8b404bd3bf814bbf9832c375d654838a'
+  alias: Notify me when Home Assistant started
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: notify.telegram_marco
+    data:
+      message: System is up.
+  mode: single
+- id: 'a8ed0a17f21b48f8bfd0aad5b4b0f3c9'
+  alias: Notify me when Home Assistant shut down
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: shutdown
+  condition: []
+  action:
+  - service: notify.telegram_marco
+    data:
+      message: System went down.
+  mode: single
+
+# - id: '7f86032e6fbf473b8c51ad5de049cc94'
+#   alias: Set HA theme for day and night
+#   trigger:
+#   - platform: homeassistant
+#     event: start
+#   - platform: state
+#     entity_id: sun.sun
+#     to: above_horizon
+#   - platform: state
+#     entity_id: sun.sun
+#     to: below_horizon
+#   action:
+#   - service_template: frontend.set_theme
+#     data_template:
+#       name: "{% if states.sun.sun.state == \"above_horizon\" %}\n  default\n{% else\
+#         \ %}\n  default\n{% endif %}"
+
+- id: '0383dfca43264eb7bd43551ebaa1963a'
+  alias: Set Environments
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: sensor.local_ip
+        state: 192.168.1.14
+      sequence:
+      - service: input_boolean.turn_on
+        data: {}
+        entity_id: input_boolean.env_isdev
+    - conditions:
+      - condition: state
+        entity_id: sensor.local_ip
+        state: 192.168.1.12
+      sequence:
+      - service: input_boolean.turn_off
+        data: {}
+        entity_id: input_boolean.env_execcommands, input_boolean.env_isdev
+    default: []
+  mode: single
+
+- id: 82a5b9a9369f46369e8d3ad4b8b50030
+  alias: Device Tracker - Home Assistant Start create Guest Tracker
+  trigger:
+  - platform: homeassistant
+    event: start
+  action:
+  - delay: 00:01:00
+  - service: device_tracker.see
+    data_template:
+      dev_id: guests
+      host_name: Guests
+      location_name: '{% if is_state(''sensor.guest_count'', ''0'') -%} not_home {%-
+        else -%} home {%- endif %}'
+
+- id: 50b915ee8d20404480ac5d3284d0f66d
+  alias: Device Tracker - Update Guest Tracker
+  trigger:
+  - platform: state
+    entity_id: sensor.guest_count
+  action:
+  - service: device_tracker.see
+    data_template:
+      dev_id: guests
+      host_name: Guests
+      location_name: '{% if is_state(''sensor.guest_count'', ''0'') -%} not_home {%-
+        else -%} home {%- endif %}'

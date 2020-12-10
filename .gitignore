@@ -2,16 +2,33 @@
 *
 
 # You can whitelist files/folders with !, these will not be ignored.
+# more about this: https://jasonstitt.com/gitignore-whitelisting-patterns
+
+# Include folders
+!*/
+!deps/**
+!themes/**
+!tts/**
+!www/**
+
+# Include files and file types
 !*.yaml
 !.gitignore
+!.gitmodules
 !*.md
 
-# Ignore folders.
-.storage
-.cloud
-.google.token
 
-# Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
+# Ignore folders
+.cloud
+.ssh
+.storage
+lovelace/sample
+www/custom_ui
+www/icons/garbage
+
+# Ensure these files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
 secrets.yaml
 known_devices.yaml
+.google.token
+*sample*.yaml

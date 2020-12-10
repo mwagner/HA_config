@@ -1,12 +1,156 @@
-
 # Configure a default setup of Home Assistant (frontend, api, etc)
-default_config:
+#default_config:
+
+homeassistant:
+  name: !secret home_name
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  elevation: !secret home_elevation
+  time_zone: !secret home_timezone
+  unit_system: !secret home_unitsystem
+  #external_url: !secret home_external_url
+  #internal_url: !secret home_internal_url
+  legacy_templates: false
+
+  # Load customizations
+  customize: !include customize.yaml
+  customize_glob:
+    "binary_sensor.*door*":
+      device_class: door
+    "binary_sensor.*window*":
+      device_class: window
+      
+  # Load packages/integrations
+  packages: !include_dir_named packages
+
+  auth_providers:
+    - type: homeassistant
+    - type: trusted_networks
+      trusted_networks:
+      - 192.168.1.0/24
+      - 192.168.100.0/24
+      trusted_users:
+        192.168.1.51: !secret userid_marco
+
+
+# Enables configuration UI
+config:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+# conversation: 
+
+# Load device trackers
+device_tracker:
+
+# Discover some devices automatically
+discovery:
+
+hassio:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Checks for available updates
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  include_used_components: true
+
+mobile_app:
+
+frontend:
+  themes: !include themes.yaml
+  #themes split: !include_dir_merge_named ./themes
+
+
+# Load switches
+switch: !include switches.yaml
+# Load  sensors
+sensor: !include sensor.yaml
+# Load binary sensors
+binary_sensor: !include binary_sensor.yaml
+# Load groups
+group: !include groups.yaml
+#L Load persons
+person: !include person.yaml
+# Load zones
+zone: !include zones.yaml
+# Load helpers
+input_boolean: !include input_boolean.yaml
+input_number: !include input_number.yaml
+
+# Load automations
+#automation: !include automations.yaml
+#automation split: !include_dir_merge_list ./automations
+# Load scripts
+script: !include scripts.yaml
+# Load scenes
+scene: !include scenes.yaml
+
+
+# https://www.home-assistant.io/integrations/recorder/
+recorder:
 
 # Text to speech
 tts:
   - platform: google_translate
 
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
+api:
+
+#system_health:
+
+#python_script:
+
+# https://www.home-assistant.io/integrations/logger
+# log_level= critical, fatal, error, warning, warn, info, debug, notset
+logger:
+  default: info
+  logs:
+    homeassistant.core: warning
+    homeassistant.components.cast: warning
+    homeassistant.components.mqtt: warning
+    homeassistant.components.python_script: warning
+    homeassistant.components.pyhomematic: warning
+    homeassistant.components.ipp: warning
+    homeassistant.components.shelly: warning
+    #homeassistant.components.device_tracker: debug
+    #homeassistant.components.switch.template: debug
+    #homeassistant.components.switch.command_line: debug
+    #homeassistant.components.python_script.my_new_script.py: debug
+    aioshelly: debug
+    pychromecast.socket_client: warning
+    googleapiclient.discovery: warning
+    hamsclient.client: warning
+
+logbook:
+  include:
+    domains:
+      - sensor
+      - switch
+      - media_player
+  exclude:
+    entities:
+      - sensor.utc
+      - sensor.date_time
+    entity_globs:
+      #- weather.*
+
+lovelace:
+  # mode can bei either yaml or storage
+  mode: yaml
+  resources: 
+    - url: /local/plugins/button-card/button-card.js
+      type: module
+    - url: /local/plugins/layout-card/layout-card.js
+      type: module
+    - url: /local/plugins/card-tools/card-tools.js
+      type: module
+    - url: /local/plugins/card-mod/card-mod.js
+      type: module
+    - url: /local/plugins/auto-entities/auto-entities.js
+      type: module
+    - url: /local/plugins/gap-card/gap-card.js
+      type: module
+  dashboards: !include dashboards.yaml

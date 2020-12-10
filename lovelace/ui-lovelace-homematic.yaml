@@ -1,0 +1,23 @@
+views:
+  - title: Heaters
+    path: heaters
+    badges: []
+    cards:
+      - type: thermostat
+        entity: climate.000a18a996ee03
+      - type: thermostat
+        entity: climate.001198a99fac29
+      - type: thermostat
+        entity: climate.000a18a9a3c495
+      - type: thermostat
+        entity: climate.000a1be9966275
+      - type: thermostat
+        entity: climate.001198a99fac1e
+      - type: entities
+        entities:
+          - entity: climate.000a18a996ee03
+          - entity: climate.001198a99fac29
+          - entity: climate.000a18a9a3c495
+          - entity: climate.000a1be9966275
+          - entity: climate.001198a99fac1e
+        state_color: true

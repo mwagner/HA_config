@@ -1,0 +1,27 @@
+- id: '074baaf89c72494ca9053b3c8b4b5be5'
+  alias: Change Guests to "Away"
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: person.guests
+    from: home
+  condition: []
+  action:
+  - service: input_boolean.turn_off
+    data: {}
+    entity_id: input_boolean.guest_home
+  mode: single
+
+- id: '2aad92efc02e47e9b8ca8d6b094b4cf3'
+  alias: Change Guests to "At home"
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: person.guests
+    to: home
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    data: {}
+    entity_id: input_boolean.guest_home
+  mode: single

@@ -1,0 +1,4 @@
+notify:
+  - platform: telegram
+    name: telegram_marco
+    chat_id: !secret telegram_marco_chat_id

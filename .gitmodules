@@ -1,0 +1,15 @@
+[submodule "www/plugins/auto-entities"]
+	path = www/plugins/auto-entities
+	url = https://github.com/thomasloven/lovelace-auto-entities
+[submodule "www/plugins/card-mod"]
+	path = www/plugins/card-mod
+	url = https://github.com/thomasloven/lovelace-card-mod
+[submodule "www/plugins/card-tools"]
+	path = www/plugins/card-tools
+	url = https://github.com/thomasloven/lovelace-card-tools
+[submodule "www/plugins/gap-card"]
+	path = www/plugins/gap-card
+	url = https://github.com/thomasloven/lovelace-gap-card
+[submodule "www/plugins/layout-card"]
+	path = www/plugins/layout-card
+	url = https://github.com/thomasloven/lovelace-layout-card

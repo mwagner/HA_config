@@ -1,0 +1,141 @@
+- id: 'e687e951bc0a4359b1b69fad1723959c'
+  alias: Increase room temperature
+  description: Change room temperature while at home
+  trigger:
+  - platform: state
+    entity_id: input_boolean.home_occupied
+    to: 'on'
+    from: 'off'
+  - platform: state
+    entity_id: input_boolean.guest_home
+    to: 'on'
+    from: 'off'
+  - platform: time
+    at: 07:00:00
+  - platform: homeassistant
+    event: start
+  condition:
+  - condition: and
+    conditions:
+    - condition: time
+      after: 07:00:00
+      before: '17:00:00'
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    - condition: state
+      entity_id: input_boolean.home_occupied
+      state: 'on'
+    # Run only if
+    # -- not Dev environement or
+    # -- Dev environement AND test exec are active
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.env_isdev
+        state: 'off'
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: input_boolean.env_isdev
+          state: 'on'
+        - condition: state
+          entity_id: input_boolean.env_execcommands
+          state: 'on'
+  action:
+  - service: notify.telegram_marco
+    data:
+      message: Increased the rooms temperature to 23℃.
+  - service: climate.set_temperature
+    data:
+      temperature: 23
+    entity_id: climate.001198a99fac29, climate.000a18a996ee03, climate.000a18a9a3c495, climate.000a1be9966275, climate.001198a99fac1e
+  # - choose:
+  #   - conditions:
+  #     - condition: state
+  #       entity_id: input_boolean.guest_home
+  #       state: 'on'
+  #     sequence:
+  #     - service: climate.set_temperature
+  #       data:
+  #         temperature: 23
+  #       entity_id: climate.001198a99fac1e
+  #   default: []
+  mode: restart
+
+- id: 'f27b85eb28144217938c9fc4bdcf25e4'
+  alias: Lower room temperature
+  description: Change room temperature while not at home
+  trigger:
+  - platform: state
+    entity_id: input_boolean.home_occupied
+    to: 'off'
+    from: 'on'
+  - platform: state
+    entity_id: input_boolean.guest_home
+    to: 'off'
+    from: 'on'
+  condition:
+  - condition: and
+    conditions:
+    - condition: time
+      after: 07:00:00
+      before: '17:00:00'
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.home_occupied
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.guest_home
+        state: 'off'
+    # Run only if
+    # -- not Dev environement or
+    # -- Dev environement AND test exec are active
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.env_isdev
+        state: 'off'
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: input_boolean.env_isdev
+          state: 'on'
+        - condition: state
+          entity_id: input_boolean.env_execcommands
+          state: 'on'
+  action:
+  - service: notify.telegram_marco
+    data:
+      message: Changed the climate back to default.
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_boolean.home_occupied
+        state: 'off'
+      sequence:
+      - service: climate.set_temperature
+        data:
+          temperature: 20
+        entity_id: climate.001198a99fac29, climate.000a18a996ee03, climate.000a18a9a3c495, climate.000a1be9966275, climate.001198a99fac1e
+    # - conditions:
+    #   - condition: state
+    #     entity_id: input_boolean.guest_home
+    #     state: 'off'
+    #   sequence:
+    #   - service: climate.set_temperature
+    #     data:
+    #       temperature: 20
+    #     entity_id: climate.001198a99fac1e
+    default: []
+  mode: restart
