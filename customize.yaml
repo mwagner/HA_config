@@ -20,3 +20,9 @@ climate.000a1be9966275:
   friendly_name: "Thermostat Master bedroom"
 climate.001198a99fac1e:
   friendly_name: "Thermostat Guest bedroom"
+
+#Sonos speakers
+media_player.living_room:
+  friendly_name: "Sonos Speaker (Living Room)"
+media_player.office:
+  friendly_name: "Sonos Speaker (Office Room)"
