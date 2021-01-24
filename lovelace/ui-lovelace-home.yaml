@@ -17,3 +17,4 @@ custom_header:
 views:
   - !include home/01_home.yaml
   - !include home/02_climate.yaml
+  - !include home/03_Audio.yaml

@@ -1,0 +1,13 @@
+title: Media Players
+path: media
+icon: mdi:amplifier
+panel: true
+cards:
+  - type: 'custom:layout-card'
+    layout: horizontal
+    cards:
+      # General climate setting
+      - type: media-control
+        entity: media_player.office
+      - type: media-control
+        entity: media_player.living_room
