@@ -17,6 +17,9 @@
   condition:
   - condition: and
     conditions:
+    - condition: state
+      entity_id: input_boolean.heating
+      state: 'on'
     - condition: time
       after: 07:00:00
       before: '17:00:00'
@@ -81,6 +84,9 @@
   condition:
   - condition: and
     conditions:
+    - condition: state
+      entity_id: input_boolean.heating
+      state: 'on'
     - condition: time
       after: 07:00:00
       before: '17:00:00'
