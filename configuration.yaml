@@ -74,7 +74,7 @@ sensor: !include sensor.yaml
 binary_sensor: !include binary_sensor.yaml
 # Load groups
 group: !include groups.yaml
-#L Load persons
+# Load persons
 person: !include person.yaml
 # Load zones
 zone: !include zones.yaml
@@ -139,7 +139,7 @@ logbook:
       #- weather.*
 
 lovelace:
-  # mode can bei either yaml or storage
+  # mode can be either yaml or storage
   mode: yaml
   resources: 
     - url: /local/plugins/button-card/button-card.js
