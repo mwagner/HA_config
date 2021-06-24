@@ -55,7 +55,12 @@
   - service: climate.set_temperature
     data:
       temperature: 23
-    entity_id: climate.001198a99fac29, climate.000a18a996ee03, climate.000a18a9a3c495, climate.000a1be9966275, climate.001198a99fac1e
+    entity_id: 
+    - climate.001198a99fac29
+    - climate.000a18a996ee03
+    - climate.000a18a9a3c495
+    - climate.000a1be9966275
+    - climate.001198a99fac1e
   # - choose:
   #   - conditions:
   #     - condition: state
@@ -133,7 +138,12 @@
       - service: climate.set_temperature
         data:
           temperature: 20
-        entity_id: climate.001198a99fac29, climate.000a18a996ee03, climate.000a18a9a3c495, climate.000a1be9966275, climate.001198a99fac1e
+        entity_id:
+        - climate.001198a99fac29
+        - climate.000a18a996ee03
+        - climate.000a18a9a3c495
+        - climate.000a1be9966275
+        - climate.001198a99fac1e
     # - conditions:
     #   - condition: state
     #     entity_id: input_boolean.guest_home
@@ -144,4 +154,27 @@
     #       temperature: 20
     #     entity_id: climate.001198a99fac1e
     default: []
+  mode: restart
+- id: 'c31cd07bb9824a3eb4b910e7bdba4f57'
+  alias: Switch Off Heaters
+  description: Switch off all heaters (for summer months)
+  trigger:
+  - platform: state
+    entity_id: input_boolean.heating
+    to: 'off'
+  condition: []
+  action:
+  - service: notify.telegram_marco
+    data:
+      message: All heaters switched off.
+  - service: climate.set_hvac_mode
+    target:
+      entity_id:
+      - climate.001198a99fac29
+      - climate.000a18a996ee03
+      - climate.000a18a9a3c495
+      - climate.000a1be9966275
+      - climate.001198a99fac1e
+    data:
+      hvac_mode: 'off'
   mode: restart
