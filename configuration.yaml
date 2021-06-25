@@ -109,21 +109,22 @@ api:
 logger:
   default: info
   logs:
-    homeassistant.core: warning
-    homeassistant.components.cast: warning
-    homeassistant.components.mqtt: warning
-    homeassistant.components.python_script: warning
-    homeassistant.components.pyhomematic: warning
-    homeassistant.components.ipp: warning
-    homeassistant.components.shelly: warning
+    homeassistant.core: info
+    homeassistant.components.http: debug
+    homeassistant.components.cast: info
+    homeassistant.components.mqtt: info
+    homeassistant.components.python_script: info
+    homeassistant.components.pyhomematic: info
+    homeassistant.components.ipp: info
+    homeassistant.components.shelly: info
     #homeassistant.components.device_tracker: debug
     #homeassistant.components.switch.template: debug
     #homeassistant.components.switch.command_line: debug
     #homeassistant.components.python_script.my_new_script.py: debug
-    aioshelly: debug
-    pychromecast.socket_client: warning
-    googleapiclient.discovery: warning
-    hamsclient.client: warning
+    aioshelly: info
+    pychromecast.socket_client: info
+    googleapiclient.discovery: info
+    hamsclient.client: info
 
 logbook:
   include:
