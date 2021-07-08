@@ -1,28 +1,26 @@
 binary_sensor.peq0478568_state:
   device_class: garage_door
-  friendly_name: "Garage Door Sensor"
-
+  friendly_name: Garage Door Sensor
 binary_sensor.0000d8a99e5ae7_state:
   device_class: door
-  friendly_name: "Balcony Door"
-
+  friendly_name: Balcony Door
 switch.00131709ae3834:
-  friendly_name: "Garage Door Button"
+  friendly_name: Garage Door Button
 
 #Thermostats
 climate.001198a99fac29:
-  friendly_name: "Thermostat Kitchen"
+  friendly_name: Thermostat Kitchen
 climate.000a18a996ee03:
-  friendly_name: "Thermostat Living room"
+  friendly_name: Thermostat Living room
 climate.000a18a9a3c495:
-  friendly_name: "Thermostat Office room"
+  friendly_name: Thermostat Office room
 climate.000a1be9966275:
-  friendly_name: "Thermostat Master bedroom"
+  friendly_name: Thermostat Master bedroom
 climate.001198a99fac1e:
-  friendly_name: "Thermostat Guest bedroom"
+  friendly_name: Thermostat Guest bedroom
 
 #Sonos speakers
 media_player.living_room:
-  friendly_name: "Sonos Speaker (Living Room)"
+  friendly_name: Sonos Speaker (Living Room)
 media_player.office:
-  friendly_name: "Sonos Speaker (Office Room)"
+  friendly_name: Sonos Speaker (Office Room)

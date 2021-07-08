@@ -6,15 +6,14 @@ cards:
   - type: 'custom:layout-card'
     layout: vertical
     cards:
-      # General climate setting
-      - type: thermostat
-        entity: climate.000a18a9a3c495
-
-      # Climate Settings
+      # Climate Settings Master Switch
       - type: entities
         entities:
           - input_boolean.heating
-      
+
+      # General climate setting
+      - type: thermostat
+        entity: climate.000a18a9a3c495
 
       # Weather
       - break
