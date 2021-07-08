@@ -9,6 +9,10 @@ cards:
       - type: weather-forecast
         entity: weather.home
 
+      - type: entities
+        entities:
+        - binary_sensor.peq0478568_state
+
       - type: sensor
         entity: sensor.temperature_livingroom_thermostat
       - type: sensor

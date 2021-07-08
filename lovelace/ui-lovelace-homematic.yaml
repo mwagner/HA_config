@@ -3,6 +3,18 @@ views:
     path: heaters
     badges: []
     cards:
+      - type: entities
+        entities:
+          - entity: input_boolean.heating
+          - binary_sensor.peq0478568_state
+      - type: entities
+        entities:
+          - entity: climate.000a18a996ee03
+          - entity: climate.001198a99fac29
+          - entity: climate.000a18a9a3c495
+          - entity: climate.000a1be9966275
+          - entity: climate.001198a99fac1e
+        state_color: true
       - type: thermostat
         entity: climate.000a18a996ee03
       - type: thermostat
@@ -13,11 +25,3 @@ views:
         entity: climate.000a1be9966275
       - type: thermostat
         entity: climate.001198a99fac1e
-      - type: entities
-        entities:
-          - entity: climate.000a18a996ee03
-          - entity: climate.001198a99fac29
-          - entity: climate.000a18a9a3c495
-          - entity: climate.000a1be9966275
-          - entity: climate.001198a99fac1e
-        state_color: true

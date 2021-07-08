@@ -10,7 +10,9 @@ guest_bedroom:
 office:
   entities: climate.000a18a9a3c495
 garage:
+  name: Garage
   entities: 
+    - binary_sensor.PEQ0478568_state
 
 climate:
   name: Thermostats
