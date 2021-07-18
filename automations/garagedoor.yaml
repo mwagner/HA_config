@@ -1,0 +1,12 @@
+- id: '1626251099387'
+  alias: Reset HmIP-WGC switch to off
+  description: ''
+  trigger:
+  - entity_id: switch.00131709ae3834
+    platform: state
+    to: 'on'
+  action:
+  - delay: 00:00:01
+  - data: {}
+    entity_id: switch.00131709ae3834
+    service: switch.turn_off
