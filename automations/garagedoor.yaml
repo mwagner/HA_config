@@ -55,3 +55,36 @@
             - Close the door now:/CloseGarageDoor
     default: []
   mode: restart
+
+- id: '1625819050434'
+  alias: Telegram action to close garage door
+  description: ''
+  trigger:
+  - platform: event
+    event_type: telegram_callback
+    event_data:
+      command: /CloseGarageDoor
+  action:
+  - service: telegram_bot.answer_callback_query
+    data:
+      callback_query_id: '{{ trigger.event.data.id }}'
+      message: Closing the garage door in 3 seconds!
+      show_alert: true
+  - wait_template: '3'
+    timeout: '10'
+  - service: telegram_bot.edit_replymarkup
+    data:
+      message_id: '{{ trigger.event.data.message.message_id }}'
+      chat_id: '{{ trigger.event.data.chat_id }}'
+      inline_keyboard:
+  - service: telegram_bot.send_message
+    data:
+      message: Closing the garage door now...
+  - service: persistent_notification.dismiss
+    data:
+      notification_id: GarageDoorNotification
+  - service: persistent_notification.create
+    data:
+      message: Notification to be replaced with action
+      notification_id: xxxx
+  mode: single
