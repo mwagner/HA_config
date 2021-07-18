@@ -10,3 +10,48 @@
   - data: {}
     entity_id: switch.00131709ae3834
     service: switch.turn_off
+
+- id: '1625767752180'
+  alias: Notification via Telegram about garage door status
+  description: 'Telegram notification about garage door open/close'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.peq0478568_state
+    to: 'off'
+  - platform: state
+    entity_id: binary_sensor.peq0478568_state
+    to: 'on'
+  condition: []
+  action:
+  - service: persistent_notification.create
+    data:
+      message: "{% if states.binary_sensor.peq0478568_state.state == \"off\" -%}\n\
+        \  Garage door is now *CLOSED*\n{%- else -%}\n  Garage door is now *OPEN*\n\
+        {%- endif %}"
+      notification_id: GarageDoorNotification
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.peq0478568_state
+        state: 'off'
+        for: 00:00:02
+      sequence:
+      - service: notify.telegram_marco
+        data:
+          message: Garage door is now *CLOSED*
+          title: '*Garage Door Movement*'
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.peq0478568_state
+        state: 'on'
+        for: 00:00:02
+      sequence:
+      - service: notify.telegram_marco
+        data:
+          message: Garage door is now *OPEN*
+          title: '*Garage Door Movement*'
+          data:
+            inline_keyboard:
+            - Close the door now:/CloseGarageDoor
+    default: []
+  mode: restart
