@@ -9,20 +9,20 @@ homematic:
       host: !secret homematic_host
       port: 2000
       resolvenames: json
-      username: hass
+      username: !secret homematic_username
     hmip:
       host: !secret homematic_host
       port: 2010
       resolvenames: json
-      username: hass
+      username: !secret homematic_username
     group:
       host: !secret homematic_host
       port: 9292
       resolvenames: json
-      username: hass
+      username: !secret homematic_username
       path: /groups
   hosts:
     ccu3:
       host: !secret homematic_host
       port: 2001
-      username: hass
+      username: !secret homematic_username
