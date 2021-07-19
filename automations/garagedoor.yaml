@@ -1,90 +1,98 @@
 - id: '1626251099387'
-  alias: Reset HmIP-WGC switch to off
+  alias: 'Garage Door switch: Re-set to off'
   description: ''
   trigger:
   - entity_id: switch.00131709ae3834
     platform: state
     to: 'on'
   action:
-  - delay: 00:00:01
   - data: {}
     entity_id: switch.00131709ae3834
     service: switch.turn_off
-
+  mode: single
 - id: '1625767752180'
-  alias: Notification via Telegram about garage door status
-  description: 'Telegram notification about garage door open/close'
+  alias: 'Telegram Notification: Garage Door Status'
+  description: Telegram notification about garage door open/close
   trigger:
   - platform: state
     entity_id: binary_sensor.peq0478568_state
     to: 'off'
+    for: 00:00:02
   - platform: state
     entity_id: binary_sensor.peq0478568_state
     to: 'on'
+    for: 00:00:02
   condition: []
   action:
   - service: persistent_notification.create
     data:
       message: "{% if states.binary_sensor.peq0478568_state.state == \"off\" -%}\n\
-        \  Garage door is now *CLOSED*\n{%- else -%}\n  Garage door is now *OPEN*\n\
-        {%- endif %}"
-      notification_id: GarageDoorNotification
+        \  Garage door is CLOSED\n{%- else -%}\n  Garage door is OPEN\n{%- endif %}"
+      notification_id: NotificationGarageDoor
   - choose:
     - conditions:
       - condition: state
         entity_id: binary_sensor.peq0478568_state
         state: 'off'
-        for: 00:00:02
       sequence:
       - service: notify.telegram_marco
         data:
-          message: Garage door is now *CLOSED*
+          message: Garage door is *CLOSED*
           title: '*Garage Door Movement*'
     - conditions:
       - condition: state
         entity_id: binary_sensor.peq0478568_state
         state: 'on'
-        for: 00:00:02
       sequence:
       - service: notify.telegram_marco
         data:
-          message: Garage door is now *OPEN*
+          message: Garage door is *OPEN*
           title: '*Garage Door Movement*'
           data:
             inline_keyboard:
             - Close the door now:/CloseGarageDoor
     default: []
-  mode: restart
-
+  mode: queued
+  max: 10
 - id: '1625819050434'
-  alias: Telegram action to close garage door
+  alias: 'Telegram Action: Close Garage Door'
   description: ''
   trigger:
   - platform: event
     event_type: telegram_callback
     event_data:
       command: /CloseGarageDoor
+  condition: []
   action:
-  - service: telegram_bot.answer_callback_query
-    data:
-      callback_query_id: '{{ trigger.event.data.id }}'
-      message: Closing the garage door in 3 seconds!
-      show_alert: true
-  - wait_template: '3'
-    timeout: '10'
   - service: telegram_bot.edit_replymarkup
     data:
       message_id: '{{ trigger.event.data.message.message_id }}'
       chat_id: '{{ trigger.event.data.chat_id }}'
       inline_keyboard:
-  - service: telegram_bot.send_message
-    data:
-      message: Closing the garage door now...
-  - service: persistent_notification.dismiss
-    data:
-      notification_id: GarageDoorNotification
-  - service: persistent_notification.create
-    data:
-      message: Notification to be replaced with action
-      notification_id: xxxx
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.peq0478568_state
+        state: 'on'
+      sequence:
+      - service: telegram_bot.answer_callback_query
+        data:
+          message: Closing the garage door in 3 seconds!
+          show_alert: true
+          callback_query_id: '{{ trigger.event.data.id }}'
+      - wait_template: '3'
+        timeout: '10'
+      - service: telegram_bot.send_message
+        data:
+          message: Closing the garage door
+      - service: persistent_notification.dismiss
+        data:
+          notification_id: NotificationGarageDoor
+      - service: switch.turn_on
+        target:
+          entity_id: switch.00131709ae3834
+    default:
+    - service: persistent_notification.dismiss
+      data:
+        notification_id: NotificationGarageDoor
   mode: single
