@@ -11,7 +11,8 @@ cards:
 
       - type: entities
         entities:
-        - binary_sensor.peq0478568_state
+          - entity: binary_sensor.peq0478568_state
+          - entity: switch.00131709ae3834
 
       - type: sensor
         entity: sensor.temperature_livingroom_thermostat

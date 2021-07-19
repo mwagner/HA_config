@@ -1,32 +1,33 @@
 #Battery status
 binary_sensor.000a18a996ee03_low_bat:
   device_class: battery
-  friendly_name: "Battery: Thermostat Living room"
+  friendly_name: 'Battery: Thermostat Living room'
 binary_sensor.000a18a9a3c495_low_bat:
   device_class: battery
-  friendly_name: "Battery: Thermostat Office room"
+  friendly_name: 'Battery: Thermostat Office room'
 binary_sensor.000a1be9966275_low_bat:
   device_class: battery
-  friendly_name: "Battery: Thermostat Master bedroom"
+  friendly_name: 'Battery: Thermostat Master bedroom'
 binary_sensor.001198a99fac1e_low_bat:
   device_class: battery
-  friendly_name: "Battery: Thermostat Guest bedroom"
+  friendly_name: 'Battery: Thermostat Guest bedroom'
 binary_sensor.001198a99fac29_low_bat:
   device_class: battery
-  friendly_name: "Battery: Thermostat Kitchen"
+  friendly_name: 'Battery: Thermostat Kitchen'
 binary_sensor.0000d8a99e5ae7_low_bat:
   device_class: battery
-  friendly_name: "Battery: Balcony Door"
+  friendly_name: 'Battery: Balcony Door'
 binary_sensor.peq0478568_lowbat:
   device_class: battery
-  friendly_name: "Battery: Garage Door Tilt Sensor"
+  friendly_name: 'Battery: Garage Door Tilt Sensor'
 binary_sensor.00131709ae3834_low_bat:
   device_class: battery
-  friendly_name: "Battery: Garage Door Button"
+  friendly_name: 'Battery: Garage Door Button'
 
 #Binary sensors
 binary_sensor.peq0478568_state:
   device_class: garage_door
+  icon: mdi:garage
   friendly_name: Garage Door Tilt Sensor
 binary_sensor.0000d8a99e5ae7_state:
   device_class: door
@@ -34,6 +35,7 @@ binary_sensor.0000d8a99e5ae7_state:
 
 #Switches
 switch.00131709ae3834:
+  icon: mdi:remote
   friendly_name: Garage Door Button
 
 #Thermostats
