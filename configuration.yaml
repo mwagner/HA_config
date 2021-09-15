@@ -48,6 +48,8 @@ discovery:
 
 hassio:
 
+system_health:
+
 # Enables a map showing the location of tracked devices
 map:
 
@@ -110,11 +112,12 @@ logger:
   default: info
   logs:
     homeassistant.core: info
-    homeassistant.components.http: debug
+    homeassistant.components.http: info
     homeassistant.components.cast: info
     homeassistant.components.mqtt: info
     homeassistant.components.python_script: info
     homeassistant.components.pyhomematic: info
+    pyhomematic: info
     homeassistant.components.ipp: info
     homeassistant.components.shelly: info
     #homeassistant.components.device_tracker: debug

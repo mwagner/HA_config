@@ -1,28 +1,33 @@
 homematic:
   interfaces:
-    wireless:
+    hmrf:
       host: !secret homematic_host
       port: 2001
       resolvenames: json
       username: !secret homematic_username
-    wired:
-      host: !secret homematic_host
-      port: 2000
-      resolvenames: json
-      username: !secret homematic_username
+      password: !secret homematic_password
+    # wired:
+    #    host: !secret homematic_host
+    #    port: 2000
+    #    resolvenames: json
+    #    username: !secret homematic_username
+    #    password: !secret homematic_password
     hmip:
       host: !secret homematic_host
       port: 2010
       resolvenames: json
       username: !secret homematic_username
-    group:
-      host: !secret homematic_host
-      port: 9292
-      resolvenames: json
-      username: !secret homematic_username
-      path: /groups
-  hosts:
-    ccu3:
-      host: !secret homematic_host
-      port: 2001
-      username: !secret homematic_username
+      password: !secret homematic_password
+    # groups:
+    #   host: !secret homematic_host
+    #   port: 9292
+    #   resolvenames: json
+    #   username: !secret homematic_username
+    #   password: !secret homematic_password
+    #   path: /groups
+  # hosts:
+  #   ccu3:
+  #     host: !secret homematic_host
+  #     port: 2001
+  #     username: !secret homematic_username
+  #     password: !secret homematic_password
