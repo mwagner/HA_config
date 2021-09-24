@@ -114,22 +114,22 @@ logger:
   default: info
   logs:
     homeassistant.core: info
-    homeassistant.components.http: info
     homeassistant.components.cast: info
+    homeassistant.components.http: info
     homeassistant.components.mqtt: info
-    homeassistant.components.python_script: info
     homeassistant.components.pyhomematic: info
-    pyhomematic: info
+    homeassistant.components.python_script: info
     homeassistant.components.ipp: info
     homeassistant.components.shelly: info
-    #homeassistant.components.device_tracker: debug
-    #homeassistant.components.switch.template: debug
-    #homeassistant.components.switch.command_line: debug
-    #homeassistant.components.python_script.my_new_script.py: debug
+    homeassistant.components.device_tracker: info
+    homeassistant.components.switch.template: info
+    homeassistant.components.switch.command_line: info
+    # homeassistant.components.python_script.my_new_script.py: debug
     aioshelly: info
-    pychromecast.socket_client: info
     googleapiclient.discovery: info
     hamsclient.client: info
+    pychromecast.socket_client: info
+    pyhomematic: info
 
 logbook:
   include:
