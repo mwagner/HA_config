@@ -8,10 +8,10 @@
   id: sharene
   user_id: !secret userid_sharene
   device_trackers:
-    - device_tracker.sharene_s_iphone
+    - device_tracker.sharenes_iphone
 
 - name: Guests
   id: guests
   device_trackers: 
     - device_tracker.guests
-    - device_tracker.ursula_s_iphone
+    - device_tracker.ursulas_iphone
