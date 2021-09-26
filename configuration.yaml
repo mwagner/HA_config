@@ -58,8 +58,10 @@ sun:
 
 # Checks for available updates
 updater:
-  # Optional, allows Home Assistant developers to focus on popular components.
-  include_used_components: true
+  # Analytics reporting with the option 'include_used_components' is deprecated
+  # and you should remove that from your configuration. The analytics part of 
+  # this integration has moved to the new 'analytics' integration
+  #include_used_components: true
 
 mobile_app:
 
@@ -112,22 +114,22 @@ logger:
   default: info
   logs:
     homeassistant.core: info
-    homeassistant.components.http: info
     homeassistant.components.cast: info
+    homeassistant.components.http: info
     homeassistant.components.mqtt: info
-    homeassistant.components.python_script: info
     homeassistant.components.pyhomematic: info
-    pyhomematic: info
+    homeassistant.components.python_script: info
     homeassistant.components.ipp: info
     homeassistant.components.shelly: info
-    #homeassistant.components.device_tracker: debug
-    #homeassistant.components.switch.template: debug
-    #homeassistant.components.switch.command_line: debug
-    #homeassistant.components.python_script.my_new_script.py: debug
+    homeassistant.components.device_tracker: info
+    homeassistant.components.switch.template: info
+    homeassistant.components.switch.command_line: info
+    # homeassistant.components.python_script.my_new_script.py: debug
     aioshelly: info
-    pychromecast.socket_client: info
     googleapiclient.discovery: info
     hamsclient.client: info
+    pychromecast.socket_client: info
+    pyhomematic: info
 
 logbook:
   include:
