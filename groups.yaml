@@ -2,12 +2,16 @@ livingroom:
   name: Living Room
   entities: climate.000a18a996ee03
 kitchen:
+  name: Kitchen
   entities: climate.001198a99fac29
 master_bedroom:
+  name: Master Bedroom
   entities: climate.000a1be9966275
-guest_bedroom:
+babyroom:
+  name: Baby Room
   entities: climate.001198a99fac1e
 office:
+  name: Office Room
   entities: climate.000a18a9a3c495
 garage:
   name: Garage
