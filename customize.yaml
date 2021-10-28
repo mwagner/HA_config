@@ -10,7 +10,7 @@ binary_sensor.000a1be9966275_low_bat:
   friendly_name: 'Battery: Thermostat Master bedroom'
 binary_sensor.001198a99fac1e_low_bat:
   device_class: battery
-  friendly_name: 'Battery: Thermostat Guest bedroom'
+  friendly_name: 'Battery: Thermostat Baby bedroom'
 binary_sensor.001198a99fac29_low_bat:
   device_class: battery
   friendly_name: 'Battery: Thermostat Kitchen'
@@ -28,10 +28,11 @@ binary_sensor.00131709ae3834_low_bat:
 binary_sensor.peq0478568_state:
   device_class: garage_door
   icon: mdi:garage
-  friendly_name: Garage Door Tilt Sensor
+  friendly_name: Garage Door Sensor
 binary_sensor.0000d8a99e5ae7_state:
   device_class: door
-  friendly_name: Balcony Door
+  icon: mdi:door
+  friendly_name: Balcony Door Sensor
 
 #Switches
 switch.00131709ae3834:
@@ -48,7 +49,7 @@ climate.000a18a9a3c495:
 climate.000a1be9966275:
   friendly_name: Thermostat Master bedroom
 climate.001198a99fac1e:
-  friendly_name: Thermostat Guest bedroom
+  friendly_name: Thermostat Baby bedroom
 
 #Sonos speakers
 media_player.living_room:
