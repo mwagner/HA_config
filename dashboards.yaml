@@ -5,7 +5,7 @@ lovelace-home:
   show_in_sidebar: true
   require_admin: false
   filename: lovelace/ui-lovelace-home.yaml
-lovelace-yaml:
+lovelace-homematic:
   mode: yaml
   title: Homematic
   icon: mdi:script
