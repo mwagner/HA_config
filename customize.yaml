@@ -23,6 +23,9 @@ binary_sensor.peq0478568_lowbat:
 binary_sensor.00131709ae3834_low_bat:
   device_class: battery
   friendly_name: 'Battery: Garage Door Button'
+sensor.hue_dimmer_switch_1_battery_level:
+  device_class: battery
+  friendly_name: 'Battery: Dimmer Switch'
 
 #Binary sensors
 binary_sensor.peq0478568_state:
@@ -56,3 +59,24 @@ media_player.living_room:
   friendly_name: Sonos Speaker (Living Room)
 media_player.office:
   friendly_name: Sonos Speaker (Office Room)
+
+#Hue stuff
+light.hue_lightstrip:
+  icon: hass:led-strip-variant
+  friendly_name: LED strip Desk
+light.hue_bloom_1:
+  friendly_name: Hue Bloom 1
+light.hue_bloom_2:
+  friendly_nam: Hue Bloom 2
+binary_sensor.hue_motion_sensor_1_motion:
+  friendly_name: 'Hue Motion Sensor 1'
+sensor.hue_motion_sensor_1_light_level:
+  friendly_name: 'Hue Light Sensor 1'
+sensor.hue_motion_sensor_1_temperature:
+  friendly_name: 'Hue Temperature Sensor 1'
+binary_sensor.hue_motion_sensor_2_motion:
+  friendly_name: 'Hue Motion Sensor 2'
+sensor.hue_motion_sensor_2_light_level:
+  friendly_name: 'Hue Light Sensor 2'
+sensor.hue_motion_sensor_2_temperature:
+  friendly_name: 'Hue Temperature Sensor 2'
