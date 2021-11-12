@@ -12,7 +12,11 @@ babyroom:
   entities: climate.001198a99fac1e
 office:
   name: Office Room
-  entities: climate.000a18a9a3c495
+  entities:
+    - climate.000a18a9a3c495
+    - light.hue_lightstrip
+    - binary_sensor.hue_motion_sensor_1_motion
+
 garage:
   name: Garage
   entities: 
