@@ -3,7 +3,7 @@
   user_id: !secret userid_marco
   device_trackers:
     - device_tracker.marco_s_phone
-    - device_tracker.sm_g975f
+    - device_tracker.sm_g998b
 
 - name: Sharene
   id: sharene
