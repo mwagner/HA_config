@@ -16,5 +16,5 @@ cards:
           - entity: binary_sensor.000a1be9966275_low_bat
           - entity: binary_sensor.001198a99fac1e_low_bat
           - entity: binary_sensor.001198a99fac29_low_bat
-          - entity: sensor.sm_g975f_battery_level
+          - entity: sensor.sm_g998b_battery_level
         title: Battery Levels
