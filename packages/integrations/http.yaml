@@ -4,6 +4,7 @@ http:
   trusted_proxies:
     - 192.168.1.0/24
     - 192.168.10.0/24
+    - 192.168.11.0/24
     - 192.168.100.0/24
   # ssl_certificate: /ssl/fullchain.pem
   # ssl_key: /ssl/privkey.pem
