@@ -29,9 +29,12 @@ homeassistant:
       trusted_networks:
       - 192.168.1.0/24
       - 192.168.10.0/24
+      - 192.168.11.0/24
       - 192.168.100.0/24
+      - 178.198.126.123/32
       trusted_users:
         192.168.10.50: !secret userid_marco
+        192.168.10.51: !secret userid_marco
 
 
 # Enables configuration UI
@@ -41,7 +44,7 @@ config:
 # conversation: 
 
 # Load device trackers
-device_tracker:
+# device_tracker:
 
 # Discover some devices automatically
 discovery:
@@ -57,7 +60,7 @@ map:
 sun:
 
 # Checks for available updates
-updater:
+# updater:
   # Analytics reporting with the option 'include_used_components' is deprecated
   # and you should remove that from your configuration. The analytics part of 
   # this integration has moved to the new 'analytics' integration
@@ -129,7 +132,8 @@ logger:
     googleapiclient.discovery: info
     hamsclient.client: info
     pychromecast.socket_client: info
-    pyhomematic: info
+    pyhomematic: warn
+    volvooncall.volvooncall: info
 
 logbook:
   include:
@@ -137,6 +141,13 @@ logbook:
       - sensor
       - switch
       - media_player
+    entities:
+      # Garage door
+      - binary_sensor.peq0478568_state
+      # Balcony door
+      - binary_sensor.0000d8a99e5ae7_state
+    entity_globs:
+      # - binary_sensor.* 
   exclude:
     entities:
       - sensor.utc
