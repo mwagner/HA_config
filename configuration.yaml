@@ -147,7 +147,7 @@ logbook:
       # Balcony door
       - binary_sensor.0000d8a99e5ae7_state
     entity_globs:
-      # - binary_sensor.* 
+      - binary_sensor.*_low_bat
   exclude:
     entities:
       - sensor.utc
