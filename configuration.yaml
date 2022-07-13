@@ -148,6 +148,7 @@ logbook:
       - binary_sensor.0000d8a99e5ae7_state
     entity_globs:
       - binary_sensor.*_low_bat
+      - binary_sensor.*_lowbat
   exclude:
     entities:
       - sensor.utc
