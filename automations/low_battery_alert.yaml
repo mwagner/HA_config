@@ -11,8 +11,8 @@
   action:
   - service: notify.mobile_app_sm_g998b
     data:
-      message: There is a device with low battery. [Please check](/lovelace-home/settings)
+      message: There is a device with low battery alert.
   - service: notify.persistent_notification
     data:
-      message: There is a device with low battery. [Please check](/lovelace-home/settings)
+      message: There is a device with low battery alert. [Please check](/lovelace-home/settings)
   mode: single
