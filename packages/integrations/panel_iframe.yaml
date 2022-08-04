@@ -1,5 +1,5 @@
 panel_iframe:
   nodered:
-    title: "Node Red"
+    title: "Node-RED"
     icon: "mdi:shuffle-variant"
     url: !secret nodered_url
