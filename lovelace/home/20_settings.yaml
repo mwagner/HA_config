@@ -18,3 +18,10 @@ cards:
           - entity: binary_sensor.001198a99fac29_low_bat
           - entity: sensor.sm_g998b_battery_level
         title: Battery Levels
+      # - type: entities
+      #   entities:
+      #     - entity: sensor.hue_dimmer_switch_1_battery_level
+      #     - entity: sensor.sound_remote_office
+      #     - entity: sensor.sound_remote_living_room
+      #     - entity: sensor.tradfri_on_off_switch
+      #   title: Other levels (WIP)

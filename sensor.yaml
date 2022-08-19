@@ -180,12 +180,11 @@
   state_topic: "home/officeroom/temperature"
   name: "Temperature Office Sensor"
   
-
-
-- platform: google_travel_time
-  name: Travel home to office
-  #friendly_name: "Home to office"
-  api_key: !secret google_distance_api_key
-  origin: zone.home
-  destination: zone.work
-  scan_interval: 300
+#  // Deprecated //
+# - platform: google_travel_time
+#   name: Travel home to office
+#   #friendly_name: "Home to office"
+#   api_key: !secret google_distance_api_key
+#   origin: zone.home
+#   destination: zone.work
+#   scan_interval: 300

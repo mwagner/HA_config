@@ -16,7 +16,7 @@
 !.gitignore
 !.gitmodules
 !*.md
-
+!*.backup
 
 # Ignore folders
 .cloud
