@@ -176,9 +176,10 @@
   time_zone: Etc/UTC
   name: 'UTC'
 
-- platform: mqtt
-  state_topic: "home/officeroom/temperature"
-  name: "Temperature Office Sensor"
+#  // YML deprecated and requires new configuration //
+# - platform: mqtt
+#   state_topic: "home/officeroom/temperature"
+#   name: "Temperature Office Sensor"
   
 #  // Deprecated //
 # - platform: google_travel_time
