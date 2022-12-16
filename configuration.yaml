@@ -8,6 +8,8 @@ homeassistant:
   elevation: !secret home_elevation
   time_zone: !secret home_timezone
   unit_system: !secret home_unitsystem
+  currency: !secret home_currency
+  country: !secret home_country
   #external_url: !secret home_external_url
   #internal_url: !secret home_internal_url
   legacy_templates: false
@@ -115,25 +117,29 @@ api:
 # log_level= critical, fatal, error, warning, warn, info, debug, notset
 logger:
   default: info
-  logs:
-    homeassistant.core: info
-    homeassistant.components.cast: info
-    homeassistant.components.http: info
-    homeassistant.components.mqtt: info
-    homeassistant.components.pyhomematic: info
-    homeassistant.components.python_script: info
-    homeassistant.components.ipp: info
-    homeassistant.components.shelly: info
-    homeassistant.components.device_tracker: info
-    homeassistant.components.switch.template: info
-    homeassistant.components.switch.command_line: info
-    # homeassistant.components.python_script.my_new_script.py: debug
-    aioshelly: info
-    googleapiclient.discovery: info
-    hamsclient.client: info
-    pychromecast.socket_client: info
-    pyhomematic: warn
-    volvooncall.volvooncall: info
+  # logs:
+  #   homeassistant.core: info
+  #   homeassistant.components.cast: info
+  #   homeassistant.components.http: info
+  #   homeassistant.components.mqtt: info
+  #   homeassistant.components.pyhomematic: info
+  #   homeassistant.components.python_script: info
+  #   homeassistant.components.ipp: info
+  #   homeassistant.components.shelly: info
+  #   homeassistant.components.device_tracker: info
+  #   homeassistant.components.switch.template: info
+  #   homeassistant.components.switch.command_line: info
+  #   homeassistant.components.python_script.my_new_script.py: debug
+  #   aioshelly: info
+  #   googleapiclient.discovery: info
+  #   hamsclient.client: info
+  #   pychromecast.socket_client: info
+  #   pyhomematic: warn
+  #   volvooncall.volvooncall: info
+  #   aiounifi: info
+  #   homeassistant.components.unifi: info
+  #   homeassistant.components.device_tracker.unifi: info
+  #   homeassistant.components.switch.unifi: info
 
 logbook:
   include:
@@ -141,6 +147,7 @@ logbook:
       - sensor
       - switch
       - media_player
+      - update
     entities:
       # Garage door
       - binary_sensor.peq0478568_state

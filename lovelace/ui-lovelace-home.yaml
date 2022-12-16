@@ -1,4 +1,6 @@
 title: Home (YAML)
+visible:
+  - user: e9949774bdc54573850b5a61613ba3b3
 custom_header:
   compact_mode: true
   header_text: '{{ states.sensor.time.state }}'
