@@ -22,6 +22,8 @@
 .cloud
 .ssh
 .storage
+custom_components
+esphome
 lovelace/sample
 www/custom_ui
 www/icons/garbage
