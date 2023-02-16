@@ -1,4 +1,0 @@
-# # Example configuration.yaml entry
-netatmo:
-  client_id: !secret netatmo_client_id
-  client_secret: !secret netatmo_client_secret
