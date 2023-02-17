@@ -13,3 +13,6 @@
 [submodule "www/plugins/layout-card"]
 	path = www/plugins/layout-card
 	url = https://github.com/thomasloven/lovelace-layout-card
+[submodule "www/plugins/mini-graph-card"]
+	path = www/plugins/mini-graph-card
+	url = https://github.com/kalkih/mini-graph-card
