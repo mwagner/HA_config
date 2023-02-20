@@ -1,7 +1,8 @@
 title: Settings
 path: settings
 icon: mdi:cog
-panel: true
+type: panel
+# panel: true
 cards:
   - type: 'custom:layout-card'
     layout: horizontal

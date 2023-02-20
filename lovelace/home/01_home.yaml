@@ -1,7 +1,8 @@
 title: Home
 path: home
 icon: mdi:home-outline
-panel: true
+type: panel
+# panel: true
 cards:
   - type: 'custom:layout-card'
     layout: vertical

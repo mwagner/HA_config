@@ -1,7 +1,8 @@
 title: Media Players
 path: media
 icon: mdi:amplifier
-panel: true
+type: panel
+# panel: true
 cards:
   - type: 'custom:layout-card'
     layout: horizontal
