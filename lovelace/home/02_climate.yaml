@@ -1,7 +1,8 @@
 title: Climate
 path: climate
 icon: mdi:thermometer
-panel: true
+type: panel
+# panel: true
 cards:
   - type: 'custom:layout-card'
     layout: vertical

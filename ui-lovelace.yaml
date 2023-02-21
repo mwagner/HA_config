@@ -1,4 +1,4 @@
-title: Home (YAML)
+title: Home
 visible:
   - user: e9949774bdc54573850b5a61613ba3b3
 custom_header:
@@ -17,7 +17,7 @@ custom_header:
         notify_indicator_color: "#eeeeee"
 
 views:
-  - !include home/01_home.yaml
-  - !include home/02_climate.yaml
-  - !include home/03_Audio.yaml
-  - !include home/20_settings.yaml
+  - !include lovelace/home/01_home.yaml
+  - !include lovelace/home/02_climate.yaml
+  - !include lovelace/home/03_Audio.yaml
+  - !include lovelace/home/20_settings.yaml
