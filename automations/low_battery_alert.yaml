@@ -14,5 +14,5 @@
       message: There is a device with low battery alert.
   - service: notify.persistent_notification
     data:
-      message: There is a device with low battery alert. [Please check](/lovelace-home/settings)
+      message: There is a device with low battery alert. [Please check](/lovelace/settings)
   mode: single
