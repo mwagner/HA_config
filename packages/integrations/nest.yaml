@@ -1,0 +1,8 @@
+# Example configuration.yaml entry
+nest:
+  client_id: !secret google_nest_clientid
+  client_secret: !secret google_nest_secret
+  # "Project ID" in the Device Access Console
+  project_id: !secret google_nest_projectid
+  # Provide the full path exactly as shown under "Subscription name" in Google Cloud Console
+  subscriber_id: !secret google_nest_subscriber_id
