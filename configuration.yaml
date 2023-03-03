@@ -145,6 +145,7 @@ logbook:
   include:
     domains:
       - sensor
+      # - binary_sensor
       - switch
       - media_player
       - update
@@ -160,8 +161,8 @@ logbook:
     entities:
       - sensor.utc
       - sensor.date_time
-    entity_globs:
-      #- weather.*
+    # entity_globs:
+    #   - weather.*
 
 lovelace:
   # mode can be either yaml or storage
