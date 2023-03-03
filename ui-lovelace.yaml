@@ -21,3 +21,4 @@ views:
   - !include lovelace/home/02_climate.yaml
   - !include lovelace/home/03_Audio.yaml
   - !include lovelace/home/20_settings.yaml
+  - !include lovelace/home/50_test.yaml

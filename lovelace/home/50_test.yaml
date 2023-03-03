@@ -1,0 +1,8 @@
+title: Media Players
+path: test
+icon: mdi:home-outline
+type: entities
+entities:
+  - media_player.lounge_room
+view_layout:
+  position: sidebar
