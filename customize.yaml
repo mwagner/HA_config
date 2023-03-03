@@ -27,6 +27,19 @@ sensor.hue_dimmer_switch_1_battery_level:
   device_class: battery
   friendly_name: 'Battery: Dimmer Switch'
 
+binary_sensor.netatmo_livingroom_low_bat:
+  device_class: battery
+  friendly_name: "Battery: Netatmo Living Room"
+binary_sensor.netatmo_edwardsbedroom_low_bat:
+  device_class: battery
+  friendly_name: "Battery: Netatmo Edward's Bedroom"
+binary_sensor.netatmo_masterbedroom_low_bat:
+  device_class: battery
+  friendly_name: "Battery: Netatmo Master Bedroom"
+binary_sensor.netatmo_outdoor_low_bat:
+  device_class: battery
+  friendly_name: "Battery: Netatmo Outdoor"
+
 #Binary sensors
 binary_sensor.peq0478568_state:
   device_class: garage_door
