@@ -10,6 +10,6 @@ cards:
       - type: media-control
         entity: media_player.samsung_q700
       - type: media-control
-        entity: media_player.office
+        entity: media_player.office_room
       - type: media-control
         entity: media_player.living_room

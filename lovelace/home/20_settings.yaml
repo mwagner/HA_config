@@ -9,6 +9,7 @@ cards:
     cards:
       - type: entities
         entities:
+          - entity: sensor.sm_g998b_battery_level
           - entity: binary_sensor.0000d8a99e5ae7_low_bat
           - entity: binary_sensor.peq0478568_lowbat
           - entity: binary_sensor.00131709ae3834_low_bat
@@ -17,11 +18,15 @@ cards:
           - entity: binary_sensor.000a1be9966275_low_bat
           - entity: binary_sensor.001198a99fac1e_low_bat
           - entity: binary_sensor.001198a99fac29_low_bat
-          - entity: binary_sensor.netatmo_livingroom_low_bat
-          - entity: binary_sensor.netatmo_edwardsbedroom_low_bat
-          - entity: binary_sensor.netatmo_masterbedroom_low_bat
-          - entity: binary_sensor.netatmo_outdoor_low_bat
-          - entity: sensor.sm_g998b_battery_level
+          - entity: sensor.office_room_office_room_office_room_living_room_battery_percent
+          - entity: sensor.office_room_office_room_office_room_edward_s_bedroom_battery_percent
+          - entity: sensor.office_room_office_room_office_room_master_bedroom_battery_percent
+          - entity: sensor.office_room_office_room_office_room_outdoor_battery_percent
+          - entity: sensor.sound_remote_living_room
+          - entity: sensor.sound_remote_office_room
+          - entity: sensor.shortcut_button
+          - entity: sensor.tradfri_on_off_switch
+          - entity: sensor.tradfri_remote_control
         title: Battery Levels
       # - type: entities
       #   entities:

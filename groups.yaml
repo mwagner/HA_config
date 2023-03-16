@@ -47,3 +47,8 @@ battery_state:
     - binary_sensor.netatmo_babyroom_low_bat
     - binary_sensor.netatmo_masterbedroom_low_bat
     - binary_sensor.netatmo_outdoor_low_bat
+    - binary_sensor.tradfri_sound_remote_living_room_low_bat
+    - binary_sensor.tradfri_sound_remote_office_room_low_bat
+    - binary_sensor.tradfri_shortcut_button_low_bat
+    - binary_sensor.tradfri_on_off_switch_low_bat
+    - binary_sensor.tradfri_remote_control_low_bat
