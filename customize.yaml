@@ -40,6 +40,22 @@ binary_sensor.netatmo_outdoor_low_bat:
   device_class: battery
   friendly_name: "Battery: Netatmo Outdoor"
 
+binary_sensor.tradfri_sound_remote_living_room_low_bat:
+  device_class: battery
+  friendly_name: "Battery: Tradfri Sound Remote (Living Room)"
+binary_sensor.tradfri_sound_remote_office_room_low_bat:
+  device_class: battery
+  friendly_name: "Battery: Tradfri Sound Remote (Office Room)"
+binary_sensor.tradfri_shortcut_button_low_bat:
+  device_class: battery
+  friendly_name: "Battery: Tradfri Shurtcut Button"
+binary_sensor.tradfri_on_off_switch_low_bat:
+  device_class: battery
+  friendly_name: "Battery: Tradfri On/Off Switch-Dimmer"
+binary_sensor.tradfri_remote_control_low_bat:
+  device_class: battery
+  friendly_name: "Battery: Tradfri Remote Control"
+
 #Binary sensors
 binary_sensor.peq0478568_state:
   device_class: garage_door
@@ -70,8 +86,19 @@ climate.001198a99fac1e:
 #Sonos speakers
 media_player.living_room:
   friendly_name: Sonos Speaker (Living Room)
-media_player.office:
+media_player.office_room:
   friendly_name: Sonos Speaker (Office Room)
+
+#Netatmo devices
+sensor.office_room_office_room_office_room_living_room_battery_percent:
+  friendly_name: "Netatmo Sensor Living Room"
+sensor.office_room_office_room_office_room_edward_s_bedroom_battery_percent:
+  friendly_name: "Netatmo Sensor Edward's Bedroom"
+sensor.office_room_office_room_office_room_master_bedroom_battery_percent:
+  friendly_name: "Netatmo Sensor Master Bedroom"
+sensor.office_room_office_room_office_room_outdoor_battery_percent:
+  friendly_name: "Netatmo Sensor Outdoor"
+
 
 #Hue stuff
 light.hue_lightstrip:

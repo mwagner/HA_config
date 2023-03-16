@@ -228,7 +228,7 @@
         {% else %}
           false
         {% endif %}
-    
+# Netatmo
     netatmo_livingroom_low_bat:
       unique_id: "netatmo_livingroom_low_bat"
       value_template: >-
@@ -245,3 +245,24 @@
       unique_id: "netatmo_outdoor_low_bat"
       value_template: >-
         {{ states('sensor.office_room_office_room_office_room_outdoor_battery_percent') | float(0) < 5 }}
+# TRADRI
+    tradfri_sound_remote_living_room_low_bat:
+      unique_id: "tradfri_sound_remote_living_room_low_bat"
+      value_template: >-
+        {{ states('sensor.sound_remote_living_room') | float(0) < 5 }}
+    tradfri_sound_remote_office_room_low_bat:
+      unique_id: "tradfri_sound_remote_office_room_low_bat"
+      value_template: >-
+        {{ states('sensor.sound_remote_office_room') | float(0) < 5 }}
+    tradfri_shortcut_button_low_bat:
+      unique_id: "tradfri_shortcut_button_low_bat"
+      value_template: >-
+        {{ states('sensor.shortcut_button') | float(0) < 5 }}
+    tradfri_on_off_switch_low_bat:
+      unique_id: "tradfri_on_off_switch_low_bat"
+      value_template: >-
+        {{ states('sensor.tradfri_on_off_switch') | float(0) < 5 }}
+    tradfri_remote_control_low_bat:
+      unique_id: "tradfri_remote_control_low_bat"
+      value_template: >-
+        {{ states('sensor.tradfri_remote_control') | float(0) < 5 }}
