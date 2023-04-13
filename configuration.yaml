@@ -99,10 +99,6 @@ script: !include scripts.yaml
 # Load scenes
 scene: !include scenes.yaml
 
-
-# https://www.home-assistant.io/integrations/recorder/
-recorder:
-
 # Text to speech
 tts:
   - platform: google_translate

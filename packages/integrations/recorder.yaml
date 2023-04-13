@@ -1,0 +1,15 @@
+# https://www.home-assistant.io/integrations/recorder/
+recorder:
+  purge_keep_days: 5
+  db_url: !secret recorder_db_url
+  # include:
+  #   entities:
+  #     - sensor.esxi_fana
+  #   domains:
+  #   entity_globs:
+  # exclude:
+  #   entities:
+  #   domains:
+  #   entity_globs:
+
+history:
