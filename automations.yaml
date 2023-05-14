@@ -33,3 +33,27 @@
     target:
       entity_id: switch.00131709ae3834
   mode: single
+- id: '1683694236983'
+  alias: Alert changes in Fan speed
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.3cecef7e186a_fan1
+    attribute: rotations
+    to:
+  - platform: state
+    entity_id: sensor.3cecef7e186a_fan2
+    attribute: rotations
+    to:
+  - platform: state
+    entity_id: sensor.3cecef7e186a_fana
+    attribute: rotations
+    to:
+  condition: []
+  action:
+  - service: notify.telegram_marco
+    data:
+      message: Speed of "{{ trigger.to_state.attributes.friendly_name }}" has changed
+        from {{ trigger.from_state.attributes.rotations }} to {{ trigger.to_state.attributes.rotations
+        }}
+  mode: single
