@@ -3,12 +3,13 @@ recorder:
   purge_keep_days: 5
   db_url: !secret recorder_db_url
   include:
-    entities: []
+    entities: 
+    - sensor.travel_home_to_office
     domains:
     - automation
     # - binary_sensor
     - climate
-    # - device_tracker
+    - device_tracker
     # - group
     # - input_boolean
     # - input_number
@@ -35,6 +36,7 @@ recorder:
     - sensor.*_battery_percent
     - sensor.*_co2
     - sensor.*_humidity
+    - sensor.*_temperature
     - sensor.3cecef7e186a_*
   exclude:
     entities: []
