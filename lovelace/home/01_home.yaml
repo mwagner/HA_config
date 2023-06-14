@@ -27,16 +27,6 @@ cards:
             icon: mdi:battery-off-outline
           - entity: binary_sensor.peq0478568_lowbat
             icon: mdi:battery-off-outline
-          - entity: binary_sensor.000a18a9a3c495_low_bat
-            icon: mdi:battery-off-outline
-          - entity: binary_sensor.000a18a996ee03_low_bat
-            icon: mdi:battery-off-outline
-          - entity: binary_sensor.000a1be9966275_low_bat
-            icon: mdi:battery-off-outline
-          - entity: binary_sensor.001198a99fac1e_low_bat
-            icon: mdi:battery-off-outline
-          - entity: binary_sensor.001198a99fac29_low_bat
-            icon: mdi:battery-off-outline
           - entity: sensor.sm_g975f_battery_level
             icon: mdi:battery-off-outline
           - entity: binary_sensor.netatmo_livingroom_low_bat
@@ -103,7 +93,6 @@ cards:
           ignore_case: true
           attribute: state
 
-
       - break
       - type: entities
         entities:
@@ -111,14 +100,3 @@ cards:
           - entity: person.marco
           - entity: person.sharene
           - entity: person.guests
-
-      - type: sensor
-        entity: sensor.temperature_livingroom_thermostat
-      - type: sensor
-        entity: sensor.temperature_kitchen_thermostat
-      - type: sensor
-        entity: sensor.temperature_office_thermostat
-      - type: sensor
-        entity: sensor.temperature_masterbedroom_thermostat
-      - type: sensor
-        entity: sensor.temperature_guestbedroom_thermostat

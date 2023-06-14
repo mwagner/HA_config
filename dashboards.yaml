@@ -1,7 +1,7 @@
-lovelace-homematic:
+lovelace-development:
   mode: yaml
-  title: Homematic
+  title: Development
   icon: mdi:script
   show_in_sidebar: true
   require_admin: true
-  filename: lovelace/ui-lovelace-homematic.yaml
+  filename: lovelace/ui-lovelace-development.yaml
