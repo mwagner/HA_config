@@ -31,6 +31,7 @@ www/icons/garbage
 # Ensure these files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
 secrets.yaml
+google_calendars.yaml
 known_devices.yaml
 .google.token
 *sample*.yaml
