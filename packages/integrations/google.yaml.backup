@@ -1,5 +1,0 @@
-# Google Calendar integration
-google:
-  client_id: !secret google_calendar_clientid
-  client_secret: !secret google_calendar_secret
-  track_new_calendar: false
