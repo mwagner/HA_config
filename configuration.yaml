@@ -99,10 +99,6 @@ script: !include scripts.yaml
 # Load scenes
 scene: !include scenes.yaml
 
-
-# https://www.home-assistant.io/integrations/recorder/
-recorder:
-
 # Text to speech
 tts:
   - platform: google_translate
@@ -126,6 +122,7 @@ logger:
   #   homeassistant.components.python_script: info
   #   homeassistant.components.ipp: info
   #   homeassistant.components.shelly: info
+  #   homeassistant.components.calendar: info
   #   homeassistant.components.device_tracker: info
   #   homeassistant.components.switch.template: info
   #   homeassistant.components.switch.command_line: info
