@@ -122,6 +122,7 @@ logger:
   #   homeassistant.components.python_script: info
   #   homeassistant.components.ipp: info
   #   homeassistant.components.shelly: info
+  #   homeassistant.components.calendar: info
   #   homeassistant.components.device_tracker: info
   #   homeassistant.components.switch.template: info
   #   homeassistant.components.switch.command_line: info
