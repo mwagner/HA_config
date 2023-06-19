@@ -1,11 +1,11 @@
 ---
 # Documentation: https://www.home-assistant.io/integrations/http/
 http:
-# --> Deactivated all trusted proxies to prevent issues with mobile app (throwing access denied)
-  # use_x_forwarded_for: true
-  # trusted_proxies:
+  use_x_forwarded_for: true
+  trusted_proxies:
   #   - 192.168.11.5
-  #   - 192.168.11.10
+    - 192.168.11.10
+    - 192.168.11.50
   #   # Cloudflare ipv4
   #   - 103.21.244.0/22
   #   - 103.22.200.0/22
