@@ -138,36 +138,6 @@
         {% endif %}
 
 
-    temperature_office_thermostat:
-      friendly_name: "Temperature Office"
-      icon_template: mdi:thermometer
-      unit_of_measurement: 'C'
-      value_template: "{{ state_attr('climate.000a18a9a3c495', 'current_temperature') }}"
-
-    temperature_livingroom_thermostat:
-      friendly_name: "Temperature Livingroom"
-      icon_template: mdi:thermometer
-      unit_of_measurement: 'C'
-      value_template: "{{ state_attr('climate.000a18a996ee03', 'current_temperature') }}"
-
-    temperature_kitchen_thermostat:
-      friendly_name: "Temperature Kitchen"
-      icon_template: mdi:thermometer
-      unit_of_measurement: 'C'
-      value_template: "{{ state_attr('climate.001198a99fac29', 'current_temperature') }}"
-      
-    temperature_masterbedroom_thermostat:
-      friendly_name: "Temperature Master Bedroom"
-      icon_template: mdi:thermometer
-      unit_of_measurement: 'C'
-      value_template: "{{ state_attr('climate.000a1be9966275', 'current_temperature') }}"
-            
-    temperature_guestbedroom_thermostat:
-      friendly_name: "Temperature Guest Bedroom"
-      icon_template: mdi:thermometer
-      unit_of_measurement: 'C'
-      value_template: "{{ state_attr('climate.001198a99fac1e', 'current_temperature') }}"
-
 - platform: time_date
   display_options:
     - 'date_time'

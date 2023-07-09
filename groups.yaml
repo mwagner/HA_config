@@ -1,45 +1,25 @@
 livingroom:
   name: Living Room
-  entities: climate.000a18a996ee03
 kitchen:
   name: Kitchen
-  entities: climate.001198a99fac29
 master_bedroom:
   name: Master Bedroom
-  entities: climate.000a1be9966275
 babyroom:
   name: Baby Room
-  entities: climate.001198a99fac1e
 office:
   name: Office Room
   entities:
-    - climate.000a18a9a3c495
     - light.hue_lightstrip
     - binary_sensor.hue_motion_sensor_1_motion
-
 garage:
   name: Garage
   entities: 
     - binary_sensor.PEQ0478568_state
     - switch.00131709ae3834
 
-climate:
-  name: Thermostats
-  entities:
-    - climate.000a18a996ee03
-    - climate.001198a99fac29
-    - climate.000a1be9966275
-    - climate.001198a99fac1e
-    - climate.000a18a9a3c495
-
 battery_state:
   name: Battery state
   entities:
-    - binary_sensor.000a18a996ee03_low_bat
-    - binary_sensor.000a18a9a3c495_low_bat
-    - binary_sensor.000a1be9966275_low_bat
-    - binary_sensor.001198a99fac1e_low_bat
-    - binary_sensor.001198a99fac29_low_bat
     - binary_sensor.0000d8a99e5ae7_low_bat
     - binary_sensor.00131709ae3834_low_bat
     - binary_sensor.peq0478568_lowbat
