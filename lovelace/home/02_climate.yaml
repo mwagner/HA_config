@@ -7,15 +7,6 @@ cards:
   - type: 'custom:layout-card'
     layout: vertical
     cards:
-      # Climate Settings Master Switch
-      - type: entities
-        entities:
-          - input_boolean.heating
-
-      # General climate setting
-      - type: thermostat
-        entity: climate.000a18a9a3c495
-
       # Weather
       - break
       - type: weather-forecast
@@ -36,13 +27,5 @@ cards:
         
       - break
       # All the temperatures in a row
-      - type: sensor
-        entity: sensor.temperature_livingroom_thermostat
-      - type: sensor
-        entity: sensor.temperature_kitchen_thermostat
-      - type: sensor
-        entity: sensor.temperature_office_thermostat
-      - type: sensor
-        entity: sensor.temperature_masterbedroom_thermostat
-      - type: sensor
-        entity: sensor.temperature_guestbedroom_thermostat
+      # - type: sensor
+      #   entity: sensor.a_temperature_sensor

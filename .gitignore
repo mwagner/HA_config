@@ -35,3 +35,4 @@ google_calendars.yaml
 known_devices.yaml
 .google.token
 *sample*.yaml
+*development*.yaml
