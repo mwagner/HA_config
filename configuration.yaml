@@ -49,7 +49,7 @@ config:
 # device_tracker:
 
 # Discover some devices automatically
-discovery:
+#discovery:
 
 hassio:
 
