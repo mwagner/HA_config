@@ -1,6 +1,0 @@
-# Documentation: https://www.home-assistant.io/integrations/sonos
-sonos:
-  media_player:
-    hosts:
-      - 192.168.10.40
-      - 192.168.10.41
