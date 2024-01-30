@@ -20,7 +20,7 @@ homeassistant:
       device_class: door
     "binary_sensor.*window*":
       device_class: window
-      
+
   # Load packages/integrations
   packages: !include_dir_named packages
 
@@ -163,7 +163,7 @@ logbook:
 lovelace:
   # mode can be either yaml or storage
   mode: yaml
-  resources: 
+  resources:
     - url: /local/plugins/button-card/button-card.js
       type: module
     - url: /local/plugins/layout-card/layout-card.js
@@ -177,3 +177,5 @@ lovelace:
     - url: /local/plugins/gap-card/gap-card.js
       type: module
   dashboards: !include dashboards.yaml
+
+my:
