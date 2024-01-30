@@ -176,6 +176,8 @@ lovelace:
       type: module
     - url: /local/plugins/gap-card/gap-card.js
       type: module
+    - url: /local/plugins/mini-graph-card/mini-graph-card.js
+      type: module
   dashboards: !include dashboards.yaml
 
 my:
