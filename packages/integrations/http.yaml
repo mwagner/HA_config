@@ -31,7 +31,8 @@ http:
   #   - 2a06:98c0::/29
   #   - 2c0f:f248::/32
 
-  # ssl_certificate: /ssl/fullchain.pem
-  # ssl_key: /ssl/privkey.pem
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+
   ip_ban_enabled: false
   login_attempts_threshold: 5
