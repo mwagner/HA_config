@@ -68,6 +68,22 @@
     default: []
   mode: single
 
+- id: '1706869155878'
+  alias: Create Groups via Script
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: script.create_group_for_firmware_updates
+    metadata: {}
+    data: {}
+  - service: script.create_group_for_software_updates
+    metadata: {}
+    data: {}
+  mode: single
+
 - id: 82a5b9a9369f46369e8d3ad4b8b50030
   alias: Device Tracker - Home Assistant Start create Guest Tracker
   trigger:
