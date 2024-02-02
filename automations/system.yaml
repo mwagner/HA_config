@@ -52,7 +52,7 @@
     - conditions:
       - condition: state
         entity_id: sensor.local_ip
-        state: 192.168.10.14
+        state: 192.168.11.36
       sequence:
       - service: input_boolean.turn_on
         data: {}
@@ -60,7 +60,7 @@
     - conditions:
       - condition: state
         entity_id: sensor.local_ip
-        state: 192.168.10.12
+        state: 192.168.11.35
       sequence:
       - service: input_boolean.turn_off
         data: {}
