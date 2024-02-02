@@ -30,3 +30,43 @@ cards:
       #     - entity: sensor.sound_remote_living_room
       #     - entity: sensor.tradfri_on_off_switch
       #   title: Other levels (WIP)
+      - type: vertical-stack
+        cards:
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: group.updates_firmware
+                state: 'on'
+            card:
+              type: custom:auto-entities
+              card:
+                type: entities
+                title: Available Firmware Updates
+              filter:
+                template: |-
+                  {{ expand('group.updates_firmware')|
+                    selectattr('state','eq','on')|
+                    map(attribute='entity_id')|
+                    list|
+                    sort|
+                    join(', ')
+                  }}
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: group.updates_software
+                state: 'on'
+            card:
+              type: custom:auto-entities
+              card:
+                type: entities
+                title: Available Software Updates
+              filter:
+                template: |-
+                  {{ expand('group.updates_software')|
+                    selectattr('state','eq','on')|
+                    map(attribute='entity_id')|
+                    list|
+                    sort|
+                    join(', ')
+                  }}
