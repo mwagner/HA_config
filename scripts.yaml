@@ -5,3 +5,43 @@ stop_sonos_players:
     data: {}
     entity_id: media_player.office
   mode: single
+list_all_available_domains:
+  alias: List all available domains
+  sequence:
+  - service: notify.notify
+    data:
+      message: '{%- for d in states | groupby(''domain'') %} {{ d[0] }} {%- endfor
+        %}'
+  - service: notify.persistent_notification
+    data:
+      message: '{{ states | groupby(''domain'') | map(attribute=''0'') | list | join(''\n'')
+        }}'
+  mode: single
+  icon: mdi:script
+create_group_for_firmware_updates:
+  alias: Create Group "Firmware Updates"
+  sequence:
+  - service: group.remove
+    data:
+      object_id: updates_firmware
+  - service: group.set
+    data_template:
+      object_id: updates_firmware
+      entities: "{{ states.update\n  | selectattr('attributes.device_class', 'defined')\n
+        \ | selectattr('attributes.device_class','in',['firmware'])\n  | rejectattr('entity_id','contains','something_to_exclude')\n
+        \ | map(attribute='entity_id')\n  | join(',') }}\n"
+  mode: restart
+  icon: mdi:update
+create_group_for_software_updates:
+  alias: Create Group "Software Updates"
+  sequence:
+  - service: group.remove
+    data:
+      object_id: updates_software
+  - service: group.set
+    data_template:
+      object_id: updates_software
+      entities: "{{ states.update\n  | rejectattr('attributes.device_class','in',['firmware'])\n
+        \ | map(attribute='entity_id')\n  | list \n  }}\n"
+  mode: restart
+  icon: mdi:update

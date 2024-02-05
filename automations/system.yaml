@@ -52,7 +52,7 @@
     - conditions:
       - condition: state
         entity_id: sensor.local_ip
-        state: 192.168.10.14
+        state: 192.168.11.36
       sequence:
       - service: input_boolean.turn_on
         data: {}
@@ -60,12 +60,28 @@
     - conditions:
       - condition: state
         entity_id: sensor.local_ip
-        state: 192.168.10.12
+        state: 192.168.11.35
       sequence:
       - service: input_boolean.turn_off
         data: {}
         entity_id: input_boolean.env_execcommands, input_boolean.env_isdev
     default: []
+  mode: single
+
+- id: '1706869155878'
+  alias: Create Groups via Script
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: script.create_group_for_firmware_updates
+    metadata: {}
+    data: {}
+  - service: script.create_group_for_software_updates
+    metadata: {}
+    data: {}
   mode: single
 
 - id: 82a5b9a9369f46369e8d3ad4b8b50030

@@ -1,19 +1,4 @@
 #Battery status
-binary_sensor.000a18a996ee03_low_bat:
-  device_class: battery
-  friendly_name: 'Battery: Thermostat Living room'
-binary_sensor.000a18a9a3c495_low_bat:
-  device_class: battery
-  friendly_name: 'Battery: Thermostat Office room'
-binary_sensor.000a1be9966275_low_bat:
-  device_class: battery
-  friendly_name: 'Battery: Thermostat Master bedroom'
-binary_sensor.001198a99fac1e_low_bat:
-  device_class: battery
-  friendly_name: 'Battery: Thermostat Baby bedroom'
-binary_sensor.001198a99fac29_low_bat:
-  device_class: battery
-  friendly_name: 'Battery: Thermostat Kitchen'
 binary_sensor.0000d8a99e5ae7_low_bat:
   device_class: battery
   friendly_name: 'Battery: Balcony Door'
@@ -70,18 +55,6 @@ binary_sensor.0000d8a99e5ae7_state:
 switch.00131709ae3834:
   icon: mdi:remote
   friendly_name: Garage Door Button
-
-#Thermostats
-climate.001198a99fac29:
-  friendly_name: Thermostat Kitchen
-climate.000a18a996ee03:
-  friendly_name: Thermostat Living room
-climate.000a18a9a3c495:
-  friendly_name: Thermostat Office room
-climate.000a1be9966275:
-  friendly_name: Thermostat Master bedroom
-climate.001198a99fac1e:
-  friendly_name: Thermostat Baby bedroom
 
 #Sonos speakers
 media_player.living_room:

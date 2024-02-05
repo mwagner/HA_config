@@ -10,11 +10,6 @@ cards:
       - type: weather-forecast
         entity: weather.home
 
-      - type: entities
-        entities:
-          - entity: binary_sensor.peq0478568_state
-          - entity: switch.00131709ae3834
-
       - type: entity-filter
         card:
           type: entities
@@ -26,16 +21,6 @@ cards:
           - entity: binary_sensor.00131709ae3834_low_bat
             icon: mdi:battery-off-outline
           - entity: binary_sensor.peq0478568_lowbat
-            icon: mdi:battery-off-outline
-          - entity: binary_sensor.000a18a9a3c495_low_bat
-            icon: mdi:battery-off-outline
-          - entity: binary_sensor.000a18a996ee03_low_bat
-            icon: mdi:battery-off-outline
-          - entity: binary_sensor.000a1be9966275_low_bat
-            icon: mdi:battery-off-outline
-          - entity: binary_sensor.001198a99fac1e_low_bat
-            icon: mdi:battery-off-outline
-          - entity: binary_sensor.001198a99fac29_low_bat
             icon: mdi:battery-off-outline
           - entity: sensor.sm_g975f_battery_level
             icon: mdi:battery-off-outline
@@ -60,6 +45,47 @@ cards:
         state_filter:
           - 'on'
         show_empty: false
+
+      - type: vertical-stack
+        cards:
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: group.updates_firmware
+                state: 'on'
+            card:
+              type: custom:auto-entities
+              card:
+                type: entities
+                title: Available Firmware Updates
+              filter:
+                template: |-
+                  {{ expand('group.updates_firmware')|
+                    selectattr('state','eq','on')|
+                    map(attribute='entity_id')|
+                    list|
+                    sort|
+                    join(', ')
+                  }}
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: group.updates_software
+                state: 'on'
+            card:
+              type: custom:auto-entities
+              card:
+                type: entities
+                title: Available Software Updates
+              filter:
+                template: |-
+                  {{ expand('group.updates_software')|
+                    selectattr('state','eq','on')|
+                    map(attribute='entity_id')|
+                    list|
+                    sort|
+                    join(', ')
+                  }}
 
       - break
       - type: horizontal-stack
@@ -103,7 +129,6 @@ cards:
           ignore_case: true
           attribute: state
 
-
       - break
       - type: entities
         entities:
@@ -111,14 +136,3 @@ cards:
           - entity: person.marco
           - entity: person.sharene
           - entity: person.guests
-
-      - type: sensor
-        entity: sensor.temperature_livingroom_thermostat
-      - type: sensor
-        entity: sensor.temperature_kitchen_thermostat
-      - type: sensor
-        entity: sensor.temperature_office_thermostat
-      - type: sensor
-        entity: sensor.temperature_masterbedroom_thermostat
-      - type: sensor
-        entity: sensor.temperature_guestbedroom_thermostat

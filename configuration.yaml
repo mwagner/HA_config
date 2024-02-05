@@ -12,7 +12,6 @@ homeassistant:
   country: !secret home_country
   #external_url: !secret home_external_url
   #internal_url: !secret home_internal_url
-  legacy_templates: false
 
   # Load customizations
   customize: !include customize.yaml
@@ -21,7 +20,7 @@ homeassistant:
       device_class: door
     "binary_sensor.*window*":
       device_class: window
-      
+
   # Load packages/integrations
   packages: !include_dir_named packages
 
@@ -49,7 +48,7 @@ config:
 # device_tracker:
 
 # Discover some devices automatically
-discovery:
+#discovery:
 
 hassio:
 
@@ -164,7 +163,7 @@ logbook:
 lovelace:
   # mode can be either yaml or storage
   mode: yaml
-  resources: 
+  resources:
     - url: /local/plugins/button-card/button-card.js
       type: module
     - url: /local/plugins/layout-card/layout-card.js
@@ -177,4 +176,8 @@ lovelace:
       type: module
     - url: /local/plugins/gap-card/gap-card.js
       type: module
+    - url: /local/plugins/mini-graph-card/mini-graph-card.js
+      type: module
   dashboards: !include dashboards.yaml
+
+my:

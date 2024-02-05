@@ -3,9 +3,6 @@ env_isdev:
 env_execcommands:
   name: Test execution enabled
 
-heating:
-  name: Heating Master Switch
-  icon: mdi:radiator
 onvacation:
   name: On vacation
   icon: mdi:airplane
