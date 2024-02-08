@@ -4,4 +4,4 @@ lovelace-development:
   icon: mdi:script
   show_in_sidebar: true
   require_admin: true
-  filename: lovelace/ui-lovelace-development.yaml
+  filename: dashbaords/development/main.yaml
