@@ -17,8 +17,7 @@ custom_header:
         notify_indicator_color: "#eeeeee"
 
 views:
-  - !include lovelace/home/01_home.yaml
-  - !include lovelace/home/02_climate.yaml
-  - !include lovelace/home/03_Audio.yaml
-  - !include lovelace/home/20_settings.yaml
-  - !include lovelace/home/50_test.yaml
+  - !include dashboards/main/01_home.yaml
+  - !include dashboards/main/02_climate.yaml
+  - !include dashboards/main/03_Audio.yaml
+  - !include dashboards/main/20_settings.yaml
