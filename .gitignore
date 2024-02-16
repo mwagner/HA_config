@@ -25,6 +25,7 @@
 custom_components
 esphome
 lovelace/sample
+dashboards/development
 www/custom_ui
 www/icons/garbage
 
