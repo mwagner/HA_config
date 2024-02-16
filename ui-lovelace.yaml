@@ -1,23 +1,9 @@
 title: Home
-visible:
-  - user: e9949774bdc54573850b5a61613ba3b3
-custom_header:
-  compact_mode: true
-  header_text: '{{ states.sensor.time.state }}'
-  exceptions:
-    - conditions:
-        user: Bildschirm
-      config:
-        background: "#202020"
-        all_tabs_color: "#ff9c27"
-        menu_color: "#ff9c27"
-        voice_color: "#ff9c27"
-        options_color: "#ff9c27"
-        tab_indicator_color:  "#ff9c27"
-        notify_indicator_color: "#eeeeee"
 
 views:
-  - !include lovelace/home/01_home.yaml
-  - !include lovelace/home/02_climate.yaml
-  - !include lovelace/home/03_Audio.yaml
-  - !include lovelace/home/20_settings.yaml
+  - !include dashboards/main/01_home.yaml
+  - !include dashboards/main/02_climate.yaml
+  - !include dashboards/main/03_Audio.yaml
+  - !include dashboards/main/20_settings.yaml
+  - !include dashboards/main/30_byrooms.yaml
+  - !include dashboards/main/30_bydomains.yaml
