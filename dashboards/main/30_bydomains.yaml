@@ -1,0 +1,32 @@
+title: By Domain
+path: by-domain
+visible:
+  - user: e9949774bdc54573850b5a61613ba3b3 # Marco
+  # - user: 8d8b25713a7d4972a1137c818fe9b716 # Sharene
+  - user: af6c507caa6745d781991705313a7767 # User1
+#type: panel
+subview: true
+back_path: /lovelace/settings
+
+cards:
+  - type: custom:auto-entities
+    card:
+      type: entities
+      title: Sensors
+      show_header_toggle: false
+      state_color: true
+    filter:
+      include:
+        - domain: sensor
+      exclude: null
+  - type: custom:auto-entities
+    card:
+      type: entities
+      title: Switches
+      show_header_toggle: false
+      state_color: true
+    filter:
+      template: null
+      include:
+        - domain: switch
+      exclude: null
