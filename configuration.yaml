@@ -178,6 +178,6 @@ lovelace:
       type: module
     - url: /local/plugins/mini-graph-card/mini-graph-card.js
       type: module
-  dashboards: !include dashboards/dashboards.yaml
+  dashboards: !include dashboards.yaml
 
 my:
