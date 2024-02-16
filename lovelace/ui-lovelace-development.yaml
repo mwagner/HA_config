@@ -1,9 +1,0 @@
-title: Development
-custom_header:
-  compact_mode: true
-  header_text: '{{ states.sensor.time.state }}'
-#   exceptions:
-#     - conditions:
-#         user: Bildschirm
-views:
-  - !include sample/01_home.yaml
