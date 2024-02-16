@@ -1,7 +1,7 @@
-dashboard-development:
+lovelace-development:
   mode: yaml
   title: Development
   icon: mdi:script
   show_in_sidebar: true
   require_admin: true
-  filename: dashboards/development/main.yaml
+  filename: lovelace/ui-lovelace-development.yaml
