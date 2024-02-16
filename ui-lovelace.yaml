@@ -5,3 +5,5 @@ views:
   - !include dashboards/main/02_climate.yaml
   - !include dashboards/main/03_Audio.yaml
   - !include dashboards/main/20_settings.yaml
+  - !include dashboards/main/30_byrooms.yaml
+  - !include dashboards/main/30_bydomains.yaml
