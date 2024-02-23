@@ -3,7 +3,13 @@
   description: ''
   trigger:
   - platform: state
-    entity_id: sensor.garbagealert_papierabfuhr
+    entity_id:
+    - sensor.garbagealert_papierabfuhr
+    - sensor.garbagealert_altmetallabfuhr
+    - sensor.garbagealert_gruenabfuhr
+    - sensor.garbagealert_kartonabfuhr
+    - sensor.garbagealert_kehricht_und_sperrgut
+    - sensor.garbagealert_mineralische_abfaelle
   condition: []
   action:
   - service: notify.telegram_marco
