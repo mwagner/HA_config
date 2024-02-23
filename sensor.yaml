@@ -6,6 +6,7 @@
         {{ states.device_tracker | selectattr('attributes.is_guest', 'eq', true) | list | count }}
 
     garbagealert_altmetallabfuhr:
+      unique_id: "garbagealert_altmetallabfuhr"
       friendly_name: "Altmetallabfuhr"
       icon_template: >
         {% if is_state('binary_sensor.altmetallabfuhr', 'on') %}
@@ -28,6 +29,7 @@
         {% endif %}
 
     garbagealert_gruenabfuhr:
+      unique_id: "garbagealert_gruenabfuhr"
       friendly_name: "Grünabfuhr"
       icon_template: >
         {% if is_state('binary_sensor.gruenabfuhr', 'on') %}
@@ -50,6 +52,7 @@
         {% endif %}
 
     garbagealert_kartonabfuhr:
+      unique_id: "garbagealert_kartonabfuhr"
       friendly_name: "Kartonabfuhr"
       icon_template: >
         {% if is_state('binary_sensor.kartonabfuhr', 'on') %}
@@ -72,6 +75,7 @@
         {% endif %}
 
     garbagealert_kehricht_und_sperrgut:
+      unique_id: "garbagealert_kehricht_und_sperrgut"
       friendly_name: "Kehricht und Sperrgut"
       icon_template: >
         {% if is_state('binary_sensor.kehricht_und_sperrgut', 'on') %}
@@ -94,6 +98,7 @@
         {% endif %}
 
     garbagealert_mineralische_abfaelle:
+      unique_id: "garbagealert_mineralische_abfaelle"
       friendly_name: "Mineralische Abfälle"
       icon_template: >
         {% if is_state('binary_sensor.mineralische_abfaelle', 'on') %}
@@ -116,6 +121,7 @@
         {% endif %}
 
     garbagealert_papierabfuhr:
+      unique_id: "garbagealert_papierabfuhr"
       friendly_name: "Altpapier"
       icon_template: >
         {% if is_state('binary_sensor.papierabfuhr', 'on') %}
