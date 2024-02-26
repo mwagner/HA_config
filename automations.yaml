@@ -3,8 +3,22 @@
   description: ''
   trigger:
   - platform: state
-    entity_id: sensor.garbagealert_papierabfuhr
-  condition: []
+    entity_id:
+    - sensor.garbagealert_papierabfuhr
+    - sensor.garbagealert_altmetallabfuhr
+    - sensor.garbagealert_gruenabfuhr
+    - sensor.garbagealert_kartonabfuhr
+    - sensor.garbagealert_kehricht_und_sperrgut
+    - sensor.garbagealert_mineralische_abfaelle
+  condition:
+  - condition: or
+    conditions:
+    - condition: template
+      value_template: "{% if trigger.to_state.state == 'Today' %}\n  true\n{% endif
+        %}"
+    - condition: template
+      value_template: "{% if trigger.to_state.state == 'Tomorrow' %}\n  true\n{% endif
+        %}"
   action:
   - service: notify.telegram_marco
     data:
