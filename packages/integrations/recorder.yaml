@@ -38,6 +38,7 @@ recorder:
     - sensor.*_humidity
     - sensor.*_temperature
     - sensor.3cecef7e186a_*
+    - sensor.garbagealert_*
   exclude:
     entities: []
     domains: []
