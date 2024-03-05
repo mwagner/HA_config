@@ -18,10 +18,6 @@ cards:
         entities:
           - entity: binary_sensor.0000d8a99e5ae7_low_bat
             icon: mdi:battery-off-outline
-          - entity: binary_sensor.00131709ae3834_low_bat
-            icon: mdi:battery-off-outline
-          - entity: binary_sensor.peq0478568_lowbat
-            icon: mdi:battery-off-outline
           - entity: sensor.sm_g975f_battery_level
             icon: mdi:battery-off-outline
           - entity: binary_sensor.netatmo_livingroom_low_bat

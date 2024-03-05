@@ -2,12 +2,7 @@
 binary_sensor.0000d8a99e5ae7_low_bat:
   device_class: battery
   friendly_name: 'Battery: Balcony Door'
-binary_sensor.peq0478568_lowbat:
-  device_class: battery
-  friendly_name: 'Battery: Garage Door Tilt Sensor'
-binary_sensor.00131709ae3834_low_bat:
-  device_class: battery
-  friendly_name: 'Battery: Garage Door Button'
+
 sensor.hue_dimmer_switch_1_battery_level:
   device_class: battery
   friendly_name: 'Battery: Dimmer Switch'
@@ -42,19 +37,13 @@ binary_sensor.tradfri_remote_control_low_bat:
   friendly_name: "Battery: Tradfri Remote Control"
 
 #Binary sensors
-binary_sensor.peq0478568_state:
-  device_class: garage_door
-  icon: mdi:garage
-  friendly_name: Garage Door Sensor
 binary_sensor.0000d8a99e5ae7_state:
   device_class: door
   icon: mdi:door
   friendly_name: Balcony Door Sensor
 
 #Switches
-switch.00131709ae3834:
-  icon: mdi:remote
-  friendly_name: Garage Door Button
+
 
 #Sonos speakers
 media_player.living_room:
