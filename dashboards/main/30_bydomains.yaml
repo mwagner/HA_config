@@ -1,10 +1,11 @@
 title: By Domain
 path: by-domain
 visible:
-  - user: e9949774bdc54573850b5a61613ba3b3 # Marco
-  # - user: 8d8b25713a7d4972a1137c818fe9b716 # Sharene
-  - user: af6c507caa6745d781991705313a7767 # User1
-#type: panel
+  - user: !secret userid_marco
+  # - user: !secret userid_sharene
+  - user: !secret userid_testuser1
+  - user: !secret userid_testadmin1
+type: masonry
 subview: true
 back_path: /lovelace/settings
 

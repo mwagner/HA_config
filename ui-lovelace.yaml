@@ -7,3 +7,4 @@ views:
   - !include dashboards/main/20_settings.yaml
   - !include dashboards/main/30_byrooms.yaml
   - !include dashboards/main/30_bydomains.yaml
+  - !include dashboards/main/30_allstates.yaml
