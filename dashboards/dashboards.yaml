@@ -2,6 +2,6 @@ dashboard-development:
   mode: yaml
   title: Development
   icon: mdi:script
-  show_in_sidebar: true
+  show_in_sidebar: false
   require_admin: true
-  filename: dashboards/development/main.yaml
+  filename: dashboards/development.yaml
