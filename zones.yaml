@@ -1,6 +1,13 @@
-- name: Work
-  latitude: !secret work_latitude
-  longitude: !secret work_longitude
+- name: Work Marco
+  latitude: !secret work_marco_latitude
+  longitude: !secret work_marco_longitude
+  radius: 150
+  passive: false
+  icon: mdi:work
+
+- name: Work Sharene
+  latitude: !secret work_sharene_latitude
+  longitude: !secret work_sharene_longitude
   radius: 150
   passive: false
   icon: mdi:work
