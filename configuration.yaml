@@ -89,6 +89,8 @@ zone: !include zones.yaml
 # Load helpers
 input_boolean: !include input_boolean.yaml
 input_number: !include input_number.yaml
+# Templates:
+template: !include templates.yaml
 
 # Load automations
 #automation: !include automations.yaml
