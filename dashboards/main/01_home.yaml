@@ -115,7 +115,7 @@ cards:
           show_header_toggle: false
         filter:
           include:
-            - entity_id: sensor.garbagealert*
+            - entity_id: sensor.abc*
           exclude: null
         show_empty: true
         unique: null
