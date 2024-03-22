@@ -9,7 +9,17 @@ cards:
     cards:
       - type: weather-forecast
         entity: weather.home
+      - type: conditional
+        conditions:
+          - condition: state
+            entity: input_boolean.env_isdev
+            state: 'on'
+        card:
+          type: markdown
+          content: |-
+            This is the **development** environment.
 
+            For the production goto https://homeassistant.famwagner.ch.
       - type: entity-filter
         card:
           type: entities
