@@ -1,0 +1,164 @@
+# Define state-based template entities
+- sensor:
+- binary_sensor:
+
+# Define trigger-based template entities
+- trigger:
+  sensor:
+  binary_sensor:
+
+- trigger:
+    - platform: time_pattern
+      minutes: /15
+    - platform: webhook
+      webhook_id: refresh-garbage-events
+    - platform: event
+      event_type:
+        - automation_reloaded
+  action:
+    - service: calendar.get_events
+      target:
+        entity_id: calendar.abfallkalender
+      data:
+        start_date_time: "{{ now().strftime('%Y-%m-%d 00:00:00') }}"
+        end_date_time: "{{ now() + timedelta(minutes=525600) }}"
+      response_variable: scheduled_events
+
+  sensor:
+    - name: "ABC Test"
+      unique_id: 9f11475fc3224c35baed6cba971e9476
+      state: "{{ scheduled_events['calendar.abfallkalender'].events | count }}"
+      # attributes:
+      #   all_events: "{{ scheduled_events['calendar.abfallkalender'] }}"
+
+    - name: "Garbage Altpapier"
+      unique_id: e762dee2d6094ea9a3c4d41708935ad3
+      icon: mdi:trash-can
+      state: >
+        {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
+        {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Altpapier') | list | first %}
+        {{ speak_the_days(nextevent.start) }}
+      # unit_of_measurement: "d"
+      # device_class: "duration"
+      # state: >
+      #     {% from 'easy_time.jinja' import count_the_days %}
+      #     {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Altpapier') | list | first %}
+      #     {{ count_the_days(nextevent.start) }}
+      attributes:
+        next_events: >
+          {% set nextevents = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Altpapier') | list %}
+          {{ nextevents }}
+        next_event: >
+          {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
+          {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Altpapier') | list | first %}
+          {{ speak_the_days(nextevent.start) }}
+
+    - name: "Garbage Karton"
+      unique_id: 76e1aac703b243aa90980985c3a5830b
+      icon: mdi:trash-can
+      state: >
+        {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
+        {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Karton') | list | first %}
+        {{ speak_the_days(nextevent.start) }}
+      # unit_of_measurement: "d"
+      # device_class: "duration"
+      # state: >
+      #     {% from 'easy_time.jinja' import count_the_days %}
+      #     {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Karton') | list | first %}
+      #     {{ count_the_days(nextevent.start) }}
+      attributes:
+        next_events: >
+          {% set nextevents = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Karton') | list %}
+          {{ nextevents }}
+        next_event: >
+          {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
+          {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Karton') | list | first %}
+          {{ speak_the_days(nextevent.start) }}
+
+    - name: "Garbage Grünabfuhr"
+      unique_id: 274a7579c9104ef4ad5262991cd00226
+      icon: mdi:trash-can
+      state: >
+        {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
+        {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Grünabfuhr') | list | first %}
+        {{ speak_the_days(nextevent.start) }}
+      # unit_of_measurement: "d"
+      # device_class: "duration"
+      # state: >
+      #     {% from 'easy_time.jinja' import count_the_days %}
+      #     {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Grünabfuhr') | list | first %}
+      #     {{ count_the_days(nextevent.start) }}
+      attributes:
+        next_events: >
+          {% set nextevents = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Grünabfuhr') | list %}
+          {{ nextevents }}
+        next_event: >
+          {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
+          {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Grünabfuhr') | list | first %}
+          {{ speak_the_days(nextevent.start) }}
+
+    - name: "Garbage Kehrichtabfuhr"
+      unique_id: 25d0db46d3974f049bfef48d6979f55a
+      icon: mdi:trash-can
+      state: >
+        {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
+        {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Kehrichtabfuhr') | list | first %}
+        {{ speak_the_days(nextevent.start) }}
+      # unit_of_measurement: "d"
+      # device_class: "duration"
+      # state: >
+      #     {% from 'easy_time.jinja' import count_the_days %}
+      #     {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Kehrichtabfuhr') | list | first %}
+      #     {{ count_the_days(nextevent.start) }}
+      attributes:
+        next_events: >
+          {% set nextevents = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Kehrichtabfuhr') | list %}
+          {{ nextevents }}
+        next_event: >
+          {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
+          {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Kehrichtabfuhr') | list | first %}
+          {{ speak_the_days(nextevent.start) }}
+
+    - name: "Garbage Sonderabfall"
+      unique_id: e9c36295e6594a10a18184c2fae9c173
+      icon: mdi:trash-can
+      state: >
+        {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
+        {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sonderabfall') | list | first %}
+        {{ speak_the_days(nextevent.start) }}
+      # unit_of_measurement: "d"
+      # device_class: "duration"
+      # state: >
+      #     {% from 'easy_time.jinja' import count_the_days %}
+      #     {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sonderabfall') | list | first %}
+      #     {{ count_the_days(nextevent.start) }}
+      attributes:
+        next_events: >
+          {% set nextevents = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sonderabfall') | list %}
+          {{ nextevents }}
+        next_event: >
+          {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
+          {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sonderabfall') | list | first %}
+          {{ speak_the_days(nextevent.start) }}
+
+    - name: "Garbage Sperrgut"
+      unique_id: 73f863cb53874d94a330cf21eac61fd2
+      icon: mdi:trash-can
+      state: >
+        {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
+        {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sperrgut') | list | first %}
+        {{ speak_the_days(nextevent.start) }}
+      # unit_of_measurement: "d"
+      # device_class: "duration"
+      # state: >
+      #     {% from 'easy_time.jinja' import count_the_days %}
+      #     {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sperrgut') | list | first %}
+      #     {{ count_the_days(nextevent.start) }}
+      attributes:
+        next_events: >
+          {% set nextevents = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sperrgut') | list %}
+          {{ nextevents }}
+        next_event: >
+          {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
+          {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sperrgut') | list | first %}
+          {{ speak_the_days(nextevent.start) }}

@@ -1,9 +1,10 @@
 title: Settings
 path: settings
 visible:
-  - user: e9949774bdc54573850b5a61613ba3b3 # Marco
-  # - user: 8d8b25713a7d4972a1137c818fe9b716 # Sharene
-  - user: af6c507caa6745d781991705313a7767 # User1
+  - user: !secret userid_marco
+  # - user: !secret userid_sharene
+  - user: !secret userid_testuser1
+  - user: !secret userid_testadmin1
 icon: mdi:cog
 type: panel
 
@@ -15,8 +16,6 @@ cards:
         entities:
           - entity: sensor.sm_g998b_battery_level
           - entity: binary_sensor.0000d8a99e5ae7_low_bat
-          - entity: binary_sensor.peq0478568_lowbat
-          - entity: binary_sensor.00131709ae3834_low_bat
           - entity: sensor.office_room_office_room_office_room_living_room_battery_percent
           - entity: sensor.office_room_office_room_office_room_edward_s_bedroom_battery_percent
           - entity: sensor.office_room_office_room_office_room_master_bedroom_battery_percent
@@ -54,6 +53,14 @@ cards:
               action: navigate
               navigation_path: /lovelace/by-domain
             name: ...by Domain
+            icon: mdi:view-carousel
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/all-states
+            name: All States
             icon: mdi:view-carousel
         columns: 2
 

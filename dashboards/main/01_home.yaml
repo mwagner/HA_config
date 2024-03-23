@@ -9,7 +9,17 @@ cards:
     cards:
       - type: weather-forecast
         entity: weather.home
+      - type: conditional
+        conditions:
+          - condition: state
+            entity: input_boolean.env_isdev
+            state: 'on'
+        card:
+          type: markdown
+          content: |-
+            This is the **development** environment.
 
+            For the production goto https://homeassistant.famwagner.ch.
       - type: entity-filter
         card:
           type: entities
@@ -17,10 +27,6 @@ cards:
           show_header_toggle: true
         entities:
           - entity: binary_sensor.0000d8a99e5ae7_low_bat
-            icon: mdi:battery-off-outline
-          - entity: binary_sensor.00131709ae3834_low_bat
-            icon: mdi:battery-off-outline
-          - entity: binary_sensor.peq0478568_lowbat
             icon: mdi:battery-off-outline
           - entity: sensor.sm_g975f_battery_level
             icon: mdi:battery-off-outline
@@ -119,7 +125,7 @@ cards:
           show_header_toggle: false
         filter:
           include:
-            - entity_id: sensor.garbagealert*
+            - entity_id: sensor.garbage_*
           exclude: null
         show_empty: true
         unique: null

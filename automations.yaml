@@ -10,6 +10,7 @@
     - sensor.garbagealert_kartonabfuhr
     - sensor.garbagealert_kehricht_und_sperrgut
     - sensor.garbagealert_mineralische_abfaelle
+    attribute: state
   condition:
   - condition: or
     conditions:
@@ -26,26 +27,11 @@
         trigger.to_state.attributes.friendly_name\n} %}\n\n{% if trigger.when == 'Today'
         %}\n  {% set reminder = 'REMINDER: ' %}\n{% endif %}\n\n{{ reminder ~ trigger.when
         }} is {{ trigger.what }}"
-  mode: single
-- id: '1682593100148'
-  alias: 'Garage Door switch: ventilation'
-  description: ''
-  trigger: []
-  condition: []
-  action:
-  - service: switch.turn_on
-    data: {}
-    target:
-      entity_id: switch.00131709ae3834
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 3
-      milliseconds: 0
-  - service: switch.turn_on
-    data: {}
-    target:
-      entity_id: switch.00131709ae3834
+  - service: logbook.log
+    metadata: {}
+    data:
+      name: Garbage Automation
+      message: Automation triggered
   mode: single
 - id: '1683694236983'
   alias: Alert changes in Fan speed

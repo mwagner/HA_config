@@ -13,6 +13,7 @@
 
 # Include files and file types
 !*.yaml
+!*.jinja
 !.gitignore
 !.gitmodules
 !*.md
