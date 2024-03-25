@@ -25,12 +25,6 @@
       response_variable: scheduled_events
 
   sensor:
-    - name: "ABC Test"
-      unique_id: 9f11475fc3224c35baed6cba971e9476
-      state: "{{ scheduled_events['calendar.abfallkalender'].events | count }}"
-      # attributes:
-      #   all_events: "{{ scheduled_events['calendar.abfallkalender'] }}"
-
     - name: "Garbage Altpapier"
       unique_id: e762dee2d6094ea9a3c4d41708935ad3
       icon: mdi:trash-can
