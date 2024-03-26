@@ -4,34 +4,46 @@
   trigger:
   - platform: state
     entity_id:
-    - sensor.garbagealert_papierabfuhr
-    - sensor.garbagealert_altmetallabfuhr
-    - sensor.garbagealert_gruenabfuhr
-    - sensor.garbagealert_kartonabfuhr
-    - sensor.garbagealert_kehricht_und_sperrgut
-    - sensor.garbagealert_mineralische_abfaelle
-    attribute: state
+    - sensor.garbage_altpapier
+    - sensor.garbage_grunabfuhr
+    - sensor.garbage_karton
+    - sensor.garbage_kehrichtabfuhr
+    - sensor.garbage_sonderabfall
+    - sensor.garbage_sperrgut
+    enabled: true
+  - platform: webhook
+    allowed_methods:
+    - POST
+    - PUT
+    local_only: false
+    webhook_id: garbage-notification
+    enabled: true
   condition:
-  - condition: or
-    conditions:
-    - condition: template
-      value_template: "{% if trigger.to_state.state == 'Today' %}\n  true\n{% endif
-        %}"
-    - condition: template
-      value_template: "{% if trigger.to_state.state == 'Tomorrow' %}\n  true\n{% endif
-        %}"
+  - condition: template
+    value_template: "{% if trigger.platform == 'webhook' %}\n    true\n\n{% elif trigger.platform
+      == 'state' %}\n  {% if trigger.to_state.state|lower == 'today' %}\n    true\n
+      \ {% elif trigger.to_state.state|lower == 'tomorrow' %}\n    true\n  {% else
+      %}\n    false\n  {% endif %}\n\n{% elif trigger.platform == 'None' %}\n  true\n\n{%
+      else %}\n  false\n\n{% endif %}"
   action:
   - service: notify.telegram_marco
     data:
-      message: "{% set trigger = {\n  \"when\": trigger.to_state.state,\n  \"what\":
-        trigger.to_state.attributes.friendly_name\n} %}\n\n{% if trigger.when == 'Today'
-        %}\n  {% set reminder = 'REMINDER: ' %}\n{% endif %}\n\n{{ reminder ~ trigger.when
-        }} is {{ trigger.what }}"
+      message: "{% if trigger.platform == 'webhook' %}\n  {% set xx = {\n    \"when\":
+        trigger.json[\"when\"],\n    \"what\": trigger.json[\"what\"]\n  } %}\n{%
+        elif trigger.platform == 'state' %}\n  {% set xx = {\n    \"when\": trigger.to_state.state,\n
+        \   \"what\": trigger.to_state.attributes.friendly_name\n  } %}\n{% else %}\n
+        \ {% set xx = {\n    \"when\": \"Today\",\n    \"what\": \"a beautiful day.\"\n
+        \ } %}\n{% endif %}\n\n{% if xx.when|lower == 'today' %}\n  {% set reminder
+        = 'REMINDER: ' %}\n{% else %}\n  {% set reminder = '' %}\n{% endif %}\n\n{{
+        reminder ~ xx.when|capitalize }} is {{ xx.what }}\n(Trigger: {{ trigger.platform
+        }})\n"
+    enabled: true
   - service: logbook.log
     metadata: {}
     data:
       name: Garbage Automation
-      message: Automation triggered
+      message: Automation was triggered
+    enabled: true
   mode: single
 - id: '1683694236983'
   alias: Alert changes in Fan speed
