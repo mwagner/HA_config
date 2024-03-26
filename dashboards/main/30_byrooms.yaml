@@ -116,7 +116,7 @@ cards:
           include: null
           exclude: null
           template: >
-            {%- set area = 'Kids Bedroom' -%} {%- set excluded_domains =
+            {%- set area = 'Guest Bedroom' -%} {%- set excluded_domains =
             ['device_tracker',] -%}
 
             {%- set domains = states | rejectattr('state', 'in', ['unavailable']) |
@@ -132,7 +132,7 @@ cards:
       - type: custom:auto-entities
         card:
           type: entities
-          title: Office room
+          title: Office Room
           show_header_toggle: false
           state_color: true
         filter:
@@ -247,14 +247,14 @@ cards:
                       {{ entity.entity_id }},
                   {%- endfor %}
                 {%- endfor %}
-      - type: custom:auto-entities
-        card:
-          type: entities
-          title: Living Room - simply all
-          show_header_toggle: false
-          state_color: true
-        filter:
-          include:
-            - domain: /
-              area: Livi ng Room
-          exclude: null
+      # - type: custom:auto-entities
+      #   card:
+      #     type: entities
+      #     title: Living Room - simply all
+      #     show_header_toggle: false
+      #     state_color: true
+      #   filter:
+      #     include:
+      #       - domain: /
+      #         area: Living Room
+      #     exclude: null
