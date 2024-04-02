@@ -21,10 +21,13 @@
   condition:
   - condition: template
     value_template: "{% if trigger.platform == 'webhook' %}\n    true\n\n{% elif trigger.platform
-      == 'state' %}\n  {% if trigger.to_state.state|lower == 'today' %}\n    true\n
-      \ {% elif trigger.to_state.state|lower == 'tomorrow' %}\n    true\n  {% else
-      %}\n    false\n  {% endif %}\n\n{% elif trigger.platform == 'None' %}\n  true\n\n{%
-      else %}\n  false\n\n{% endif %}"
+      == 'state' %}\n  {% if trigger.from_state.state != 'unavailable' %}\n    {%
+      if ( (trigger.to_state.state|lower == 'today') and (trigger.from_state.state
+      != trigger.to_state.state) ) %}\n      true\n    {% elif ( (trigger.to_state.state|lower
+      == 'tomorrow') and (trigger.from_state.state != trigger.to_state.state) ) %}\n
+      \     true\n    {% else %}\n      false\n    {% endif %}\n  {% else %}\n    false\n
+      \ {% endif %}\n\n{% elif trigger.platform == 'None' %}\n  true\n\n{% else %}\n
+      \ false\n\n{% endif %}"
   action:
   - service: notify.telegram_marco
     data:
@@ -35,8 +38,10 @@
         \ {% set xx = {\n    \"when\": \"Today\",\n    \"what\": \"a beautiful day.\"\n
         \ } %}\n{% endif %}\n\n{% if xx.when|lower == 'today' %}\n  {% set reminder
         = 'REMINDER: ' %}\n{% else %}\n  {% set reminder = '' %}\n{% endif %}\n\n{{
-        reminder ~ xx.when|capitalize }} is {{ xx.what }}\n(Trigger: {{ trigger.platform
-        }})\n"
+        reminder ~ xx.when|capitalize }} is {{ xx.what }}\n\n{% if is_state('input_boolean.env_isdev',
+        'on') -%}\n  Trigger: {{ trigger.platform }}{{\"\\r\\n\"}}Trigger from: {{
+        trigger.from_state.state}}{{\"\\r\\n\"}}Trigger to: {{ trigger.to_state.state}}\n{%
+        endif %}\n"
     enabled: true
   - service: logbook.log
     metadata: {}
