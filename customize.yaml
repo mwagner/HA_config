@@ -82,3 +82,17 @@ sensor.hue_motion_sensor_2_light_level:
   friendly_name: 'Hue Light Sensor 2'
 sensor.hue_motion_sensor_2_temperature:
   friendly_name: 'Hue Temperature Sensor 2'
+
+#Garbage stuff
+sensor.garbage_grunabfuhr:
+  friendly_name: 'Grünabfuhr'
+sensor.garbage_kehrichtabfuhr:
+  friendly_name: 'Kehrichtabfuhr'
+sensor.garbage_sonderabfall:
+  friendly_name: 'Sonderabfall'
+sensor.garbage_altpapier:
+  friendly_name: 'Altpapier'
+sensor.garbage_sperrgut:
+  friendly_name: 'Sperrgut'
+sensor.garbage_karton:
+  friendly_name: 'Karton'
