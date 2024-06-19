@@ -54,9 +54,6 @@ hassio:
 
 system_health:
 
-# Enables a map showing the location of tracked devices
-map:
-
 # Track the sun
 sun:
 
