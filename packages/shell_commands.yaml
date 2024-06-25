@@ -1,0 +1,7 @@
+shell_command:
+  start_hassio: bash start_hassio.sh
+  stop_hassio: bash stop_hassio.sh
+
+  # restart_pow: touch ~/.pow/restart.txt
+  # call_remote: curl http://example.com/ping
+  # my_script: bash /config/shell/script.sh
