@@ -158,14 +158,14 @@ cards:
           - type: custom:auto-entities
             card:
               type: entities
-              title: Terrace
+              title: Patio
               show_header_toggle: false
               state_color: true
             filter:
               include: null
               exclude: null
               template: >
-                {%- set area = 'Terrace' -%} {%- set excluded_domains =
+                {%- set area = 'Patio' -%} {%- set excluded_domains =
                 ['device_tracker',] -%}
 
                 {%- set domains = states | rejectattr('state', 'in',

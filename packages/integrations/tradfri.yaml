@@ -1,5 +1,0 @@
-# // Deprecated //
-
-# tradfri:
-#   host: !secret tradfri_host
-#   allow_tradfri_groups: false
