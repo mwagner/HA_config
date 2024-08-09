@@ -73,21 +73,27 @@ frontend:
 
 # Load switches
 switch: !include switches.yaml
+
 # Load  sensors
-sensor: !include sensor.yaml
+sensor: !include_dir_merge_list ./entities/sensors/sensor/
 # Load binary sensors
-binary_sensor: !include binary_sensor.yaml
+binary_sensor: !include_dir_merge_list ./entities/sensors/binary_sensor/
+# Load template sensors
+template: !include_dir_merge_list ./entities/sensors/template/
+
+# Load lights:
+light: !include_dir_merge_list ./entities/lights/
+
 # Load groups
 group: !include groups.yaml
 # Load persons
 person: !include person.yaml
 # Load zones
 zone: !include zones.yaml
+
 # Load helpers
 input_boolean: !include input_boolean.yaml
 input_number: !include input_number.yaml
-# Templates:
-template: !include templates.yaml
 
 # Load automations
 #automation: !include automations.yaml
@@ -96,6 +102,8 @@ template: !include templates.yaml
 script: !include scripts.yaml
 # Load scenes
 scene: !include scenes.yaml
+# Load Rest commands 
+rest_command: !include_dir_merge_named rest_commands/
 
 # Text to speech
 tts:
