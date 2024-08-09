@@ -45,3 +45,32 @@ create_group_for_software_updates:
         \ | map(attribute='entity_id')\n  | list \n  }}\n"
   mode: restart
   icon: mdi:update
+dingz_light_level_generic:
+  alias: Dingz Light Level Generic
+  sequence:
+  - service: rest_command.dingz_generic_dimmer
+    data:
+      dimmer: '{{ dimmer }}'
+      enum: '{{ enum }}'
+      value: '{{ brightness }}'
+      ip: '{{ ip }}'
+  - service: homeassistant.update_entity
+    target:
+      entity_id: '{{ force_entity }}'
+  mode: parallel
+  icon: hass:lightbulb
+  max: 10
+dingz_light_level_generic_onoff:
+  alias: Dingz Light Level Generic onoff
+  sequence:
+  - service: rest_command.dingz_generic_dimmer_onoff
+    data:
+      dimmer: '{{ dimmer }}'
+      enum: '{{ enum }}'
+      ip: '{{ ip }}'
+  - service: homeassistant.update_entity
+    target:
+      entity_id: '{{ force_entity }}'
+  mode: parallel
+  icon: hass:lightbulb
+  max: 20

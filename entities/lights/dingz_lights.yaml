@@ -1,0 +1,73 @@
+---
+- platform: template
+  lights:
+
+  # ####### ############################### #######
+  # ####### Dingz Light Template livingroom #######
+  # ####### ############################### #######
+
+  # ####### Spot Lights Entree
+    dingz_spotlights_entree:
+      unique_id: dingz_spotlights_entree
+      friendly_name: "Spot Lights Entree"
+      level_template: "{{ (state_attr('sensor.dingz_livingroom1_state', 'dimmers')[0]['output']*255/100)|int }}"
+      value_template: "{{ state_attr('sensor.dingz_livingroom1_state', 'dimmers')[0]['on']}}"
+      turn_on:
+        service: script.dingz_light_level_generic
+        entity_id: light.dingz_spotlights_entree
+        data:
+          brightness: "40"
+          enum: "on"
+          dimmer: 0
+          ip: !secret ip_dingz_livingroom1
+          force_entity: sensor.dingz_livingroom1_state
+      turn_off:
+        service: script.dingz_light_level_generic_onoff
+        entity_id: light.dingz_spotlights_entree
+        data:
+          enum: "off"
+          dimmer: 0
+          ip: !secret ip_dingz_livingroom1
+          force_entity: sensor.dingz_livingroom1_state
+      set_level:
+        service: script.dingz_light_level_generic
+        entity_id: light.dingz_spotlights_entree
+        data:
+          brightness: "{{ (brightness * 100 / 255) | int }}"
+          enum: "on"
+          dimmer: 0
+          ip: !secret ip_dingz_livingroom1
+          force_entity: sensor.dingz_livingroom1_state
+
+  # ####### Spot Lights TV 
+    dingz_spotlights_tv:
+      unique_id: dingz_spotlights_tv
+      friendly_name: "Spot Lights TV"
+      level_template: "{{ (state_attr('sensor.dingz_livingroom1_state', 'dimmers')[2]['output']*255/100)|int }}"
+      value_template: "{{ state_attr('sensor.dingz_livingroom1_state', 'dimmers')[2]['on']}}"
+      turn_on:
+        service: script.dingz_light_level_generic
+        entity_id: light.dingz_spotlights_tv
+        data:
+          brightness: "40"
+          enum: "on"
+          dimmer: 2
+          ip: !secret ip_dingz_livingroom1
+          force_entity: sensor.dingz_livingroom1_state
+      turn_off:
+        service: script.dingz_light_level_generic_onoff
+        entity_id: light.dingz_spotlights_tv
+        data:
+          enum: "off"
+          dimmer: 2
+          ip: !secret ip_dingz_livingroom1
+          force_entity: sensor.dingz_livingroom1_state
+      set_level:
+        service: script.dingz_light_level_generic
+        entity_id: light.dingz_spotlights_tv
+        data:
+          brightness: "{{ (brightness * 100 / 255) | int }}"
+          enum: "on"
+          dimmer: 2
+          ip: !secret ip_dingz_livingroom1
+          force_entity: sensor.dingz_livingroom1_state

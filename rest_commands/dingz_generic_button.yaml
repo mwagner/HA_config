@@ -1,0 +1,4 @@
+---
+dingz_generic_button:
+  url: http://{{ ip }}/api/v1/button/{{ button }}/{{ action }}
+  method: POST

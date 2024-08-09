@@ -1,0 +1,14 @@
+---
+- platform: rest
+  method: GET
+  resource: !secret url_sensor_dingz_livingroom1 # http://ip/api/v1/state
+
+  name: Dingz Livingroom1 State
+  unique_id: dingz_livingroom1_state
+  value_template: "OK"
+  scan_interval: 30
+  force_update: true
+  json_attributes:
+    - "dimmers"
+    - "led"
+    - "sensors"
