@@ -1,3 +1,4 @@
+---
 # Define state-based template entities
 - sensor:
 - binary_sensor:

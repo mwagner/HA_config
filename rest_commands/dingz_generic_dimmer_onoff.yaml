@@ -1,0 +1,4 @@
+---
+dingz_generic_dimmer_onoff:
+  url: http://{{ ip }}/api/v1/dimmer/{{ dimmer }}/{{ enum }}
+  method: POST
