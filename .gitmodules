@@ -16,9 +16,6 @@
 [submodule "www/plugins/mini-graph-card"]
 	path = www/plugins/mini-graph-card
 	url = https://github.com/kalkih/mini-graph-card
-[submodule "www/plugins/bubble-card"]
-	path = www/plugins/bubble-card
-	url = https://github.com/clooos/bubble-card
 [submodule "www/plugins/atomic-calendar-revive"]
 	path = www/plugins/atomic-calendar-revive
 	url = https://github.com/totaldebug/atomic-calendar-revive
