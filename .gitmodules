@@ -19,3 +19,6 @@
 [submodule "www/plugins/Bubble-Card"]
 	path = www/plugins/Bubble-Card
 	url = https://github.com/Clooos/Bubble-Card
+[submodule "www/plugins/atomic-calendar-revive"]
+	path = www/plugins/atomic-calendar-revive
+	url = https://github.com/totaldebug/atomic-calendar-revive
