@@ -16,3 +16,6 @@
 [submodule "www/plugins/mini-graph-card"]
 	path = www/plugins/mini-graph-card
 	url = https://github.com/kalkih/mini-graph-card
+[submodule "www/plugins/Bubble-Card"]
+	path = www/plugins/Bubble-Card
+	url = https://github.com/Clooos/Bubble-Card
