@@ -185,6 +185,8 @@ lovelace:
       type: module
     - url: /local/plugins/bubble-card/bubble-card.js
       type: module
+    - url: /local/plugins/atomic-calendar-revive/atomic-calendar-revive.js
+      type: module
   dashboards: !include dashboards/dashboards.yaml
 
 my:
