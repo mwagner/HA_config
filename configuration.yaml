@@ -67,8 +67,8 @@ sun:
 mobile_app:
 
 frontend:
-  themes: !include themes.yaml
-  #themes split: !include_dir_merge_named ./themes
+  #themes: !include themes/themes.yaml
+  themes !include_dir_merge_named ./themes
 
 
 # Load switches
@@ -186,6 +186,10 @@ lovelace:
     - url: /local/plugins/bubble-card/dist/bubble-card.js
       type: module
     - url: /local/plugins/atomic-calendar-revive/dist/atomic-calendar-revive.js
+      type: module
+    - url: /hacsfiles/lovelace-digital-clock/digital-clock.js
+      type: module
+    - url: /hacsfiles/lovelace-mushroom/mushroom.js
       type: module
   dashboards: !include dashboards/dashboards.yaml
 
