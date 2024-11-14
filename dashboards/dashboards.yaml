@@ -1,3 +1,11 @@
+dashboard-home-legacy:
+  mode: yaml
+  title: Home
+  icon: mdi:home
+  show_in_sidebar: true
+  require_admin: false
+  filename: dashboards/home_legacy.yaml
+
 dashboard-development:
   mode: yaml
   title: Development
