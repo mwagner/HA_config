@@ -1,0 +1,6 @@
+---
+- platform: time_date
+  display_options:
+    - 'date_time_iso'
+    - 'time'
+    - 'date'

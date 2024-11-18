@@ -9,8 +9,8 @@ icon: mdi:cog
 type: panel
 
 cards:
-  - type: 'custom:layout-card'
-    layout: vertical
+  - type: custom:layout-card
+    layout_type: custom:vertical-layout
     cards:
       - type: entities
         entities:
@@ -26,7 +26,7 @@ cards:
           - entity: sensor.tradfri_on_off_switch
           - entity: sensor.tradfri_remote_control
         title: Battery Levels
-      - break
+      - type: custom:layout-break
       # - type: entities
       #   entities:
       #     - entity: sensor.hue_dimmer_switch_1_battery_level

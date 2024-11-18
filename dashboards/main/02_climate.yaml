@@ -4,11 +4,10 @@ icon: mdi:thermometer
 type: panel
 
 cards:
-  - type: 'custom:layout-card'
-    layout: vertical
+  - type: custom:layout-card
+    layout_type: custom:vertical-layout
     cards:
       # Weather
-      - break
       - type: weather-forecast
         entity: weather.home
       
@@ -16,8 +15,8 @@ cards:
       # - type:
       #   ...
 
+      - type: custom:layout-break
       # Occupancy
-      - break
       - type: entities
         entities:
           - entity: input_boolean.home_occupied
@@ -25,7 +24,7 @@ cards:
           - entity: person.sharene
           - entity: person.guests
         
-      - break
+      # - type: custom:layout-break
       # All the temperatures in a row
       # - type: sensor
       #   entity: sensor.a_temperature_sensor

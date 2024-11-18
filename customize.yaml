@@ -63,25 +63,55 @@ sensor.office_room_office_room_office_room_outdoor_battery_percent:
 
 
 #Hue stuff
-light.hue_lightstrip:
-  icon: hass:led-strip-variant
-  friendly_name: LED strip Desk
 light.hue_bloom_1:
   friendly_name: Hue Bloom 1
 light.hue_bloom_2:
   friendly_nam: Hue Bloom 2
-binary_sensor.hue_motion_sensor_1_motion:
-  friendly_name: 'Hue Motion Sensor 1'
+binary_sensor.hue_motion_sensor_1:
+  friendly_name: Hue Motion Sensor 1
+binary_sensor.hue_motion_sensor_2:
+  friendly_name: Hue Motion Sensor 2
+light.hue_being_ceiling_1:
+  friendly_name: Hue Being Ceiling 1
+light.hue_enrave_ceiling_1:
+  friendly_name: Hue Enrave Ceiling 1 
+light.hue_lightstrip_1:
+  friendly_name: Hue Lightstrip 1
+  icon: hass:led-strip-variant
+sensor.hue_dimmer_switch_1_battery:
+  friendly_name: Hue Dimmer Switch 1 Battery
+sensor.hue_dimmer_sensor_1_battery_level:
+  friendly_name: Hue Dimmer Sensor 1 Battery Level
+sensor.hue_motion_sensor_1_battery:
+  friendly_name: Hue Motion Sensor 1 Battery
 sensor.hue_motion_sensor_1_light_level:
-  friendly_name: 'Hue Light Sensor 1'
+  friendly_name: Hue Motion Sensor 1 Light Level
 sensor.hue_motion_sensor_1_temperature:
-  friendly_name: 'Hue Temperature Sensor 1'
-binary_sensor.hue_motion_sensor_2_motion:
-  friendly_name: 'Hue Motion Sensor 2'
+  friendly_name: Hue Motion Sensor 1 Temperature
+sensor.hue_motion_sensor_2_battery:
+  friendly_name: Hue Motion Sensor 2 Battery
 sensor.hue_motion_sensor_2_light_level:
-  friendly_name: 'Hue Light Sensor 2'
+  friendly_name: Hue Motion Sensor 2 Light Level
 sensor.hue_motion_sensor_2_temperature:
-  friendly_name: 'Hue Temperature Sensor 2'
+  friendly_name: Hue Motion Sensor 2 Temperature
+switch.hue_motion_sensor_1_illuminance:
+  friendly_name: Hue Motion Sensor 1 Illuminance
+switch.hue_motion_sensor_1_motion:
+  friendly_name: Hue Motion Sensor 1 Motion
+switch.hue_motion_sensor_2_illuminance:
+  friendly_name: Hue Motion Sensor 2 Illuminance
+switch.hue_motion_sensor_2_motion:
+  friendly_name: Hue Motion Sensor 2 Motion
+
+event.feller_switch_button_1:
+  friendly_name: "Feller Switch Button 1"
+event.feller_switch_button_2:
+  friendly_name: "Feller Switch Button 2"
+event.feller_switch_button_3:
+  friendly_name: "Feller Switch Button 3"
+event.feller_switch_button_4:
+  friendly_name: "Feller Switch Button 4"
+
 
 #Garbage stuff
 sensor.garbage_grunabfuhr:

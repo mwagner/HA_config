@@ -10,8 +10,8 @@ homeassistant:
   unit_system: !secret home_unitsystem
   currency: !secret home_currency
   country: !secret home_country
-  #external_url: !secret home_external_url
-  #internal_url: !secret home_internal_url
+  external_url: !secret home_external_url
+  internal_url: !secret home_internal_url
 
   # Load customizations
   customize: !include customize.yaml
@@ -67,27 +67,33 @@ sun:
 mobile_app:
 
 frontend:
-  themes: !include themes.yaml
-  #themes split: !include_dir_merge_named ./themes
+  #themes: !include themes/themes.yaml
+  themes !include_dir_merge_named ./themes
 
 
 # Load switches
 switch: !include switches.yaml
+
 # Load  sensors
-sensor: !include sensor.yaml
+sensor: !include_dir_merge_list ./entities/sensors/sensor/
 # Load binary sensors
-binary_sensor: !include binary_sensor.yaml
+binary_sensor: !include_dir_merge_list ./entities/sensors/binary_sensor/
+# Load template sensors
+template: !include_dir_merge_list ./entities/sensors/template/
+
+# Load lights:
+light: !include_dir_merge_list ./entities/lights/
+
 # Load groups
 group: !include groups.yaml
 # Load persons
 person: !include person.yaml
 # Load zones
 zone: !include zones.yaml
+
 # Load helpers
 input_boolean: !include input_boolean.yaml
 input_number: !include input_number.yaml
-# Templates:
-template: !include templates.yaml
 
 # Load automations
 #automation: !include automations.yaml
@@ -96,6 +102,8 @@ template: !include templates.yaml
 script: !include scripts.yaml
 # Load scenes
 scene: !include scenes.yaml
+# Load Rest commands 
+rest_command: !include_dir_merge_named rest_commands/
 
 # Text to speech
 tts:
@@ -174,6 +182,14 @@ lovelace:
     - url: /local/plugins/gap-card/gap-card.js
       type: module
     - url: /local/plugins/mini-graph-card/mini-graph-card.js
+      type: module
+    - url: /local/plugins/bubble-card/dist/bubble-card.js
+      type: module
+    - url: /local/plugins/atomic-calendar-revive/dist/atomic-calendar-revive.js
+      type: module
+    - url: /hacsfiles/lovelace-digital-clock/digital-clock.js
+      type: module
+    - url: /hacsfiles/lovelace-mushroom/mushroom.js
       type: module
   dashboards: !include dashboards/dashboards.yaml
 
