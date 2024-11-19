@@ -68,7 +68,7 @@ mobile_app:
 
 frontend:
   #themes: !include themes/themes.yaml
-  themes !include_dir_merge_named ./themes
+  themes: !include_dir_merge_named ./themes
 
 
 # Load switches
@@ -178,8 +178,6 @@ lovelace:
     - url: /local/plugins/card-mod/card-mod.js
       type: module
     - url: /local/plugins/auto-entities/auto-entities.js
-      type: module
-    - url: /local/plugins/gap-card/gap-card.js
       type: module
     - url: /local/plugins/mini-graph-card/mini-graph-card.js
       type: module
