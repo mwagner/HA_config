@@ -179,8 +179,6 @@ lovelace:
       type: module
     - url: /local/plugins/auto-entities/auto-entities.js
       type: module
-    - url: /local/plugins/gap-card/gap-card.js
-      type: module
     - url: /local/plugins/mini-graph-card/mini-graph-card.js
       type: module
     - url: /local/plugins/bubble-card/dist/bubble-card.js
