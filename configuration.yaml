@@ -81,6 +81,9 @@ binary_sensor: !include_dir_merge_list ./entities/sensors/binary_sensor/
 # Load template sensors
 template: !include_dir_merge_list ./entities/sensors/template/
 
+# Load Alarm
+alarm_control_panel: !include_dir_merge_list ./entities/alarm_control_panel/
+
 # Load lights:
 light: !include_dir_merge_list ./entities/lights/
 
