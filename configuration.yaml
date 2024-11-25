@@ -172,6 +172,8 @@ lovelace:
   # mode can be either yaml or storage
   mode: yaml
   resources:
+    - url: /local/plugins/ui_lovelace_minimalist/dist/uim.js
+      type: module
     - url: /local/plugins/button-card/button-card.js
       type: module
     - url: /local/plugins/layout-card/layout-card.js
