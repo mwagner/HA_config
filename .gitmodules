@@ -19,3 +19,6 @@
 [submodule "www/plugins/atomic-calendar-revive"]
 	path = www/plugins/atomic-calendar-revive
 	url = https://github.com/totaldebug/atomic-calendar-revive
+[submodule "www/ui_lovelace_minimalist"]
+	path = www/ui_lovelace_minimalist
+	url = https://github.com/UI-Lovelace-Minimalist/UI.git
