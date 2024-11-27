@@ -68,7 +68,7 @@ mobile_app:
 
 frontend:
   #themes: !include themes/themes.yaml
-  themes: !include_dir_merge_named ./themes
+  themes: !include_dir_merge_named themes
 
 
 # Load switches
@@ -172,19 +172,35 @@ lovelace:
   # mode can be either yaml or storage
   mode: yaml
   resources:
-    - url: /local/plugins/ui_lovelace_minimalist/dist/uim.js
+    - url: /hacsfiles/ui_lovelace_minimalist/dist/uim.js
       type: module
-    - url: /local/plugins/button-card/button-card.js
+    - url: /local/plugins/button-card.js
+      type: module
+    - url: /local/plugins/lovelace-card-mod/card-mod.js
+      type: module
+    - url: /local/plugins/mini-graph-card-bundle.js
+      type: module
+    - url: /local/plugins/mini-media-player-bundle.js
+      type: module
+    - url: /local/plugins/my-cards/dist/my-button.js
+      type: module
+    - url: /local/plugins/my-cards/dist/my-cards.js
+      type: module
+    - url: /local/plugins/my-cards/dist/my-slider-v2.js
+      type: module
+    - url: /local/plugins/my-cards/dist/my-slider.js
+      type: module
+    - url: /local/plugins/light-entity-card/dist/light-entity-card.js
+      type: module
+    - url: /local/plugins/auto-entities/auto-entities.js
+      type: module
+    - url: /hacsfiles/browser_mod/custom_components/browser_mod/browser_mod.js
       type: module
     - url: /local/plugins/layout-card/layout-card.js
       type: module
     - url: /local/plugins/card-tools/card-tools.js
       type: module
     - url: /local/plugins/card-mod/card-mod.js
-      type: module
-    - url: /local/plugins/auto-entities/auto-entities.js
-      type: module
-    - url: /local/plugins/mini-graph-card/mini-graph-card.js
       type: module
     - url: /local/plugins/bubble-card/dist/bubble-card.js
       type: module
