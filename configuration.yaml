@@ -172,43 +172,17 @@ lovelace:
   # mode can be either yaml or storage
   mode: yaml
   resources:
-    - url: /hacsfiles/ui_lovelace_minimalist/dist/uim.js
-      type: module
-    - url: /local/plugins/button-card.js
-      type: module
-    - url: /local/plugins/lovelace-card-mod/card-mod.js
-      type: module
-    - url: /local/plugins/mini-graph-card-bundle.js
-      type: module
-    - url: /local/plugins/mini-media-player-bundle.js
-      type: module
-    - url: /local/plugins/my-cards/dist/my-button.js
-      type: module
-    - url: /local/plugins/my-cards/dist/my-cards.js
-      type: module
-    - url: /local/plugins/my-cards/dist/my-slider-v2.js
-      type: module
-    - url: /local/plugins/my-cards/dist/my-slider.js
-      type: module
-    - url: /local/plugins/light-entity-card/dist/light-entity-card.js
-      type: module
-    - url: /local/plugins/auto-entities/auto-entities.js
-      type: module
-    - url: /hacsfiles/browser_mod/custom_components/browser_mod/browser_mod.js
-      type: module
-    - url: /local/plugins/layout-card/layout-card.js
-      type: module
-    - url: /local/plugins/card-tools/card-tools.js
-      type: module
-    - url: /local/plugins/card-mod/card-mod.js
-      type: module
-    - url: /local/plugins/bubble-card/dist/bubble-card.js
-      type: module
-    - url: /local/plugins/atomic-calendar-revive/dist/atomic-calendar-revive.js
-      type: module
-    - url: /hacsfiles/lovelace-digital-clock/digital-clock.js
+    - url: /hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js
       type: module
     - url: /hacsfiles/lovelace-mushroom/mushroom.js
+      type: module
+    - url: /hacsfiles/lovelace-layout-card/layout-card.js
+      type: module
+    - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
+      type: module
+    - url: /hacsfiles/lovelace-card-mod/card-mod.js
+      type: module
+    - url: /hacsfiles/lovelace-digital-clock/digital-clock.js
       type: module
   dashboards: !include dashboards/dashboards.yaml
 
