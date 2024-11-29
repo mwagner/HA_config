@@ -95,7 +95,8 @@ person: !include person.yaml
 zone: !include zones.yaml
 
 # Load helpers
-input_boolean: !include input_boolean.yaml
+# input_boolean: !include input_boolean.yaml
+input_boolean: !include_dir_merge_named helpers/input_boolean/
 input_number: !include input_number.yaml
 
 # Load automations
@@ -183,6 +184,22 @@ lovelace:
     - url: /hacsfiles/lovelace-card-mod/card-mod.js
       type: module
     - url: /hacsfiles/lovelace-digital-clock/digital-clock.js
+      type: module
+    - url: /hacsfiles/button-card/button-card.js
+      type: module
+    - url: /hacsfiles/light-entity-card/dist/light-entity-card.js
+      type: module
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+      type: module
+    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+      type: module
+    - url: /hacsfiles/my-cards/my-cards.js
+      type: module
+    - url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
+      type: module
+    - url: /hacsfiles/lovelace-state-switch/state-switch.js
+      type: module
+    - url: /hacsfiles/weather-radar-card/weather-radar-card.js
       type: module
   dashboards: !include dashboards/dashboards.yaml
 
