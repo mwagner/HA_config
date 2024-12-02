@@ -95,9 +95,8 @@ person: !include person.yaml
 zone: !include zones.yaml
 
 # Load helpers
-# input_boolean: !include input_boolean.yaml
 input_boolean: !include_dir_merge_named helpers/input_boolean/
-input_number: !include input_number.yaml
+input_number: !include_dir_merge_named helpers/input_number/
 
 # Load automations
 #automation: !include automations.yaml

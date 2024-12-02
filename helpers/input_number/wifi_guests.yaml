@@ -1,3 +1,4 @@
+---
 guests_connected_to_wifi:
   name: Guests connected to wifi
   icon: mdi:wifi
