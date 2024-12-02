@@ -1,5 +1,5 @@
 #Battery status
-binary_sensor.0000d8a99e5ae7_low_bat:
+binary_sensor.0000d8a99e5ae7_lowbat:
   device_class: battery
   friendly_name: 'Battery: Balcony Door'
 
@@ -7,32 +7,32 @@ sensor.hue_dimmer_switch_1_battery_level:
   device_class: battery
   friendly_name: 'Battery: Dimmer Switch'
 
-binary_sensor.netatmo_livingroom_low_bat:
+binary_sensor.living_room_netatmo_lowbat:
   device_class: battery
   friendly_name: "Battery: Netatmo Living Room"
-binary_sensor.netatmo_edwardsbedroom_low_bat:
+binary_sensor.kids_bedroom_netatmo_lowbat:
   device_class: battery
   friendly_name: "Battery: Netatmo Edward's Bedroom"
-binary_sensor.netatmo_masterbedroom_low_bat:
+binary_sensor.master_bedroom_netatmo_lowbat:
   device_class: battery
   friendly_name: "Battery: Netatmo Master Bedroom"
-binary_sensor.netatmo_outdoor_low_bat:
+binary_sensor.outdoor_netatmo_lowbat:
   device_class: battery
   friendly_name: "Battery: Netatmo Outdoor"
 
-binary_sensor.tradfri_sound_remote_living_room_low_bat:
+binary_sensor.tradfri_sound_remote_living_room_lowbat:
   device_class: battery
   friendly_name: "Battery: Tradfri Sound Remote (Living Room)"
-binary_sensor.tradfri_sound_remote_office_room_low_bat:
+binary_sensor.tradfri_sound_remote_office_room_lowbat:
   device_class: battery
   friendly_name: "Battery: Tradfri Sound Remote (Office Room)"
-binary_sensor.tradfri_shortcut_button_low_bat:
+binary_sensor.tradfri_shortcut_button_lowbat:
   device_class: battery
   friendly_name: "Battery: Tradfri Shurtcut Button"
-binary_sensor.tradfri_on_off_switch_low_bat:
+binary_sensor.tradfri_on_off_switch_lowbat:
   device_class: battery
   friendly_name: "Battery: Tradfri On/Off Switch-Dimmer"
-binary_sensor.tradfri_remote_control_low_bat:
+binary_sensor.tradfri_remote_control_lowbat:
   device_class: battery
   friendly_name: "Battery: Tradfri Remote Control"
 
