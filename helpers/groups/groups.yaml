@@ -1,17 +1,3 @@
-livingroom:
-  name: Living Room
-kitchen:
-  name: Kitchen
-master_bedroom:
-  name: Master Bedroom
-babyroom:
-  name: Baby Room
-office:
-  name: Office Room
-  entities:
-    - light.hue_lightstrip
-    - binary_sensor.hue_motion_sensor_1_motion
-
 battery_state:
   name: Battery state
   entities:

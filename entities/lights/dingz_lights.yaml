@@ -2,11 +2,11 @@
 - platform: template
   lights:
 
-  # ####### ############################### #######
-  # ####### Dingz Light Template livingroom #######
-  # ####### ############################### #######
+# ####### ############################### #######
+# ####### Dingz Light Template livingroom #######
+# ####### ############################### #######
 
-  # ####### Spot Lights Entree
+# ####### Spot Lights Entree
     dingz_spotlights_entree:
       unique_id: dingz_spotlights_entree
       friendly_name: "Spot Lights Entree"
@@ -39,7 +39,7 @@
           ip: !secret ip_dingz_livingroom1
           force_entity: sensor.dingz_livingroom1_state
 
-  # ####### Spot Lights TV 
+# ####### Spot Lights TV 
     dingz_spotlights_tv:
       unique_id: dingz_spotlights_tv
       friendly_name: "Spot Lights TV"

@@ -1,0 +1,6 @@
+---
+- sensor:
+  - name: Guest Count
+    unique_id: guest_count
+    state: >-
+      {{ states.device_tracker | selectattr('attributes.is_guest', 'eq', true) | list | count }}

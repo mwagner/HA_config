@@ -1,0 +1,37 @@
+---
+- platform: group
+  # name: Lights Master Bedroom
+  name: masterbedroom_lights
+  unique_id: masterbedroom_lights
+  entities:
+    - light.masterbedroom_ceiling_light
+    - light.marco_s_yeelight
+    - light.sharene_s_yeelight
+
+- platform: group
+  # name: Lights Kids Bedroom
+  name: kidsbedroom_lights
+  unique_id: kidsbedroom_lights
+  entities:
+    - light.kidsbedroom_ceiling_lamp
+
+- platform: group
+  # name: Lights Guest Bedroom
+  name: guestbedroom_lights
+  unique_id: guestbedroom_lights
+  entities: {}
+
+- platform: group
+  # name: Lights Office Room
+  name: officeroom_lights
+  unique_id: officeroom_lights
+  entities:
+    - light.officeroom_ceiling_lamp
+
+- platform: group
+  # name: Lights Living Room
+  name: livingroom_lights
+  unique_id: livingroom_lights
+  entities:
+    - light.dingz_spotlights_entree
+    - light.dingz_spotlights_tv
