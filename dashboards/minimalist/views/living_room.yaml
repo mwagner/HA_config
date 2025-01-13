@@ -1,0 +1,7 @@
+---
+- title: Living Room
+  path: living-room
+  icon: mdi:sofa
+  subview: false
+
+  cards:

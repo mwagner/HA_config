@@ -1,0 +1,19 @@
+- type: 'custom:button-card'
+  template:
+    - card_room
+  name: Living Room
+  entity: sensor.office_room_office_room_office_room_living_room_temperature
+  icon: mdi:sofa
+  tap_action:
+    action: navigate
+    navigation_path: '/ulm-dashboard-mobile/living-room'
+  variables:
+    label_use_temperature: true
+    label_use_brightness: false
+    entity_1:
+      entity_id: light.livingroom_ceiling_light
+      templates:
+        - yellow_on
+        - grey_no_state
+      tap_action:
+        action: toggle

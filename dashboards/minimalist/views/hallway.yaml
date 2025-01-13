@@ -1,0 +1,7 @@
+---
+- title: Hallway
+  path: hallway
+  icon: mdi:coat-rack
+  subview: false
+
+  cards:

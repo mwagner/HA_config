@@ -1,0 +1,7 @@
+---
+- title: Patio / Garden
+  path: patio-garden
+  icon: mdi:balcony
+  subview: false
+
+  cards:

@@ -1,0 +1,7 @@
+---
+- title: Guest Bedroom
+  path: guest-bedroom
+  icon: mdi:bed-empty
+  subview: false
+
+  cards:

@@ -1,0 +1,7 @@
+---
+- title: Car
+  path: car
+  icon: mdi:car
+  subview: false
+
+  cards:
