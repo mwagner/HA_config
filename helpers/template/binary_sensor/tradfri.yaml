@@ -14,14 +14,14 @@
   - name: Tradfri Shortcut Button Low Battery
     unique_id: tradfri_shortcut_button_low_bat
     state: >-
-      {{ states('sensor.shortcut_button') | float(0) < 5 }}
+      {{ states('sensor.tradfri_shortcut_button_battery') | float(0) < 5 }}
 
   - name: Tradfri On/Off Switch Low Battery
     unique_id: tradfri_on_off_switch_low_bat
     state: >-
-      {{ states('sensor.tradfri_on_off_switch') | float(0) < 5 }}
+      {{ states('sensor.on_off_switch_battery') | float(0) < 5 }}
 
   - name: Tradfri Remot Control Low Battery
     unique_id: tradfri_remote_control_low_bat
     state: >-
-      {{ states('sensor.tradfri_remote_control') | float(0) < 5 }}
+      {{ states('sensor.ikea_buttons_battery') | float(0) < 5 }}
