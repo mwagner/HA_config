@@ -70,3 +70,45 @@
           square: true
           columns: 3
           cards: !include_dir_merge_list ../../minimalist/room-cards/
+
+        - type: custom:button-card
+          template: card_title
+          name: Motion Sensors
+
+        - type: grid
+          square: false
+          columns: 2
+          cards:
+            - type: tile
+              entity: binary_sensor.motion_sensor_1_occupancy
+              name: Motion Sensor 1
+              vertical: false
+              hide_state: false
+              state_content:
+                - state
+                - last_changed
+              show_entity_picture: false
+              icon: mdi:webcam
+              icon_tap_action:
+                action: none
+              hold_action:
+                action: none
+              tap_action:
+                action: none
+            - type: tile
+              entity: binary_sensor.motion_sensor_2_occupancy
+              name: Motion Sensor 2
+              vertical: false
+              hide_state: false
+              state_content:
+                - state
+                - last_changed
+              show_entity_picture: false
+              icon: mdi:webcam
+              icon_tap_action:
+                action: none
+              hold_action:
+                action: none
+              tap_action:
+                action: none
+

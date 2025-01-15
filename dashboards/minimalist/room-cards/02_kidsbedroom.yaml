@@ -1,17 +1,17 @@
 - type: 'custom:button-card'
   template:
     - card_room
-  name: Office Room
-  entity: sensor.office_room_office_room_office_room_living_room_temperature
-  icon: mdi:desk
+  name: Kids Bedroom
+  entity: sensor.office_room_office_room_office_room_edward_s_bedroom_temperature
+  icon: mdi:teddy-bear
   tap_action:
     action: navigate
-    navigation_path: '/ulm-dashboard-mobile/office-room'
+    navigation_path: '/ulm-dashboard-mobile/kidsbedroom'
   variables:
     label_use_temperature: true
     label_use_brightness: false
     entity_1:
-      entity_id: light.officeroom_ceiling_lamp
+      entity_id: light.kidsbedroom_ceiling_lamp
       templates:
         - yellow_on
         - grey_no_state

@@ -1,7 +1,7 @@
 ---
 - title: Kids Bedroom
-  path: kids-bedroom
+  path: kidsbedroom
   icon: mdi:teddy-bear
   subview: false
 
-  cards:
+  cards: !include ../rooms/kidsbedroom.yaml

@@ -1,7 +1,0 @@
----
-- title: Office Room
-  path: office-room
-  icon: mdi:desk
-  subview: false
-
-  cards: !include ../rooms/office_room.yaml
