@@ -1,0 +1,19 @@
+- type: 'custom:button-card'
+  template:
+    - card_room
+    # - red_no_state
+  name: Guest Bedroom
+  # entity: sensor.notavailable
+  icon: mdi:bed
+  tap_action:
+    action: navigate
+    navigation_path: '/ulm-dashboard-mobile/guestbedroom'
+  variables:
+    label_use_temperature: false
+    label_use_brightness: false
+    entity_1:
+      entity_id: binary_sensor.notavailable
+      templates:
+        - yellow_on
+      tap_action:
+        action: nothing

@@ -1,15 +1,15 @@
-dashboard-home-legacy:
+ulm-dashboard-mobile:
   mode: yaml
-  title: Home
+  title: Mobile (minimalist)
   icon: mdi:home
   show_in_sidebar: true
   require_admin: false
-  filename: dashboards/home_legacy.yaml
+  filename: dashboards/minimalist.yaml
 
-dashboard-development:
+ulm-dashboard-tablet:
   mode: yaml
-  title: Development
-  icon: mdi:script
-  show_in_sidebar: false
-  require_admin: true
-  filename: dashboards/development.yaml
+  title: Tablet (minimalist)
+  icon: mdi:home
+  show_in_sidebar: true
+  require_admin: false
+  filename: dashboards/minimalist.yaml

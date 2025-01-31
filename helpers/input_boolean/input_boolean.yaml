@@ -1,0 +1,24 @@
+---
+env_isdev:
+  name: Development environment
+env_execcommands:
+  name: Test execution enabled
+
+onvacation:
+  name: On vacation
+  icon: mdi:airplane
+marco_home:
+  name: Marco at home
+  icon: mdi:account
+sharene_home:
+  name: Sharene at home
+  icon: mdi:account
+guest_home:
+  name: Guests at home
+  icon: mdi:account-group
+home_occupied:
+  name: Home Occupied
+  icon: mdi:account-group
+
+ulm_welcome_toggle:
+  name: ULM Welcome Toggle

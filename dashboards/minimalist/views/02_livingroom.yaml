@@ -1,0 +1,7 @@
+---
+- title: Living Room
+  path: livingroom
+  icon: mdi:sofa
+  subview: false
+
+  cards: !include ../rooms/livingroom.yaml

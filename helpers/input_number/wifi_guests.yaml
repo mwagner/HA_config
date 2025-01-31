@@ -1,0 +1,8 @@
+---
+guests_connected_to_wifi:
+  name: Guests connected to wifi
+  icon: mdi:wifi
+  min: 0
+  max: 100
+  step: 1
+  mode: box

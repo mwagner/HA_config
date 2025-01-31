@@ -1,0 +1,7 @@
+---
+- title: Guest Bedroom
+  path: guestbedroom
+  icon: mdi:bed-empty
+  subview: false
+
+  cards: !include ../rooms/guestbedroom.yaml

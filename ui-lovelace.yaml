@@ -1,10 +1,10 @@
 title: Home
 
 views:
-  - !include dashboards/main/01_home.yaml
-  - !include dashboards/main/02_climate.yaml
-  - !include dashboards/main/03_Audio.yaml
-  - !include dashboards/main/20_settings.yaml
-  - !include dashboards/main/30_byrooms.yaml
-  - !include dashboards/main/30_bydomains.yaml
-  - !include dashboards/main/30_allstates.yaml
+  - !include dashboards/legacy/01_home.yaml
+  - !include dashboards/legacy/02_climate.yaml
+  - !include dashboards/legacy/03_Audio.yaml
+  - !include dashboards/legacy/20_settings.yaml
+  - !include dashboards/legacy/30_byrooms.yaml
+  - !include dashboards/legacy/30_bydomains.yaml
+  - !include dashboards/legacy/30_allstates.yaml

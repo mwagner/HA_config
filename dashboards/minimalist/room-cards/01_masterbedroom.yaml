@@ -1,0 +1,19 @@
+- type: 'custom:button-card'
+  template:
+    - card_room
+  name: Master Bedroom
+  entity: sensor.office_room_office_room_office_room_master_bedroom_temperature
+  icon: mdi:bed-king
+  tap_action:
+    action: navigate
+    navigation_path: '/ulm-dashboard-mobile/masterbedroom'
+  variables:
+    label_use_temperature: true
+    label_use_brightness: false
+    entity_1:
+      entity_id: light.masterbedroom_ceiling_light
+      templates:
+        - yellow_on
+        - grey_no_state
+      tap_action:
+        action: toggle
