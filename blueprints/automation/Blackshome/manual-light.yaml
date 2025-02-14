@@ -1,0 +1,525 @@
+blueprint:
+  name: Manual Light
+  description: "# \U0001FA84 Manual Light\n**Version: 1.0**\n\n\U0001F44B Say goodbye
+    to lights left on! Step into automated lighting with an auto shut-off and a motion
+    sensor reset. \U0001FA84\U0001F4A1\n\n\n**If you like my blueprints, and would
+    like to show your support or just say thank you?** [Click Here](https://www.paypal.com/donate/?hosted_button_id=WAZS3QSDTPGA8)
+    \U0001F642\n\n<details> <summary><b>The Automation Process:</b> - Click here to
+    expand</summary>\n\n- **Trigger Entity State:**\n  - When the entity is turned
+    ON manually, it will automatically turn OFF after the pre-set time delay.\n\n-
+    **Trigger Entity Synchronize Option:**\n  - When using multiple entities, if one
+    entity changes state (manually turned ON or OFF), all entities will automatically
+    synchronize their state.\n\n- **Motion Sensor Option:**\n    - When the light
+    is turned ON manually and motion is detected by the sensor, the timer will be
+    paused.\n    - Once motion is cleared, the timer will reset back to the start.\n
+    \   - If you are not using a timer, it will restart the timed delay once motion
+    is cleared.\n\n- **Timer Helper Option:**\n  - Option to use a timer helper.\n
+    \ - Display remaining time on your UI dashboard.\n  - Easily manage timers by
+    pausing, cancelling, or completing them from the user interface.\n\n- **HA Restart
+    Behaviour:**\n  - With a timer helper:\n    - It will resume after a Home Assistant
+    restart, maintaining the timer's state.\n  - Without a timer helper:\n    - After
+    a Home Assistant restart, the automation will attempt to reset, restarting the
+    time delay from the beginning.\n</details>\n\nNeed help? See our FAQ: [Click Here](https://community.home-assistant.io/t/688273/2)\nLet
+    us know what you think of this blueprint and for community support including updates:
+    [Click Here](https://community.home-assistant.io/t/688273/1)\n\nRequired = *\n"
+  domain: automation
+  input:
+    trigger_input:
+      name: Trigger - Lights & Switches *
+      description: 'Select the entities that will automatically switch OFF after the
+        specified time delay.
+
+
+        **Note** - All entities must have an ON and OFF state.'
+      selector:
+        entity:
+          filter:
+          - domain:
+            - light
+            - switch
+          multiple: true
+    include_trigger_sync:
+      name: Use The Synchronized Option (Optional)
+      description: Select this option if you would like to synchronize the ON/OFF
+        states of all selected entities. For example, if more than one entity is selected,
+        they will automatically turn ON and OFF together in sync.
+      default: disable_trigger_sync
+      selector:
+        select:
+          options:
+          - label: Enable the synchronize option
+            value: enable_trigger_sync
+          - label: Disable the synchronize option
+            value: disable_trigger_sync
+          custom_value: false
+          sort: false
+          multiple: false
+    include_motion_trigger:
+      name: Use The Motion Sensor Option (Optional)
+      description: 'Enable this option to utilize a motion sensor for pausing your
+        timer upon detection and resetting it when motion is cleared.
+
+
+        **Note** - This feature only operates if the entity is in the selected trigger
+        state (ON or OFF).'
+      default: disable_motion_trigger
+      selector:
+        select:
+          options:
+          - label: Enable the motion sensor option
+            value: enable_motion_trigger
+          - label: Disable the motion sensor option
+            value: disable_motion_trigger
+          custom_value: false
+          sort: false
+          multiple: false
+    motion_trigger:
+      name: Motion Sensor - Binary Sensors
+      description: 'Select a motion sensors or any binary sensors you would like to
+        use. If you plan to use multiple sensors, it''s recommended to group them
+        together using a group helper. This ensures smoother automation execution
+        and helps prevent conflicts.
+
+
+        For more information on grouping your trigger sensors [Click Here](https://community.home-assistant.io/t/688273/3)'
+      default: []
+      selector:
+        entity:
+          filter:
+          - domain:
+            - binary_sensor
+          multiple: false
+    include_timer_helper:
+      name: Use The Timer Helper Option (Optional)
+      description: 'Select enable if you would like to use a timer helper.
+
+
+        **Note** - When creating your timer helper, make sure you tick the box "Restore"
+        so it will survive a HA restart. Don''t set any time in the timer helper duration,
+        use the time settings below.
+
+
+        For more information on a timer helper [Click Here](https://community.home-assistant.io/t/688273/4)'
+      default: disable_timer_helper
+      selector:
+        select:
+          options:
+          - label: Enable the timer helper option
+            value: enable_timer_helper
+          - label: Disable timer helper option
+            value: disable_timer_helper
+          custom_value: false
+          sort: false
+          multiple: false
+    timer_helper:
+      name: Timer Helper
+      description: Select the timer helper to be used if you have chosen to use a
+        timer helper above.
+      default: []
+      selector:
+        entity:
+          filter:
+          - domain:
+            - timer
+          multiple: false
+    time_delay:
+      name: Time Delay
+      description: The time delay governs how long lights and switches stay active
+        after being turned on. Incorporating a motion sensor ensures continual reset
+        of this delay. Upon motion clearance, the timer resets to initiate the auto
+        turn OFF.
+      default: 00:05:00
+      selector:
+        duration: {}
+  source_url: https://gist.github.com/Blackshome/9f9785d7aa0ba7978fa6515a2d73d192
+mode: restart
+max_exceeded: silent
+variables:
+  trigger_input: !input trigger_input
+  include_trigger_sync: !input include_trigger_sync
+  include_motion_trigger: !input include_motion_trigger
+  motion_trigger: !input motion_trigger
+  include_timer_helper: !input include_timer_helper
+  timer_helper: !input timer_helper
+  time_delay: !input time_delay
+trigger:
+- platform: state
+  id: t1_start
+  entity_id: !input trigger_input
+  from: 'off'
+  to: 'on'
+- platform: state
+  id: t1_end
+  entity_id: !input trigger_input
+  from: 'on'
+  to: 'off'
+- platform: state
+  id: t1_synced
+  entity_id: !input trigger_input
+  from: 'on'
+  to: 'off'
+- platform: state
+  entity_id: !input timer_helper
+  to: idle
+  id: t2
+- platform: state
+  id: t3
+  entity_id: !input motion_trigger
+  from: 'off'
+  to: 'on'
+- platform: homeassistant
+  id: t4
+  event: start
+condition:
+- condition: or
+  conditions:
+  - condition: and
+    conditions:
+    - condition: trigger
+      id: t1_start
+    - condition: state
+      entity_id: !input trigger_input
+      match: any
+      state: 'on'
+  - condition: and
+    conditions:
+    - condition: trigger
+      id: t1_end
+    - condition: state
+      entity_id: !input trigger_input
+      match: all
+      state: 'off'
+    - condition: state
+      entity_id: !input timer_helper
+      state: active
+  - condition: and
+    conditions:
+    - condition: trigger
+      id: t1_synced
+    - '{{include_trigger_sync == ''enable_trigger_sync''}}'
+  - condition: and
+    conditions:
+    - condition: trigger
+      id: t2
+    - '{{include_timer_helper == ''enable_timer_helper''}}'
+    - '{{ expand(trigger_input) | selectattr(''state'', ''=='', ''on'') | list | count
+      > 0 }}'
+  - condition: and
+    conditions:
+    - condition: trigger
+      id: t3
+    - '{{include_motion_trigger == ''enable_motion_trigger''}}'
+    - '{{ expand(trigger_input) | selectattr(''state'', ''=='', ''on'') | list | count
+      > 0 }}'
+  - condition: and
+    conditions:
+    - condition: trigger
+      id: t4
+    - '{{include_timer_helper == ''enable_timer_helper''}}'
+    - '{{ expand(trigger_input) | selectattr(''state'', ''=='', ''on'') | list | count
+      > 0 }}'
+  - condition: and
+    conditions:
+    - condition: trigger
+      id: t4
+    - '{{include_timer_helper == ''disable_timer_helper''}}'
+    - '{{ expand(trigger_input) | selectattr(''state'', ''=='', ''on'') | list | count
+      > 0 }}'
+action:
+- choose:
+  - alias: Check if the time helper is enabled
+    conditions:
+    - '{{include_timer_helper == ''enable_timer_helper''}}'
+    - condition: trigger
+      id:
+      - t1_start
+    sequence:
+    - choose:
+      - alias: If trigger sync is selected
+        conditions:
+        - condition: template
+          value_template: '{{include_trigger_sync == ''enable_trigger_sync''}}'
+        sequence:
+        - alias: Turn ON the entities
+          service: homeassistant.turn_on
+          entity_id: !input trigger_input
+    - alias: Turn ON the timer helper
+      service: timer.start
+      entity_id: !input timer_helper
+      data:
+        duration: !input time_delay
+    - choose:
+      - alias: Check if motion trigger is enabled and on
+        conditions:
+        - condition: template
+          value_template: '{{include_motion_trigger == ''enable_motion_trigger''}}'
+        - condition: state
+          entity_id: !input motion_trigger
+          state: 'on'
+        sequence:
+        - alias: Pause the timer helper
+          service: timer.pause
+          entity_id: !input timer_helper
+        - alias: Wait until motion sensor is off
+          wait_for_trigger:
+            platform: state
+            entity_id: !input motion_trigger
+            from: 'on'
+            to: 'off'
+        - alias: Turn ON the timer helper
+          service: timer.start
+          entity_id: !input timer_helper
+          data:
+            duration: !input time_delay
+  - alias: Check if the time helper is disabled
+    conditions:
+    - '{{include_timer_helper == ''disable_timer_helper''}}'
+    - condition: trigger
+      id:
+      - t1_start
+    sequence:
+    - choose:
+      - alias: If trigger sync is selected
+        conditions:
+        - condition: template
+          value_template: '{{include_trigger_sync == ''enable_trigger_sync''}}'
+        sequence:
+        - alias: Turn ON the entities
+          service: homeassistant.turn_on
+          entity_id: !input trigger_input
+    - choose:
+      - alias: If trigger sync is selected
+        conditions:
+        - condition: template
+          value_template: '{{include_motion_trigger == ''enable_motion_trigger''}}'
+        - condition: state
+          entity_id: !input motion_trigger
+          state: 'on'
+        sequence:
+        - alias: Wait until motion sensor is off
+          wait_for_trigger:
+            platform: state
+            entity_id: !input motion_trigger
+            from: 'on'
+            to: 'off'
+    - alias: Wait for the time that has been set in the time delay
+      delay: !input time_delay
+    - alias: Turn OFF the entities
+      service: homeassistant.turn_off
+      entity_id: !input trigger_input
+  - alias: Check if the time helper is enabled and cancel it
+    conditions:
+    - '{{include_timer_helper == ''enable_timer_helper''}}'
+    - condition: trigger
+      id:
+      - t1_end
+    sequence:
+    - alias: Cancel the timer helper
+      service: timer.cancel
+      entity_id: !input timer_helper
+  - alias: Check if the trigger entity sync is enabled and manual turn OFF
+    conditions:
+    - condition: trigger
+      id:
+      - t1_synced
+    sequence:
+    - alias: Turn OFF the entities
+      service: homeassistant.turn_off
+      entity_id: !input trigger_input
+    - choose:
+      - alias: Check if the timer helper is enabled
+        conditions:
+        - '{{include_timer_helper == ''enable_timer_helper''}}'
+        sequence:
+        - alias: Cancel the timer helper
+          service: timer.cancel
+          entity_id: !input timer_helper
+  - alias: Turn OFF entities when the timer helper is finished
+    conditions:
+    - condition: trigger
+      id:
+      - t2
+    sequence:
+    - alias: Turn OFF the entities
+      service: homeassistant.turn_off
+      entity_id: !input trigger_input
+  - alias: Motion id detected and timer is enabled then preform the correct action
+    conditions:
+    - '{{include_timer_helper == ''enable_timer_helper''}}'
+    - condition: trigger
+      id:
+      - t3
+    sequence:
+    - alias: Pause the timer helper
+      service: timer.pause
+      entity_id: !input timer_helper
+    - alias: Wait until motion sensor is off
+      wait_for_trigger:
+        platform: state
+        entity_id: !input motion_trigger
+        from: 'on'
+        to: 'off'
+    - alias: Turn ON the timer helper
+      service: timer.start
+      entity_id: !input timer_helper
+      data:
+        duration: !input time_delay
+  - alias: Motion id detected and timer is disabled then preform the correct action
+    conditions:
+    - '{{include_timer_helper == ''disable_timer_helper''}}'
+    - condition: trigger
+      id:
+      - t3
+    sequence:
+    - alias: Wait until motion sensor is off
+      wait_for_trigger:
+        platform: state
+        entity_id: !input motion_trigger
+        from: 'on'
+        to: 'off'
+    - alias: Wait for the time that has been set
+      delay: !input time_delay
+    - alias: Turn OFF the entities
+      service: homeassistant.turn_off
+      entity_id: !input trigger_input
+  - alias: Home Assistant Restart
+    conditions:
+    - condition: trigger
+      id: t4
+    sequence:
+    - choose:
+      - alias: HA Restart timer enabled and motion is on
+        conditions:
+        - '{{include_timer_helper == ''enable_timer_helper''}}'
+        - '{{include_motion_trigger == ''enable_motion_trigger''}}'
+        - condition: state
+          entity_id: !input motion_trigger
+          state: 'on'
+        sequence:
+        - choose:
+          - alias: Check if the timer is paused
+            conditions:
+            - condition: state
+              entity_id: !input timer_helper
+              state: paused
+            sequence:
+            - alias: Pause the timer helper
+              service: timer.pause
+              entity_id: !input timer_helper
+            - alias: Wait until motion sensor is off
+              wait_for_trigger:
+                platform: state
+                entity_id: !input motion_trigger
+                from: 'on'
+                to: 'off'
+            - alias: Turn ON the timer helper
+              service: timer.start
+              entity_id: !input timer_helper
+              data:
+                duration: !input time_delay
+          - alias: Ceck if the timer is idle
+            conditions:
+            - condition: state
+              entity_id: !input timer_helper
+              state: idle
+            sequence:
+            - alias: Turn OFF the entities
+              service: homeassistant.turn_off
+              entity_id: !input trigger_input
+      - alias: HA Restart timer enabled and motion is off
+        conditions:
+        - '{{include_timer_helper == ''enable_timer_helper''}}'
+        - '{{include_motion_trigger == ''enable_motion_trigger''}}'
+        - condition: state
+          entity_id: !input motion_trigger
+          state: 'off'
+        sequence:
+        - choose:
+          - alias: Check if the timer is paused
+            conditions:
+            - condition: state
+              entity_id: !input timer_helper
+              state: paused
+            sequence:
+            - alias: Turn ON the timer helper
+              service: timer.start
+              entity_id: !input timer_helper
+              data:
+                duration: !input time_delay
+          - alias: Ceck if the timer is idle
+            conditions:
+            - condition: state
+              entity_id: !input timer_helper
+              state: idle
+            sequence:
+            - alias: Turn OFF the entities
+              service: homeassistant.turn_off
+              entity_id: !input trigger_input
+      - alias: HA Restart timer enabled and motion is off
+        conditions:
+        - '{{include_timer_helper == ''enable_timer_helper''}}'
+        - '{{include_motion_trigger == ''disable_motion_trigger''}}'
+        sequence:
+        - choose:
+          - alias: Check if the timer is paused
+            conditions:
+            - condition: state
+              entity_id: !input timer_helper
+              state: paused
+            sequence:
+            - alias: Turn ON the timer helper
+              service: timer.start
+              entity_id: !input timer_helper
+              data:
+                duration: !input time_delay
+          - alias: Ceck if the timer is idle
+            conditions:
+            - condition: state
+              entity_id: !input timer_helper
+              state: idle
+            sequence:
+            - alias: Turn OFF the entities
+              service: homeassistant.turn_off
+              entity_id: !input trigger_input
+      - alias: HA Restart timer disabled and motion is on
+        conditions:
+        - '{{include_timer_helper == ''disable_timer_helper''}}'
+        - '{{include_motion_trigger == ''enable_motion_trigger''}}'
+        - condition: state
+          entity_id: !input motion_trigger
+          state: 'on'
+        sequence:
+        - alias: Wait until motion sensor is off
+          wait_for_trigger:
+            platform: state
+            entity_id: !input motion_trigger
+            from: 'on'
+            to: 'off'
+        - alias: Apply the time delay
+          delay: !input time_delay
+        - alias: Turn OFF the entities
+          service: homeassistant.turn_off
+          entity_id: !input trigger_input
+      - alias: HA Restart timer disabled and motion is off
+        conditions:
+        - '{{include_timer_helper == ''disable_timer_helper''}}'
+        - '{{include_motion_trigger == ''enable_motion_trigger''}}'
+        - condition: state
+          entity_id: !input motion_trigger
+          state: 'off'
+        sequence:
+        - alias: Apply the time delay
+          delay: !input time_delay
+        - alias: Turn OFF the entities
+          service: homeassistant.turn_off
+          entity_id: !input trigger_input
+      - alias: HA Restart timer disabled and motion is disabled
+        conditions:
+        - '{{include_timer_helper == ''disable_timer_helper''}}'
+        - '{{include_motion_trigger == ''disable_motion_trigger''}}'
+        sequence:
+        - alias: Apply the time delay
+          delay: !input time_delay
+        - alias: Turn OFF the entities
+          service: homeassistant.turn_off
+          entity_id: !input trigger_input
