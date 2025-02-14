@@ -1,0 +1,5 @@
+- name: Guests
+  id: guests
+  device_trackers: 
+    - device_tracker.guests
+    - device_tracker.ursula_s_phone
