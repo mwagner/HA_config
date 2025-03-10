@@ -3,27 +3,27 @@
   lights:
 
 # ####### ############################### #######
-# ####### Dingz Light Template livingroom #######
+# ####### Dingz Light Template Livingroom #######
 # ####### ############################### #######
 
 # ####### Spot Lights Entree
-    dingz_spotlights_entree:
-      unique_id: dingz_spotlights_entree
-      friendly_name: "Spot Lights Entree"
+    livingroom_ceiling_spotlights_main:
+      unique_id: livingroom_ceiling_spotlights_main
+      friendly_name: "Spotlights Livingroom Main"
       level_template: "{{ (state_attr('sensor.dingz_livingroom1_state', 'dimmers')[0]['output']*255/100)|int }}"
       value_template: "{{ state_attr('sensor.dingz_livingroom1_state', 'dimmers')[0]['on']}}"
       turn_on:
         service: script.dingz_light_level_generic
-        entity_id: light.dingz_spotlights_entree
+        entity_id: light.livingroom_ceiling_spotlights_main
         data:
-          brightness: "40"
+          brightness: "80"
           enum: "on"
           dimmer: 0
           ip: !secret ip_dingz_livingroom1
           force_entity: sensor.dingz_livingroom1_state
       turn_off:
         service: script.dingz_light_level_generic_onoff
-        entity_id: light.dingz_spotlights_entree
+        entity_id: light.livingroom_ceiling_spotlights_main
         data:
           enum: "off"
           dimmer: 0
@@ -31,7 +31,7 @@
           force_entity: sensor.dingz_livingroom1_state
       set_level:
         service: script.dingz_light_level_generic
-        entity_id: light.dingz_spotlights_entree
+        entity_id: light.livingroom_ceiling_spotlights_main
         data:
           brightness: "{{ (brightness * 100 / 255) | int }}"
           enum: "on"
@@ -40,23 +40,23 @@
           force_entity: sensor.dingz_livingroom1_state
 
 # ####### Spot Lights TV 
-    dingz_spotlights_tv:
-      unique_id: dingz_spotlights_tv
-      friendly_name: "Spot Lights TV"
+    livingroom_ceiling_spotlights_tv:
+      unique_id: livingroom_ceiling_spotlights_tv
+      friendly_name: "Spotlights Livingroom TV"
       level_template: "{{ (state_attr('sensor.dingz_livingroom1_state', 'dimmers')[2]['output']*255/100)|int }}"
       value_template: "{{ state_attr('sensor.dingz_livingroom1_state', 'dimmers')[2]['on']}}"
       turn_on:
         service: script.dingz_light_level_generic
-        entity_id: light.dingz_spotlights_tv
+        entity_id: light.livingroom_ceiling_spotlights_tv
         data:
-          brightness: "40"
+          brightness: "80"
           enum: "on"
           dimmer: 2
           ip: !secret ip_dingz_livingroom1
           force_entity: sensor.dingz_livingroom1_state
       turn_off:
         service: script.dingz_light_level_generic_onoff
-        entity_id: light.dingz_spotlights_tv
+        entity_id: light.livingroom_ceiling_spotlights_tv
         data:
           enum: "off"
           dimmer: 2
@@ -64,10 +64,84 @@
           force_entity: sensor.dingz_livingroom1_state
       set_level:
         service: script.dingz_light_level_generic
-        entity_id: light.dingz_spotlights_tv
+        entity_id: light.livingroom_ceiling_spotlights_tv
         data:
           brightness: "{{ (brightness * 100 / 255) | int }}"
           enum: "on"
           dimmer: 2
           ip: !secret ip_dingz_livingroom1
           force_entity: sensor.dingz_livingroom1_state
+
+# ####### ############################### #######
+# ####### Dingz Light Template Kitchen    #######
+# ####### ############################### #######
+
+# ####### Spot Lights Kitch 
+    kitchen_ceiling_spotlights:
+      unique_id: kitchen_ceiling_spotlights
+      friendly_name: "Spotlights Kitchen"
+      # level_template: "{{ (state_attr('sensor.dingz_livingroom1_state', 'dimmers')[2]['output']*255/100)|int }}"
+      # value_template: "{{ state_attr('sensor.dingz_livingroom1_state', 'dimmers')[2]['on']}}"
+      turn_on:
+        service: script.dingz_light_level_generic
+        entity_id: light.kitchen_ceiling_spotlights
+        data:
+        #   brightness: "80"
+        #   enum: "on"
+        #   dimmer: 2
+          ip: !secret ip_dingz_livingroom1
+        #   force_entity: null
+      turn_off:
+        service: script.dingz_light_level_generic_onoff
+        entity_id: light.kitchen_ceiling_spotlights
+        data:
+        #   enum: "off"
+        #   dimmer: 2
+          ip: !secret ip_dingz_livingroom1
+        #   force_entity: null
+      set_level:
+        service: script.dingz_light_level_generic
+        entity_id: light.kitchen_ceiling_spotlights
+        data:
+        #   brightness: "{{ (brightness * 100 / 255) | int }}"
+        #   enum: "on"
+        #   dimmer: 2
+          ip: !secret ip_dingz_livingroom1
+        #   force_entity: null
+
+# ####### ############################### #######
+# ####### Dingz Light Template Hallway    #######
+# ####### ############################### #######
+
+# ####### Spot Lights Hallway 
+    hallway_ceiling_spotlights:
+      unique_id: hallway_ceiling_spotlights
+      friendly_name: "Spotlights Hallway"
+      # level_template: "{{ (state_attr('sensor.dingz_livingroom1_state', 'dimmers')[2]['output']*255/100)|int }}"
+      # value_template: "{{ state_attr('sensor.dingz_livingroom1_state', 'dimmers')[2]['on']}}"
+      turn_on:
+        service: script.dingz_light_level_generic
+        entity_id: light.hallway_ceiling_spotlights
+        data:
+        #   brightness: "80"
+        #   enum: "on"
+        #   dimmer: 2
+          ip: !secret ip_dingz_livingroom1
+        #   force_entity: null
+      turn_off:
+        service: script.dingz_light_level_generic_onoff
+        entity_id: light.hallway_ceiling_spotlights
+        data:
+        #   enum: "off"
+        #   dimmer: 2
+          ip: !secret ip_dingz_livingroom1
+        #   force_entity: null
+      set_level:
+        service: script.dingz_light_level_generic
+        entity_id: light.hallway_ceiling_spotlights
+        data:
+        #   brightness: "{{ (brightness * 100 / 255) | int }}"
+        #   enum: "on"
+        #   dimmer: 2
+          ip: !secret ip_dingz_livingroom1
+        #   force_entity: null

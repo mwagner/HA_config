@@ -11,7 +11,7 @@
     label_use_temperature: true
     label_use_brightness: false
     entity_1:
-      entity_id: light.masterbedroom_ceiling_light
+      entity_id: light.masterbedroom_ceiling_lamp
       templates:
         - yellow_on
         - grey_no_state

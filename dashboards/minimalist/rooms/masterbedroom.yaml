@@ -42,7 +42,7 @@
     - type: horizontal-stack
       cards:
         - type: tile
-          entity: light.masterbedroom_ceiling_light
+          entity: light.masterbedroom_ceiling_lamp
           show_entity_picture: false
           vertical: false
           hide_state: false
