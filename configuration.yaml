@@ -197,6 +197,8 @@ lovelace:
       type: module
     - url: /hacsfiles/weather-radar-card/weather-radar-card.js
       type: module
+    - url: /hacsfiles/config-template-card/config-template-card.js
+      type: module
   dashboards: !include dashboards/dashboards.yaml
 
 my:
