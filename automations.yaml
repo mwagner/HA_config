@@ -20,28 +20,62 @@
     enabled: true
   condition:
   - condition: template
-    value_template: "{% if trigger.platform == 'webhook' %}\n    true\n\n{% elif trigger.platform
-      == 'state' %}\n  {% if trigger.from_state.state != 'unavailable' %}\n    {%
-      if ( (trigger.to_state.state|lower == 'today') and (trigger.from_state.state
-      != trigger.to_state.state) ) %}\n      true\n    {% elif ( (trigger.to_state.state|lower
-      == 'tomorrow') and (trigger.from_state.state != trigger.to_state.state) ) %}\n
-      \     true\n    {% else %}\n      false\n    {% endif %}\n  {% else %}\n    false\n
-      \ {% endif %}\n\n{% elif trigger.platform == 'None' %}\n  true\n\n{% else %}\n
-      \ false\n\n{% endif %}"
+    value_template: |-
+      {% if trigger.platform == 'webhook' %}
+          true
+
+      {% elif trigger.platform == 'state' %}
+        {% if trigger.from_state.state != 'unavailable' %}
+          {% if ( (trigger.to_state.state|lower == 'today') and (trigger.from_state.state != trigger.to_state.state) ) %}
+            true
+          {% elif ( (trigger.to_state.state|lower == 'tomorrow') and (trigger.from_state.state != trigger.to_state.state) ) %}
+            true
+          {% else %}
+            false
+          {% endif %}
+        {% else %}
+          false
+        {% endif %}
+
+      {% elif trigger.platform == 'None' %}
+        true
+
+      {% else %}
+        false
+
+      {% endif %}
   action:
   - service: notify.telegram_marco
     data:
-      message: "{% if trigger.platform == 'webhook' %}\n  {% set xx = {\n    \"when\":
-        trigger.json[\"when\"],\n    \"what\": trigger.json[\"what\"]\n  } %}\n{%
-        elif trigger.platform == 'state' %}\n  {% set xx = {\n    \"when\": trigger.to_state.state,\n
-        \   \"what\": trigger.to_state.attributes.friendly_name\n  } %}\n{% else %}\n
-        \ {% set xx = {\n    \"when\": \"Today\",\n    \"what\": \"a beautiful day.\"\n
-        \ } %}\n{% endif %}\n\n{% if xx.when|lower == 'today' %}\n  {% set reminder
-        = 'REMINDER: ' %}\n{% else %}\n  {% set reminder = '' %}\n{% endif %}\n\n{{
-        reminder ~ xx.when|capitalize }} is {{ xx.what }}\n\n{% if is_state('input_boolean.env_isdev',
-        'on') -%}\n  Trigger: {{ trigger.platform }}{{\"\\r\\n\"}}Trigger from: {{
-        trigger.from_state.state}}{{\"\\r\\n\"}}Trigger to: {{ trigger.to_state.state}}\n{%
-        endif %}\n"
+      message: |-
+        {% if trigger.platform == 'webhook' %}
+          {% set xx = {
+            "when": trigger.json["when"],
+            "what": trigger.json["what"]
+          } %}
+        {% elif trigger.platform == 'state' %}
+          {% set xx = {
+            "when": trigger.to_state.state,
+            "what": trigger.to_state.attributes.friendly_name
+          } %}
+        {% else %}
+          {% set xx = {
+            "when": "Today",
+            "what": "a beautiful day."
+          } %}
+        {% endif %}
+
+        {% if xx.when|lower == 'today' %}
+          {% set reminder = 'REMINDER: ' %}
+        {% else %}
+          {% set reminder = '' %}
+        {% endif %}
+
+        {{ reminder ~ xx.when|capitalize }} is {{ xx.what }}
+
+        {% if is_state('input_boolean.env_isdev', 'on') -%}
+          Trigger: {{ trigger.platform }}{{"\r\n"}}Trigger from: {{ trigger.from_state.state}}{{"\r\n"}}Trigger to: {{ trigger.to_state.state}}
+        {% endif %}
     enabled: true
   - service: logbook.log
     metadata: {}
