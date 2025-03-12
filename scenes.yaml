@@ -1,1 +1,41 @@
-[]
+- id: '1736537543822'
+  name: Office Room Default
+  entities:
+    light.officeroom_ceiling_lamp:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 454
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - candle
+      - finish_effect
+      - stop_effect
+      - stop_hue_effect
+      supported_color_modes:
+      - color_temp
+      effect:
+      color_mode: color_temp
+      brightness: 255
+      color_temp_kelvin: 3500
+      color_temp: 275
+      hs_color:
+      - 27.037
+      - 41.629
+      rgb_color:
+      - 255
+      - 200
+      - 150
+      xy_color:
+      - 0.442
+      - 0.371
+      friendly_name: Officeroom/Ceiling Lamp
+      supported_features: 44
+      state: 'on'
+  metadata:
+    light.officeroom_ceiling_lamp:
+      entity_only: true
+  icon: mdi:ceiling-light
