@@ -4,7 +4,7 @@
   name: masterbedroom_lights
   unique_id: masterbedroom_lights
   entities:
-    - light.masterbedroom_ceiling_light
+    - light.masterbedroom_ceiling_lamp
     - light.marco_s_yeelight
     - light.sharene_s_yeelight
 

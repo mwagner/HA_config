@@ -20,28 +20,62 @@
     enabled: true
   condition:
   - condition: template
-    value_template: "{% if trigger.platform == 'webhook' %}\n    true\n\n{% elif trigger.platform
-      == 'state' %}\n  {% if trigger.from_state.state != 'unavailable' %}\n    {%
-      if ( (trigger.to_state.state|lower == 'today') and (trigger.from_state.state
-      != trigger.to_state.state) ) %}\n      true\n    {% elif ( (trigger.to_state.state|lower
-      == 'tomorrow') and (trigger.from_state.state != trigger.to_state.state) ) %}\n
-      \     true\n    {% else %}\n      false\n    {% endif %}\n  {% else %}\n    false\n
-      \ {% endif %}\n\n{% elif trigger.platform == 'None' %}\n  true\n\n{% else %}\n
-      \ false\n\n{% endif %}"
+    value_template: |-
+      {% if trigger.platform == 'webhook' %}
+          true
+
+      {% elif trigger.platform == 'state' %}
+        {% if trigger.from_state.state != 'unavailable' %}
+          {% if ( (trigger.to_state.state|lower == 'today') and (trigger.from_state.state != trigger.to_state.state) ) %}
+            true
+          {% elif ( (trigger.to_state.state|lower == 'tomorrow') and (trigger.from_state.state != trigger.to_state.state) ) %}
+            true
+          {% else %}
+            false
+          {% endif %}
+        {% else %}
+          false
+        {% endif %}
+
+      {% elif trigger.platform == 'None' %}
+        true
+
+      {% else %}
+        false
+
+      {% endif %}
   action:
   - service: notify.telegram_marco
     data:
-      message: "{% if trigger.platform == 'webhook' %}\n  {% set xx = {\n    \"when\":
-        trigger.json[\"when\"],\n    \"what\": trigger.json[\"what\"]\n  } %}\n{%
-        elif trigger.platform == 'state' %}\n  {% set xx = {\n    \"when\": trigger.to_state.state,\n
-        \   \"what\": trigger.to_state.attributes.friendly_name\n  } %}\n{% else %}\n
-        \ {% set xx = {\n    \"when\": \"Today\",\n    \"what\": \"a beautiful day.\"\n
-        \ } %}\n{% endif %}\n\n{% if xx.when|lower == 'today' %}\n  {% set reminder
-        = 'REMINDER: ' %}\n{% else %}\n  {% set reminder = '' %}\n{% endif %}\n\n{{
-        reminder ~ xx.when|capitalize }} is {{ xx.what }}\n\n{% if is_state('input_boolean.env_isdev',
-        'on') -%}\n  Trigger: {{ trigger.platform }}{{\"\\r\\n\"}}Trigger from: {{
-        trigger.from_state.state}}{{\"\\r\\n\"}}Trigger to: {{ trigger.to_state.state}}\n{%
-        endif %}\n"
+      message: |-
+        {% if trigger.platform == 'webhook' %}
+          {% set xx = {
+            "when": trigger.json["when"],
+            "what": trigger.json["what"]
+          } %}
+        {% elif trigger.platform == 'state' %}
+          {% set xx = {
+            "when": trigger.to_state.state,
+            "what": trigger.to_state.attributes.friendly_name
+          } %}
+        {% else %}
+          {% set xx = {
+            "when": "Today",
+            "what": "a beautiful day."
+          } %}
+        {% endif %}
+
+        {% if xx.when|lower == 'today' %}
+          {% set reminder = 'REMINDER: ' %}
+        {% else %}
+          {% set reminder = '' %}
+        {% endif %}
+
+        {{ reminder ~ xx.when|capitalize }} is {{ xx.what }}
+
+        {% if is_state('input_boolean.env_isdev', 'on') -%}
+          Trigger: {{ trigger.platform }}{{"\r\n"}}Trigger from: {{ trigger.from_state.state}}{{"\r\n"}}Trigger to: {{ trigger.to_state.state}}
+        {% endif %}
     enabled: true
   - service: logbook.log
     metadata: {}
@@ -73,4 +107,185 @@
       message: Speed of "{{ trigger.to_state.attributes.friendly_name }}" has changed
         from {{ trigger.from_state.attributes.rotations }} to {{ trigger.to_state.attributes.rotations
         }}
+  mode: single
+- id: '1737293327362'
+  alias: Turn on lights living room
+  description: ''
+  triggers:
+  - trigger: time
+    at: '18:00:00'
+  conditions: []
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data:
+      brightness_pct: 80
+    target:
+      entity_id: light.livingroom_ceiling_spotlights_main
+  - action: light.turn_on
+    metadata: {}
+    data:
+      brightness_pct: 50
+    target:
+      entity_id:
+      - light.livingroom_ceiling_spotlights_tv
+  mode: single
+- id: '1737295594564'
+  alias: Turn off lights in living room
+  description: ''
+  triggers:
+  - trigger: time
+    at: '22:00:00'
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - light.livingroom_ceiling_spotlights_main
+      - light.livingroom_ceiling_spotlights_tv
+  mode: single
+- id: '1737296622828'
+  alias: Turn on lights in Edward's Bedroom
+  description: ''
+  triggers:
+  - trigger: time
+    at: '19:00:00'
+  conditions: []
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - light.kidsbedroom_ceiling_lamp
+  mode: single
+- id: '1737296695128'
+  alias: Turn off lights in Edward's Bedroom
+  description: ''
+  triggers:
+  - trigger: time
+    at: '20:10:00'
+    enabled: true
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - light.kidsbedroom_ceiling_lamp
+  - action: notify.telegram_marco
+    metadata: {}
+    data:
+      message: Device has been switched off.
+  mode: single
+- id: '1737297182930'
+  alias: Turn on lights in Master bedroom
+  description: ''
+  triggers:
+  - trigger: time
+    at: '21:45:00'
+  conditions: []
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.masterbedroom_ceiling_lamp
+  mode: single
+- id: '1737297195870'
+  alias: Turn off lights in Master bedroom
+  description: ''
+  triggers:
+  - trigger: time
+    at: '22:10:00'
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.masterbedroom_ceiling_lamp
+  mode: single
+- id: '1739943368515'
+  alias: New automation
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - repeat:
+      sequence:
+      - action: light.turn_on
+        metadata: {}
+        data:
+          brightness_step: 1
+        target:
+          entity_id: light.dingz_spotlights_tv
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 0
+          milliseconds: 500
+      until:
+      - condition: state
+        entity_id: light.dingz_spotlights_tv
+        attribute: brightness
+        state: '255'
+  mode: single
+- id: '1740608737946'
+  alias: Off all lights
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      device_id:
+      - cd805652c0dd0673a0934baea4d7946f
+      - 9882094d8468eceb4a08d204bd0fc951
+      - 9b623c46730705456f7269340d04031d
+      - 8ec82fe86697b11d630536d65823ea7e
+      - 84ffebdb206f16bb9228f1f5fb85522d
+      entity_id:
+      - light.dingz_spotlights_tv
+      - light.dingz_spotlights_entree
+  mode: single
+- id: '1740637352516'
+  alias: Off all lights
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - light.officeroom_lights
+      - light.kidsbedroom_lights
+      - light.guestbedroom_lights
+      - light.masterbedroom_lights
+      - light.livingroom_lights
+  mode: single
+- id: '1740637409889'
+  alias: Test off all lights
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 77e97381ceb9d31a50001e9b0c535669
+    type: action
+    subtype: 'on'
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - light.livingroom_lights
   mode: single

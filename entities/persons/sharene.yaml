@@ -1,0 +1,5 @@
+- name: Sharene
+  id: sharene
+  user_id: !secret userid_sharene
+  device_trackers:
+    - device_tracker.sharene_s_phone
