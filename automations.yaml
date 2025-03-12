@@ -254,3 +254,38 @@
       - light.dingz_spotlights_tv
       - light.dingz_spotlights_entree
   mode: single
+- id: '1740637352516'
+  alias: Off all lights
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - light.officeroom_lights
+      - light.kidsbedroom_lights
+      - light.guestbedroom_lights
+      - light.masterbedroom_lights
+      - light.livingroom_lights
+  mode: single
+- id: '1740637409889'
+  alias: Test off all lights
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 77e97381ceb9d31a50001e9b0c535669
+    type: action
+    subtype: 'on'
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - light.livingroom_lights
+  mode: single
