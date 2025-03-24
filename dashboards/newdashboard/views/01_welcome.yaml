@@ -2,7 +2,210 @@
 - title: Home
   path: home
   icon: mdi:home-outline
+
   type: sections
   max_columns: 1
-
   sections:
+    - type: grid
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: custom:mushroom-template-card
+              primary: House
+              secondary: ""
+              icon: mdi:home
+              icon_color: blue
+              layout: vertical
+              tap_action:
+                action: navigate
+                navigation_path: house
+            - type: custom:mushroom-template-card
+              primary: Lights
+              secondary: ""
+              icon: mdi:lightbulb
+              icon_color: amber
+              layout: vertical
+              tap_action:
+                action: navigate
+                navigation_path: lights
+            - type: custom:mushroom-template-card
+              primary: Security
+              secondary: ""
+              icon: >-
+                {% if is_state('alarm_control_panel.home_alarm_panel',
+                'armed_home') or is_state('alarm_control_panel.home_alarm_panel',
+                'armed_away') %}
+                  mdi:shield-lock
+                {% else %}
+                  mdi:shield-lock-open
+                {% endif %}
+              icon_color: >-
+                {% if is_state('alarm_control_panel.home_alarm_panel',
+                'armed_home') or is_state('alarm_control_panel.home_alarm_panel',
+                'armed_away') %}
+                  green
+                {% else %}
+                  blue
+                {% endif %}
+              layout: vertical
+              tap_action:
+                action: navigate
+                navigation_path: /dashboard-mobile/security
+            - type: custom:mushroom-template-card
+              primary: Network
+              secondary: ""
+              icon: mdi:network
+              icon_color: ""
+              layout: vertical
+          grid_options:
+            columns: 36
+            rows: auto
+        - type: horizontal-stack
+          cards:
+            - type: tile
+              entity: person.marco
+              show_entity_picture: true
+              features_position: bottom
+              vertical: false
+              tap_action:
+                action: none
+            - type: tile
+              entity: person.sharene
+              show_entity_picture: true
+              features_position: bottom
+              vertical: false
+              tap_action:
+                action: none
+            - type: tile
+              entity: person.guests
+              show_entity_picture: true
+              features_position: bottom
+              vertical: false
+              tap_action:
+                action: none
+          grid_options:
+            columns: 36
+            rows: auto
+      column_span: 3
+    - type: grid
+      cards:
+        - type: heading
+          heading: Office
+          heading_style: title
+          icon: mdi:desk
+          badges: []
+          tap_action:
+            action: navigate
+            navigation_path: /dashboard-new/office
+        - graph: line
+          type: sensor
+          entity: sensor.office_room_temperature
+          detail: 1
+          name: Temperature
+        - type: custom:mushroom-template-card
+          primary: Lights
+          secondary: "{{ states('light.officeroom_lights') }}"
+          icon: mdi:lightbulb-group
+          entity: light.officeroom_lights
+          badge_icon: |-
+            {% if is_state('binary_sensor.officeroom_motionsensor_occupancy', 'on') %}
+              mdi:motion-sensor
+            {% elif is_state('binary_sensor.officeroom_motionsensor_occupancy', 'off' ) %}
+              mdi:motion-sensor-off
+            {% else %}
+            {% endif %}
+          badge_color: |-
+            {% if is_state('binary_sensor.officeroom_motionsensor_occupancy', 'on') %}
+              red
+            {% elif is_state('binary_sensor.officeroom_motionsensor_occupancy', 'off' ) %}
+            {% else %}
+            {% endif %}
+          fill_container: false
+          multiline_secondary: false
+          icon_color: |-
+            {% if is_state('light.officeroom_lights', 'on') %}
+              orange  
+            {% endif %}
+          hold_action:
+            action: none
+          double_tap_action:
+            action: none
+          tap_action:
+            action: perform-action
+            perform_action: light.turn_off
+            target:
+              entity_id: light.officeroom_lights
+        - type: custom:mushroom-light-card
+          fill_container: false
+          entity: light.officeroom_ceiling_lamp
+        - type: custom:gap-card
+          grid_options:
+            columns: 6
+            rows: 1
+        - type: custom:mushroom-light-card
+          fill_container: false
+          entity: light.officeroom_led_strip
+    - type: grid
+      cards:
+        - type: heading
+          heading_style: title
+          icon: mdi:bed-double-outline
+          heading: Master bedroom
+        - graph: line
+          type: sensor
+          entity: sensor.office_room_office_room_office_room_master_bedroom_temperature
+          detail: 1
+          name: Temperature
+        - type: custom:mushroom-template-card
+          primary: Lights
+          secondary: "{{ states('light.masterbedroom_lights') }} "
+          icon: mdi:lightbulb-group
+          entity: light.masterbedroom_lights
+          badge_icon: |-
+            {% if is_state('binary_sensor.masterbedroom_motionsensor_occupancy', 'on') %}
+              mdi:motion-sensor
+            {% elif is_state('binary_sensor.masterbedroom_motionsensor_occupancy', 'off' ) %}
+              mdi:motion-sensor-off
+            {% else %}
+            {% endif %}
+          badge_color: |-
+            {% if is_state('binary_sensor.masterbedroom_motionsensor_occupancy', 'on') %}
+              red
+            {% elif is_state('binary_sensor.masterbedroom_motionsensor_occupancy', 'off' ) %}
+            {% else %}
+            {% endif %}
+          fill_container: false
+          multiline_secondary: false
+          icon_color: |-
+            {% if is_state('light.masterbedroom_lights', 'on') %}
+              orange
+            {% endif %}
+          tap_action:
+            action: perform-action
+            perform_action: light.turn_off
+            target:
+              entity_id: light.masterbedroom_lights
+          hold_action:
+            action: none
+          double_tap_action:
+            action: none
+        - type: custom:mushroom-light-card
+          fill_container: false
+          entity: light.masterbedroom_ceiling_lamp
+        - type: tile
+          entity: light.sharene_s_yeelight
+        - type: tile
+          entity: light.marco_s_yeelight
+  header:
+    card:
+      type: markdown
+      text_only: true
+      content: |-
+        # Hello {{ user }}
+        Add your text here, template variables are supported ✨
+    layout: center
+    badges_position: bottom
+  type: sections
+  max_columns: 2
+  layout: {}
+  cards: []

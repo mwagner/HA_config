@@ -1,0 +1,657 @@
+- title: Floorplan
+  path: floorplan
+  # icon: mdi:floor-plan
+
+  type: panel
+  image: /local/floorplan/base.png?version=812897947D63C6C6C64A46C452364205
+  elements:
+    - type: custom:config-template-card
+      variables:
+        LIGHT_STATE: states['light.livingroom_ceiling_spotlights_tv'].state
+        COLOR_MODE: states['light.livingroom_ceiling_spotlights_tv'].attributes.color_mode
+        LIGHT_COLOR: states['light.livingroom_ceiling_spotlights_tv'].attributes.hs_color
+        BRIGHTNESS: states['light.livingroom_ceiling_spotlights_tv'].attributes.brightness
+      entities:
+        - light.livingroom_ceiling_spotlights_tv
+      element:
+        type: image
+        image: >-
+          /local/floorplan/transparent.png?version=56ABE4CBC175363DA0810882244B34FF
+        state_image:
+          "on": >-
+            ${COLOR_MODE === 'color_temp' || COLOR_MODE === 'brightness' ||
+            ((COLOR_MODE === 'rgb' || COLOR_MODE === 'hs') && LIGHT_COLOR &&
+            LIGHT_COLOR[0] == 0 && LIGHT_COLOR[1] == 0) ?
+            '/local/floorplan/light.livingroom_ceiling_spotlights_tv.png?version=91FE0144066A6FA4F7E5E374FC9EE97D'
+            :
+            '/local/floorplan/light.livingroom_ceiling_spotlights_tv.red.png?version=B9ECC7DE4942D5C758E7083E76B012B7'
+            }
+        entity: light.livingroom_ceiling_spotlights_tv
+      style:
+        filter: "${ \"hue-rotate(\" + (LIGHT_COLOR ? LIGHT_COLOR[0] : 0) + \"deg)\"}"
+        opacity: "${LIGHT_STATE === 'on' ? (BRIGHTNESS / 255) : '100'}"
+        mix-blend-mode: lighten
+        pointer-events: none
+        left: 50%
+        top: 50%
+        width: 100%
+    - type: custom:config-template-card
+      variables:
+        LIGHT_STATE: states['light.kitchen_ceiling_spotlights'].state
+        COLOR_MODE: states['light.kitchen_ceiling_spotlights'].attributes.color_mode
+        LIGHT_COLOR: states['light.kitchen_ceiling_spotlights'].attributes.hs_color
+        BRIGHTNESS: states['light.kitchen_ceiling_spotlights'].attributes.brightness
+      entities:
+        - light.kitchen_ceiling_spotlights
+      element:
+        type: image
+        image: >-
+          /local/floorplan/transparent.png?version=56ABE4CBC175363DA0810882244B34FF
+        state_image:
+          "on": >-
+            ${COLOR_MODE === 'color_temp' || COLOR_MODE === 'brightness' ||
+            ((COLOR_MODE === 'rgb' || COLOR_MODE === 'hs') && LIGHT_COLOR &&
+            LIGHT_COLOR[0] == 0 && LIGHT_COLOR[1] == 0) ?
+            '/local/floorplan/light.kitchen_ceiling_spotlights.png?version=73D0DBB5BB16BA27FBB4F3B4DF7E44CE'
+            :
+            '/local/floorplan/light.kitchen_ceiling_spotlights.red.png?version=EB1E04E69773BAF7FCADD48585131A1E'
+            }
+        entity: light.kitchen_ceiling_spotlights
+      style:
+        filter: "${ \"hue-rotate(\" + (LIGHT_COLOR ? LIGHT_COLOR[0] : 0) + \"deg)\"}"
+        opacity: "${LIGHT_STATE === 'on' ? (BRIGHTNESS / 255) : '100'}"
+        mix-blend-mode: lighten
+        pointer-events: none
+        left: 50%
+        top: 50%
+        width: 100%
+    - type: custom:config-template-card
+      variables:
+        LIGHT_STATE: states['light.kidsbedroom_ceiling_lamp'].state
+        COLOR_MODE: states['light.kidsbedroom_ceiling_lamp'].attributes.color_mode
+        LIGHT_COLOR: states['light.kidsbedroom_ceiling_lamp'].attributes.hs_color
+        BRIGHTNESS: states['light.kidsbedroom_ceiling_lamp'].attributes.brightness
+      entities:
+        - light.kidsbedroom_ceiling_lamp
+      element:
+        type: image
+        image: >-
+          /local/floorplan/transparent.png?version=56ABE4CBC175363DA0810882244B34FF
+        state_image:
+          "on": >-
+            ${COLOR_MODE === 'color_temp' || COLOR_MODE === 'brightness' ||
+            ((COLOR_MODE === 'rgb' || COLOR_MODE === 'hs') && LIGHT_COLOR &&
+            LIGHT_COLOR[0] == 0 && LIGHT_COLOR[1] == 0) ?
+            '/local/floorplan/light.kidsbedroom_ceiling_lamp.png?version=611E0642A779C517A95D798C9D4F7EAE'
+            :
+            '/local/floorplan/light.kidsbedroom_ceiling_lamp.red.png?version=5A57553C0511F94A2034AF12150EFEAC'
+            }
+        entity: light.kidsbedroom_ceiling_lamp
+      style:
+        filter: "${ \"hue-rotate(\" + (LIGHT_COLOR ? LIGHT_COLOR[0] : 0) + \"deg)\"}"
+        opacity: "${LIGHT_STATE === 'on' ? (BRIGHTNESS / 255) : '100'}"
+        mix-blend-mode: lighten
+        pointer-events: none
+        left: 50%
+        top: 50%
+        width: 100%
+    - type: custom:config-template-card
+      variables:
+        LIGHT_STATE: states['light.officeroom_ceiling_lamp'].state
+        COLOR_MODE: states['light.officeroom_ceiling_lamp'].attributes.color_mode
+        LIGHT_COLOR: states['light.officeroom_ceiling_lamp'].attributes.hs_color
+        BRIGHTNESS: states['light.officeroom_ceiling_lamp'].attributes.brightness
+      entities:
+        - light.officeroom_ceiling_lamp
+      element:
+        type: image
+        image: >-
+          /local/floorplan/transparent.png?version=56ABE4CBC175363DA0810882244B34FF
+        state_image:
+          "on": >-
+            ${COLOR_MODE === 'color_temp' || COLOR_MODE === 'brightness' ||
+            ((COLOR_MODE === 'rgb' || COLOR_MODE === 'hs') && LIGHT_COLOR &&
+            LIGHT_COLOR[0] == 0 && LIGHT_COLOR[1] == 0) ?
+            '/local/floorplan/light.officeroom_ceiling_lamp.png?version=9E237178EBB079268691BB49EFCC7FF0'
+            :
+            '/local/floorplan/light.officeroom_ceiling_lamp.red.png?version=9B32EDBE137BE2E5D3C6ADC11CE06C85'
+            }
+        entity: light.officeroom_ceiling_lamp
+      style:
+        filter: "${ \"hue-rotate(\" + (LIGHT_COLOR ? LIGHT_COLOR[0] : 0) + \"deg)\"}"
+        opacity: "${LIGHT_STATE === 'on' ? (BRIGHTNESS / 255) : '100'}"
+        mix-blend-mode: lighten
+        pointer-events: none
+        left: 50%
+        top: 50%
+        width: 100%
+    - type: custom:config-template-card
+      variables:
+        LIGHT_STATE: states['light.masterbedroom_ceiling_lamp'].state
+        COLOR_MODE: states['light.masterbedroom_ceiling_lamp'].attributes.color_mode
+        LIGHT_COLOR: states['light.masterbedroom_ceiling_lamp'].attributes.hs_color
+        BRIGHTNESS: states['light.masterbedroom_ceiling_lamp'].attributes.brightness
+      entities:
+        - light.masterbedroom_ceiling_lamp
+      element:
+        type: image
+        image: >-
+          /local/floorplan/transparent.png?version=56ABE4CBC175363DA0810882244B34FF
+        state_image:
+          "on": >-
+            ${COLOR_MODE === 'color_temp' || COLOR_MODE === 'brightness' ||
+            ((COLOR_MODE === 'rgb' || COLOR_MODE === 'hs') && LIGHT_COLOR &&
+            LIGHT_COLOR[0] == 0 && LIGHT_COLOR[1] == 0) ?
+            '/local/floorplan/light.masterbedroom_ceiling_lamp.png?version=9F0CA44E50E297931F9DB122EA103222'
+            :
+            '/local/floorplan/light.masterbedroom_ceiling_lamp.red.png?version=DA6FD23AAA5CF71B0C3C968AD084CC71'
+            }
+        entity: light.masterbedroom_ceiling_lamp
+      style:
+        filter: "${ \"hue-rotate(\" + (LIGHT_COLOR ? LIGHT_COLOR[0] : 0) + \"deg)\"}"
+        opacity: "${LIGHT_STATE === 'on' ? (BRIGHTNESS / 255) : '100'}"
+        mix-blend-mode: lighten
+        pointer-events: none
+        left: 50%
+        top: 50%
+        width: 100%
+    - type: custom:config-template-card
+      variables:
+        LIGHT_STATE: states['light.hallway_ceiling_spotlights'].state
+        COLOR_MODE: states['light.hallway_ceiling_spotlights'].attributes.color_mode
+        LIGHT_COLOR: states['light.hallway_ceiling_spotlights'].attributes.hs_color
+        BRIGHTNESS: states['light.hallway_ceiling_spotlights'].attributes.brightness
+      entities:
+        - light.hallway_ceiling_spotlights
+      element:
+        type: image
+        image: >-
+          /local/floorplan/transparent.png?version=56ABE4CBC175363DA0810882244B34FF
+        state_image:
+          "on": >-
+            ${COLOR_MODE === 'color_temp' || COLOR_MODE === 'brightness' ||
+            ((COLOR_MODE === 'rgb' || COLOR_MODE === 'hs') && LIGHT_COLOR &&
+            LIGHT_COLOR[0] == 0 && LIGHT_COLOR[1] == 0) ?
+            '/local/floorplan/light.hallway_ceiling_spotlights.png?version=15EBBCB0BDC68B0C97AC10DE190ADB21'
+            :
+            '/local/floorplan/light.hallway_ceiling_spotlights.red.png?version=A4936A3358A398470903629C5ABC0DFA'
+            }
+        entity: light.hallway_ceiling_spotlights
+      style:
+        filter: "${ \"hue-rotate(\" + (LIGHT_COLOR ? LIGHT_COLOR[0] : 0) + \"deg)\"}"
+        opacity: "${LIGHT_STATE === 'on' ? (BRIGHTNESS / 255) : '100'}"
+        mix-blend-mode: lighten
+        pointer-events: none
+        left: 50%
+        top: 50%
+        width: 100%
+    - type: custom:config-template-card
+      variables:
+        LIGHT_STATE: states['light.hallway_ceiling_spotlights'].state
+        COLOR_MODE: states['light.hallway_ceiling_spotlights'].attributes.color_mode
+        LIGHT_COLOR: states['light.hallway_ceiling_spotlights'].attributes.hs_color
+        BRIGHTNESS: states['light.hallway_ceiling_spotlights'].attributes.brightness
+      entities:
+        - light.hallway_ceiling_spotlights
+      element:
+        type: image
+        image: >-
+          /local/floorplan/transparent.png?version=56ABE4CBC175363DA0810882244B34FF
+        state_image:
+          "on": >-
+            ${COLOR_MODE === 'color_temp' || COLOR_MODE === 'brightness' ||
+            ((COLOR_MODE === 'rgb' || COLOR_MODE === 'hs') && LIGHT_COLOR &&
+            LIGHT_COLOR[0] == 0 && LIGHT_COLOR[1] == 0) ?
+            '/local/floorplan/light.hallway_ceiling_spotlights_light.livingroom_ceiling_spotlights_main.png?version=1B48C658C71A2A051A4EEE51CC978266'
+            :
+            '/local/floorplan/light.hallway_ceiling_spotlights_light.livingroom_ceiling_spotlights_main.red.png?version=928B61CF500152AAC17769C85E5E662A'
+            }
+        entity: light.hallway_ceiling_spotlights
+      style:
+        filter: "${ \"hue-rotate(\" + (LIGHT_COLOR ? LIGHT_COLOR[0] : 0) + \"deg)\"}"
+        opacity: "${LIGHT_STATE === 'on' ? (BRIGHTNESS / 255) : '100'}"
+        mix-blend-mode: lighten
+        pointer-events: none
+        left: 50%
+        top: 50%
+        width: 100%
+    - type: custom:config-template-card
+      variables:
+        LIGHT_STATE: states['light.livingroom_ceiling_spotlights_main'].state
+        COLOR_MODE: states['light.livingroom_ceiling_spotlights_main'].attributes.color_mode
+        LIGHT_COLOR: states['light.livingroom_ceiling_spotlights_main'].attributes.hs_color
+        BRIGHTNESS: states['light.livingroom_ceiling_spotlights_main'].attributes.brightness
+      entities:
+        - light.livingroom_ceiling_spotlights_main
+      element:
+        type: image
+        image: >-
+          /local/floorplan/transparent.png?version=56ABE4CBC175363DA0810882244B34FF
+        state_image:
+          "on": >-
+            ${COLOR_MODE === 'color_temp' || COLOR_MODE === 'brightness' ||
+            ((COLOR_MODE === 'rgb' || COLOR_MODE === 'hs') && LIGHT_COLOR &&
+            LIGHT_COLOR[0] == 0 && LIGHT_COLOR[1] == 0) ?
+            '/local/floorplan/light.livingroom_ceiling_spotlights_main.png?version=81E82E9D84FBF355D960B3E584E0C0C8'
+            :
+            '/local/floorplan/light.livingroom_ceiling_spotlights_main.red.png?version=2F1A6FC5661C9B38016B955947977E1C'
+            }
+        entity: light.livingroom_ceiling_spotlights_main
+      style:
+        filter: "${ \"hue-rotate(\" + (LIGHT_COLOR ? LIGHT_COLOR[0] : 0) + \"deg)\"}"
+        opacity: "${LIGHT_STATE === 'on' ? (BRIGHTNESS / 255) : '100'}"
+        mix-blend-mode: lighten
+        pointer-events: none
+        left: 50%
+        top: 50%
+        width: 100%
+    - type: state-icon
+      entity: light.kidsbedroom_ceiling_lamp
+      title: null
+      style:
+        top: 24.68%
+        left: 69.96%
+        border-radius: 50%
+        text-align: center
+        background-color: rgba(255, 255, 255, 0.3)
+        opacity: 100%
+      tap_action:
+        action: toggle
+      double_tap_action:
+        action: none
+      hold_action:
+        action: more-info
+    - type: state-icon
+      entity: light.officeroom_ceiling_lamp
+      title: null
+      style:
+        top: 23.69%
+        left: 54.70%
+        border-radius: 50%
+        text-align: center
+        background-color: rgba(255, 255, 255, 0.3)
+        opacity: 100%
+      tap_action:
+        action: toggle
+      double_tap_action:
+        action: none
+      hold_action:
+        action: more-info
+    - type: state-icon
+      entity: light.livingroom_ceiling_spotlights_tv
+      title: null
+      style:
+        top: 42.25%
+        left: 21.82%
+        border-radius: 50%
+        text-align: center
+        background-color: rgba(255, 255, 255, 0.3)
+        opacity: 100%
+      tap_action:
+        action: toggle
+      double_tap_action:
+        action: none
+      hold_action:
+        action: more-info
+    - type: state-icon
+      entity: light.masterbedroom_ceiling_lamp
+      title: null
+      style:
+        top: 58.58%
+        left: 78.20%
+        border-radius: 50%
+        text-align: center
+        background-color: rgba(255, 255, 255, 0.3)
+        opacity: 100%
+      tap_action:
+        action: toggle
+      double_tap_action:
+        action: none
+      hold_action:
+        action: more-info
+    - type: state-icon
+      entity: light.livingroom_ceiling_spotlights_main
+      title: null
+      style:
+        top: 49.02%
+        left: 39.44%
+        border-radius: 50%
+        text-align: center
+        background-color: rgba(255, 255, 255, 0.3)
+        opacity: 100%
+      tap_action:
+        action: toggle
+      double_tap_action:
+        action: none
+      hold_action:
+        action: more-info
+  title: Floorplan
+  cards:
+    - type: picture-elements
+      image: /local/floorplan/base.png?version=812897947D63C6C6C64A46C452364205
+      elements:
+        - type: custom:config-template-card
+          variables:
+            LIGHT_STATE: states['light.livingroom_ceiling_spotlights_tv'].state
+            COLOR_MODE: >-
+              states['light.livingroom_ceiling_spotlights_tv'].attributes.color_mode
+            LIGHT_COLOR: states['light.livingroom_ceiling_spotlights_tv'].attributes.hs_color
+            BRIGHTNESS: >-
+              states['light.livingroom_ceiling_spotlights_tv'].attributes.brightness
+          entities:
+            - light.livingroom_ceiling_spotlights_tv
+          element:
+            type: image
+            image: >-
+              /local/floorplan/transparent.png?version=56ABE4CBC175363DA0810882244B34FF
+            state_image:
+              "on": >-
+                ${COLOR_MODE === 'color_temp' || COLOR_MODE === 'brightness' ||
+                ((COLOR_MODE === 'rgb' || COLOR_MODE === 'hs') && LIGHT_COLOR &&
+                LIGHT_COLOR[0] == 0 && LIGHT_COLOR[1] == 0) ?
+                '/local/floorplan/light.livingroom_ceiling_spotlights_tv.png?version=91FE0144066A6FA4F7E5E374FC9EE97D'
+                :
+                '/local/floorplan/light.livingroom_ceiling_spotlights_tv.red.png?version=B9ECC7DE4942D5C758E7083E76B012B7'
+                }
+            entity: light.livingroom_ceiling_spotlights_tv
+          style:
+            filter: "${ \"hue-rotate(\" + (LIGHT_COLOR ? LIGHT_COLOR[0] : 0) + \"deg)\"}"
+            opacity: "${LIGHT_STATE === 'on' ? (BRIGHTNESS / 255) : '100'}"
+            mix-blend-mode: lighten
+            pointer-events: none
+            left: 50%
+            top: 50%
+            width: 100%
+        - type: custom:config-template-card
+          variables:
+            LIGHT_STATE: states['light.kitchen_ceiling_spotlights'].state
+            COLOR_MODE: states['light.kitchen_ceiling_spotlights'].attributes.color_mode
+            LIGHT_COLOR: states['light.kitchen_ceiling_spotlights'].attributes.hs_color
+            BRIGHTNESS: states['light.kitchen_ceiling_spotlights'].attributes.brightness
+          entities:
+            - light.kitchen_ceiling_spotlights
+          element:
+            type: image
+            image: >-
+              /local/floorplan/transparent.png?version=56ABE4CBC175363DA0810882244B34FF
+            state_image:
+              "on": >-
+                ${COLOR_MODE === 'color_temp' || COLOR_MODE === 'brightness' ||
+                ((COLOR_MODE === 'rgb' || COLOR_MODE === 'hs') && LIGHT_COLOR &&
+                LIGHT_COLOR[0] == 0 && LIGHT_COLOR[1] == 0) ?
+                '/local/floorplan/light.kitchen_ceiling_spotlights.png?version=73D0DBB5BB16BA27FBB4F3B4DF7E44CE'
+                :
+                '/local/floorplan/light.kitchen_ceiling_spotlights.red.png?version=EB1E04E69773BAF7FCADD48585131A1E'
+                }
+            entity: light.kitchen_ceiling_spotlights
+          style:
+            filter: "${ \"hue-rotate(\" + (LIGHT_COLOR ? LIGHT_COLOR[0] : 0) + \"deg)\"}"
+            opacity: "${LIGHT_STATE === 'on' ? (BRIGHTNESS / 255) : '100'}"
+            mix-blend-mode: lighten
+            pointer-events: none
+            left: 50%
+            top: 50%
+            width: 100%
+        - type: custom:config-template-card
+          variables:
+            LIGHT_STATE: states['light.kidsbedroom_ceiling_lamp'].state
+            COLOR_MODE: states['light.kidsbedroom_ceiling_lamp'].attributes.color_mode
+            LIGHT_COLOR: states['light.kidsbedroom_ceiling_lamp'].attributes.hs_color
+            BRIGHTNESS: states['light.kidsbedroom_ceiling_lamp'].attributes.brightness
+          entities:
+            - light.kidsbedroom_ceiling_lamp
+          element:
+            type: image
+            image: >-
+              /local/floorplan/transparent.png?version=56ABE4CBC175363DA0810882244B34FF
+            state_image:
+              "on": >-
+                ${COLOR_MODE === 'color_temp' || COLOR_MODE === 'brightness' ||
+                ((COLOR_MODE === 'rgb' || COLOR_MODE === 'hs') && LIGHT_COLOR &&
+                LIGHT_COLOR[0] == 0 && LIGHT_COLOR[1] == 0) ?
+                '/local/floorplan/light.kidsbedroom_ceiling_lamp.png?version=611E0642A779C517A95D798C9D4F7EAE'
+                :
+                '/local/floorplan/light.kidsbedroom_ceiling_lamp.red.png?version=5A57553C0511F94A2034AF12150EFEAC'
+                }
+            entity: light.kidsbedroom_ceiling_lamp
+          style:
+            filter: "${ \"hue-rotate(\" + (LIGHT_COLOR ? LIGHT_COLOR[0] : 0) + \"deg)\"}"
+            opacity: "${LIGHT_STATE === 'on' ? (BRIGHTNESS / 255) : '100'}"
+            mix-blend-mode: lighten
+            pointer-events: none
+            left: 50%
+            top: 50%
+            width: 100%
+        - type: custom:config-template-card
+          variables:
+            LIGHT_STATE: states['light.officeroom_ceiling_lamp'].state
+            COLOR_MODE: states['light.officeroom_ceiling_lamp'].attributes.color_mode
+            LIGHT_COLOR: states['light.officeroom_ceiling_lamp'].attributes.hs_color
+            BRIGHTNESS: states['light.officeroom_ceiling_lamp'].attributes.brightness
+          entities:
+            - light.officeroom_ceiling_lamp
+          element:
+            type: image
+            image: >-
+              /local/floorplan/transparent.png?version=56ABE4CBC175363DA0810882244B34FF
+            state_image:
+              "on": >-
+                ${COLOR_MODE === 'color_temp' || COLOR_MODE === 'brightness' ||
+                ((COLOR_MODE === 'rgb' || COLOR_MODE === 'hs') && LIGHT_COLOR &&
+                LIGHT_COLOR[0] == 0 && LIGHT_COLOR[1] == 0) ?
+                '/local/floorplan/light.officeroom_ceiling_lamp.png?version=9E237178EBB079268691BB49EFCC7FF0'
+                :
+                '/local/floorplan/light.officeroom_ceiling_lamp.red.png?version=9B32EDBE137BE2E5D3C6ADC11CE06C85'
+                }
+            entity: light.officeroom_ceiling_lamp
+          style:
+            filter: "${ \"hue-rotate(\" + (LIGHT_COLOR ? LIGHT_COLOR[0] : 0) + \"deg)\"}"
+            opacity: "${LIGHT_STATE === 'on' ? (BRIGHTNESS / 255) : '100'}"
+            mix-blend-mode: lighten
+            pointer-events: none
+            left: 50%
+            top: 50%
+            width: 100%
+        - type: custom:config-template-card
+          variables:
+            LIGHT_STATE: states['light.masterbedroom_ceiling_lamp'].state
+            COLOR_MODE: states['light.masterbedroom_ceiling_lamp'].attributes.color_mode
+            LIGHT_COLOR: states['light.masterbedroom_ceiling_lamp'].attributes.hs_color
+            BRIGHTNESS: states['light.masterbedroom_ceiling_lamp'].attributes.brightness
+          entities:
+            - light.masterbedroom_ceiling_lamp
+          element:
+            type: image
+            image: >-
+              /local/floorplan/transparent.png?version=56ABE4CBC175363DA0810882244B34FF
+            state_image:
+              "on": >-
+                ${COLOR_MODE === 'color_temp' || COLOR_MODE === 'brightness' ||
+                ((COLOR_MODE === 'rgb' || COLOR_MODE === 'hs') && LIGHT_COLOR &&
+                LIGHT_COLOR[0] == 0 && LIGHT_COLOR[1] == 0) ?
+                '/local/floorplan/light.masterbedroom_ceiling_lamp.png?version=9F0CA44E50E297931F9DB122EA103222'
+                :
+                '/local/floorplan/light.masterbedroom_ceiling_lamp.red.png?version=DA6FD23AAA5CF71B0C3C968AD084CC71'
+                }
+            entity: light.masterbedroom_ceiling_lamp
+          style:
+            filter: "${ \"hue-rotate(\" + (LIGHT_COLOR ? LIGHT_COLOR[0] : 0) + \"deg)\"}"
+            opacity: "${LIGHT_STATE === 'on' ? (BRIGHTNESS / 255) : '100'}"
+            mix-blend-mode: lighten
+            pointer-events: none
+            left: 50%
+            top: 50%
+            width: 100%
+        - type: custom:config-template-card
+          variables:
+            LIGHT_STATE: states['light.hallway_ceiling_spotlights'].state
+            COLOR_MODE: states['light.hallway_ceiling_spotlights'].attributes.color_mode
+            LIGHT_COLOR: states['light.hallway_ceiling_spotlights'].attributes.hs_color
+            BRIGHTNESS: states['light.hallway_ceiling_spotlights'].attributes.brightness
+          entities:
+            - light.hallway_ceiling_spotlights
+          element:
+            type: image
+            image: >-
+              /local/floorplan/transparent.png?version=56ABE4CBC175363DA0810882244B34FF
+            state_image:
+              "on": >-
+                ${COLOR_MODE === 'color_temp' || COLOR_MODE === 'brightness' ||
+                ((COLOR_MODE === 'rgb' || COLOR_MODE === 'hs') && LIGHT_COLOR &&
+                LIGHT_COLOR[0] == 0 && LIGHT_COLOR[1] == 0) ?
+                '/local/floorplan/light.hallway_ceiling_spotlights.png?version=15EBBCB0BDC68B0C97AC10DE190ADB21'
+                :
+                '/local/floorplan/light.hallway_ceiling_spotlights.red.png?version=A4936A3358A398470903629C5ABC0DFA'
+                }
+            entity: light.hallway_ceiling_spotlights
+          style:
+            filter: "${ \"hue-rotate(\" + (LIGHT_COLOR ? LIGHT_COLOR[0] : 0) + \"deg)\"}"
+            opacity: "${LIGHT_STATE === 'on' ? (BRIGHTNESS / 255) : '100'}"
+            mix-blend-mode: lighten
+            pointer-events: none
+            left: 50%
+            top: 50%
+            width: 100%
+        - type: custom:config-template-card
+          variables:
+            LIGHT_STATE: states['light.hallway_ceiling_spotlights'].state
+            COLOR_MODE: states['light.hallway_ceiling_spotlights'].attributes.color_mode
+            LIGHT_COLOR: states['light.hallway_ceiling_spotlights'].attributes.hs_color
+            BRIGHTNESS: states['light.hallway_ceiling_spotlights'].attributes.brightness
+          entities:
+            - light.hallway_ceiling_spotlights
+          element:
+            type: image
+            image: >-
+              /local/floorplan/transparent.png?version=56ABE4CBC175363DA0810882244B34FF
+            state_image:
+              "on": >-
+                ${COLOR_MODE === 'color_temp' || COLOR_MODE === 'brightness' ||
+                ((COLOR_MODE === 'rgb' || COLOR_MODE === 'hs') && LIGHT_COLOR &&
+                LIGHT_COLOR[0] == 0 && LIGHT_COLOR[1] == 0) ?
+                '/local/floorplan/light.hallway_ceiling_spotlights_light.livingroom_ceiling_spotlights_main.png?version=1B48C658C71A2A051A4EEE51CC978266'
+                :
+                '/local/floorplan/light.hallway_ceiling_spotlights_light.livingroom_ceiling_spotlights_main.red.png?version=928B61CF500152AAC17769C85E5E662A'
+                }
+            entity: light.hallway_ceiling_spotlights
+          style:
+            filter: "${ \"hue-rotate(\" + (LIGHT_COLOR ? LIGHT_COLOR[0] : 0) + \"deg)\"}"
+            opacity: "${LIGHT_STATE === 'on' ? (BRIGHTNESS / 255) : '100'}"
+            mix-blend-mode: lighten
+            pointer-events: none
+            left: 50%
+            top: 50%
+            width: 100%
+        - type: custom:config-template-card
+          variables:
+            LIGHT_STATE: states['light.livingroom_ceiling_spotlights_main'].state
+            COLOR_MODE: >-
+              states['light.livingroom_ceiling_spotlights_main'].attributes.color_mode
+            LIGHT_COLOR: >-
+              states['light.livingroom_ceiling_spotlights_main'].attributes.hs_color
+            BRIGHTNESS: >-
+              states['light.livingroom_ceiling_spotlights_main'].attributes.brightness
+          entities:
+            - light.livingroom_ceiling_spotlights_main
+          element:
+            type: image
+            image: >-
+              /local/floorplan/transparent.png?version=56ABE4CBC175363DA0810882244B34FF
+            state_image:
+              "on": >-
+                ${COLOR_MODE === 'color_temp' || COLOR_MODE === 'brightness' ||
+                ((COLOR_MODE === 'rgb' || COLOR_MODE === 'hs') && LIGHT_COLOR &&
+                LIGHT_COLOR[0] == 0 && LIGHT_COLOR[1] == 0) ?
+                '/local/floorplan/light.livingroom_ceiling_spotlights_main.png?version=81E82E9D84FBF355D960B3E584E0C0C8'
+                :
+                '/local/floorplan/light.livingroom_ceiling_spotlights_main.red.png?version=2F1A6FC5661C9B38016B955947977E1C'
+                }
+            entity: light.livingroom_ceiling_spotlights_main
+          style:
+            filter: "${ \"hue-rotate(\" + (LIGHT_COLOR ? LIGHT_COLOR[0] : 0) + \"deg)\"}"
+            opacity: "${LIGHT_STATE === 'on' ? (BRIGHTNESS / 255) : '100'}"
+            mix-blend-mode: lighten
+            pointer-events: none
+            left: 50%
+            top: 50%
+            width: 100%
+        - type: state-icon
+          entity: light.kidsbedroom_ceiling_lamp
+          title: null
+          style:
+            top: 24.68%
+            left: 69.96%
+            border-radius: 50%
+            text-align: center
+            background-color: rgba(255, 255, 255, 0.3)
+            opacity: 100%
+          tap_action:
+            action: toggle
+          double_tap_action:
+            action: none
+          hold_action:
+            action: more-info
+        - type: state-icon
+          entity: light.officeroom_ceiling_lamp
+          title: null
+          style:
+            top: 23.69%
+            left: 54.70%
+            border-radius: 50%
+            text-align: center
+            background-color: rgba(255, 255, 255, 0.3)
+            opacity: 100%
+          tap_action:
+            action: toggle
+          double_tap_action:
+            action: none
+          hold_action:
+            action: more-info
+        - type: state-icon
+          entity: light.livingroom_ceiling_spotlights_tv
+          title: null
+          style:
+            top: 42.25%
+            left: 21.82%
+            border-radius: 50%
+            text-align: center
+            background-color: rgba(255, 255, 255, 0.3)
+            opacity: 100%
+          tap_action:
+            action: toggle
+          double_tap_action:
+            action: none
+          hold_action:
+            action: more-info
+        - type: state-icon
+          entity: light.masterbedroom_ceiling_lamp
+          title: null
+          style:
+            top: 58.58%
+            left: 78.20%
+            border-radius: 50%
+            text-align: center
+            background-color: rgba(255, 255, 255, 0.3)
+            opacity: 100%
+          tap_action:
+            action: toggle
+          double_tap_action:
+            action: none
+          hold_action:
+            action: more-info
+        - type: state-icon
+          entity: light.livingroom_ceiling_spotlights_main
+          title: null
+          style:
+            top: 49.02%
+            left: 39.44%
+            border-radius: 50%
+            text-align: center
+            background-color: rgba(255, 255, 255, 0.3)
+            opacity: 100%
+          tap_action:
+            action: toggle
+          double_tap_action:
+            action: none
+          hold_action:
+            action: more-info
