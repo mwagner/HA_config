@@ -23,6 +23,7 @@
   unique_id: officeroom_lights
   entities:
     - light.officeroom_ceiling_lamp
+    - light.officeroom_led_strip
 
 - platform: group
   name: Lights Living Room
