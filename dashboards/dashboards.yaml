@@ -6,10 +6,10 @@ ulm-dashboard-mobile:
   require_admin: false
   filename: dashboards/minimalist.yaml
 
-ulm-dashboard-tablet:
+dashboard-new:
   mode: yaml
-  title: Tablet (minimalist)
+  title: New Dashboard (yaml)
   icon: mdi:home
   show_in_sidebar: true
   require_admin: false
-  filename: dashboards/minimalist.yaml
+  filename: dashboards/dashboard-new.yaml
