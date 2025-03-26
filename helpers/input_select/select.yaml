@@ -1,0 +1,18 @@
+---
+room:
+  name: Room
+  options:
+    - Living Room
+    - Kitchen
+    - Bedroom
+    - Bathroom
+    - Office
+    - Hallway
+    - Garage
+    - Garden
+    - Guest Room
+    - Kids Room
+    - Master Bedroom
+    - Storage Room
+    - Cellar
+  icon: mdi:floor-plan
