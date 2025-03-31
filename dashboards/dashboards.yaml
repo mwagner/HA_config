@@ -1,11 +1,3 @@
-ulm-dashboard-mobile:
-  mode: yaml
-  title: Mobile (minimalist)
-  icon: mdi:home
-  show_in_sidebar: true
-  require_admin: false
-  filename: dashboards/minimalist.yaml
-
 dashboard-new:
   mode: yaml
   title: New Dashboard (yaml)
