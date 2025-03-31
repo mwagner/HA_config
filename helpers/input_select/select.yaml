@@ -2,17 +2,18 @@
 room:
   name: Room
   options:
-    - Living Room
-    - Kitchen
-    - Bedroom
-    - Bathroom
+    - Auto
+    - Master Bedroom
+    - Kids Room
+    - Guest Room
     - Office
     - Hallway
-    - Garage
-    - Garden
-    - Guest Room
-    - Kids Room
-    - Master Bedroom
-    - Storage Room
-    - Cellar
+    - Living Room
+    - Kitchen
+    - Shower Room
+    - Bathroom
+    - Patio / Garden
+    # - Car
+    # - Cellar
+    # - Storage Room
   icon: mdi:floor-plan

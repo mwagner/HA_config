@@ -1,0 +1,17 @@
+- type: custom:mushroom-select-card
+  entity: input_select.room
+  secondary_info: none
+  layout: horizontal
+  fill_container: false
+  icon_type: icon
+  icon: mdi:floor-plan
+  hold_action:
+    action: none
+  tap_action:
+    action: none
+  double_tap_action:
+    action: none
+  name: "Room select:"
+  grid_options:
+    columns: full
+- type: custom:gap-card

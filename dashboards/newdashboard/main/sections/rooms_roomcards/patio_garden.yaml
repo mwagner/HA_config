@@ -1,0 +1,31 @@
+# Patio / Garden
+- square: false
+  type: grid
+  cards:
+    - square: false
+      type: grid
+      cards:
+        - type: heading
+          heading_style: title
+          icon: mdi:pine-tree
+          heading: Patio / Garden
+          tap_action:
+            action: navigate
+            navigation_path: /new-dashboard-ui/patio_garden
+          badges:
+            - type: entity
+              entity: sensor.office_room_office_room_office_room_outdoor_temperature
+            - type: entity
+              entity: sensor.office_room_office_room_office_room_outdoor_humidity
+      columns: 1
+    - square: false
+      type: grid
+      cards:
+        - type: custom:mushroom-vacuum-card
+          entity: vacuum.sileno
+      columns: 2
+  columns: 1
+  visibility:
+    - condition: state
+      entity: input_select.room
+      state: Patio / Garden
