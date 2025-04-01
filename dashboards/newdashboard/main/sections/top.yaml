@@ -101,3 +101,7 @@
           media_query: "(min-width: 767px)"
   grid_options:
     columns: full
+- type: custom:gap-card
+  height: 20
+  grid_options:
+    columns: full
