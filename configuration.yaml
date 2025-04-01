@@ -202,6 +202,8 @@ lovelace:
       type: module
     - url: /hacsfiles/Bubble-Card/bubble-card.js
       type: module
+    - url: /hacsfiles/calendar-card-pro/calendar-card-pro.js
+      type: module
   dashboards: !include dashboards/dashboards.yaml
 
 my:
