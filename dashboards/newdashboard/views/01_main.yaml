@@ -23,12 +23,16 @@
 
     - type: grid
       cards:
-        - type: heading
-          icon: ""
-          heading: Rooms
-          heading_style: title
         - type: vertical-stack
           cards: !include_dir_merge_list /config/dashboards/newdashboard/main/sections/rooms_roomcards/
+
+    - type: grid
+      cards: 
+        - type: custom:calendar-card-pro
+          entities:
+            - calendar.marco_sharene_s_calendar
+          days_to_show: 7
+          show_location: true
 
     - type: grid
       cards:
