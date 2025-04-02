@@ -17,3 +17,10 @@ room:
     # - Cellar
     # - Storage Room
   icon: mdi:floor-plan
+
+livingroom_preset:
+  options:
+    - Home
+    - Visitors
+    - Visitors with kids
+    - Away
