@@ -11,7 +11,7 @@
           heading: Patio / Garden
           tap_action:
             action: navigate
-            navigation_path: /new-dashboard-ui/patio_garden
+            navigation_path: /home-beta/patio_garden
           badges:
             - type: entity
               entity: sensor.office_room_office_room_office_room_outdoor_temperature

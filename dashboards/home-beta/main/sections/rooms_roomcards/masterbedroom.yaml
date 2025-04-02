@@ -17,7 +17,7 @@
               entity: sensor.office_room_office_room_office_room_master_bedroom_humidity
           tap_action:
             action: navigate
-            navigation_path: /new-dashboard-ui/masterbedroom
+            navigation_path: /home-beta/masterbedroom
           heading: Master Bedroom
       columns: 1
     - square: false

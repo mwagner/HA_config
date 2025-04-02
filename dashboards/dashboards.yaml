@@ -1,7 +1,7 @@
 dashboard-new:
   mode: yaml
-  title: New Dashboard (yaml)
+  title: Home (Beta)
   icon: mdi:home
   show_in_sidebar: true
   require_admin: false
-  filename: dashboards/dashboard-new.yaml
+  filename: dashboards/home-beta.yaml
