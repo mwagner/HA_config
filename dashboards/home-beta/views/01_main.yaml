@@ -1,0 +1,353 @@
+---
+- title: Home
+  path: home
+  icon: mdi:home-outline
+
+  type: sections
+  max_columns: 2
+
+  header:
+    card:
+      type: markdown
+      text_only: true
+      content: |-
+        # Hello {{ user }}
+        Add your text here, template variables are supported ✨
+    layout: center
+    badges_position: bottom
+
+  sections:
+    - type: grid
+      cards: !include /config/dashboards/home-beta/main/sections/top.yaml
+      column_span: 3
+
+    - type: grid
+      cards:
+        - type: vertical-stack
+          cards: !include_dir_merge_list /config/dashboards/home-beta/main/sections/rooms_roomcards/
+
+    - type: grid
+      cards: 
+        - type: custom:calendar-card-pro
+          entities:
+            - calendar.marco_sharene_s_calendar
+          days_to_show: 7
+          show_location: true
+
+    - type: grid
+      cards:
+        - type: vertical-stack
+          cards:
+            - type: custom:bubble-card
+              card_type: pop-up
+              hash: "#lights"
+              name: Lights
+              icon: mdi:lightbulb-multiple-outline
+              trigger_entity: binary_sensor.front_door_motion
+              trigger_state: "on"
+              trigger_close: true
+              show_name: true
+              force_icon: false
+              show_state: false
+              show_last_changed: false
+              show_attribute: false
+              show_icon: true
+              show_header: true
+              close_on_click: false
+              tap_action:
+                action: none
+              double_tap_action:
+                action: none
+              hold_action:
+                action: none
+              button_action:
+                tap_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                hold_action:
+                  action: none
+            - type: custom:mushroom-template-card
+              primary: Living Room
+              secondary: "{{ states('light.livingroom_lights') }} "
+              icon: mdi:lightbulb-group
+              entity: light.livingroom_lights
+              badge_icon: >-
+                {% if is_state('binary_sensor.livingroom_motionsensor_occupancy',
+                'on') %}
+                  mdi:motion-sensor
+                {% elif is_state('binary_sensor.livingroom_motionsensor_occupancy',
+                'off' ) %}
+                  mdi:motion-sensor-off
+                {% else %}
+
+                {% endif %}
+              badge_color: >-
+                {% if is_state('binary_sensor.livingroom_motionsensor_occupancy',
+                'on') %}
+                  red
+                {% elif is_state('binary_sensor.livingroom_motionsensor_occupancy',
+                'off' ) %}
+
+                {% else %}
+
+                {% endif %}
+              fill_container: false
+              multiline_secondary: false
+              icon_color: |-
+                {% if is_state('light.livingroom_lights', 'on') %}
+                  orange
+                {% endif %}
+              tap_action:
+                action: perform-action
+                perform_action: light.turn_off
+                target:
+                  entity_id: light.masterbedroom_lights
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+            - type: custom:mushroom-template-card
+              primary: Kitchen
+              secondary: "{{ states('light.kitchen_lights') }} "
+              icon: mdi:lightbulb-group
+              entity: light.kitchen_lights
+              badge_icon: >-
+                {% if is_state('binary_sensor.kitchen_motionsensor_occupancy', 'on')
+                %}
+                  mdi:motion-sensor
+                {% elif is_state('binary_sensor.kitchen_motionsensor_occupancy', 'off'
+                ) %}
+                  mdi:motion-sensor-off
+                {% else %}
+
+                {% endif %}
+              badge_color: >-
+                {% if is_state('binary_sensor.kitchen_motionsensor_occupancy', 'on')
+                %}
+                  red
+                {% elif is_state('binary_sensor.kitchen_motionsensor_occupancy', 'off'
+                ) %}
+
+                {% else %}
+
+                {% endif %}
+              fill_container: false
+              multiline_secondary: false
+              icon_color: |-
+                {% if is_state('light.kitchen_lights', 'on') %}
+                  orange
+                {% endif %}
+              tap_action:
+                action: perform-action
+                perform_action: light.turn_off
+                target:
+                  entity_id: light.masterbedroom_lights
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+            - type: custom:mushroom-template-card
+              primary: Hallway
+              secondary: "{{ states('light.hallway_lights') }} "
+              icon: mdi:lightbulb-group
+              entity: light.hallway_lights
+              badge_icon: >-
+                {% if is_state('binary_sensor.hallway_motionsensor_occupancy', 'on')
+                %}
+                  mdi:motion-sensor
+                {% elif is_state('binary_sensor.hallway_motionsensor_occupancy', 'off'
+                ) %}
+                  mdi:motion-sensor-off
+                {% else %}
+
+                {% endif %}
+              badge_color: >-
+                {% if is_state('binary_sensor.hallway_motionsensor_occupancy', 'on')
+                %}
+                  red
+                {% elif is_state('binary_sensor.hallway_motionsensor_occupancy', 'off'
+                ) %}
+
+                {% else %}
+
+                {% endif %}
+              fill_container: false
+              multiline_secondary: false
+              icon_color: |-
+                {% if is_state('light.hallway_lights', 'on') %}
+                  orange
+                {% endif %}
+              tap_action:
+                action: perform-action
+                perform_action: light.turn_off
+                target:
+                  entity_id: light.masterbedroom_lights
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+            - type: custom:mushroom-template-card
+              primary: Office Room
+              secondary: "{{ states('light.officeroom_lights') }}"
+              icon: mdi:lightbulb-group
+              entity: light.officeroom_lights
+              badge_icon: >-
+                {% if is_state('binary_sensor.officeroom_motionsensor_occupancy',
+                'on') %}
+                  mdi:motion-sensor
+                {% elif is_state('binary_sensor.officeroom_motionsensor_occupancy',
+                'off' ) %}
+                  mdi:motion-sensor-off
+                {% else %}
+
+                {% endif %}
+              badge_color: >-
+                {% if is_state('binary_sens.officeroom_motionsensor_occupancy', 'on')
+                %}
+                  red
+                {% elif is_state('binary_sensor.officeroom_motionsensor_occupancy',
+                'off' ) %}
+
+                {% else %}
+
+                {% endif %}
+              fill_container: false
+              multiline_secondary: false
+              icon_color: |-
+                {% if is_state('light.officeroom_lights', 'on') %}
+                  orange  
+                {% endif %}
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+              tap_action:
+                action: perform-action
+                perform_action: light.turn_off
+                target:
+                  entity_id: light.officeroom_lights
+            - type: custom:mushroom-template-card
+              primary: Master Bedroom
+              secondary: "{{ states('light.masterbedroom_lights') }} "
+              icon: mdi:lightbulb-group
+              entity: light.masterbedroom_lights
+              badge_icon: >-
+                {% if is_state('binary_sensor.masterbedroom_motionsensor_occupancy',
+                'on') %}
+                  mdi:motion-sensor
+                {% elif is_state('binary_sensor.masterbedroom_motionsensor_occupancy',
+                'off' ) %}
+                  mdi:motion-sensor-off
+                {% else %}
+
+                {% endif %}
+              badge_color: >-
+                {% if is_state('binary_sensor.masterbedroom_motionsensor_occupancy',
+                'on') %}
+                  red
+                {% elif is_state('binary_sensor.masterbedroom_motionsensor_occupancy',
+                'off' ) %}
+
+                {% else %}
+
+                {% endif %}
+              fill_container: false
+              multiline_secondary: false
+              icon_color: |-
+                {% if is_state('light.masterbedroom_lights', 'on') %}
+                  orange
+                {% endif %}
+              tap_action:
+                action: perform-action
+                perform_action: light.turn_off
+                target:
+                  entity_id: light.masterbedroom_lights
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+            - type: custom:mushroom-template-card
+              primary: Kids Bedroom
+              secondary: "{{ states('light.kidsbedroom_lights') }} "
+              icon: mdi:lightbulb-group
+              entity: light.kidsbedroom_lights
+              badge_icon: >-
+                {% if is_state('binary_sensor.kidsbedroom_motionsensor_occupancy',
+                'on') %}
+                  mdi:motion-sensor
+                {% elif is_state('binary_sensor.kidsbedroom_motionsensor_occupancy',
+                'off' ) %}
+                  mdi:motion-sensor-off
+                {% else %}
+
+                {% endif %}
+              badge_color: >-
+                {% if is_state('binary_sensor.kidsbedroom_motionsensor_occupancy',
+                'on') %}
+                  red
+                {% elif is_state('binary_sensor.kidsbedroom_motionsensor_occupancy',
+                'off' ) %}
+
+                {% else %}
+
+                {% endif %}
+              fill_container: false
+              multiline_secondary: false
+              icon_color: |-
+                {% if is_state('light.kidsbedroom_lights', 'on') %}
+                  orange
+                {% endif %}
+              tap_action:
+                action: perform-action
+                perform_action: light.turn_off
+                target:
+                  entity_id: light.kidsbedroom_lights
+                data: {}
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+            - type: custom:mushroom-template-card
+              primary: Guest Bedroom
+              secondary: "  {{ states('light.guestbedroom_lights_lights') }} "
+              icon: mdi:lightbulb-group
+              entity: light.guestbedroom_lights
+              badge_icon: >-
+                {% if is_state('binary_sensor.guestbedroom_motionsensor_occupancy',
+                'on') %}
+                  mdi:motion-sensor
+                {% elif is_state('binary_sensor.guestbedroom_motionsensor_occupancy',
+                'off' ) %}
+                  mdi:motion-sensor-off
+                {% else %}
+
+                {% endif %}
+              badge_color: >-
+                {% if is_state('binary_sensor.guestbedroom_motionsensor_occupancy',
+                'on') %}
+                  red
+                {% elif is_state('binary_sensor.guestbedroom_motionsensor_occupancy',
+                'off' ) %}
+
+                {% else %}
+
+                {% endif %}
+              fill_container: false
+              multiline_secondary: false
+              icon_color: |-
+                {% if is_state('light.guestbedroom_lights_lights', 'on') %}
+                  orange
+                {% endif %}
+              tap_action:
+                action: perform-action
+                perform_action: light.turn_off
+                target:
+                  entity_id: light.guestbedroom_lights
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+          grid_options:
+            columns: full
+      column_span: 12

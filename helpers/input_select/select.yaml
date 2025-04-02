@@ -1,0 +1,26 @@
+---
+room:
+  name: Room
+  options:
+    - Auto
+    - Master Bedroom
+    - Kids Room
+    - Guest Room
+    - Office
+    - Hallway
+    - Living Room
+    - Kitchen
+    - Shower Room
+    - Bathroom
+    - Patio / Garden
+    # - Car
+    # - Cellar
+    # - Storage Room
+  icon: mdi:floor-plan
+
+livingroom_preset:
+  options:
+    - Home
+    - Visitors
+    - Visitors with kids
+    - Away

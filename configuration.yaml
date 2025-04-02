@@ -92,6 +92,7 @@ zone: !include zones.yaml
 # Load helpers
 input_boolean: !include_dir_merge_named ./helpers/input_boolean/
 input_number: !include_dir_merge_named ./helpers/input_number/
+input_select: !include_dir_merge_named ./helpers/input_select/
 template: !include_dir_merge_list ./helpers/template/
 group: !include_dir_merge_named ./helpers/groups/
  
@@ -198,6 +199,10 @@ lovelace:
     - url: /hacsfiles/weather-radar-card/weather-radar-card.js
       type: module
     - url: /hacsfiles/config-template-card/config-template-card.js
+      type: module
+    - url: /hacsfiles/Bubble-Card/bubble-card.js
+      type: module
+    - url: /hacsfiles/calendar-card-pro/calendar-card-pro.js
       type: module
   dashboards: !include dashboards/dashboards.yaml
 

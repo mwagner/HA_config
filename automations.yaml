@@ -234,26 +234,6 @@
         attribute: brightness
         state: '255'
   mode: single
-- id: '1740608737946'
-  alias: Off all lights
-  description: ''
-  triggers: []
-  conditions: []
-  actions:
-  - action: light.turn_off
-    metadata: {}
-    data: {}
-    target:
-      device_id:
-      - cd805652c0dd0673a0934baea4d7946f
-      - 9882094d8468eceb4a08d204bd0fc951
-      - 9b623c46730705456f7269340d04031d
-      - 8ec82fe86697b11d630536d65823ea7e
-      - 84ffebdb206f16bb9228f1f5fb85522d
-      entity_id:
-      - light.dingz_spotlights_tv
-      - light.dingz_spotlights_entree
-  mode: single
 - id: '1740637352516'
   alias: Off all lights
   description: ''
@@ -265,27 +245,11 @@
     data: {}
     target:
       entity_id:
-      - light.officeroom_lights
-      - light.kidsbedroom_lights
-      - light.guestbedroom_lights
+      - light.livingroom_lights
+      - light.kitchen_lights
+      - light.hallway_lights
       - light.masterbedroom_lights
-      - light.livingroom_lights
-  mode: single
-- id: '1740637409889'
-  alias: Test off all lights
-  description: ''
-  triggers:
-  - domain: mqtt
-    device_id: 77e97381ceb9d31a50001e9b0c535669
-    type: action
-    subtype: 'on'
-    trigger: device
-  conditions: []
-  actions:
-  - action: light.turn_off
-    metadata: {}
-    data: {}
-    target:
-      entity_id:
-      - light.livingroom_lights
+      - light.guestbedroom_lights
+      - light.kidsbedroom_lights
+      - light.officeroom_lights
   mode: single

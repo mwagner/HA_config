@@ -1,7 +1,0 @@
----
-- title: Cellar
-  path: cellar
-  icon: mdi:washing-machine
-  subview: false
-
-  cards:

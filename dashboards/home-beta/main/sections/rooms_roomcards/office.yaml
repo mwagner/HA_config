@@ -1,0 +1,80 @@
+# Office
+- square: false
+  type: grid
+  cards:
+    - square: false
+      type: grid
+      cards:
+        - type: heading
+          heading: Office
+          heading_style: title
+          icon: mdi:desk
+          badges:
+            - type: entity
+              entity: sensor.office_temperature
+            - type: entity
+              show_state: true
+              show_icon: true
+              entity: sensor.office_humidity
+          tap_action:
+            action: navigate
+            navigation_path: /home-beta/office
+      columns: 1
+    - square: false
+      type: grid
+      cards:
+        - type: custom:mushroom-template-card
+          primary: Lights
+          secondary: "{{ states('light.office_lights') }}"
+          icon: mdi:lightbulb-group
+          entity: light.office_lights
+          badge_icon: >-
+            {% if is_state('binary_sensor.office_motionsensor_occupancy',
+            'on') %}
+              mdi:motion-sensor
+            {% elif
+            is_state('binary_sensor.office_motionsensor_occupancy', 'off'
+            ) %}
+              mdi:motion-sensor-off
+            {% else %}
+
+            {% endif %}
+          badge_color: >-
+            {% if is_state('binary_sens.office_motionsensor_occupancy',
+            'on') %}
+              red
+            {% elif
+            is_state('binary_sensor.office_motionsensor_occupancy', 'off'
+            ) %}
+
+            {% else %}
+
+            {% endif %}
+          fill_container: false
+          multiline_secondary: false
+          icon_color: |-
+            {% if is_state('light.office_lights', 'on') %}
+              orange  
+            {% endif %}
+          hold_action:
+            action: none
+          double_tap_action:
+            action: none
+          tap_action:
+            action: perform-action
+            perform_action: light.turn_off
+            target:
+              entity_id: light.office_lights
+        - type: custom:gap-card
+        - type: custom:mushroom-light-card
+          fill_container: false
+          entity: light.office_ceiling_lamp
+        - type: custom:mushroom-light-card
+          fill_container: false
+          entity: light.office_led_strip
+      columns: 2
+  columns: 1
+  visibility:
+    - condition: state
+      entity: input_select.room
+      state: Office

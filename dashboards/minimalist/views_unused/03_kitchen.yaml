@@ -1,7 +1,0 @@
----
-- title: Kitchen
-  path: kitchen
-  icon: mdi:stove
-  subview: false
-
-  cards:

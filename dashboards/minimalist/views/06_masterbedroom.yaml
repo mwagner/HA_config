@@ -1,7 +1,0 @@
----
-- title: Master Bedroom
-  path: masterbedroom
-  icon: mdi:bed-king
-  subview: false
-
-  cards: !include ../rooms/masterbedroom.yaml

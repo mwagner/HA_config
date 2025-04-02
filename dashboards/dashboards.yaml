@@ -1,15 +1,7 @@
-ulm-dashboard-mobile:
+dashboard-new:
   mode: yaml
-  title: Mobile (minimalist)
+  title: Home (Beta)
   icon: mdi:home
   show_in_sidebar: true
   require_admin: false
-  filename: dashboards/minimalist.yaml
-
-ulm-dashboard-tablet:
-  mode: yaml
-  title: Tablet (minimalist)
-  icon: mdi:home
-  show_in_sidebar: true
-  require_admin: false
-  filename: dashboards/minimalist.yaml
+  filename: dashboards/home-beta.yaml
