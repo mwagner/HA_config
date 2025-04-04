@@ -1,22 +1,32 @@
 ---
 - binary_sensor:
 
-  - name: Netatmo Living Room Low Battery
-    unique_id: living_room_netatmo_low_bat
+  - name: Livingroom - Indoor Module Low Battery
+    unique_id: livingroom_indoor_module_lowbat
+    device_class: battery
     state: >-
-      {{ states('sensor.office_room_office_room_office_room_living_room_battery_percent') | float(0) < 5 }}
+      {{ states('sensor.livingroom_indoor_module_battery') | float(0) < 5 }}
 
-  - name: Netatmo Kids Bedroom Low Battery
-    unique_id: kids_bedroom_netatmo_low_bat
+  - name: Kidsroom - Indoor Module Low Battery
+    unique_id: kidsroom_indoor_module_lowbat
+    device_class: battery
     state: >-
-      {{ states('sensor.office_room_office_room_office_room_edward_s_bedroom_battery_percent') | float(0) < 5 }}
+      {{ states('sensor.kidsroom_indoor_module_battery') | float(0) < 5 }}
 
-  - name: Netatmo Master Bedroom Low Battery
-    unique_id: master_bedroom_netatmo_low_bat
+  - name: Masterbedroom - Indoor Module Low Battery
+    unique_id: masterbedroom_indoor_module_lowbat
+    device_class: battery
     state: >-
-      {{ states('sensor.office_room_office_room_office_room_master_bedroom_battery_percent') | float(0) < 5 }}
+      {{ states('sensor.masterbedroom_indoor_module_battery') | float(0) < 5 }}
 
-  - name: Netatmo Outdoor Low Battery
-    unique_id: outdoor_netatmo_low_bat
+  - name: Outdoor - Outdoor Module Low Battery
+    unique_id: outdoor_outdoor_outdoor_module_lowbat
+    device_class: battery
     state: >-
-      {{ states('sensor.office_room_office_room_office_room_outdoor_battery_percent') | float(0) < 5 }}
+      {{ states('sensor.outdoor_outdoor_module_battery') | float(0) < 5 }}
+
+  - name: Outdoor - Anemometer Low Battery
+    unique_id: outdoor_anemometer_lowbat
+    device_class: battery
+    state: >-
+      {{ states('sensor.outdoor_anemometer_battery') | float(0) < 5 }}

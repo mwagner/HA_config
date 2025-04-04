@@ -7,19 +7,6 @@ sensor.hue_dimmer_switch_1_battery_level:
   device_class: battery
   friendly_name: 'Battery: Dimmer Switch'
 
-binary_sensor.living_room_netatmo_lowbat:
-  device_class: battery
-  friendly_name: "Battery: Netatmo Living Room"
-binary_sensor.kids_bedroom_netatmo_lowbat:
-  device_class: battery
-  friendly_name: "Battery: Netatmo Edward's Bedroom"
-binary_sensor.master_bedroom_netatmo_lowbat:
-  device_class: battery
-  friendly_name: "Battery: Netatmo Master Bedroom"
-binary_sensor.outdoor_netatmo_lowbat:
-  device_class: battery
-  friendly_name: "Battery: Netatmo Outdoor"
-
 binary_sensor.tradfri_sound_remote_living_room_lowbat:
   device_class: battery
   friendly_name: "Battery: Tradfri Sound Remote (Living Room)"
@@ -50,17 +37,6 @@ media_player.living_room:
   friendly_name: Sonos Speaker (Living Room)
 media_player.office_room:
   friendly_name: Sonos Speaker (Office Room)
-
-#Netatmo devices
-sensor.office_room_office_room_office_room_living_room_battery_percent:
-  friendly_name: "Netatmo Sensor Living Room"
-sensor.office_room_office_room_office_room_edward_s_bedroom_battery_percent:
-  friendly_name: "Netatmo Sensor Edward's Bedroom"
-sensor.office_room_office_room_office_room_master_bedroom_battery_percent:
-  friendly_name: "Netatmo Sensor Master Bedroom"
-sensor.office_room_office_room_office_room_outdoor_battery_percent:
-  friendly_name: "Netatmo Sensor Outdoor"
-
 
 #Hue stuff
 light.hue_bloom_1:
