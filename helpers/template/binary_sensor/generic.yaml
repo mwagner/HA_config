@@ -1,0 +1,18 @@
+---
+- binary_sensor:
+  - name: Has Alerts
+    unique_id: has_alerts
+    state: >
+      {% set low_bats = states.binary_sensor | selectattr('entity_id', 'match', '.*(low_bat|lowbat)$') %}
+      {% set other_bats = [
+        states.sensor.sensor1_battery,
+        states.sensor.sensor2_battery,
+        states.sensor.sensor3_battery
+      ] %}
+      {% if low_bats | selectattr('state', 'eq', 'on') | list | count > 0 %}
+        true
+      {% elif other_bats | selectattr('state', 'eq', 'on') | list | count > 0 %}
+        true
+      {% else %}
+        false
+      {% endif %}
