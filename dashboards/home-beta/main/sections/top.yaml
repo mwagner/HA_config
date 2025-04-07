@@ -20,7 +20,12 @@
       primary: Lights
       secondary: ""
       icon: mdi:lightbulb
-      icon_color: orange
+      icon_color: >
+        {% if is_state('light.home_lights', 'on') %}
+          orange
+        {% else %}
+          grey
+        {% endif %}
       layout: vertical
       tap_action:
         action: navigate
@@ -29,15 +34,13 @@
       primary: Security
       secondary: ""
       icon: >-
-        {% if is_state('alarm_control_panel.home_alarm_panel', 'armed_home')
-        or is_state('alarm_control_panel.home_alarm_panel', 'armed_away') %}
+        {% if is_state('alarm_control_panel.home_alarm_panel', 'armed_home') or is_state('alarm_control_panel.home_alarm_panel', 'armed_away') %}
           mdi:shield-lock
         {% else %}
           mdi:shield-lock-open
         {% endif %}
       icon_color: >-
-        {% if is_state('alarm_control_panel.home_alarm_panel', 'armed_home')
-        or is_state('alarm_control_panel.home_alarm_panel', 'armed_away') %}
+        {% if is_state('alarm_control_panel.home_alarm_panel', 'armed_home') or is_state('alarm_control_panel.home_alarm_panel', 'armed_away') %}
           green
         {% else %}
           blue

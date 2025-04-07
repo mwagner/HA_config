@@ -14,15 +14,26 @@
             navigation_path: /home-beta/patio_garden
           badges:
             - type: entity
-              entity: sensor.office_room_office_room_office_room_outdoor_temperature
+              entity: sensor.outdoor_netatmo_outdoor_module_temperature
             - type: entity
-              entity: sensor.office_room_office_room_office_room_outdoor_humidity
+              entity: sensor.outdoor_netatmo_outdoor_module_humidity
+            - type: entity
+              entity: sensor.outdoor_netatmo_anemometer_wind_speed
+            - type: entity
+              entity: sensor.outdoor_netatmo_anemometer_wind_direction
       columns: 1
     - square: false
       type: grid
       cards:
-        - type: custom:mushroom-vacuum-card
-          entity: vacuum.sileno
+        - type: tile
+          entity: lawn_mower.sileno
+          features_position: inline
+          vertical: false
+          features:
+            - type: lawn-mower-commands
+              commands:
+                - start_pause
+                - dock
       columns: 2
   columns: 1
   visibility:

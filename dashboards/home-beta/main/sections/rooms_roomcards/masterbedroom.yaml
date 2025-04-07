@@ -10,11 +10,11 @@
           icon: mdi:bed-double
           badges:
             - type: entity
-              entity: sensor.office_room_office_room_office_room_master_bedroom_temperature
+              entity: sensor.masterbedroom_netatmo_indoor_module_temperature
             - type: entity
               show_state: true
               show_icon: true
-              entity: sensor.office_room_office_room_office_room_master_bedroom_humidity
+              entity: sensor.masterbedroom_netatmo_indoor_module_humidity
           tap_action:
             action: navigate
             navigation_path: /home-beta/masterbedroom
@@ -30,24 +30,20 @@
           entity: light.masterbedroom_lights
           badge_icon: >-
             {% if
-            is_state('binary_sensor.masterbedroom_motionsensor_occupancy',
-            'on') %}
+            is_state('binary_sensor.masterbedroom_motionsensor_occupancy', 'on') %}
               mdi:motion-sensor
             {% elif
-            is_state('binary_sensor.masterbedroom_motionsensor_occupancy',
-            'off' ) %}
+            is_state('binary_sensor.masterbedroom_motionsensor_occupancy', 'off' ) %}
               mdi:motion-sensor-off
             {% else %}
 
             {% endif %}
           badge_color: >-
             {% if
-            is_state('binary_sensor.masterbedroom_motionsensor_occupancy',
-            'on') %}
+            is_state('binary_sensor.masterbedroom_motionsensor_occupancy', 'on') %}
               red
             {% elif
-            is_state('binary_sensor.masterbedroom_motionsensor_occupancy',
-            'off' ) %}
+            is_state('binary_sensor.masterbedroom_motionsensor_occupancy', 'off' ) %}
 
             {% else %}
 

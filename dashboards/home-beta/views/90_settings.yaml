@@ -1,0 +1,99 @@
+---
+- title: Settings
+  path: settings
+  icon: mdi:cog
+
+  type: sections
+  max_columns: 2
+
+  sections:
+    - type: grid
+      cards:
+        - type: heading
+          heading: Battery levels
+          heading_style: title
+          icon: mdi:battery-50
+        - type: custom:auto-entities
+          card:
+            type: entities
+          filter:
+            include:
+              - attributes:
+                  device_class: battery
+                state: "> 0"
+            exclude: []
+          sort:
+            method: friendly_name
+    - type: grid
+      cards:
+        - type: heading
+          heading_style: title
+          heading: Alerts
+          icon: mdi:alert
+          visibility:
+            - condition: state
+              entity: binary_sensor.has_alerts
+              state: "on"
+        - type: custom:auto-entities
+          card:
+            type: entities
+          filter:
+            include:
+              - entity_id: "*low_bat"
+                state: "on"
+              - entity_id: "*lowbat"
+                state: "on"
+            exclude: []
+          show_empty: false
+          visibility:
+            - condition: state
+              entity: binary_sensor.has_alerts
+              state: "on"
+        - type: heading
+          icon: mdi:fridge
+          heading: Software Updates
+          heading_style: title
+          visibility:
+            - condition: state
+              entity: group.updates_software
+              state: "on"
+        - type: custom:auto-entities
+          card:
+            type: entities
+            show_header_toggle: false
+          filter:
+            template: |-
+              {{ expand('group.updates_software')|
+                selectattr('state','eq','on')|
+                map(attribute='entity_id')|
+                list|
+                sort|
+                join(', ')
+              }}
+          visibility:
+            - condition: state
+              entity: group.updates_software
+              state: "on"
+          show_empty: false
+        - type: heading
+          icon: mdi:fridge
+          heading: Firmware Updates
+          heading_style: title
+          visibility:
+            - condition: state
+              entity: group.updates_firmware
+              state: "on"
+        - type: custom:auto-entities
+          card:
+            type: entities
+            show_header_toggle: false
+          filter:
+            template: |-
+              {{ expand('group.updates_firmware')|
+                selectattr('state','eq','on')|
+                map(attribute='entity_id')|
+                list|
+                sort|
+                join(', ')
+              }}
+          show_empty: false
