@@ -11,11 +11,11 @@
           icon: mdi:desk
           badges:
             - type: entity
-              entity: sensor.office_room_temperature
+              entity: sensor.office_netatmo_indoor_module_temperature
             - type: entity
               show_state: true
               show_icon: true
-              entity: sensor.office_room_humidity
+              entity: sensor.office_netatmo_indoor_module_humidity
           tap_action:
             action: navigate
             navigation_path: /home-beta/office

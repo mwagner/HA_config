@@ -10,11 +10,11 @@
           icon: mdi:bed-double
           badges:
             - type: entity
-              entity: sensor.office_room_office_room_office_room_master_bedroom_temperature
+              entity: sensor.masterbedroom_netatmo_indoor_module_temperature
             - type: entity
               show_state: true
               show_icon: true
-              entity: sensor.office_room_office_room_office_room_master_bedroom_humidity
+              entity: sensor.masterbedroom_netatmo_indoor_module_humidity
           tap_action:
             action: navigate
             navigation_path: /home-beta/masterbedroom
