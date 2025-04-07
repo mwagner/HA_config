@@ -8,22 +8,22 @@
     - light.sharene_s_yeelight
 
 - platform: group
-  name: Lights Kids Bedroom
-  unique_id: kidsbedroom_lights
+  name: Lights Kids Room
+  unique_id: kidsroom_lights
   entities:
-    - light.kidsbedroom_ceiling_lamp
+    - light.kidsroom_ceiling_lamp
 
 - platform: group
-  name: Lights Guest Bedroom
-  unique_id: guestbedroom_lights
-  entities: {}
+  name: Lights Guest Room
+  unique_id: guestroom_lights
+  entities: []
 
 - platform: group
-  name: Lights Office Room
-  unique_id: officeroom_lights
+  name: Lights Office
+  unique_id: office_lights
   entities:
-    - light.officeroom_ceiling_lamp
-    - light.officeroom_led_strip
+    - light.office_ceiling_lamp
+    - light.office_led_strip
 
 - platform: group
   name: Lights Living Room
