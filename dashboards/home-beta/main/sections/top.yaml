@@ -34,15 +34,13 @@
       primary: Security
       secondary: ""
       icon: >-
-        {% if is_state('alarm_control_panel.home_alarm_panel', 'armed_home')
-        or is_state('alarm_control_panel.home_alarm_panel', 'armed_away') %}
+        {% if is_state('alarm_control_panel.home_alarm_panel', 'armed_home') or is_state('alarm_control_panel.home_alarm_panel', 'armed_away') %}
           mdi:shield-lock
         {% else %}
           mdi:shield-lock-open
         {% endif %}
       icon_color: >-
-        {% if is_state('alarm_control_panel.home_alarm_panel', 'armed_home')
-        or is_state('alarm_control_panel.home_alarm_panel', 'armed_away') %}
+        {% if is_state('alarm_control_panel.home_alarm_panel', 'armed_home') or is_state('alarm_control_panel.home_alarm_panel', 'armed_away') %}
           green
         {% else %}
           blue
