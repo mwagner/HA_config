@@ -29,23 +29,17 @@
           icon: mdi:lightbulb-group
           entity: light.office_lights
           badge_icon: >-
-            {% if is_state('binary_sensor.office_motionsensor_occupancy',
-            'on') %}
+            {% if is_state('binary_sensor.office_motionsensor_occupancy', 'on') %}
               mdi:motion-sensor
-            {% elif
-            is_state('binary_sensor.office_motionsensor_occupancy', 'off'
-            ) %}
+            {% elif is_state('binary_sensor.office_motionsensor_occupancy', 'off') %}
               mdi:motion-sensor-off
             {% else %}
 
             {% endif %}
           badge_color: >-
-            {% if is_state('binary_sens.office_motionsensor_occupancy',
-            'on') %}
+            {% if is_state('binary_sens.office_motionsensor_occupancy', 'on') %}
               red
-            {% elif
-            is_state('binary_sensor.office_motionsensor_occupancy', 'off'
-            ) %}
+            {% elif is_state('binary_sensor.office_motionsensor_occupancy', 'off') %}
 
             {% else %}
 

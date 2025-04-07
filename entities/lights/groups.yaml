@@ -1,6 +1,18 @@
 ---
 - platform: group
-  name: Lights Master Bedroom
+  name: Home Lights
+  unique_id: home_lights
+  entities:
+    - light.masterbedroom_lights
+    - light.kidsroom_lights
+    - light.guestroom_lights
+    - light.office_lights
+    - light.livingroom_lights
+    - light.kitchen_lights
+    - light.hallway_lights
+
+- platform: group
+  name: Master Bedroom Lights
   unique_id: masterbedroom_lights
   entities:
     - light.masterbedroom_ceiling_lamp
@@ -8,18 +20,19 @@
     - light.sharene_s_yeelight
 
 - platform: group
-  name: Lights Kids Room
+  name: Kids Room Lights
   unique_id: kidsroom_lights
   entities:
     - light.kidsroom_ceiling_lamp
 
 - platform: group
-  name: Lights Guest Room
+  name: Guest Room Lights
   unique_id: guestroom_lights
-  entities: []
+  entities: 
+    - light.zzz_ceiling_lamp
 
 - platform: group
-  name: Lights Office
+  name: Office Lights
   unique_id: office_lights
   entities:
     - light.office_ceiling_lamp

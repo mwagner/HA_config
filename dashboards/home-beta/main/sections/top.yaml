@@ -20,7 +20,12 @@
       primary: Lights
       secondary: ""
       icon: mdi:lightbulb
-      icon_color: orange
+      icon_color: >
+        {% if is_state('light.home_lights', 'on') %}
+          orange
+        {% else %}
+          grey
+        {% endif %}
       layout: vertical
       tap_action:
         action: navigate
