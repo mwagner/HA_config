@@ -28,8 +28,7 @@
 - platform: group
   name: Guest Room Lights
   unique_id: guestroom_lights
-  entities: 
-    - light.zzz_ceiling_lamp
+  entities: {}
 
 - platform: group
   name: Office Lights
