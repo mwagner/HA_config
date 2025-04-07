@@ -1,32 +1,32 @@
 ---
 - binary_sensor:
 
-  - name: Livingroom - Indoor Module Low Battery
-    unique_id: livingroom_indoor_module_lowbat
+  - name: Livingroom - Netatmo Indoor Module Low Battery
+    unique_id: livingroom_netatmo_indoor_module_lowbat
     device_class: battery
     state: >-
-      {{ states('sensor.livingroom_indoor_module_battery') | float(0) < 5 }}
+      {{ states('sensor.livingroom_netatmo_indoor_module_battery') | float(0) < 5 }}
 
-  - name: Kidsroom - Indoor Module Low Battery
-    unique_id: kidsroom_indoor_module_lowbat
+  - name: Kidsroom - Netatmo Indoor Module Low Battery
+    unique_id: kidsroom_netatmo_indoor_module_lowbat
     device_class: battery
     state: >-
-      {{ states('sensor.kidsroom_indoor_module_battery') | float(0) < 5 }}
+      {{ states('sensor.kidsroom_netatmo_indoor_module_battery') | float(0) < 5 }}
 
-  - name: Masterbedroom - Indoor Module Low Battery
-    unique_id: masterbedroom_indoor_module_lowbat
+  - name: Masterbedroom - Netatmo Indoor Module Low Battery
+    unique_id: masterbedroom_netatmo_indoor_module_lowbat
     device_class: battery
     state: >-
-      {{ states('sensor.masterbedroom_indoor_module_battery') | float(0) < 5 }}
+      {{ states('sensor.masterbedroom_netatmo_indoor_module_battery') | float(0) < 5 }}
 
-  - name: Outdoor - Outdoor Module Low Battery
-    unique_id: outdoor_outdoor_outdoor_module_lowbat
+  - name: Outdoor - Netatmo Outdoor Module Low Battery
+    unique_id: outdoor_netatmo_outdoor_outdoor_module_lowbat
     device_class: battery
     state: >-
-      {{ states('sensor.outdoor_outdoor_module_battery') | float(0) < 5 }}
+      {{ states('sensor.outdoor_netatmo_outdoor_module_battery') | float(0) < 5 }}
 
-  - name: Outdoor - Anemometer Low Battery
-    unique_id: outdoor_anemometer_lowbat
+  - name: Outdoor - Netatmo Anemometer Low Battery
+    unique_id: outdoor_netatmo_anemometer_lowbat
     device_class: battery
     state: >-
-      {{ states('sensor.outdoor_anemometer_battery') | float(0) < 5 }}
+      {{ states('sensor.outdoor_netatmo_anemometer_battery') | float(0) < 5 }}
