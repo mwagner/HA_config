@@ -1,4 +1,4 @@
-# Office
+# Living Room
 - square: false
   type: grid
   cards:
@@ -7,39 +7,39 @@
       cards:
         - type: heading
           heading_style: title
-          icon: mdi:desk
-          heading: Office
+          icon: mdi:sofa
+          heading: Living Room
           badges:
             - type: entity
-              entity: sensor.office_netatmo_indoor_module_temperature
+              entity: sensor.livingroom_netatmo_indoor_module_temperature
             - type: entity
               show_state: true
               show_icon: true
-              entity: sensor.office_netatmo_indoor_module_humidity
+              entity: sensor.livingroom_netatmo_indoor_module_humidity
           tap_action:
             action: navigate
-            navigation_path: /home-beta/office
+            navigation_path: /home-beta/livingroom
       columns: 1
     - square: false
       type: grid
       cards:
         - type: custom:mushroom-template-card
           primary: Lights
-          secondary: "{{ states('light.office_lights') }}"
+          secondary: "{{ states('light.livingroom_lights') }}"
           icon: mdi:lightbulb-group
-          entity: light.office_lights
+          entity: light.livingroom_lights
           badge_icon: >-
-            {% if is_state('binary_sensor.office_motionsensor_occupancy', 'on') %}
+            {% if is_state('binary_sensor.livingroom_motionsensor_occupancy', 'on') %}
               mdi:motion-sensor
-            {% elif is_state('binary_sensor.office_motionsensor_occupancy', 'off') %}
+            {% elif is_state('binary_sensor.livingroom_motionsensor_occupancy', 'off') %}
               mdi:motion-sensor-off
             {% else %}
 
             {% endif %}
           badge_color: >-
-            {% if is_state('binary_sens.office_motionsensor_occupancy', 'on') %}
+            {% if is_state('binary_sens.livingroom_motionsensor_occupancy', 'on') %}
               red
-            {% elif is_state('binary_sensor.office_motionsensor_occupancy', 'off') %}
+            {% elif is_state('binary_sensor.livingroom_motionsensor_occupancy', 'off') %}
 
             {% else %}
 
@@ -47,7 +47,7 @@
           fill_container: false
           multiline_secondary: false
           icon_color: |-
-            {% if is_state('light.office_lights', 'on') %}
+            {% if is_state('light.livingroom_lights', 'on') %}
               orange  
             {% endif %}
           hold_action:
@@ -58,17 +58,17 @@
             action: perform-action
             perform_action: light.turn_off
             target:
-              entity_id: light.office_lights
+              entity_id: light.livingroom_lights
         - type: custom:gap-card
         - type: custom:mushroom-light-card
           fill_container: false
-          entity: light.office_ceiling_lamp
+          entity: light.livingroom_ceiling_spotlights_main
         - type: custom:mushroom-light-card
           fill_container: false
-          entity: light.office_led_strip
+          entity: light.livingroom_ceiling_spotlights_tv
       columns: 2
   columns: 1
   visibility:
     - condition: state
       entity: input_select.room
-      state: Office
+      state: Living Room
