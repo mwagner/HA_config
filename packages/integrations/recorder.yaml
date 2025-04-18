@@ -6,15 +6,16 @@ recorder:
   include:
     entities: 
     - sensor.travel_home_to_office
+    - sensor.*_netatmo_*
     domains:
     - automation
     # - binary_sensor
-    - climate
+    # - climate
     - device_tracker
     # - group
     # - input_boolean
     # - input_number
-    # - light
+    - light
     # - lock
     # - media_player
     # - number
@@ -35,10 +36,10 @@ recorder:
     - sensor.*_battery
     - sensor.*_battery_level
     - sensor.*_battery_percent
+    - sensor.*_carbon_dioxid
     - sensor.*_co2
     - sensor.*_humidity
     - sensor.*_temperature
-    # - sensor.3cecef7e186a_*
   exclude:
     entities: []
     domains: []
