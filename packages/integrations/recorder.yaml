@@ -6,7 +6,6 @@ recorder:
   include:
     entities: 
     - sensor.travel_home_to_office
-    - sensor.*_netatmo_*
     domains:
     - automation
     # - binary_sensor
@@ -39,6 +38,7 @@ recorder:
     - sensor.*_carbon_dioxid
     - sensor.*_co2
     - sensor.*_humidity
+    - sensor.*_netatmo_*
     - sensor.*_temperature
   exclude:
     entities: []
