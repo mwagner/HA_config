@@ -19,8 +19,14 @@
               entity: sensor.outdoor_netatmo_outdoor_module_humidity
             - type: entity
               entity: sensor.outdoor_netatmo_anemometer_wind_speed
+              visibility:
+                - condition: screen
+                  media_query: "(min-width: 768px)"
             - type: entity
               entity: sensor.outdoor_netatmo_anemometer_wind_direction
+              visibility:
+                - condition: screen
+                  media_query: "(min-width: 1024px)"
       columns: 1
     - square: false
       type: grid

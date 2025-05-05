@@ -1,9 +1,11 @@
 - type: horizontal-stack
   cards:
     - type: custom:gap-card
+      visibility:
+        - condition: screen
+          media_query: "(min-width: 767px)"
+    - type: custom:gap-card
       grid_options:
-        columns: 6
-        rows: 1
       visibility:
         - condition: screen
           media_query: "(min-width: 767px)"
@@ -56,9 +58,10 @@
       icon_color: ""
       layout: vertical
     - type: custom:gap-card
-      grid_options:
-        columns: 6
-        rows: 1
+      visibility:
+        - condition: screen
+          media_query: "(min-width: 767px)"
+    - type: custom:gap-card
       visibility:
         - condition: screen
           media_query: "(min-width: 767px)"
@@ -68,12 +71,13 @@
 - type: horizontal-stack
   cards:
     - type: custom:gap-card
-      grid_options:
-        columns: 3
-        rows: 1
       visibility:
         - condition: screen
           media_query: "(min-width: 767px)"
+    - type: custom:gap-card
+      visibility:
+        - condition: screen
+          media_query: "(min-width: 1024px)"
     - type: tile
       entity: person.marco
       show_entity_picture: true
@@ -96,9 +100,10 @@
       tap_action:
         action: none
     - type: custom:gap-card
-      grid_options:
-        columns: 3
-        rows: 1
+      visibility:
+        - condition: screen
+          media_query: "(min-width: 1024px)"
+    - type: custom:gap-card
       visibility:
         - condition: screen
           media_query: "(min-width: 767px)"

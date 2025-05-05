@@ -325,7 +325,6 @@
         action: none
       hold_action:
         action: more-info
-  title: Floorplan
   cards:
     - type: picture-elements
       image: /local/floorplan/base.png?version=812897947D63C6C6C64A46C452364205

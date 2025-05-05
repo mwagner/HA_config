@@ -3,38 +3,53 @@
   path: patio_garden
   icon: mdi:flower
 
+  subview: true
+  cards: []
+
   type: sections
-  max_columns: 2
-  
+  max_columns: 3
+
   sections:
     - type: grid
       cards:
-        - type: horizontal-stack
-          cards:
-            - graph: line
-              type: sensor
-              entity: sensor.outdoor_netatmo_outdoor_module_temperature
-              detail: 1
-              name: Temperature
-            - graph: line
-              type: sensor
-              detail: 1
-              name: Humidity
-              entity: sensor.outdoor_netatmo_outdoor_module_humidity
-            - graph: line
-              type: sensor
-              entity: sensor.outdoor_netatmo_anemometer_wind_speed
-              detail: 1
-              name: Wind Speed
-            - graph: line
-              type: sensor
-              entity: sensor.outdoor_netatmo_anemometer_gust_strength
-              detail: 1
-              name: Wind Gust
-              icon: mdi:weather-windy
+        - type: custom:gap-card
           grid_options:
-            columns: full
-      column_span: 2
+            columns: 6
+            rows: auto
+          visibility:
+            - condition: screen
+              media_query: "(min-width: 1024px)"
+        - graph: line
+          type: sensor
+          entity: sensor.outdoor_netatmo_outdoor_module_temperature
+          detail: 1
+          name: Temperature
+        - graph: line
+          type: sensor
+          detail: 1
+          name: Humidity
+          entity: sensor.outdoor_netatmo_outdoor_module_humidity
+        - graph: line
+          type: sensor
+          entity: sensor.outdoor_netatmo_anemometer_wind_speed
+          detail: 1
+          name: Wind Speed
+        - graph: line
+          type: sensor
+          entity: sensor.outdoor_netatmo_anemometer_gust_strength
+          detail: 1
+          name: Wind Gust
+          icon: mdi:weather-windy
+        - type: custom:gap-card
+          grid_options:
+            columns: 6
+            rows: auto
+          visibility:
+            - condition: screen
+              media_query: "(min-width: 1024px)"
+      grid_options:
+        columns: full
+      column_span: 3
     - type: grid
       cards:
         - type: heading
@@ -69,6 +84,3 @@
               entity: sensor.hue_motion_sensor_1_battery
               name: Battery
               icon_color: green
-  max_columns: 2
-  subview: true
-  cards: []
