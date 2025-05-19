@@ -1,19 +1,10 @@
 ---
-# Define state-based template entities
-- sensor:
-- binary_sensor:
-
-# Define trigger-based template entities
-- trigger:
-  sensor:
-  binary_sensor:
-
-- trigger:
-    - platform: time_pattern
+- triggers:
+    - trigger: time_pattern
       minutes: /15
-    - platform: webhook
+    - trigger: webhook
       webhook_id: refresh-garbage-events
-    - platform: event
+    - trigger: event
       event_type:
         - automation_reloaded
   action:
@@ -22,7 +13,7 @@
         entity_id: calendar.abfallkalender
       data:
         start_date_time: "{{ now().strftime('%Y-%m-%d 00:00:00') }}"
-        end_date_time: "{{ now() + timedelta(minutes=525600) }}"
+        end_date_time: "{{ (now() + timedelta(days=365)).strftime('%Y-%m-%d 00:00:00') }}"
       response_variable: scheduled_events
 
   sensor:
