@@ -27,7 +27,6 @@ custom_components
 esphome
 lovelace/sample
 dashboards/development
-www/community
 www/custom_ui
 www/icons/garbage
 zigbee2mqtt
