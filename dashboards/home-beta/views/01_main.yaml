@@ -36,7 +36,7 @@
           weekend_day_color: "#E67C73"
           weekend_month_color: "#E67C73"
           days_to_show: 14
-          max_events_to_show: 5
+          compact_events_to_show: 5
           show_location: true
           show_past_events: true
           tap_action:
