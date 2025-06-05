@@ -10,6 +10,50 @@
     - type: grid
       cards:
         - type: heading
+          icon: mdi:account-group
+          heading: For Admins Only
+          heading_style: title
+        - square: false
+          type: grid
+          cards:
+            - type: custom:gap-card
+            - type: custom:button-card
+              name: Restart
+              icon: mdi:restart
+              tap_action:
+                action: call-service
+                service: homeassistant.restart
+              confirmation:
+                text: "[[[ return `Are you sure you want to reboot?` ]]]"
+                exemptions:
+                  - user: befc8496799848bda1824f2a8111e30a
+              lock:
+                enabled: false
+                duration: 5
+                unlock: hold
+                exemptions:
+                  - username: test
+                  - user: befc8496799848bda1824f2a8111e30a
+            - type: custom:button-card
+              name: Log Files
+              icon: mdi:file-document
+              tap_action:
+                action: navigate
+                navigation_path: /config/logs
+            - type: custom:gap-card
+          columns: 4
+          grid_options:
+            columns: full
+      column_span: 2
+      visibility:
+        - condition: user
+          users:
+            - e9949774bdc54573850b5a61613ba3b3
+            - 6b1a94bea4c34b61873fe584356143b9
+
+    - type: grid
+      cards:
+        - type: heading
           heading: Battery levels
           heading_style: title
           icon: mdi:battery-50
@@ -24,6 +68,7 @@
             exclude: []
           sort:
             method: friendly_name
+
     - type: grid
       cards:
         - type: heading
@@ -49,6 +94,7 @@
             - condition: state
               entity: binary_sensor.has_alerts
               state: "on"
+
         - type: heading
           icon: mdi:fridge
           heading: Software Updates
@@ -97,3 +143,6 @@
                 join(', ')
               }}
           show_empty: false
+
+  badges: []
+  cards: []
