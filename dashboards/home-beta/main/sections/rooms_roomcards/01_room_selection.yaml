@@ -3,7 +3,7 @@
   secondary_info: none
   layout: horizontal
   fill_container: false
-  icon_type: icon
+  icon_type: none
   icon: mdi:floor-plan
   hold_action:
     action: none
@@ -11,8 +11,18 @@
     action: none
   double_tap_action:
     action: none
-  name: "Room select:"
+  name: "Select a room:"
   grid_options:
     columns: full
-- type: custom:gap-card
-  height: 5
+  visibility:
+    - condition: screen
+      media_query: "(min-width: 0px) and (max-width: 767px), (min-width: 1280px)"
+  card_mod:
+    style: |
+      ha-card {
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        background: transparent !important;
+        text-align: right;
+      }

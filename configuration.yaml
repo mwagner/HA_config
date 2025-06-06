@@ -28,21 +28,20 @@ homeassistant:
     - type: homeassistant
     - type: trusted_networks
       trusted_networks:
-      - 192.168.1.0/24
-      - 192.168.10.0/24
-      - 192.168.11.0/24
-      - 192.168.100.0/24
-      - 178.198.126.123/32
+        - 192.168.1.0/24
+        - 192.168.10.0/24
+        - 192.168.11.0/24
+        - 192.168.100.0/24
+        - 178.198.126.123/32
       trusted_users:
         192.168.10.50: !secret userid_marco
         192.168.10.51: !secret userid_marco
-
 
 # Enables configuration UI
 config:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
-# conversation: 
+# conversation:
 
 # Load device trackers
 # device_tracker:
@@ -59,17 +58,16 @@ sun:
 
 # Checks for available updates
 # updater:
-  # Analytics reporting with the option 'include_used_components' is deprecated
-  # and you should remove that from your configuration. The analytics part of 
-  # this integration has moved to the new 'analytics' integration
-  #include_used_components: true
+# Analytics reporting with the option 'include_used_components' is deprecated
+# and you should remove that from your configuration. The analytics part of
+# this integration has moved to the new 'analytics' integration
+#include_used_components: true
 
 mobile_app:
 
 frontend:
   #themes: !include themes/themes.yaml
   themes: !include_dir_merge_named themes
-
 
 # Load switches
 switch: !include switches.yaml
@@ -95,7 +93,7 @@ input_number: !include_dir_merge_named ./helpers/input_number/
 input_select: !include_dir_merge_named ./helpers/input_select/
 template: !include_dir_merge_list ./helpers/template/
 group: !include_dir_merge_named ./helpers/groups/
- 
+
 # Load automations
 #automation: !include automations.yaml
 #automation split: !include_dir_merge_list ./automations
@@ -103,7 +101,7 @@ group: !include_dir_merge_named ./helpers/groups/
 script: !include scripts.yaml
 # Load scenes
 scene: !include scenes.yaml
-# Load Rest commands 
+# Load Rest commands
 rest_command: !include_dir_merge_named rest_commands/
 
 # Text to speech

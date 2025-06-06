@@ -4,7 +4,7 @@
   icon: mdi:home-outline
 
   type: sections
-  max_columns: 2
+  max_columns: 3
 
   header:
     card:
@@ -27,12 +27,108 @@
           cards: !include_dir_merge_list /config/dashboards/home-beta/main/sections/rooms_roomcards/
 
     - type: grid
-      cards: 
+      cards:
+        - type: custom:mushroom-select-card
+          entity: input_select.room
+          secondary_info: none
+          fill_container: false
+          icon_type: none
+          icon: mdi:floor-plan
+          hold_action:
+            action: none
+          tap_action:
+            action: none
+          double_tap_action:
+            action: none
+          grid_options:
+            columns: full
+          primary_info: name
+          layout: horizontal
+          name: "Select a room:"
+          card_mod:
+            style: |
+              ha-card {
+                border-radius: 0;
+                border: none;
+                box-shadow: none;
+                background: transparent !important;
+                text-align: right;
+                font-size: var(--ha-heading-card-title-font-size, 16px) !important;
+                font-weight: var(--ha-heading-card-title-font-weight, 400) !important;
+              }
+      visibility:
+        - condition: screen
+          media_query: "(min-width: 768px) and (max-width: 1279px)"
+      column_span: 1
+
+    - type: grid
+      cards:
         - type: custom:calendar-card-pro
+          title: Events
           entities:
-            - calendar.marco_sharene_s_calendar
-          days_to_show: 7
+            - entity: calendar.marco_sharene_s_calendar
+          weekend_weekday_color: "#E67C73"
+          weekend_day_color: "#E67C73"
+          weekend_month_color: "#E67C73"
+          days_to_show: 14
+          compact_events_to_show: 5
           show_location: true
+          show_past_events: true
+          weather:
+            position: none #date
+            date:
+              show_conditions: true
+              show_high_temp: true
+              show_low_temp: false
+              icon_size: 14px
+              font_size: 12px
+              color: var(--primary-text-color)
+            event:
+              show_conditions: true
+              show_temp: true
+              icon_size: 14px
+              font_size: 12px
+              color: var(--primary-text-color)
+            entity: weather.home
+          tap_action:
+            action: expand
+          hold_action:
+            action: navigate
+            navigation_path: /calendar
+          card_mod:
+            style: |
+              ha-card {
+              #  border-radius: 0;
+              #  border: none;
+              #  box-shadow: none;
+              #  background: transparent !important;
+              }
+
+        - type: custom:auto-entities
+          card:
+            type: entities
+            title: Abfall
+            show_header_toggle: false
+          filter:
+            include:
+              - entity_id: sensor.garbage_*
+            exclude: null
+          show_empty: true
+          unique: null
+          sort:
+            method: state
+            reverse: true
+            ignore_case: true
+            attribute: state
+          card_mod:
+            style: |
+              ha-card {
+              #  border-radius: 0;
+              #  border: none;
+              #  box-shadow: none;
+              #  background: transparent !important;
+              }
+      column_span: 2
 
     - type: grid
       cards:
