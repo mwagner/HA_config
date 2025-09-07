@@ -4,4 +4,4 @@ home-beta:
   icon: mdi:home
   show_in_sidebar: true
   require_admin: false
-  filename: dashboards/home-beta.yaml
+  filename: ./home-beta.yaml
