@@ -65,6 +65,7 @@
       cards:
         - type: custom:calendar-card-pro
           title: Events
+          title_font_size: 24px
           entities:
             - entity: calendar.marco_sharene_s_calendar
           weekend_weekday_color: "#E67C73"
