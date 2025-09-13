@@ -18,13 +18,13 @@
 
   sections:
     - type: grid
-      cards: !include /config/dashboards/home-beta/main/sections/top.yaml
+      cards: !include ../parts/sections/top.yaml
       column_span: 3
 
     - type: grid
       cards:
         - type: vertical-stack
-          cards: !include_dir_merge_list /config/dashboards/home-beta/main/sections/rooms_roomcards/
+          cards: !include_dir_merge_list ../parts/sections/rooms_roomcards/
 
     - type: grid
       cards:

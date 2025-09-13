@@ -1,4 +1,4 @@
-# Shower Room
+# Kitchen
 - square: false
   type: grid
   cards:
@@ -7,39 +7,39 @@
       cards:
         - type: heading
           heading_style: title
-          icon: mdi:shower
-          heading: Shower Room
+          icon: mdi:stove
+          heading: Kitchen
           # badges:
           #   - type: entity
-          #     entity: sensor.showerroom_netatmo_indoor_module_temperature
+          #     entity: sensor.kitchen_netatmo_indoor_module_temperature
           #   - type: entity
           #     show_state: true
           #     show_icon: true
-          #     entity: sensor.showerroom_netatmo_indoor_module_humidity
+          #     entity: sensor.kitchen_netatmo_indoor_module_humidity
           tap_action:
             action: navigate
-            navigation_path: /home-beta/showerroom
+            navigation_path: kitchen
       columns: 1
     - square: false
       type: grid
       cards:
         - type: custom:mushroom-template-card
           primary: Lights
-          secondary: "{{ states('light.showerroom_lights') }}"
+          secondary: "{{ states('light.kitchen_lights') }}"
           icon: mdi:lightbulb-group
-          entity: light.showerroom_lights
+          entity: light.kitchen_lights
           badge_icon: >-
-            {% if is_state('binary_sensor.showerroom_motionsensor_occupancy', 'on') %}
+            {% if is_state('binary_sensor.kitchen_motionsensor_occupancy', 'on') %}
               mdi:motion-sensor
-            {% elif is_state('binary_sensor.showerroom_motionsensor_occupancy', 'off') %}
+            {% elif is_state('binary_sensor.kitchen_motionsensor_occupancy', 'off') %}
               mdi:motion-sensor-off
             {% else %}
 
             {% endif %}
           badge_color: >-
-            {% if is_state('binary_sens.showerroom_motionsensor_occupancy', 'on') %}
+            {% if is_state('binary_sens.kitchen_motionsensor_occupancy', 'on') %}
               red
-            {% elif is_state('binary_sensor.showerroom_motionsensor_occupancy', 'off') %}
+            {% elif is_state('binary_sensor.kitchen_motionsensor_occupancy', 'off') %}
 
             {% else %}
 
@@ -47,7 +47,7 @@
           fill_container: false
           multiline_secondary: false
           icon_color: |-
-            {% if is_state('light.showerroom_lights', 'on') %}
+            {% if is_state('light.kitchen_lights', 'on') %}
               orange  
             {% endif %}
           hold_action:
@@ -58,11 +58,17 @@
             action: perform-action
             perform_action: light.turn_off
             target:
-              entity_id: light.showerroom_lights
+              entity_id: light.kitchen_lights
         - type: custom:gap-card
+        - type: custom:mushroom-light-card
+          fill_container: false
+          entity: light.kitchen_ceiling_spotlights
+        - type: custom:mushroom-light-card
+          fill_container: false
+          entity: light.kitchen_stove_spotlights
       columns: 2
   columns: 1
   visibility:
     - condition: state
       entity: input_select.room
-      state: Shower Room
+      state: Kitchen

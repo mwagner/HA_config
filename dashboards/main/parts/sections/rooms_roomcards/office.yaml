@@ -18,7 +18,7 @@
               entity: sensor.office_netatmo_indoor_module_humidity
           tap_action:
             action: navigate
-            navigation_path: /home-beta/office
+            navigation_path: office
       columns: 1
     - square: false
       type: grid

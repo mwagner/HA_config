@@ -2,6 +2,6 @@ home-beta:
   mode: yaml
   title: Home (Beta)
   icon: mdi:home
-  show_in_sidebar: true
-  require_admin: false
+  show_in_sidebar: false
+  require_admin: true
   filename: ./home-beta.yaml

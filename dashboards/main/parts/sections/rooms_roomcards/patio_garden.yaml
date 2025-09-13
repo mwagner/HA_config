@@ -11,7 +11,7 @@
           heading: Patio / Garden
           tap_action:
             action: navigate
-            navigation_path: /home-beta/patio_garden
+            navigation_path: patio_garden
           badges:
             - type: entity
               entity: sensor.outdoor_netatmo_outdoor_module_temperature

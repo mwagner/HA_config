@@ -1,4 +1,4 @@
-# Hallway
+# Bathroom
 - square: false
   type: grid
   cards:
@@ -7,39 +7,39 @@
       cards:
         - type: heading
           heading_style: title
-          icon: mdi:coat-rack
-          heading: Hallway
+          icon: mdi:bathtub
+          heading: Bathroom
           # badges:
           #   - type: entity
-          #     entity: sensor.hallway_netatmo_indoor_module_temperature
+          #     entity: sensor.bathroom_netatmo_indoor_module_temperature
           #   - type: entity
           #     show_state: true
           #     show_icon: true
-          #     entity: sensor.hallway_netatmo_indoor_module_humidity
+          #     entity: sensor.bathroom_netatmo_indoor_module_humidity
           tap_action:
             action: navigate
-            navigation_path: /home-beta/hallway
+            navigation_path: bathroom
       columns: 1
     - square: false
       type: grid
       cards:
         - type: custom:mushroom-template-card
           primary: Lights
-          secondary: "{{ states('light.hallway_lights') }}"
+          secondary: "{{ states('light.bathroom_lights') }}"
           icon: mdi:lightbulb-group
-          entity: light.hallway_lights
+          entity: light.bathroom_lights
           badge_icon: >-
-            {% if is_state('binary_sensor.hallway_motionsensor_occupancy', 'on') %}
+            {% if is_state('binary_sensor.bathroom_motionsensor_occupancy', 'on') %}
               mdi:motion-sensor
-            {% elif is_state('binary_sensor.hallway_motionsensor_occupancy', 'off') %}
+            {% elif is_state('binary_sensor.bathroom_motionsensor_occupancy', 'off') %}
               mdi:motion-sensor-off
             {% else %}
 
             {% endif %}
           badge_color: >-
-            {% if is_state('binary_sens.hallway_motionsensor_occupancy', 'on') %}
+            {% if is_state('binary_sens.bathroom_motionsensor_occupancy', 'on') %}
               red
-            {% elif is_state('binary_sensor.hallway_motionsensor_occupancy', 'off') %}
+            {% elif is_state('binary_sensor.bathroom_motionsensor_occupancy', 'off') %}
 
             {% else %}
 
@@ -47,7 +47,7 @@
           fill_container: false
           multiline_secondary: false
           icon_color: |-
-            {% if is_state('light.hallway_lights', 'on') %}
+            {% if is_state('light.bathroom_lights', 'on') %}
               orange  
             {% endif %}
           hold_action:
@@ -58,14 +58,11 @@
             action: perform-action
             perform_action: light.turn_off
             target:
-              entity_id: light.hallway_lights
+              entity_id: light.bathroom_lights
         - type: custom:gap-card
-        - type: custom:mushroom-light-card
-          fill_container: false
-          entity: light.hallway_ceiling_spotlights
       columns: 2
   columns: 1
   visibility:
     - condition: state
       entity: input_select.room
-      state: Hallway
+      state: Bathroom
