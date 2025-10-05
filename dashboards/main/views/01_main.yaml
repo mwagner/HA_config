@@ -12,7 +12,9 @@
       text_only: true
       content: |-
         # Hello {{ user }}
-        Add your text here, template variables are supported ✨
+        {% if is_state('input_boolean.env_isdev', 'on') %}
+          Please note: This is the test environment.
+        {% endif %}
     layout: center
     badges_position: bottom
 
