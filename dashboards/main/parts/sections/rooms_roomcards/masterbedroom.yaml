@@ -6,11 +6,13 @@
       type: grid
       cards:
         - type: heading
+          heading: Master Bedroom
           heading_style: title
           icon: mdi:bed-double
-          heading: Master Bedroom
           badges:
             - type: entity
+              show_state: true
+              show_icon: true
               entity: sensor.masterbedroom_netatmo_indoor_module_temperature
             - type: entity
               show_state: true
@@ -31,7 +33,7 @@
           badge_icon: >-
             {% if is_state('binary_sensor.masterbedroom_motionsensor_occupancy', 'on') %}
               mdi:motion-sensor
-            {% elif is_state('binary_sensor.masterbedroom_motionsensor_occupancy', 'off' ) %}
+            {% elif is_state('binary_sensor.masterbedroom_motionsensor_occupancy', 'off') %}
               mdi:motion-sensor-off
             {% else %}
 
@@ -39,7 +41,7 @@
           badge_color: >-
             {% if is_state('binary_sensor.masterbedroom_motionsensor_occupancy', 'on') %}
               red
-            {% elif is_state('binary_sensor.masterbedroom_motionsensor_occupancy', 'off' ) %}
+            {% elif is_state('binary_sensor.masterbedroom_motionsensor_occupancy', 'off') %}
 
             {% else %}
 

@@ -6,11 +6,13 @@
       type: grid
       cards:
         - type: heading
+          heading: Office
           heading_style: title
           icon: mdi:desk
-          heading: Office
           badges:
             - type: entity
+              show_state: true
+              show_icon: true
               entity: sensor.office_netatmo_indoor_module_temperature
             - type: entity
               show_state: true
