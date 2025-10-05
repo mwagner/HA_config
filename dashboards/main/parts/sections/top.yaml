@@ -5,7 +5,6 @@
         - condition: screen
           media_query: "(min-width: 767px)"
     - type: custom:gap-card
-      grid_options:
       visibility:
         - condition: screen
           media_query: "(min-width: 767px)"
@@ -13,27 +12,29 @@
       primary: House
       secondary: ""
       icon: mdi:home
-      color: blue
-      vertical: true
-      tap_action:
-        action: navigate
-        navigation_path: house
+      color: |-
+        {% if is_state('input_boolean.home_occupied', 'on') %}
+          blue
+        {% else %}
+          grey
+        {% endif %}
       features_position: bottom
+      vertical: true
     - type: custom:mushroom-template-card
       primary: Lights
       secondary: ""
       icon: mdi:lightbulb
-      color: >
+      color: |-
         {% if is_state('light.home_lights', 'on') %}
           orange
         {% else %}
           grey
         {% endif %}
-      vertical: true
       tap_action:
         action: navigate
         navigation_path: "#lights"
       features_position: bottom
+      vertical: true
     - type: custom:mushroom-template-card
       primary: Security
       secondary: ""
@@ -49,18 +50,18 @@
         {% else %}
           blue
         {% endif %}
-      vertical: true
       tap_action:
         action: navigate
         navigation_path: security
       features_position: bottom
+      vertical: true
     - type: custom:mushroom-template-card
       primary: Network
       secondary: ""
       icon: mdi:network
       color: ""
-      vertical: true
       features_position: bottom
+      vertical: true
     - type: custom:gap-card
       visibility:
         - condition: screen
