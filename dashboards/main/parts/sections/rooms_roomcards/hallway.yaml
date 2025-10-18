@@ -1,4 +1,4 @@
-# Kids Room
+# Hallway
 - square: false
   type: grid
   cards:
@@ -7,39 +7,39 @@
       cards:
         - type: heading
           heading_style: title
-          icon: mdi:teddy-bear
-          heading: Kids Room
-          badges:
-            - type: entity
-              entity: sensor.kidsroom_netatmo_indoor_module_temperature
-            - type: entity
-              show_state: true
-              show_icon: true
-              entity: sensor.kidsroom_netatmo_indoor_module_humidity
+          icon: mdi:coat-rack
+          heading: Hallway
+          # badges:
+          #   - type: entity
+          #     entity: sensor.hallway_netatmo_indoor_module_temperature
+          #   - type: entity
+          #     show_state: true
+          #     show_icon: true
+          #     entity: sensor.hallway_netatmo_indoor_module_humidity
           tap_action:
             action: navigate
-            navigation_path: /home-beta/kidsroom
+            navigation_path: hallway
       columns: 1
     - square: false
       type: grid
       cards:
         - type: custom:mushroom-template-card
           primary: Lights
-          secondary: "{{ states('light.kidsroom_lights') }}"
+          secondary: "{{ states('light.hallway_lights') }}"
           icon: mdi:lightbulb-group
-          entity: light.kidsroom_lights
+          entity: light.hallway_lights
           badge_icon: >-
-            {% if is_state('binary_sensor.kidsroom_motionsensor_occupancy', 'on') %}
+            {% if is_state('binary_sensor.hallway_motionsensor_occupancy', 'on') %}
               mdi:motion-sensor
-            {% elif is_state('binary_sensor.kidsroom_motionsensor_occupancy', 'off') %}
+            {% elif is_state('binary_sensor.hallway_motionsensor_occupancy', 'off') %}
               mdi:motion-sensor-off
             {% else %}
 
             {% endif %}
           badge_color: >-
-            {% if is_state('binary_sens.kidsroom_motionsensor_occupancy', 'on') %}
+            {% if is_state('binary_sens.hallway_motionsensor_occupancy', 'on') %}
               red
-            {% elif is_state('binary_sensor.kidsroom_motionsensor_occupancy', 'off') %}
+            {% elif is_state('binary_sensor.hallway_motionsensor_occupancy', 'off') %}
 
             {% else %}
 
@@ -47,7 +47,7 @@
           fill_container: false
           multiline_secondary: false
           icon_color: |-
-            {% if is_state('light.kidsroom_lights', 'on') %}
+            {% if is_state('light.hallway_lights', 'on') %}
               orange  
             {% endif %}
           hold_action:
@@ -58,14 +58,14 @@
             action: perform-action
             perform_action: light.turn_off
             target:
-              entity_id: light.kidsroom_lights
+              entity_id: light.hallway_lights
         - type: custom:gap-card
         - type: custom:mushroom-light-card
           fill_container: false
-          entity: light.kidsroom_ceiling_lamp
+          entity: light.hallway_ceiling_spotlights
       columns: 2
   columns: 1
   visibility:
     - condition: state
       entity: input_select.room
-      state: Kids Room
+      state: Hallway

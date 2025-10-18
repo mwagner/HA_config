@@ -1,0 +1,13 @@
+- title: All States
+  path: all-states
+  visible:
+    - user: !secret userid_marco
+    # - user: !secret userid_sharene
+    - user: !secret userid_testuser1
+    - user: !secret userid_testadmin1
+  type: masonry
+  subview: true
+  back_path: settings
+
+  strategy:
+    type: original-states

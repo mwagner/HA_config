@@ -41,6 +41,30 @@
                 action: navigate
                 navigation_path: /config/logs
             - type: custom:gap-card
+            - type: custom:button-card
+              name: ..
+              color: gray
+              icon: mdi:view-carousel-outline
+              tap_action:
+                action: nothing
+            - type: custom:button-card
+              name: By Rooms
+              icon: mdi:view-carousel
+              tap_action:
+                action: navigate
+                navigation_path: by-rooms
+            - type: custom:button-card
+              name: By Domain
+              icon: mdi:view-carousel
+              tap_action:
+                action: navigate
+                navigation_path: by-domain
+            - type: custom:button-card
+              name: All States
+              icon: mdi:view-carousel
+              tap_action:
+                action: navigate
+                navigation_path: all-states
           columns: 4
           grid_options:
             columns: full
