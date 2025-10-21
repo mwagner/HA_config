@@ -178,8 +178,6 @@ lovelace:
       type: module
     - url: /hacsfiles/lovelace-card-mod/card-mod.js
       type: module
-    - url: /hacsfiles/lovelace-digital-clock/digital-clock.js
-      type: module
     - url: /hacsfiles/button-card/button-card.js
       type: module
     - url: /hacsfiles/light-entity-card/dist/light-entity-card.js
