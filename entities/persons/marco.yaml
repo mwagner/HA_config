@@ -3,4 +3,4 @@
   user_id: !secret userid_marco
   device_trackers:
     - device_tracker.marco_s_phone
-    - device_tracker.sm_s938b
+    - device_tracker.marco_s_watch
