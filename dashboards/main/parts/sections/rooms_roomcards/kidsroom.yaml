@@ -6,11 +6,13 @@
       type: grid
       cards:
         - type: heading
+          heading: Kids Room
           heading_style: title
           icon: mdi:teddy-bear
-          heading: Kids Room
           badges:
             - type: entity
+              show_state: true
+              show_icon: true
               entity: sensor.kidsroom_netatmo_indoor_module_temperature
             - type: entity
               show_state: true
@@ -37,7 +39,7 @@
 
             {% endif %}
           badge_color: >-
-            {% if is_state('binary_sens.kidsroom_motionsensor_occupancy', 'on') %}
+            {% if is_state('binary_sensor.kidsroom_motionsensor_occupancy', 'on') %}
               red
             {% elif is_state('binary_sensor.kidsroom_motionsensor_occupancy', 'off') %}
 
@@ -48,7 +50,7 @@
           multiline_secondary: false
           icon_color: |-
             {% if is_state('light.kidsroom_lights', 'on') %}
-              orange  
+              orange
             {% endif %}
           hold_action:
             action: none

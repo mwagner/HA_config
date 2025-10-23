@@ -5,7 +5,6 @@
         - condition: screen
           media_query: "(min-width: 767px)"
     - type: custom:gap-card
-      grid_options:
       visibility:
         - condition: screen
           media_query: "(min-width: 767px)"
@@ -13,25 +12,29 @@
       primary: House
       secondary: ""
       icon: mdi:home
-      icon_color: blue
-      layout: vertical
-      tap_action:
-        action: navigate
-        navigation_path: house
+      color: |-
+        {% if is_state('input_boolean.home_occupied', 'on') %}
+          blue
+        {% else %}
+          grey
+        {% endif %}
+      features_position: bottom
+      vertical: true
     - type: custom:mushroom-template-card
       primary: Lights
       secondary: ""
       icon: mdi:lightbulb
-      icon_color: >
+      color: |-
         {% if is_state('light.home_lights', 'on') %}
           orange
         {% else %}
           grey
         {% endif %}
-      layout: vertical
       tap_action:
         action: navigate
         navigation_path: "#lights"
+      features_position: bottom
+      vertical: true
     - type: custom:mushroom-template-card
       primary: Security
       secondary: ""
@@ -41,22 +44,24 @@
         {% else %}
           mdi:shield-lock-open
         {% endif %}
-      icon_color: >-
+      color: >-
         {% if is_state('alarm_control_panel.home_alarm_panel', 'armed_home') or is_state('alarm_control_panel.home_alarm_panel', 'armed_away') %}
           green
         {% else %}
           blue
         {% endif %}
-      layout: vertical
       tap_action:
         action: navigate
         navigation_path: security
+      features_position: bottom
+      vertical: true
     - type: custom:mushroom-template-card
       primary: Network
       secondary: ""
       icon: mdi:network
-      icon_color: ""
-      layout: vertical
+      color: ""
+      features_position: bottom
+      vertical: true
     - type: custom:gap-card
       visibility:
         - condition: screen

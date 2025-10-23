@@ -44,12 +44,12 @@
             {% else %}
 
             {% endif %}
-          fill_container: false
           multiline_secondary: false
-          icon_color: |-
+          color: |-
             {% if is_state('light.guestroom_lights', 'on') %}
               orange  
             {% endif %}
+          features_position: bottom
           hold_action:
             action: none
           double_tap_action:

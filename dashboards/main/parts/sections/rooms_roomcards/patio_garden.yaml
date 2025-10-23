@@ -6,23 +6,31 @@
       type: grid
       cards:
         - type: heading
+          heading: Patio / Garden
           heading_style: title
           icon: mdi:pine-tree
-          heading: Patio / Garden
           tap_action:
             action: navigate
             navigation_path: patio_garden
           badges:
             - type: entity
+              show_state: true
+              show_icon: true
               entity: sensor.outdoor_netatmo_outdoor_module_temperature
             - type: entity
+              show_state: true
+              show_icon: true
               entity: sensor.outdoor_netatmo_outdoor_module_humidity
             - type: entity
+              show_state: true
+              show_icon: true
               entity: sensor.outdoor_netatmo_anemometer_wind_speed
               visibility:
                 - condition: screen
                   media_query: "(min-width: 768px)"
             - type: entity
+              show_state: true
+              show_icon: true
               entity: sensor.outdoor_netatmo_anemometer_wind_direction
               visibility:
                 - condition: screen
@@ -32,7 +40,7 @@
       type: grid
       cards:
         - type: tile
-          entity: lawn_mower.sileno
+          entity: lawn_mower.mova_600
           features_position: inline
           vertical: false
           features:

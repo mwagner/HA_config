@@ -6,11 +6,13 @@
       type: grid
       cards:
         - type: heading
+          heading: Living Room
           heading_style: title
           icon: mdi:sofa
-          heading: Living Room
           badges:
             - type: entity
+              show_state: true
+              show_icon: true
               entity: sensor.livingroom_netatmo_indoor_module_temperature
             - type: entity
               show_state: true
@@ -37,16 +39,15 @@
 
             {% endif %}
           badge_color: >-
-            {% if is_state('binary_sens.livingroom_motionsensor_occupancy', 'on') %}
+            {% if is_state('binary_sensor.livingroom_motionsensor_occupancy', 'on') %}
               red
             {% elif is_state('binary_sensor.livingroom_motionsensor_occupancy', 'off') %}
 
             {% else %}
 
             {% endif %}
-          fill_container: false
           multiline_secondary: false
-          icon_color: |-
+          color: |-
             {% if is_state('light.livingroom_lights', 'on') %}
               orange  
             {% endif %}
@@ -59,6 +60,7 @@
             perform_action: light.turn_off
             target:
               entity_id: light.livingroom_lights
+          features_position: bottom
         - type: custom:gap-card
         - type: custom:mushroom-light-card
           fill_container: false

@@ -62,7 +62,7 @@
               tap_action:
                 action: toggle
         - type: tile
-          entity: lawn_mower.sileno
+          entity: lawn_mower.mova_600
           features_position: inline
           vertical: false
           features:

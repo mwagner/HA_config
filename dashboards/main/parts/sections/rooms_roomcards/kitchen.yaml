@@ -6,11 +6,13 @@
       type: grid
       cards:
         - type: heading
+          heading: Kitchen
           heading_style: title
           icon: mdi:stove
-          heading: Kitchen
           # badges:
           #   - type: entity
+          #     show_state: true
+          #     show_icon: true
           #     entity: sensor.kitchen_netatmo_indoor_module_temperature
           #   - type: entity
           #     show_state: true
@@ -37,7 +39,7 @@
 
             {% endif %}
           badge_color: >-
-            {% if is_state('binary_sens.kitchen_motionsensor_occupancy', 'on') %}
+            {% if is_state('binary_sensor.kitchen_motionsensor_occupancy', 'on') %}
               red
             {% elif is_state('binary_sensor.kitchen_motionsensor_occupancy', 'off') %}
 
