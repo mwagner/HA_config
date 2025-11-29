@@ -1,0 +1,10 @@
+---
+xmas_light_start:
+  name: Xmas Lights Start
+  has_date: true
+  has_time: true
+
+xmas_light_end:
+  name: Xmas Lights End
+  has_date: true
+  has_time: true

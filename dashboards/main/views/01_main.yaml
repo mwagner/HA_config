@@ -24,6 +24,14 @@
       column_span: 3
 
     - type: grid
+      cards: !include ../parts/sections/xmas.yaml
+      column_span: 3
+      visibility:
+        - condition: state
+          entity: binary_sensor.show_xmas_lights_section
+          state: "on"
+
+    - type: grid
       cards:
         - type: vertical-stack
           cards: !include_dir_merge_list ../parts/sections/rooms_roomcards/

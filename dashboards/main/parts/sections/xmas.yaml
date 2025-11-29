@@ -1,0 +1,102 @@
+- type: horizontal-stack
+  cards:
+  - type: custom:gap-card
+    visibility:
+      - condition: screen
+        media_query: "(min-width: 768px)"
+
+  - type: grid
+    columns: 1
+    square: false
+    cards:
+      - type: custom:mod-card
+        card_mod:
+          style: |
+            ha-card {
+              background: url('/local/xmas/background.jpeg') center/100% no-repeat !important;
+              min-height: 217px;
+              border-radius: 22px;
+              overflow: hidden;
+              position: relative;
+              box-shadow: 0 0 18px rgba(0,0,0,0.5);
+              padding: 0; /* ensures clean card edge */
+
+            ha-card::before {
+              content: "";
+              position: absolute;
+              inset: 0;
+              z-index: 1;
+            }
+
+            ha-card > * {
+              position: relative;
+              z-index: 1;
+            }
+
+            /* Desktop 1024px: limit width + center card to avoid BG cropping */
+            @media (min-width: 1024px) {
+              :host {
+                max-width: 550px;
+                margin: 0 auto;
+                display: block;
+              }
+            }
+        card:
+          type: vertical-stack
+          cards:
+            - type: custom:gap-card
+              height: 96   # tweak this: 8, 12, 16, 24, etc.
+
+            - type: grid
+              columns: 3
+              square: false
+              card_mod:
+                style: |
+                  :host {
+                    margin-bottom: 24px;
+                  }
+              cards:
+                - type: custom:button-card
+                  template: xmas_switch_button
+                  entity: switch.livingroom_power_switch_xmas
+                  name: Window Star
+                  variables:
+                    xmas_image: /local/xmas/led_star.jpeg
+                  card_mod:
+                    style: |
+                      :host {
+                        margin-left: 24px;
+                      }
+                - type: custom:button-card
+                  template: xmas_switch_button
+                  entity: switch.patio_power_switch_xmas
+                  name: Balcony Chain
+                  variables:
+                    xmas_image: /local/xmas/led_curtain.jpeg
+                  card_mod:
+                    style: |
+                      :host {
+                        margin-left: 12px;
+                      }
+                - type: custom:button-card
+                  name: ""
+                  color_type: blank-card
+                  card_mod:
+                    style: |
+                      :host {
+                        margin-right: 24px;
+                      }
+    grid_options:
+      rows: 1
+    
+  - type: custom:gap-card
+    visibility:
+      - condition: screen
+        media_query: "(min-width: 768px)"
+  grid_options:
+    columns: full
+
+- type: custom:gap-card
+  height: 20
+  grid_options:
+    columns: full

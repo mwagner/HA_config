@@ -1,0 +1,56 @@
+---
+- id: '740eae423f6740728dab876567bc6052'
+  alias: Turn On the Xmas Lights
+  description: ''
+  triggers:
+  - trigger: sun
+    event: sunset
+    offset: -00:30:00
+  conditions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.livingroom_power_switch_xmas
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.patio_power_switch_xmas
+  - action: notify.mobile_app_samsung_galaxy_s25_pro_sm_s938b
+    metadata: {}
+    data:
+      message: Xmas lights triggered due to sunset offset by 45'
+  mode: single
+
+- id: 'fea190562793493ba8e67fc5f6459933'
+  alias: Turn off the Xmas light
+  description: ''
+  triggers:
+  - trigger: time
+    at: '22:00:00'
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - sun
+  - trigger: time
+    at: '23:30:00'
+    weekday:
+    - fri
+    - sat
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.livingroom_power_switch_xmas
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.patio_power_switch_xmas
+  mode: single

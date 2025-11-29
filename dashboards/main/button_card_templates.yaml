@@ -1,0 +1,60 @@
+xmas_switch_button:
+  show_state: false
+  show_name: false
+  show_icon: false
+  tap_action:
+    action: toggle
+  hold_action:
+    action: more-info
+  aspect_ratio: 1/1
+  custom_fields:
+    pic: >-
+      [[[ return `<img src="${variables.xmas_image}"
+      style="width:60%;height:auto;filter:drop-shadow(0 0 6px
+      rgba(255,255,255,0.8));" />`; ]]]
+  styles:
+    card:
+      - width: 90px
+      - height: 90px
+      - border-radius: 18px
+      - padding: 2px #8px 4px
+      - background: rgba(0, 0, 0, 0.25)
+      - backdrop-filter: blur(6px)
+      - border: 1px solid rgba(255,255,255,0.25)
+      - box-shadow: 0 0 12px rgba(255,255,255,0.8)  # box-shadow: 0 0 12px rgba(0,0,0,0.6)
+    grid:
+      - grid-template-areas: '"pic" "n" "s"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: auto auto auto
+      - row-gap: 4px
+    custom_fields:
+      pic:
+        - justify-self: center
+        - margin-top: 6px
+    name:
+      - justify-self: center
+      - font-weight: 600
+      - font-size: 14px
+    state:
+      - justify-self: center
+      - font-size: 12px
+  state:
+    - value: "on"
+      styles:
+        card:
+          - background: >-
+              linear-gradient(135deg, rgba(255,76,76,0.95),
+              rgba(7,193,96,0.95))
+          - box-shadow: 0 0 18px rgba(255,255,255,0.8)
+        name:
+          - color: "#ffffff"
+        state:
+          - color: "#ffffff"
+    - value: "off"
+      styles:
+        card:
+          - background: rgba(0,0,0,0.45)
+        name:
+          - color: "#ffffff"
+        state:
+          - color: rgba(255,255,255,0.7)
