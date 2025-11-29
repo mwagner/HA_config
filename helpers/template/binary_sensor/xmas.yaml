@@ -1,0 +1,8 @@
+- binary_sensor:
+    - name: Show Xmas Lights Section
+      unique_id: show_xmas_lights_section
+      icon: mdi:PineTree
+      state: >
+        {% set start = state_attr('input_datetime.xmas_light_start', 'timestamp') | float | as_datetime %}
+        {% set end   = state_attr('input_datetime.xmas_light_end', 'timestamp')   | float | as_datetime %}
+        {{ start <= now() <= end }}
