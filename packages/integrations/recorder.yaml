@@ -1,11 +1,11 @@
 # https://www.home-assistant.io/integrations/recorder/
 recorder:
-  purge_keep_days: 5
+  purge_keep_days: 10
   auto_purge: true
   db_url: !secret recorder_db_url
   include:
-    entities: 
-    - sensor.travel_home_to_office
+    # entities: 
+    # - sensor.travel_home_to_office
     domains:
     - automation
     # - binary_sensor
@@ -32,6 +32,8 @@ recorder:
     - binary_sensor.*_low_bat
     - binary_sensor.*_low_battery
     - binary_sensor.zh397015_*
+    - binary_sensor.*motion*
+    - binary_sensor.*_window_sensor_contact
     - sensor.*_battery
     - sensor.*_battery_level
     - sensor.*_battery_percent
