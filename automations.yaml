@@ -210,7 +210,7 @@
       entity_id: light.masterbedroom_ceiling_lamp
   mode: single
 - id: '1739943368515'
-  alias: New automation
+  alias: Turn on TV Spotlights
   description: ''
   triggers: []
   conditions: []
@@ -235,7 +235,7 @@
         state: '255'
   mode: single
 - id: '1740637352516'
-  alias: Off all lights
+  alias: Turn off all lights
   description: ''
   triggers: []
   conditions: []
@@ -252,4 +252,22 @@
       - light.guestbedroom_lights
       - light.kidsbedroom_lights
       - light.officeroom_lights
+  mode: single
+- id: '1766401241953'
+  alias: Send notification if motion is detected
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: binary_sensor.hallway_motion_sensor_occupancy
+    entity_id: binary_sensor.office_motion_sensor_occupancy
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - action: notify.send_message
+    metadata: {}
+    target:
+      entity_id: notify.telegram_bot_1312204641_712944489
+    data:
+      message: Motion detected
   mode: single
