@@ -1,0 +1,20 @@
+---
+logbook:
+  include:
+    domains:
+      - sensor
+      - binary_sensor
+      - switch
+      - media_player
+      - update
+    entities: []
+    entity_globs:
+      - binary_sensor.*_low_bat
+      - binary_sensor.*_lowbat
+      - binary_sensor.*window_sensor*
+      - binary_sensor.*door_sensor*
+      - binary_sensor.*motion_sensor*
+  exclude:
+    domains: []
+    entities: []
+    entity_globs: []

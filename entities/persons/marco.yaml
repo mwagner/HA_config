@@ -4,3 +4,5 @@
   device_trackers:
     - device_tracker.marco_s_phone
     - device_tracker.marco_s_watch
+    - device_tracker.samsung_galaxy_s25_pro_sm_s938b
+    - device_tracker.samsung_galaxy_watch4_classic_p75h

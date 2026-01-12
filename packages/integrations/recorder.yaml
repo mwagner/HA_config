@@ -1,50 +1,36 @@
 # https://www.home-assistant.io/integrations/recorder/
 recorder:
-  purge_keep_days: 10
+  purge_keep_days: 30
   auto_purge: true
+  auto_repack: true
   db_url: !secret recorder_db_url
   include:
-    # entities: 
-    # - sensor.travel_home_to_office
     domains:
-    - automation
-    # - binary_sensor
-    # - climate
-    - device_tracker
-    # - group
-    # - input_boolean
-    # - input_number
-    - light
-    # - lock
-    # - media_player
-    # - number
-    # - persistent_notification
-    - person
-    # - script
-    # - sensor
-    # - sun
-    # - switch
-    # - update
-    # - weather
-    # - zone
-    entity_globs:
-    - binary_sensor.*_bat
-    - binary_sensor.*_low_bat
-    - binary_sensor.*_low_battery
-    - binary_sensor.zh397015_*
-    - binary_sensor.*motion*
-    - binary_sensor.*_window_sensor_contact
-    - sensor.*_battery
-    - sensor.*_battery_level
-    - sensor.*_battery_percent
-    - sensor.*_carbon_dioxid
-    - sensor.*_co2
-    - sensor.*_humidity
-    - sensor.*_netatmo_*
-    - sensor.*_temperature
-  exclude:
+      - automation
+      - binary_sensor
+      # - climate
+      - device_tracker
+      # - group
+      # - input_boolean
+      # - input_number
+      - light
+      - lock
+      # - media_player
+      # - number
+      # - persistent_notification
+      - person
+      # - script
+      - sensor
+      # - sun
+      # - switch
+      # - update
+      # - weather
+      # - zone
     entities: []
+    entity_globs: []
+  exclude:
     domains: []
+    entities: []
     entity_globs: []
 
 history:

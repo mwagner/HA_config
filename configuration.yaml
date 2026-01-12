@@ -1,5 +1,5 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
-#default_config:
+default_config:
 
 homeassistant:
   name: !secret home_name
@@ -143,27 +143,6 @@ logger:
   #   homeassistant.components.unifi: info
   #   homeassistant.components.device_tracker.unifi: info
   #   homeassistant.components.switch.unifi: info
-
-logbook:
-  include:
-    domains:
-      - sensor
-      # - binary_sensor
-      - switch
-      - media_player
-      - update
-    entities:
-      # Balcony door
-      - binary_sensor.0000d8a99e5ae7_state
-    entity_globs:
-      - binary_sensor.*_low_bat
-      - binary_sensor.*_lowbat
-  exclude:
-    entities:
-      - sensor.utc
-      - sensor.date_time
-    # entity_globs:
-    #   - weather.*
 
 lovelace:
   # mode can be either yaml or storage
