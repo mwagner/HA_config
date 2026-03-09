@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RhB Vereina – Live</title>
+  <style>
+    :root{
+      --bg:#0f141a;           /* single uniform background */
+      --card:#1a2129;
+      --text:#e8eef6;
+      --muted:#a8b3c2;
+      --border:rgba(255,255,255,.12);
+      --border2:rgba(255,255,255,.08);
+      --ok:#30d158;
+      --warn:#ffd60a;
+      --err:#ff3b30;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      padding:16px;
+      background: var(--bg);   /* simplified background */
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+
+    .wrap{ max-width:900px; margin:0 auto; }
+
+    header{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    h1{
+      margin:0;
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .meta{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .pill{
+      padding:6px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .pill strong{
+      color:var(--text);
+      font-weight:600;
+    }
+
+    button{
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      color:var(--text);
+      cursor:pointer;
+    }
+
+    button:hover{
+      background: rgba(255,255,255,.08);
+    }
+
+    .card{
+      margin-top:14px;
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    }
+
+    .status{
+      padding:10px 12px;
+      border-bottom:1px solid var(--border2);
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .left{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--muted);
+      display:inline-block;
+    }
+
+    .dot.ok{ background:var(--ok); }
+    .dot.warn{ background:var(--warn); }
+    .dot.err{ background:var(--err); }
+
+    .mono{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .muted{ color:var(--muted); }
+
+    /* DESKTOP TABLE */
+    .table-wrap{ overflow:auto; }
+    table{ width:100%; border-collapse:separate; border-spacing:0; font-size:13px; min-width:680px; }
+    thead th{
+      text-align:left; padding:12px;
+      border-bottom:1px solid var(--border);
+      background: rgba(18,21,27,.98);
+      position:sticky; top:0;
+      white-space:nowrap;
+    }
+    tbody td{
+      padding:11px 12px;
+      border-bottom:1px solid var(--border2);
+      color: rgba(232,238,246,.88);
+      white-space:nowrap;
+    }
+    tbody tr:nth-child(even) td{ background: rgba(255,255,255,.02); }
+    tbody tr:hover td{ background: rgba(255,255,255,.04); }
+
+    /* BADGES */
+    .badge{
+      display:inline-block;
+      padding:4px 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      font-size:12px;
+      color: rgba(232,238,246,.92);
+    }
+    .badge.ok{ border-color: rgba(48,209,88,.45); }
+    .badge.warn{ border-color: rgba(255,214,10,.45); }
+
+    /* MOBILE CARDS */
+    .mobile{ display:none; padding:12px; }
+    .station-card{
+      border:1px solid var(--border2);
+      border-radius:14px;
+      padding:12px;
+      background: rgba(255,255,255,.02);
+      margin-bottom:10px;
+    }
+    .station-title{
+      display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+      margin-bottom:8px;
+    }
+    .station-title strong{ font-size:15px; }
+    .kv{
+      display:flex; justify-content:space-between; gap:12px;
+      padding:8px 0;
+      border-top:1px solid var(--border2);
+    }
+    .kv:first-of-type{ border-top:none; padding-top:0; }
+    .k{ color:var(--muted); font-size:12px; }
+    .v{ color:rgba(232,238,246,.92); font-size:13px; text-align:right; }
+
+    /* Responsive switch */
+    @media (max-width: 640px){
+      body{ padding:12px; }
+      header{ gap:10px; }
+      button{ width:100%; }
+      .table-wrap{ display:none; }
+      .mobile{ display:block; }
+      .pill{ font-size:11px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>RhB Vereina – Live</h1>
+        <div class="meta">
+          <span class="pill">Quelle: <strong class="mono">www.rhb.ch/api/public/vereina/</strong></span>
+          <span class="pill">Refresh: <strong>60s</strong></span>
+        </div>
+      </div>
+      <button id="btnRefresh" type="button">Jetzt aktualisieren</button>
+    </header>
+
+    <div class="card">
+      <div class="status">
+        <div class="left">
+          <span id="healthDot" class="dot"></span>
+          <span id="healthText">Noch nicht geladen…</span>
+          <span class="pill">Letztes Update: <strong id="lastUpdated">—</strong></span>
+          <span class="pill">Nächstes Update in: <strong id="countdown">—</strong></span>
+        </div>
+      </div>
+
+      <!-- Desktop/tablet -->
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Station</th>
+              <th>Nächste Abfahrt</th>
+              <th>Nächste Verladung</th>
+              <th>Wartezeit</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyTable">
+            <tr><td class="muted" colspan="4">Lade Daten…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile -->
+      <div class="mobile" id="mobileWrap">
+        <div class="muted">Lade Daten…</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+(() => {
+  const API_URL = "https://www.rhb.ch/api/public/vereina/";
+  const REFRESH_MS = 60000;
+
+  const elTbodyTable = document.getElementById("tbodyTable");
+  const elMobileWrap = document.getElementById("mobileWrap");
+  const elLastUpdated = document.getElementById("lastUpdated");
+  const elCountdown = document.getElementById("countdown");
+  const elHealthDot = document.getElementById("healthDot");
+  const elHealthText = document.getElementById("healthText");
+  const elBtnRefresh = document.getElementById("btnRefresh");
+
+  let nextRefreshAt = null;
+  let refreshTimer = null;
+  let tickTimer = null;
+
+  const STATION_LABELS = {
+    selfranga: "Selfranga",
+    sagliains: "Sagliains"
+  };
+
+  function setHealth(state, text){
+    elHealthDot.className = "dot " + (state || "");
+    elHealthText.textContent = text;
+  }
+
+  function formatTime(d){
+    const pad = n => String(n).padStart(2,"0");
+    return `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+  }
+
+  function escapeHtml(s){
+    return String(s)
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  function badgeForWaitingTime(value){
+    const v = String(value || "").toLowerCase();
+    if (!v) return `<span class="badge">—</span>`;
+    if (v === "nowaitingtime") return `<span class="badge ok">Keine</span>`;
+    return `<span class="badge">${escapeHtml(value)}</span>`;
+  }
+
+  function normalizeRow(row){
+    return {
+      nextDeparture: row?.nextDeparture ?? "—",
+      nextLoading: row?.nextLoading ?? "—",
+      waitingTime: row?.waitingTime ?? "—",
+    };
+  }
+
+  function renderDesktop(data){
+    const keys = Object.keys(STATION_LABELS);
+    elTbodyTable.innerHTML = keys.map(k => {
+      const r = normalizeRow(data?.[k]);
+      return `
+        <tr>
+          <td><strong>${escapeHtml(STATION_LABELS[k])}</strong></td>
+          <td class="mono">${escapeHtml(r.nextDeparture)}</td>
+          <td class="mono">${escapeHtml(r.nextLoading)}</td>
+          <td>${badgeForWaitingTime(r.waitingTime)}</td>
+        </tr>
+      `;
+    }).join("");
+  }
+
+  function renderMobile(data){
+    const keys = Object.keys(STATION_LABELS);
+    elMobileWrap.innerHTML = keys.map(k => {
+      const r = normalizeRow(data?.[k]);
+      return `
+        <div class="station-card">
+          <div class="station-title">
+            <strong>${escapeHtml(STATION_LABELS[k])}</strong>
+            <span class="mono">${escapeHtml(r.nextDeparture)}</span>
+          </div>
+
+          <div class="kv">
+            <div class="k">Nächste Abfahrt</div>
+            <div class="v mono">${escapeHtml(r.nextDeparture)}</div>
+          </div>
+          <div class="kv">
+            <div class="k">Nächste Verladung</div>
+            <div class="v mono">${escapeHtml(r.nextLoading)}</div>
+          </div>
+          <div class="kv">
+            <div class="k">Wartezeit</div>
+            <div class="v">${badgeForWaitingTime(r.waitingTime)}</div>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function renderAll(data){
+    renderDesktop(data);
+    renderMobile(data);
+  }
+
+  async function fetchAndRender(){
+    setHealth("warn", "Lade…");
+    try {
+      const res = await fetch(API_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+
+      renderAll(json);
+
+      elLastUpdated.textContent = formatTime(new Date());
+      setHealth("ok", "OK");
+    } catch (err) {
+      setHealth("err", "Fehler beim Laden");
+
+      const msg = `Fehler: ${escapeHtml(err)}`;
+      elTbodyTable.innerHTML = `<tr><td colspan="4" class="muted"><span class="mono">${msg}</span></td></tr>`;
+      elMobileWrap.innerHTML = `<div class="muted"><span class="mono">${msg}</span></div>`;
+    }
+  }
+
+  function scheduleAutoRefresh(){
+    nextRefreshAt = new Date(Date.now() + REFRESH_MS);
+
+    if (refreshTimer) clearTimeout(refreshTimer);
+    refreshTimer = setTimeout(async () => {
+      await fetchAndRender();
+      scheduleAutoRefresh();
+    }, REFRESH_MS);
+
+    if (tickTimer) clearInterval(tickTimer);
+    tickTimer = setInterval(() => {
+      if (!nextRefreshAt) return;
+      const ms = Math.max(0, nextRefreshAt - Date.now());
+      elCountdown.textContent = `${Math.ceil(ms / 1000)}s`;
+    }, 250);
+  }
+
+  elBtnRefresh.addEventListener("click", async () => {
+    await fetchAndRender();
+    scheduleAutoRefresh();
+  });
+
+  fetchAndRender().then(scheduleAutoRefresh);
+})();
+</script>
+</body>
+</html>
