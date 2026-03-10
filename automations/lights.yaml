@@ -1,0 +1,145 @@
+- id: '1737293327362'
+  alias: Turn on lights living room
+  description: ''
+  triggers:
+  - trigger: time
+    at: '18:00:00'
+  conditions: []
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data:
+      brightness_pct: 80
+    target:
+      entity_id: light.livingroom_ceiling_spotlights_main
+  - action: light.turn_on
+    metadata: {}
+    data:
+      brightness_pct: 50
+    target:
+      entity_id:
+      - light.livingroom_ceiling_spotlights_tv
+  mode: single
+- id: '1737295594564'
+  alias: Turn off lights in living room
+  description: ''
+  triggers:
+  - trigger: time
+    at: '22:00:00'
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - light.livingroom_ceiling_spotlights_main
+      - light.livingroom_ceiling_spotlights_tv
+  mode: single
+- id: '1737296622828'
+  alias: Turn on lights in Edward's Bedroom
+  description: ''
+  triggers:
+  - trigger: time
+    at: '19:00:00'
+  conditions: []
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - light.kidsbedroom_ceiling_lamp
+  mode: single
+- id: '1737296695128'
+  alias: Turn off lights in Edward's Bedroom
+  description: ''
+  triggers:
+  - trigger: time
+    at: '20:10:00'
+    enabled: true
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - light.kidsbedroom_ceiling_lamp
+  - action: notify.telegram_marco
+    metadata: {}
+    data:
+      message: Device has been switched off.
+  mode: single
+- id: '1737297182930'
+  alias: Turn on lights in Master bedroom
+  description: ''
+  triggers:
+  - trigger: time
+    at: '21:45:00'
+  conditions: []
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.masterbedroom_ceiling_lamp
+  mode: single
+- id: '1737297195870'
+  alias: Turn off lights in Master bedroom
+  description: ''
+  triggers:
+  - trigger: time
+    at: '22:10:00'
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.masterbedroom_ceiling_lamp
+  mode: single
+- id: '1739943368515'
+  alias: Turn on TV Spotlights
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - repeat:
+      sequence:
+      - action: light.turn_on
+        metadata: {}
+        data:
+          brightness_step: 1
+        target:
+          entity_id: light.dingz_spotlights_tv
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 0
+          milliseconds: 500
+      until:
+      - condition: state
+        entity_id: light.dingz_spotlights_tv
+        attribute: brightness
+        state: '255'
+  mode: single
+- id: '1740637352516'
+  alias: Turn off all lights
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - light.livingroom_lights
+      - light.kitchen_lights
+      - light.hallway_lights
+      - light.masterbedroom_lights
+      - light.guestbedroom_lights
+      - light.kidsbedroom_lights
+      - light.officeroom_lights
+  mode: single

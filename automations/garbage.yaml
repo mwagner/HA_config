@@ -1,0 +1,86 @@
+- id: beace735f1ea4ec0899dd6abe05391ea
+  alias: Send me garbage notification
+  description: ""
+  trigger:
+    - platform: state
+      entity_id:
+        - sensor.garbage_altpapier
+        - sensor.garbage_grunabfuhr
+        - sensor.garbage_karton
+        - sensor.garbage_kehrichtabfuhr
+        - sensor.garbage_sonderabfall
+        - sensor.garbage_sperrgut
+      enabled: true
+    - platform: webhook
+      allowed_methods:
+        - POST
+        - PUT
+      local_only: false
+      webhook_id: garbage-notification
+      enabled: true
+  condition:
+    - condition: template
+      value_template: |-
+        {% if trigger.platform == 'webhook' %}
+            true
+
+        {% elif trigger.platform == 'state' %}
+          {% if trigger.from_state.state != 'unavailable' %}
+            {% if ( (trigger.to_state.state|lower == 'today') and (trigger.from_state.state != trigger.to_state.state) ) %}
+              true
+            {% elif ( (trigger.to_state.state|lower == 'tomorrow') and (trigger.from_state.state != trigger.to_state.state) ) %}
+              true
+            {% else %}
+              false
+            {% endif %}
+          {% else %}
+            false
+          {% endif %}
+
+        {% elif trigger.platform == 'None' %}
+          true
+
+        {% else %}
+          false
+
+        {% endif %}
+  action:
+    - service: notify.telegram_marco
+      data:
+        message: |-
+          {% if trigger.platform == 'webhook' %}
+            {% set xx = {
+              "when": trigger.json["when"],
+              "what": trigger.json["what"]
+            } %}
+          {% elif trigger.platform == 'state' %}
+            {% set xx = {
+              "when": trigger.to_state.state,
+              "what": trigger.to_state.attributes.friendly_name
+            } %}
+          {% else %}
+            {% set xx = {
+              "when": "Today",
+              "what": "a beautiful day."
+            } %}
+          {% endif %}
+
+          {% if xx.when|lower == 'today' %}
+            {% set reminder = 'REMINDER: ' %}
+          {% else %}
+            {% set reminder = '' %}
+          {% endif %}
+
+          {{ reminder ~ xx.when|capitalize }} is {{ xx.what }}
+
+          {% if is_state('input_boolean.env_isdev', 'on') -%}
+            Trigger: {{ trigger.platform }}{{"\r\n"}}Trigger from: {{ trigger.from_state.state}}{{"\r\n"}}Trigger to: {{ trigger.to_state.state}}
+          {% endif %}
+      enabled: true
+    - service: logbook.log
+      metadata: {}
+      data:
+        name: Garbage Automation
+        message: Automation was triggered
+      enabled: true
+  mode: single
