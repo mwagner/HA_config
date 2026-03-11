@@ -4,8 +4,9 @@ openid:
   configure_url: !secret oauth_configure_url
   username_field: "preferred_username"
   scope: "openid profile email"
-  block_login: true
+  block_login: false
   trusted_ips: # List of CIDR blocks that are not affected by block_login
     - "192.168.10.0/24"
-  openid_text: "Login with Traefik"  # Text to display on the login page
+    - "192.168.100.0/24"
+  openid_text: "Login with Traefik" # Text to display on the login page
   create_user: false # Automatically create users on first login
