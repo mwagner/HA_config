@@ -1,0 +1,172 @@
+---
+- light:
+    # ####### ############################### #######
+    # ####### Dingz Light Template Livingroom #######
+    # ####### ############################### #######
+
+    # ####### Spot Lights Entree
+    - name: Spotlights Livingroom Main
+      unique_id: livingroom_ceiling_spotlights_main
+      level: "{{ (state_attr('sensor.livingroom_dingz_1_state', 'dimmers')[0]['output']*255/100)|int }}"
+      state: "{{ state_attr('sensor.livingroom_dingz_1_state', 'dimmers')[0]['on']}}"
+      turn_on:
+        - entity_id: light.livingroom_ceiling_spotlights_main
+          action: script.dingz_light_level_generic
+          data:
+            brightness: "80"
+            enum: "on"
+            dimmer: 0
+            ip: !secret ip_dingz_livingroom_1
+            force_entity: sensor.livingroom_dingz_1_state
+      turn_off:
+        - entity_id: light.livingroom_ceiling_spotlights_main
+          action: script.dingz_light_level_generic_onoff
+          data:
+            enum: "off"
+            dimmer: 0
+            ip: !secret ip_dingz_livingroom_1
+            force_entity: sensor.livingroom_dingz_1_state
+      set_level:
+        - entity_id: light.livingroom_ceiling_spotlights_main
+          action: script.dingz_light_level_generic
+          data:
+            brightness: "{{ (brightness * 100 / 255) | int }}"
+            enum: "on"
+            dimmer: 0
+            ip: !secret ip_dingz_livingroom_1
+            force_entity: sensor.livingroom_dingz_1_state
+      default_entity_id: light.livingroom_ceiling_spotlights_main
+
+    # ####### Spot Lights TV
+    - name: Spotlights Livingroom TV
+      unique_id: livingroom_ceiling_spotlights_tv
+      level: "{{ (state_attr('sensor.livingroom_dingz_1_state', 'dimmers')[2]['output']*255/100)|int }}"
+      state: "{{ state_attr('sensor.livingroom_dingz_1_state', 'dimmers')[2]['on']}}"
+      turn_on:
+        - entity_id: light.livingroom_ceiling_spotlights_tv
+          action: script.dingz_light_level_generic
+          data:
+            brightness: "80"
+            enum: "on"
+            dimmer: 2
+            ip: !secret ip_dingz_livingroom_1
+            force_entity: sensor.livingroom_dingz_1_state
+      turn_off:
+        - entity_id: light.livingroom_ceiling_spotlights_tv
+          action: script.dingz_light_level_generic_onoff
+          data:
+            enum: "off"
+            dimmer: 2
+            ip: !secret ip_dingz_livingroom_1
+            force_entity: sensor.livingroom_dingz_1_state
+      set_level:
+        - entity_id: light.livingroom_ceiling_spotlights_tv
+          action: script.dingz_light_level_generic
+          data:
+            brightness: "{{ (brightness * 100 / 255) | int }}"
+            enum: "on"
+            dimmer: 2
+            ip: !secret ip_dingz_livingroom_1
+            force_entity: sensor.livingroom_dingz_1_state
+      default_entity_id: light.livingroom_ceiling_spotlights_tv
+
+    # ####### ############################### #######
+    # ####### Dingz Light Template Kitchen    #######
+    # ####### ############################### #######
+
+    # ####### Spot Lights Kitch
+    - name: Spotlights Kitchen
+      unique_id: kitchen_ceiling_spotlights
+      level: "{{ (state_attr('sensor.livingroom_dingz_2_state', 'dimmers')[1]['output']*255/100)|int }}"
+      state: "{{ state_attr('sensor.livingroom_dingz_2_state', 'dimmers')[1]['on']}}"
+      turn_on:
+        - entity_id: light.kitchen_ceiling_spotlights
+          action: script.dingz_light_level_generic
+          data:
+            brightness: "100"
+            enum: "on"
+            dimmer: 1
+            ip: !secret ip_dingz_livingroom_2
+            force_entity: sensor.livingroom_dingz_2_state
+      turn_off:
+        - entity_id: light.kitchen_ceiling_spotlights
+          action: script.dingz_light_level_generic_onoff
+          data:
+            enum: "off"
+            dimmer: 1
+            ip: !secret ip_dingz_livingroom_2
+            force_entity: sensor.livingroom_dingz_2_state
+      set_level:
+        - entity_id: light.kitchen_ceiling_spotlights
+          action: script.dingz_light_level_generic
+          data:
+            brightness: "{{ (brightness * 100 / 255) | int }}"
+            enum: "on"
+            dimmer: 1
+            ip: !secret ip_dingz_livingroom_2
+            force_entity: sensor.livingroom_dingz_2_state
+      default_entity_id: light.kitchen_ceiling_spotlights
+
+    # ####### ############################### #######
+    # ####### Dingz Light Template Dining     #######
+    # ####### ############################### #######
+
+    # ####### Spot Lights Kitch
+    - name: Dining Table Lamp
+      unique_id: livingroom_dining_lamp
+      level: "{{ (state_attr('sensor.livingroom_dingz_2_state', 'dimmers')[2]['output']*255/100)|int }}"
+      state: "{{ state_attr('sensor.livingroom_dingz_2_state', 'dimmers')[2]['on']}}"
+      turn_on:
+        - entity_id: light.livingroom_dining_lamp
+          action: script.dingz_light_level_generic_onoff
+          data:
+            enum: "on"
+            dimmer: 2
+            ip: !secret ip_dingz_livingroom_2
+            force_entity: sensor.livingroom_dingz_2_state
+      turn_off:
+        - entity_id: light.livingroom_dining_lamp
+          action: script.dingz_light_level_generic_onoff
+          data:
+            enum: "off"
+            dimmer: 2
+            ip: !secret ip_dingz_livingroom_2
+            force_entity: sensor.livingroom_dingz_2_state
+      default_entity_id: light.livingroom_dining_lamp
+
+    # ####### ############################### #######
+    # ####### Dingz Light Template Hallway    #######
+    # ####### ############################### #######
+
+    # ####### Spot Lights Hallway
+    - name: Spotlights Hallway
+      unique_id: hallway_ceiling_spotlights
+      # level: "{{ (state_attr('sensor.dingz_hallway_state', 'dimmers')[2]['output']*255/100)|int }}"
+      # state: "{{ state_attr('sensor.dingz_hallway_state', 'dimmers')[2]['on']}}"
+      turn_on:
+        - entity_id: light.hallway_ceiling_spotlights
+          action: script.dingz_light_level_generic
+          data:
+            #   brightness: "80"
+            #   enum: "on"
+            #   dimmer: 2
+            ip: !secret ip_dingz_hallway
+          #   force_entity: sensor.dingz_hallway_state
+      turn_off:
+        - entity_id: light.hallway_ceiling_spotlights
+          action: script.dingz_light_level_generic_onoff
+          data:
+            #   enum: "off"
+            #   dimmer: 2
+            ip: !secret ip_dingz_hallway
+          #   force_entity: sensor.dingz_hallway_state
+      set_level:
+        - entity_id: light.hallway_ceiling_spotlights
+          action: script.dingz_light_level_generic
+          data:
+            #   brightness: "{{ (brightness * 100 / 255) | int }}"
+            #   enum: "on"
+            #   dimmer: 2
+            ip: !secret ip_dingz_hallway
+          #   force_entity: sensor.dingz_hallway_state
+      default_entity_id: light.hallway_ceiling_spotlights
