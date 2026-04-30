@@ -6,46 +6,93 @@
 
     # https://community.home-assistant.io/t/mystrom-smart-switch-in-energy-consumption-overview-page/367686
 
-    - name: Dingz Livingroom1 Output1 Power
-      unique_id: template.sensor_dingz_livingroom1_power1
-      state: "{{ state_attr('sensor.dingz_livingroom1_state', 'sensors')['power_outputs'][0]['value']|float|round(1) }}"
+    - name: Livingroom Dingz 1 Output1 Power
+      unique_id: template.livingroom_dingz_1_power1
+      state: "{{ state_attr('sensor.livingroom_dingz_1_state', 'sensors')['power_outputs'][0]['value']|float|round(1) }}"
       device_class: power
       unit_of_measurement: "W"
       attributes:
         last_updated: "{{ now() }}"
 
-    - name: Dingz Livingroom1 Output2 Power
-      unique_id: template.sensor_dingz_livingroom1_power2
-      state: "{{ state_attr('sensor.dingz_livingroom1_state', 'sensors')['power_outputs'][1]['value']|float|round(1) }}"
+    # - name: Livingroom Dingz 1 Output2 Power
+    #   unique_id: template.livingroom_dingz_1_power2
+    #   state: "{{ state_attr('sensor.livingroom_dingz_1_state', 'sensors')['power_outputs'][1]['value']|float|round(1) }}"
+    #   device_class: power
+    #   unit_of_measurement: "W"
+    #   attributes:
+    #     last_updated: "{{ now() }}"
+
+    - name: Livingroom Dingz 1 Output3 Power
+      unique_id: template.livingroom_dingz_1_power3
+      state: "{{ state_attr('sensor.livingroom_dingz_1_state', 'sensors')['power_outputs'][2]['value']|float|round(1) }}"
       device_class: power
       unit_of_measurement: "W"
       attributes:
         last_updated: "{{ now() }}"
 
-    - name: Dingz Livingroom1 Output3 Power
-      unique_id: template.sensor_dingz_livingroom1_power3
-      state: "{{ state_attr('sensor.dingz_livingroom1_state', 'sensors')['power_outputs'][2]['value']|float|round(1) }}"
-      device_class: power
-      unit_of_measurement: "W"
-      attributes:
-        last_updated: "{{ now() }}"
+    # - name: Livingroom Dingz 1 Output4 Power
+    #   unique_id: template.livingroom_dingz_1_power4
+    #   state: "{{ state_attr('sensor.livingroom_dingz_1_state', 'sensors')['power_outputs'][3]['value']|float|round(1) }}"
+    #   device_class: power
+    #   unit_of_measurement: "W"
+    #   attributes:
+    #     last_updated: "{{ now() }}"
 
-    - name: Dingz Livingroom1 Output4 Power
-      unique_id: template.sensor_dingz_livingroom1_power4
-      state: "{{ state_attr('sensor.dingz_livingroom1_state', 'sensors')['power_outputs'][3]['value']|float|round(1) }}"
-      device_class: power
-      unit_of_measurement: "W"
-      attributes:
-        last_updated: "{{ now() }}"
-
-    - name: Dingz Livingroom1 W
-      unique_id: template.sensor_dingz_power_livingroom1
+    - name: Livingroom Dingz 1 Power Total
+      unique_id: template.livingroom_dingz_1_power
       state: "{{
         (
-        state_attr('sensor.dingz_livingroom1_state', 'sensors')['power_outputs'][0]['value'] +
-        state_attr('sensor.dingz_livingroom1_state', 'sensors')['power_outputs'][1]['value'] +
-        state_attr('sensor.dingz_livingroom1_state', 'sensors')['power_outputs'][2]['value'] +
-        state_attr('sensor.dingz_livingroom1_state', 'sensors')['power_outputs'][3]['value']
+        state_attr('sensor.livingroom_dingz_1_state', 'sensors')['power_outputs'][0]['value'] +
+        state_attr('sensor.livingroom_dingz_1_state', 'sensors')['power_outputs'][1]['value'] +
+        state_attr('sensor.livingroom_dingz_1_state', 'sensors')['power_outputs'][2]['value'] +
+        state_attr('sensor.livingroom_dingz_1_state', 'sensors')['power_outputs'][3]['value']
+        )|float|round(1)
+        }}"
+      device_class: power
+      unit_of_measurement: "W"
+      attributes:
+        last_updated: "{{ now() }}"
+
+    # - name: Livingroom Dingz 2 Output1 Power
+    #   unique_id: template.livingroom_dingz_2_power1
+    #   state: "{{ state_attr('sensor.livingroom_dingz_2_state', 'sensors')['power_outputs'][0]['value']|float|round(1) }}"
+    #   device_class: power
+    #   unit_of_measurement: "W"
+    #   attributes:
+    #     last_updated: "{{ now() }}"
+
+    - name: Livingroom Dingz 2 Output2 Power
+      unique_id: template.livingroom_dingz_2_power2
+      state: "{{ state_attr('sensor.livingroom_dingz_2_state', 'sensors')['power_outputs'][1]['value']|float|round(1) }}"
+      device_class: power
+      unit_of_measurement: "W"
+      attributes:
+        last_updated: "{{ now() }}"
+
+    - name: Livingroom Dingz 2 Output3 Power
+      unique_id: template.livingroom_dingz_2_power3
+      state: "{{ state_attr('sensor.livingroom_dingz_2_state', 'sensors')['power_outputs'][2]['value']|float|round(1) }}"
+      device_class: power
+      unit_of_measurement: "W"
+      attributes:
+        last_updated: "{{ now() }}"
+
+    # - name: Livingroom Dingz 2 Output4 Power
+    #   unique_id: template.livingroom_dingz_2_power4
+    #   state: "{{ state_attr('sensor.livingroom_dingz_2_state', 'sensors')['power_outputs'][3]['value']|float|round(1) }}"
+    #   device_class: power
+    #   unit_of_measurement: "W"
+    #   attributes:
+    #     last_updated: "{{ now() }}"
+
+    - name: Livingroom Dingz 2 Power Total
+      unique_id: template.livingroom_dingz_2_power
+      state: "{{
+        (
+        state_attr('sensor.livingroom_dingz_2_state', 'sensors')['power_outputs'][0]['value'] +
+        state_attr('sensor.livingroom_dingz_2_state', 'sensors')['power_outputs'][1]['value'] +
+        state_attr('sensor.livingroom_dingz_2_state', 'sensors')['power_outputs'][2]['value'] +
+        state_attr('sensor.livingroom_dingz_2_state', 'sensors')['power_outputs'][3]['value']
         )|float|round(1)
         }}"
       device_class: power
