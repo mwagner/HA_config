@@ -3,11 +3,7 @@
 http:
   use_x_forwarded_for: true
   trusted_proxies:
-    - 192.168.11.40     # Docker
-#    - 172.17.0.0/12     # Docker
-#    - 172.20.0.0/12     # Docker
-#    - 172.30.0.0/12     # Docker
-    - 192.168.11.0/24   # LAN
+    - 192.168.11.40       # traefik
 
   #ssl_certificate: /ssl/fullchain.pem
   #ssl_key: /ssl/privkey.pem
