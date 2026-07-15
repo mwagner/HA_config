@@ -1,5 +1,0 @@
-# // Deprecated //
-
-# volvooncall:
-#   username: !secret volvooncall_username
-#   password: !secret volvooncall_password
