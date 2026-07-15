@@ -38,20 +38,20 @@
     - light.office_led_strip
 
 - platform: group
-  name: Lights Living Room
+  name: Living Room Lights
   unique_id: livingroom_lights
   entities:
     - light.livingroom_ceiling_spotlights_main
     - light.livingroom_ceiling_spotlights_tv
 
 - platform: group
-  name: Lights Kitchen
+  name: Kitchen Lights
   unique_id: kitchen_lights
   entities:
     - light.kitchen_ceiling_spotlights
 
 - platform: group
-  name: Lights Hallway
+  name: Hallway Lights
   unique_id: hallway_lights
   entities:
     - light.hallway_ceiling_spotlights
