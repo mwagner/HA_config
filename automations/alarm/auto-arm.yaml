@@ -1,0 +1,40 @@
+# auto-arm away when nobody is home (auto_arm_away_on_unoccupied)
+# This does not disarm automatically, and only arms if currently disarmed.
+- id: f7b520b8-9182-453e-ad9e-ef904ab4ae4e
+  alias: Auto-arm away when nobody is home
+  description: Auto-arm away when nobody is home
+  mode: single
+  trigger:
+    - platform: state
+      entity_id: input_boolean.home_occupied
+      to: "off"
+      # for: "00:05:00"
+      for: "00:00:05"
+  condition:
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: "disarmed"
+  action:
+    - service: alarm_control_panel.alarm_arm_away
+      target:
+        entity_id: alarm_control_panel.home_alarm
+# # auto-switch armed_away → armed_home when occupied
+# # This is not in use currently.
+# auto_switch_to_armed_home
+# - id: ab6f15b1-6031-4d26-9462-93091e7d329f
+#   alias: Auto-switch to armed_home when occupied
+#   description: Auto-switch to armed_home when occupied (OPTION 2)
+#   mode: single
+#   trigger:
+#     - platform: state
+#       entity_id: input_boolean.home_occupied
+#       to: "on"
+#       for: "00:02:00"
+#   condition:
+#     - condition: state
+#       entity_id: alarm_control_panel.home_alarm
+#       state: "armed_away"
+#   action:
+#     - service: alarm_control_panel.alarm_arm_home
+#       target:
+#         entity_id: alarm_control_panel.home_alarm

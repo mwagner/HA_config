@@ -1,0 +1,31 @@
+# Always monitored
+perimeter_contacts_general:
+  name: Perimeter Contacts (General)
+  entities:
+    - binary_sensor.entrance_door_sensor_door
+    - binary_sensor.garden_door_sensor_door
+    - binary_sensor.cellar_door_sensor
+    - binary_sensor.office_window_sensor_opening
+    - binary_sensor.livingroom_window_sensor_opening
+    - binary_sensor.kitchen_window_sensor_opening
+
+# “Special” bedroom windows (suppressed when sleep_windows_allowed = on)
+perimeter_contacts_sleep_windows:
+  name: Perimeter Contacts (Sleep Windows)
+  entities:
+    - binary_sensor.masterbedroom_window_sensor_opening
+    - binary_sensor.kidsroom_window_sensor_opening
+    - binary_sensor.guestroom_window_sensor_opening
+
+perimeter_contacts_all:
+  name: Perimeter Contacts (all windows and doors)
+  entities:
+    - binary_sensor.entrance_door_sensor_door
+    - binary_sensor.garden_door_sensor_door
+    - binary_sensor.cellar_door_sensor
+    - binary_sensor.masterbedroom_window_sensor_opening
+    - binary_sensor.kidsroom_window_sensor_opening
+    - binary_sensor.guestroom_window_sensor_opening
+    - binary_sensor.office_window_sensor_opening
+    - binary_sensor.livingroom_window_sensor_opening
+    - binary_sensor.kitchen_window_sensor_opening

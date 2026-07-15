@@ -1,0 +1,60 @@
+---
+# intrusion_alert_armed_away
+- id: d17fafbb-c9c0-4ed7-b1cf-9882dce040a7
+  alias: Intrusion alert (armed away & nobody home)
+  description: Intrusion alert (armed away & nobody home)
+  mode: single
+
+  trigger:
+    # General perimeter contacts: always alert when they open
+    - platform: state
+      entity_id: group.perimeter_contacts_general
+      to: "on"
+
+    # Bedroom windows: alert when they open ONLY if sleep_windows_allowed = off
+    - platform: state
+      entity_id: group.perimeter_contacts_sleep_windows
+      to: "on"
+
+  condition:
+    # Only when armed away
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: "armed_away"
+
+    # Only when nobody is home
+    - condition: state
+      entity_id: input_boolean.home_occupied
+      state: "off"
+
+    # Apply the special rule for sleep windows
+    - condition: template
+      value_template: >
+        {% set trig = trigger.entity_id %}
+        {% set sleep_group = expand('group.perimeter_contacts_sleep_windows') | map(attribute='entity_id') | list %}
+        {% if trig in sleep_group %}
+          {{ is_state('input_boolean.sleep_windows_allowed', 'off') }}
+        {% else %}
+          true
+        {% endif %}
+
+  action:
+    - action: notify.send_message
+      target:
+        entity_id: !secret telegram_bot_marco_chat_id
+      data:
+        message: >
+          🚨 Intrusion alert: A door/window opened while nobody is home.
+          Trigger: {{ trigger.to_state.name }} ({{ trigger.entity_id }})
+
+          Currently open:
+          {{
+            (
+              expand('group.perimeter_contacts_general')
+              + expand('group.perimeter_contacts_sleep_windows')
+            )
+            | selectattr('state','eq','on')
+            | map(attribute='name')
+            | list
+            | join(', ')
+          }}

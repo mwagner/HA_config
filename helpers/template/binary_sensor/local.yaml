@@ -1,0 +1,51 @@
+---
+- binary_sensor:
+    - name: Entrance Door Sensor Door
+      unique_id: 4b7a6779-64ea-4fa7-891c-0f2effd3b025
+      device_class: Door
+      state: off
+    - name: Garden Door Sensor Door
+      unique_id: 589e3440-df06-4239-9e5a-694cb11ee094
+      device_class: Door
+      state: off
+    - name: Cellar Door Sensor
+      unique_id: 33deecfa-6486-4e22-bf16-8026bafc713e
+      device_class: Door
+      state: off
+    - name: Masterbedroom Window Sensor Opening
+      unique_id: 42c37305-e570-4385-9cde-bf1723b20b6a
+      device_class: Window
+      state: off
+    - name: Kidsroom Window Sensor Opening
+      unique_id: f681746b-56d6-4a19-b13c-d2625a2ad69a
+      device_class: Window
+      state: off
+    - name: Guestroom Window Sensor Opening
+      unique_id: 6dbd0189-f707-4255-8fb0-502494ed3dce
+      device_class: Window
+      state: off
+    - name: Office Window Sensor Opening
+      unique_id: a426936d-be13-4795-b5d0-e96d77d4a757
+      device_class: Window
+      state: off
+    - name: Livingroom Window Sensor Opening
+      unique_id: livingroom_window_sensor_opening
+      device_class: Window
+      state: off
+    - name: Kitchen Window Sensor Opening
+      unique_id: 653ac717-b384-4ea5-980f-e3c154cf07da
+      device_class: Window
+      state: off
+
+    - name: Sleep Windows Allowed
+      unique_id: 276863cc-cce6-4fbb-84a8-26897a010227
+      state: off
+# - entity: binary_sensor.entrance_door_sensor_door
+# - entity: binary_sensor.garden_door_sensor_door
+# - entity: binary_sensor.cellar_door_sensor
+# - entity: binary_sensor.masterbedroom_window_sensor_opening
+# - entity: binary_sensor.kidsroom_window_sensor_opening
+# - entity: binary_sensor.guestroom_window_sensor_opening
+# - entity: binary_sensor.office_window_sensor_opening
+# - entity: binary_sensor.livingroom_window_sensor_opening
+# - entity: binary_sensor.kitchen_window_sensor_opening
