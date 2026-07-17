@@ -1,13 +1,14 @@
 ---
-## Example configuration.yaml entry
 alarm_control_panel:
   - platform: manual
     name: Home Alarm
-    unique_id: 2f9141cf-e668-4303-9772-25674ef23a1b
-    code: 1234
-    arming_time: 30
-    delay_time: 20
-    trigger_time: 4
+    unique_id: 6c84dad6-1d56-4e7c-85a1-83e10fbfce45
+    code: !secret alarm_code
+    code_arm_required: false
+    arming_time: 0
+    delay_time: 0
+    trigger_time: 0
+
     arming_states:
       - armed_away
       - armed_home
