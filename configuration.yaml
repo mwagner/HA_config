@@ -143,7 +143,7 @@ logger:
 
 lovelace:
   # mode can be either yaml or storage
-  mode: yaml
+  resource_mode: yaml
   resources:
     - url: /hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js
       type: module

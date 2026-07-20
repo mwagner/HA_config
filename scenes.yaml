@@ -1,4 +1,4 @@
-- id: 1736537543822
+- id: '1736537543822'
   name: Office Room Default
   entities:
     light.officeroom_ceiling_lamp:
@@ -39,7 +39,7 @@
     light.officeroom_ceiling_lamp:
       entity_only: true
   icon: mdi:ceiling-light
-- id: 1746553142028
+- id: '1746553142028'
   name: Watching TV
   entities:
     light.livingroom_ceiling_spotlights_tv:
@@ -63,7 +63,7 @@
       entity_only: true
     light.livingroom_ceiling_spotlights_main:
       entity_only: true
-- id: 1757757182155
+- id: '1757757182155'
   name: Marco's Desk standing
   entities:
     button.desk_0603_connect:
