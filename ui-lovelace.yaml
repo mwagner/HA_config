@@ -1,4 +1,6 @@
 title: Home
+# theme:
+# background: var(--background-image)
 
 button_card_templates: !include dashboards/main/button_card_templates.yaml
 

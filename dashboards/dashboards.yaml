@@ -2,14 +2,14 @@ lovelace:
   mode: yaml
   title: Overview
   icon: mdi:view-dashboard
-  show_in_sidebar: true
+  show_in_sidebar: false
   filename: ui-lovelace.yaml
 
 home-yaml:
   mode: yaml
   title: Home (YAML)
   icon: mdi:home
-  show_in_sidebar: true
+  show_in_sidebar: false
   require_admin: false
   filename: dashboards/home-yaml.yaml
 
