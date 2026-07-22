@@ -1,6 +1,8 @@
 ---
 title: Home Beta
-# theme: 
+# theme:
 # background: var(--background-image)
+
+button_card_templates: !include home-beta/button_card_templates.yaml
 
 views: !include_dir_merge_list home-beta/views/

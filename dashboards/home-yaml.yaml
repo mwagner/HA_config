@@ -1,0 +1,8 @@
+---
+title: Home YAML
+# theme:
+# background: var(--background-image)
+
+button_card_templates: !include main/button_card_templates.yaml
+
+views: !include_dir_merge_list main/views/
