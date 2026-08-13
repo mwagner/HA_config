@@ -144,7 +144,6 @@ logger:
 lovelace:
   # mode can be either yaml or storage
   resource_mode: storage
-  dashboards: !include dashboards/dashboards.yaml
   resources:
     - url: /hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js
       type: module
@@ -180,4 +179,5 @@ lovelace:
       type: module
     - url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js
       type: module
+  #dashboards: !include dashboards/dashboards.yaml 
 my:
