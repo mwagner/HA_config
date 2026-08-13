@@ -34,6 +34,7 @@ www/icons/garbage
 zigbee2mqtt
 
 # Ensure these files are ignored, otherwise your secret data/credentials will leak.
+automations.yaml
 ip_bans.yaml
 secrets.yaml
 scripts.yaml
@@ -42,5 +43,3 @@ known_devices.yaml
 .google.token
 *sample*.yaml
 *development*.yaml
-
-automations.yaml
