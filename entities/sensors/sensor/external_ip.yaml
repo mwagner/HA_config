@@ -1,9 +1,11 @@
 - platform: rest
-  name: "External IPv4"
+  unique_id: e9a17c0f-7e55-442c-a626-38939e5a3fb3
+  name: "Internet IPv4"
   resource: "https://api.ipify.org/?format=json"
   value_template: "{{ value_json.ip }}"
 
 - platform: rest
-  name: "External IPv6"
+  unique_id: ad016e73-28bc-4e81-9cec-eeb1f668b7bc
+  name: "Internet IPv6"
   resource: "https://api6.ipify.org/?format=json"
   value_template: "{{ value_json.ip }}"
