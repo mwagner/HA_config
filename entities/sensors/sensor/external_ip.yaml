@@ -1,0 +1,9 @@
+- platform: rest
+  name: "External IPv4"
+  resource: "https://api.ipify.org/?format=json"
+  value_template: "{{ value_json.ip }}"
+
+- platform: rest
+  name: "External IPv6"
+  resource: "https://api6.ipify.org/?format=json"
+  value_template: "{{ value_json.ip }}"
