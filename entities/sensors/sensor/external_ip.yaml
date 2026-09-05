@@ -1,5 +1,5 @@
 - platform: rest
-  name: "External IP"
+  name: "External IPv4"
   resource: "https://api.ipify.org/?format=json"
   value_template: "{{ value_json.ip }}"
 
