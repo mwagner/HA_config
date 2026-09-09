@@ -20,6 +20,8 @@
 !*.backup
 
 # Ignore folders
+.claude
+.claudecode
 .cloud
 .ssh
 .storage
@@ -30,6 +32,7 @@ dashboards/development
 www/community
 www/custom_ui
 www/dreame
+www/images
 www/icons/garbage
 zigbee2mqtt
 
@@ -43,3 +46,4 @@ known_devices.yaml
 .google.token
 *sample*.yaml
 *development*.yaml
+www/oven-control-card.js
