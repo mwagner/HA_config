@@ -2030,11 +2030,11 @@ views:
                       border: none !important;
                       box-shadow: none !important;
                     }
-          - type: history-graph
+          - type: logbook
             hours_to_show: 48
-            entities:
-              - entity: binary_sensor.masterbedroom_window_sensor_opening
-                name: Window
+            target:
+              entity_id:
+                - binary_sensor.masterbedroom_window_sensor_opening
             card_mod:
               style: |
                 ha-card {
@@ -2155,11 +2155,11 @@ views:
                       border: none !important;
                       box-shadow: none !important;
                     }
-          - type: history-graph
+          - type: logbook
             hours_to_show: 48
-            entities:
-              - entity: binary_sensor.guestroom_window_sensor_opening
-                name: Window
+            target:
+              entity_id:
+                - binary_sensor.guestroom_window_sensor_opening
             card_mod:
               style: |
                 ha-card {
@@ -2382,11 +2382,11 @@ views:
                       border: none !important;
                       box-shadow: none !important;
                     }
-          - type: history-graph
+          - type: logbook
             hours_to_show: 48
-            entities:
-              - entity: binary_sensor.kidsroom_window_sensor_opening
-                name: Window
+            target:
+              entity_id:
+                - binary_sensor.kidsroom_window_sensor_opening
             card_mod:
               style: |
                 ha-card {
@@ -2665,11 +2665,11 @@ views:
                       border: none !important;
                       box-shadow: none !important;
                     }
-          - type: history-graph
+          - type: logbook
             hours_to_show: 48
-            entities:
-              - entity: binary_sensor.office_window_sensor_opening
-                name: Window
+            target:
+              entity_id:
+                - binary_sensor.office_window_sensor_opening
             card_mod:
               style: |
                 ha-card {
@@ -2836,11 +2836,11 @@ views:
                       border: none !important;
                       box-shadow: none !important;
                     }
-          - type: history-graph
+          - type: logbook
             hours_to_show: 48
-            entities:
-              - entity: binary_sensor.kitchen_window_sensor_opening
-                name: Window
+            target:
+              entity_id:
+                - binary_sensor.kitchen_window_sensor_opening
             card_mod:
               style: |
                 ha-card {
@@ -3134,13 +3134,12 @@ views:
                       border: none !important;
                       box-shadow: none !important;
                     }
-          - type: history-graph
+          - type: logbook
             hours_to_show: 48
-            entities:
-              - entity: binary_sensor.livingroom_window_sensor_opening
-                name: Window
-              - entity: binary_sensor.livingroom_porche_door_sensor_opening
-                name: Porch Door
+            target:
+              entity_id:
+                - binary_sensor.livingroom_window_sensor_opening
+                - binary_sensor.livingroom_porche_door_sensor_opening
             card_mod:
               style: |
                 ha-card {
@@ -3365,11 +3364,11 @@ views:
                       border: none !important;
                       box-shadow: none !important;
                     }
-          - type: history-graph
+          - type: logbook
             hours_to_show: 48
-            entities:
-              - entity: binary_sensor.hallway_entrence_door_sensor_opening
-                name: Entrance Door
+            target:
+              entity_id:
+                - binary_sensor.hallway_entrence_door_sensor_opening
             card_mod:
               style: |
                 ha-card {
