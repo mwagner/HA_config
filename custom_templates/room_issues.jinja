@@ -1,0 +1,60 @@
+{#- Extra sensors to watch. An entity is an issue when its value is
+    below 'below' or above 'above'. Only entities in the requested
+    area(s) are reported, so one list can serve every room. -#}
+{%- set extra_checks = [
+  {
+    'entity': 'sensor.garden_soil_sensor_soil_humidity',
+    'below': 20,
+    'message': 'Soil too dry',
+    'icon': 'mdi:water-alert',
+    'color': 'red'
+  }
+] -%}
+
+{#-
+  room_issues(areas, battery_threshold=20)
+
+  Returns a JSON list of issues in the given area(s). Each issue is
+  {entity, message, icon, color}. Checks:
+    - update entities with a pending update
+    - battery sensors below battery_threshold
+    - extra_checks (above)
+  unavailable/unknown values are ignored.
+
+  areas: a single area ID ('office') or a list (['patio', 'garden'])
+-#}
+{% macro room_issues(areas, battery_threshold=20) -%}
+  {%- set areas = [areas] if areas is string else areas -%}
+  {%- set ents = areas | map('area_entities') | sum(start=[]) -%}
+  {%- set ns = namespace(issues=[]) -%}
+
+  {#- Pending updates -#}
+  {%- for e in ents | select('match', 'update\.') | select('is_state', 'on') -%}
+    {%- set ns.issues = ns.issues + [{
+      'entity': e, 'message': 'Update available',
+      'icon': 'mdi:package-up', 'color': 'orange'}] -%}
+  {%- endfor -%}
+
+  {#- Low batteries -#}
+  {%- for e in ents | select('is_state_attr', 'device_class', 'battery') -%}
+    {%- if states(e) | is_number and states(e) | float < battery_threshold -%}
+      {%- set ns.issues = ns.issues + [{
+        'entity': e, 'message': 'Battery low (' ~ states(e) ~ '%)',
+        'icon': 'mdi:battery-alert', 'color': 'red'}] -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {#- Extra checks -#}
+  {%- for c in extra_checks if c.entity in ents -%}
+    {%- set v = states(c.entity) -%}
+    {%- if v | is_number and ((c.below is defined and v | float < c.below)
+                            or (c.above is defined and v | float > c.above)) -%}
+      {%- set ns.issues = ns.issues + [{
+        'entity': c.entity,
+        'message': c.message ~ ' (' ~ v ~ (state_attr(c.entity, 'unit_of_measurement') or '') ~ ')',
+        'icon': c.icon, 'color': c.color}] -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {{- ns.issues | to_json -}}
+{%- endmacro %}

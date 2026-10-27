@@ -378,6 +378,16 @@ views:
                         icon: mdi:bed-double
                         badges:
                           - type: entity
+                            entity: sensor.masterbedroom_issues
+                            show_state: true
+                            show_icon: true
+                            icon: mdi:alert-circle
+                            color: red
+                            visibility:
+                              - condition: numeric_state
+                                entity: sensor.masterbedroom_issues
+                                above: 0
+                          - type: entity
                             show_state: true
                             show_icon: true
                             entity: sensor.masterbedroom_netatmo_indoor_module_temperature
@@ -470,6 +480,17 @@ views:
                         tap_action:
                           action: navigate
                           navigation_path: guestroom
+                        badges:
+                          - type: entity
+                            entity: sensor.guestroom_issues
+                            show_state: true
+                            show_icon: true
+                            icon: mdi:alert-circle
+                            color: red
+                            visibility:
+                              - condition: numeric_state
+                                entity: sensor.guestroom_issues
+                                above: 0
                     columns: 1
                   - square: false
                     type: grid
@@ -539,6 +560,16 @@ views:
                         heading_style: title
                         icon: mdi:teddy-bear
                         badges:
+                          - type: entity
+                            entity: sensor.kidsroom_issues
+                            show_state: true
+                            show_icon: true
+                            icon: mdi:alert-circle
+                            color: red
+                            visibility:
+                              - condition: numeric_state
+                                entity: sensor.kidsroom_issues
+                                above: 0
                           - type: entity
                             show_state: true
                             show_icon: true
@@ -622,6 +653,16 @@ views:
                         heading_style: title
                         icon: mdi:desk
                         badges:
+                          - type: entity
+                            entity: sensor.office_issues
+                            show_state: true
+                            show_icon: true
+                            icon: mdi:alert-circle
+                            color: red
+                            visibility:
+                              - condition: numeric_state
+                                entity: sensor.office_issues
+                                above: 0
                           - type: entity
                             show_state: true
                             show_icon: true
@@ -707,6 +748,17 @@ views:
                         tap_action:
                           action: navigate
                           navigation_path: kitchen
+                        badges:
+                          - type: entity
+                            entity: sensor.kitchen_issues
+                            show_state: true
+                            show_icon: true
+                            icon: mdi:alert-circle
+                            color: red
+                            visibility:
+                              - condition: numeric_state
+                                entity: sensor.kitchen_issues
+                                above: 0
                     columns: 1
                   - type: custom:oven-control-card
                     title: Oven
@@ -790,6 +842,16 @@ views:
                         heading_style: title
                         icon: mdi:sofa
                         badges:
+                          - type: entity
+                            entity: sensor.livingroom_issues
+                            show_state: true
+                            show_icon: true
+                            icon: mdi:alert-circle
+                            color: red
+                            visibility:
+                              - condition: numeric_state
+                                entity: sensor.livingroom_issues
+                                above: 0
                           - type: entity
                             show_state: true
                             show_icon: true
@@ -879,6 +941,17 @@ views:
                         tap_action:
                           action: navigate
                           navigation_path: hallway
+                        badges:
+                          - type: entity
+                            entity: sensor.hallway_issues
+                            show_state: true
+                            show_icon: true
+                            icon: mdi:alert-circle
+                            color: red
+                            visibility:
+                              - condition: numeric_state
+                                entity: sensor.hallway_issues
+                                above: 0
                     columns: 1
                   - square: false
                     type: grid
@@ -951,6 +1024,16 @@ views:
                           action: navigate
                           navigation_path: patio_garden
                         badges:
+                          - type: entity
+                            entity: sensor.patio_garden_issues
+                            show_state: true
+                            show_icon: true
+                            icon: mdi:alert-circle
+                            color: red
+                            visibility:
+                              - condition: numeric_state
+                                entity: sensor.patio_garden_issues
+                                above: 0
                           - type: entity
                             show_state: true
                             show_icon: true
@@ -2129,40 +2212,21 @@ views:
                   style: |
                     ha-card { border: 1px solid var(--warning-color); }
                 filter:
-                  include:
-                    - area: masterbedroom
-                      domain: update
-                      state: 'on'
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: Update available
-                        icon: mdi:package-up
-                        icon_color: orange
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
-                    - area: masterbedroom
-                      attributes:
-                        device_class: battery
-                      state: < 20
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: '{{ states(entity) }}%'
-                        icon: mdi:battery-alert
-                        icon_color: red
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
+                  template: >-
+                    {% from 'room_issues.jinja' import room_issues %}
+                    {% set ns = namespace(cards=[]) %}
+                    {% for i in room_issues('masterbedroom') | from_json %}
+                      {% set ns.cards = ns.cards + [{
+                        'type': 'custom:mushroom-template-card',
+                        'entity': i.entity,
+                        'primary': state_attr(i.entity, 'friendly_name'),
+                        'secondary': i.message,
+                        'icon': i.icon,
+                        'icon_color': i.color,
+                        'card_mod': {'style': 'ha-card { background: none !important; border: none !important; box-shadow: none !important; }'}
+                      }] %}
+                    {% endfor %}
+                    {{ ns.cards }}
         column_span: 1
       - type: grid
         cards:
@@ -2262,40 +2326,21 @@ views:
                   style: |
                     ha-card { border: 1px solid var(--warning-color); }
                 filter:
-                  include:
-                    - area: guestroom
-                      domain: update
-                      state: 'on'
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: Update available
-                        icon: mdi:package-up
-                        icon_color: orange
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
-                    - area: guestroom
-                      attributes:
-                        device_class: battery
-                      state: < 20
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: '{{ states(entity) }}%'
-                        icon: mdi:battery-alert
-                        icon_color: red
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
+                  template: >-
+                    {% from 'room_issues.jinja' import room_issues %}
+                    {% set ns = namespace(cards=[]) %}
+                    {% for i in room_issues('guestroom') | from_json %}
+                      {% set ns.cards = ns.cards + [{
+                        'type': 'custom:mushroom-template-card',
+                        'entity': i.entity,
+                        'primary': state_attr(i.entity, 'friendly_name'),
+                        'secondary': i.message,
+                        'icon': i.icon,
+                        'icon_color': i.color,
+                        'card_mod': {'style': 'ha-card { background: none !important; border: none !important; box-shadow: none !important; }'}
+                      }] %}
+                    {% endfor %}
+                    {{ ns.cards }}
         column_span: 1
     cards: []
     max_columns: 3
@@ -2497,73 +2542,21 @@ views:
                   style: |
                     ha-card { border: 1px solid var(--warning-color); }
                 filter:
-                  include:
-                    - area: kidsroom
-                      domain: update
-                      state: 'on'
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: Update available
-                        icon: mdi:package-up
-                        icon_color: orange
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
-                    - area: kidsroom
-                      attributes:
-                        device_class: battery
-                      state: < 20
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: '{{ states(entity) }}%'
-                        icon: mdi:battery-alert
-                        icon_color: red
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
-                    - area: kids_bedroom
-                      domain: update
-                      state: 'on'
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: Update available
-                        icon: mdi:package-up
-                        icon_color: orange
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
-                    - area: kids_bedroom
-                      attributes:
-                        device_class: battery
-                      state: < 20
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: '{{ states(entity) }}%'
-                        icon: mdi:battery-alert
-                        icon_color: red
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
+                  template: >-
+                    {% from 'room_issues.jinja' import room_issues %}
+                    {% set ns = namespace(cards=[]) %}
+                    {% for i in room_issues(['kidsroom', 'kids_bedroom']) | from_json %}
+                      {% set ns.cards = ns.cards + [{
+                        'type': 'custom:mushroom-template-card',
+                        'entity': i.entity,
+                        'primary': state_attr(i.entity, 'friendly_name'),
+                        'secondary': i.message,
+                        'icon': i.icon,
+                        'icon_color': i.color,
+                        'card_mod': {'style': 'ha-card { background: none !important; border: none !important; box-shadow: none !important; }'}
+                      }] %}
+                    {% endfor %}
+                    {{ ns.cards }}
         column_span: 1
     cards: []
     max_columns: 3
@@ -2788,40 +2781,21 @@ views:
                   style: |
                     ha-card { border: 1px solid var(--warning-color); }
                 filter:
-                  include:
-                    - area: office
-                      domain: update
-                      state: 'on'
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: Update available
-                        icon: mdi:package-up
-                        icon_color: orange
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
-                    - area: office
-                      attributes:
-                        device_class: battery
-                      state: < 20
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: '{{ states(entity) }}%'
-                        icon: mdi:battery-alert
-                        icon_color: red
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
+                  template: >-
+                    {% from 'room_issues.jinja' import room_issues %}
+                    {% set ns = namespace(cards=[]) %}
+                    {% for i in room_issues('office') | from_json %}
+                      {% set ns.cards = ns.cards + [{
+                        'type': 'custom:mushroom-template-card',
+                        'entity': i.entity,
+                        'primary': state_attr(i.entity, 'friendly_name'),
+                        'secondary': i.message,
+                        'icon': i.icon,
+                        'icon_color': i.color,
+                        'card_mod': {'style': 'ha-card { background: none !important; border: none !important; box-shadow: none !important; }'}
+                      }] %}
+                    {% endfor %}
+                    {{ ns.cards }}
         column_span: 1
     cards: []
     max_columns: 3
@@ -2967,40 +2941,21 @@ views:
                   style: |
                     ha-card { border: 1px solid var(--warning-color); }
                 filter:
-                  include:
-                    - area: kitchen
-                      domain: update
-                      state: 'on'
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: Update available
-                        icon: mdi:package-up
-                        icon_color: orange
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
-                    - area: kitchen
-                      attributes:
-                        device_class: battery
-                      state: < 20
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: '{{ states(entity) }}%'
-                        icon: mdi:battery-alert
-                        icon_color: red
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
+                  template: >-
+                    {% from 'room_issues.jinja' import room_issues %}
+                    {% set ns = namespace(cards=[]) %}
+                    {% for i in room_issues('kitchen') | from_json %}
+                      {% set ns.cards = ns.cards + [{
+                        'type': 'custom:mushroom-template-card',
+                        'entity': i.entity,
+                        'primary': state_attr(i.entity, 'friendly_name'),
+                        'secondary': i.message,
+                        'icon': i.icon,
+                        'icon_color': i.color,
+                        'card_mod': {'style': 'ha-card { background: none !important; border: none !important; box-shadow: none !important; }'}
+                      }] %}
+                    {% endfor %}
+                    {{ ns.cards }}
         column_span: 1
       - type: grid
         cards:
@@ -3274,40 +3229,21 @@ views:
                   style: |
                     ha-card { border: 1px solid var(--warning-color); }
                 filter:
-                  include:
-                    - area: livingroom
-                      domain: update
-                      state: 'on'
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: Update available
-                        icon: mdi:package-up
-                        icon_color: orange
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
-                    - area: livingroom
-                      attributes:
-                        device_class: battery
-                      state: < 20
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: '{{ states(entity) }}%'
-                        icon: mdi:battery-alert
-                        icon_color: red
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
+                  template: >-
+                    {% from 'room_issues.jinja' import room_issues %}
+                    {% set ns = namespace(cards=[]) %}
+                    {% for i in room_issues('livingroom') | from_json %}
+                      {% set ns.cards = ns.cards + [{
+                        'type': 'custom:mushroom-template-card',
+                        'entity': i.entity,
+                        'primary': state_attr(i.entity, 'friendly_name'),
+                        'secondary': i.message,
+                        'icon': i.icon,
+                        'icon_color': i.color,
+                        'card_mod': {'style': 'ha-card { background: none !important; border: none !important; box-shadow: none !important; }'}
+                      }] %}
+                    {% endfor %}
+                    {{ ns.cards }}
         column_span: 1
       - type: grid
         cards:
@@ -3511,40 +3447,21 @@ views:
                   style: |
                     ha-card { border: 1px solid var(--warning-color); }
                 filter:
-                  include:
-                    - area: hallway
-                      domain: update
-                      state: 'on'
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: Update available
-                        icon: mdi:package-up
-                        icon_color: orange
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
-                    - area: hallway
-                      attributes:
-                        device_class: battery
-                      state: < 20
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: '{{ states(entity) }}%'
-                        icon: mdi:battery-alert
-                        icon_color: red
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
+                  template: >-
+                    {% from 'room_issues.jinja' import room_issues %}
+                    {% set ns = namespace(cards=[]) %}
+                    {% for i in room_issues('hallway') | from_json %}
+                      {% set ns.cards = ns.cards + [{
+                        'type': 'custom:mushroom-template-card',
+                        'entity': i.entity,
+                        'primary': state_attr(i.entity, 'friendly_name'),
+                        'secondary': i.message,
+                        'icon': i.icon,
+                        'icon_color': i.color,
+                        'card_mod': {'style': 'ha-card { background: none !important; border: none !important; box-shadow: none !important; }'}
+                      }] %}
+                    {% endfor %}
+                    {{ ns.cards }}
         column_span: 1
     cards: []
     max_columns: 3
@@ -3708,7 +3625,7 @@ views:
                       box-shadow: none !important;
                     }
               - type: tile
-                entity: sensor.garden_sensor_soil_humidity_2
+                entity: sensor.garden_soil_sensor_soil_humidity
                 name: Soil Humidity
                 card_mod:
                   style: |
@@ -3718,7 +3635,7 @@ views:
                       box-shadow: none !important;
                     }
               - type: tile
-                entity: sensor.garden_sensor_soil_temperature_soil_sensor
+                entity: sensor.garden_soil_sensor_soil_temperature_soil_sensor
                 name: Soil Temperature
                 card_mod:
                   style: |
@@ -3760,73 +3677,21 @@ views:
                   style: |
                     ha-card { border: 1px solid var(--warning-color); }
                 filter:
-                  include:
-                    - area: patio
-                      domain: update
-                      state: 'on'
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: Update available
-                        icon: mdi:package-up
-                        icon_color: orange
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
-                    - area: patio
-                      attributes:
-                        device_class: battery
-                      state: < 20
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: '{{ states(entity) }}%'
-                        icon: mdi:battery-alert
-                        icon_color: red
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
-                    - area: garden
-                      domain: update
-                      state: 'on'
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: Update available
-                        icon: mdi:package-up
-                        icon_color: orange
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
-                    - area: garden
-                      attributes:
-                        device_class: battery
-                      state: < 20
-                      options:
-                        type: custom:mushroom-template-card
-                        primary: '{{ state_attr(entity, ''friendly_name'') }}'
-                        secondary: '{{ states(entity) }}%'
-                        icon: mdi:battery-alert
-                        icon_color: red
-                        card_mod:
-                          style: |
-                            ha-card {
-                              background: none !important;
-                              border: none !important;
-                              box-shadow: none !important;
-                            }
+                  template: >-
+                    {% from 'room_issues.jinja' import room_issues %}
+                    {% set ns = namespace(cards=[]) %}
+                    {% for i in room_issues(['patio', 'garden']) | from_json %}
+                      {% set ns.cards = ns.cards + [{
+                        'type': 'custom:mushroom-template-card',
+                        'entity': i.entity,
+                        'primary': state_attr(i.entity, 'friendly_name'),
+                        'secondary': i.message,
+                        'icon': i.icon,
+                        'icon_color': i.color,
+                        'card_mod': {'style': 'ha-card { background: none !important; border: none !important; box-shadow: none !important; }'}
+                      }] %}
+                    {% endfor %}
+                    {{ ns.cards }}
         column_span: 1
       - type: grid
         cards:
