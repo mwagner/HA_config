@@ -2103,7 +2103,15 @@ views:
             heading: Issues
             heading_style: subtitle
             icon: mdi:alert-circle-outline
+            visibility:
+              - condition: numeric_state
+                entity: sensor.masterbedroom_issues
+                above: 0
           - type: custom:stack-in-card
+            visibility:
+              - condition: numeric_state
+                entity: sensor.masterbedroom_issues
+                above: 0
             card_mod:
               style: |
                 ha-card {
@@ -2228,7 +2236,15 @@ views:
             heading: Issues
             heading_style: subtitle
             icon: mdi:alert-circle-outline
+            visibility:
+              - condition: numeric_state
+                entity: sensor.guestroom_issues
+                above: 0
           - type: custom:stack-in-card
+            visibility:
+              - condition: numeric_state
+                entity: sensor.guestroom_issues
+                above: 0
             card_mod:
               style: |
                 ha-card {
@@ -2455,7 +2471,15 @@ views:
             heading: Issues
             heading_style: subtitle
             icon: mdi:alert-circle-outline
+            visibility:
+              - condition: numeric_state
+                entity: sensor.kidsroom_issues
+                above: 0
           - type: custom:stack-in-card
+            visibility:
+              - condition: numeric_state
+                entity: sensor.kidsroom_issues
+                above: 0
             card_mod:
               style: |
                 ha-card {
@@ -2738,7 +2762,15 @@ views:
             heading: Issues
             heading_style: subtitle
             icon: mdi:alert-circle-outline
+            visibility:
+              - condition: numeric_state
+                entity: sensor.office_issues
+                above: 0
           - type: custom:stack-in-card
+            visibility:
+              - condition: numeric_state
+                entity: sensor.office_issues
+                above: 0
             card_mod:
               style: |
                 ha-card {
@@ -2909,7 +2941,15 @@ views:
             heading: Issues
             heading_style: subtitle
             icon: mdi:alert-circle-outline
+            visibility:
+              - condition: numeric_state
+                entity: sensor.kitchen_issues
+                above: 0
           - type: custom:stack-in-card
+            visibility:
+              - condition: numeric_state
+                entity: sensor.kitchen_issues
+                above: 0
             card_mod:
               style: |
                 ha-card {
@@ -3208,7 +3248,15 @@ views:
             heading: Issues
             heading_style: subtitle
             icon: mdi:alert-circle-outline
+            visibility:
+              - condition: numeric_state
+                entity: sensor.livingroom_issues
+                above: 0
           - type: custom:stack-in-card
+            visibility:
+              - condition: numeric_state
+                entity: sensor.livingroom_issues
+                above: 0
             card_mod:
               style: |
                 ha-card {
@@ -3437,7 +3485,15 @@ views:
             heading: Issues
             heading_style: subtitle
             icon: mdi:alert-circle-outline
+            visibility:
+              - condition: numeric_state
+                entity: sensor.hallway_issues
+                above: 0
           - type: custom:stack-in-card
+            visibility:
+              - condition: numeric_state
+                entity: sensor.hallway_issues
+                above: 0
             card_mod:
               style: |
                 ha-card {
@@ -3678,7 +3734,15 @@ views:
             heading: Issues
             heading_style: subtitle
             icon: mdi:alert-circle-outline
+            visibility:
+              - condition: numeric_state
+                entity: sensor.patio_garden_issues
+                above: 0
           - type: custom:stack-in-card
+            visibility:
+              - condition: numeric_state
+                entity: sensor.patio_garden_issues
+                above: 0
             card_mod:
               style: |
                 ha-card {
