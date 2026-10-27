@@ -20,3 +20,11 @@ home-beta:
   show_in_sidebar: false
   require_admin: true
   filename: dashboards/home-beta.yaml
+
+home-ai:
+  mode: yaml
+  title: Build by AI
+  icon: mdi:home
+  show_in_sidebar: true
+  require_admin: true
+  filename: dashboards/home-ai.yaml
