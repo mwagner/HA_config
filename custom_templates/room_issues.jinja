@@ -1,6 +1,10 @@
 {#- Extra sensors to watch. An entity is an issue when its value is
-    below 'below' or above 'above'. Only entities in the requested
-    area(s) are reported, so one list can serve every room. -#}
+    below 'below', above 'above', or equal to 'is_state' (a state or a
+    list of states, e.g. 'unavailable'). 'message', 'icon' and 'color'
+    are optional (defaults: issue_styles.extra below). A state match
+    shows 'message' as is; a threshold match appends the value, e.g.
+    'Soil too dry (0%)'. Only entities in the requested area(s) are reported,
+    so one list can serve every room. -#}
 {%- set extra_checks = [
   {
     'entity': 'sensor.garden_soil_sensor_soil_humidity',
@@ -8,8 +12,25 @@
     'message': 'Soil too dry',
     'icon': 'mdi:water-alert',
     'color': 'red'
+  },
+  {
+    'entity': 'binary_sensor.livingroom_porche_door_sensor_opening',
+    'is_state': 'unavailable',
+    'message': 'Sensor is not working',
+    'icon': 'mdi:alert',
+    'color': 'red'
   }
 ] -%}
+
+{#- Text, icon and color of the built-in checks. 'extra' is used for
+    extra_checks entries that don't set their own message/icon/color.
+    For threshold checks the current value is appended to the message,
+    e.g. 'Battery low (19%)'. -#}
+{%- set issue_styles = {
+  'update':  {'message': 'Update available', 'icon': 'mdi:package-up',    'color': 'orange'},
+  'battery': {'message': 'Battery low',      'icon': 'mdi:battery-alert', 'color': 'red'},
+  'extra':   {'icon': 'mdi:alert-circle', 'color': 'red'}
+} -%}
 
 {#-
   room_issues(areas, battery_threshold=20)
@@ -19,7 +40,8 @@
     - update entities with a pending update
     - battery sensors below battery_threshold
     - extra_checks (above)
-  unavailable/unknown values are ignored.
+  unavailable/unknown values are ignored, unless an extra check asks for
+  them via 'is_state'.
 
   areas: a single area ID ('office') or a list (['patio', 'garden'])
 -#}
@@ -30,29 +52,40 @@
 
   {#- Pending updates -#}
   {%- for e in ents | select('match', 'update\.') | select('is_state', 'on') -%}
-    {%- set ns.issues = ns.issues + [{
-      'entity': e, 'message': 'Update available',
-      'icon': 'mdi:package-up', 'color': 'orange'}] -%}
+    {%- set ns.issues = ns.issues + [dict(issue_styles.update, entity=e)] -%}
   {%- endfor -%}
 
   {#- Low batteries -#}
   {%- for e in ents | select('is_state_attr', 'device_class', 'battery') -%}
     {%- if states(e) | is_number and states(e) | float < battery_threshold -%}
-      {%- set ns.issues = ns.issues + [{
-        'entity': e, 'message': 'Battery low (' ~ states(e) ~ '%)',
-        'icon': 'mdi:battery-alert', 'color': 'red'}] -%}
+      {%- set ns.issues = ns.issues + [dict(issue_styles.battery, entity=e,
+        message=issue_styles.battery.message ~ ' (' ~ states(e) ~ '%)')] -%}
     {%- endif -%}
   {%- endfor -%}
 
   {#- Extra checks -#}
   {%- for c in extra_checks if c.entity in ents -%}
     {%- set v = states(c.entity) -%}
-    {%- if v | is_number and ((c.below is defined and v | float < c.below)
-                            or (c.above is defined and v | float > c.above)) -%}
+    {%- set num = v | is_number -%}
+    {%- set states_match = c.get('is_state', []) -%}
+    {%- set states_match = [states_match] if states_match is string else states_match -%}
+    {%- set state_hit = v in states_match -%}
+    {%- if state_hit
+          or (num and c.below is defined and v | float < c.below)
+          or (num and c.above is defined and v | float > c.above) -%}
+      {%- set value = v ~ (state_attr(c.entity, 'unit_of_measurement') or '') if num else v | capitalize -%}
+      {%- if not c.get('message') -%}
+        {%- set message = value -%}
+      {%- elif state_hit -%}
+        {%- set message = c.message -%}
+      {%- else -%}
+        {%- set message = c.message ~ ' (' ~ value ~ ')' -%}
+      {%- endif -%}
       {%- set ns.issues = ns.issues + [{
         'entity': c.entity,
-        'message': c.message ~ ' (' ~ v ~ (state_attr(c.entity, 'unit_of_measurement') or '') ~ ')',
-        'icon': c.icon, 'color': c.color}] -%}
+        'message': message,
+        'icon': c.get('icon', issue_styles.extra.icon),
+        'color': c.get('color', issue_styles.extra.color)}] -%}
     {%- endif -%}
   {%- endfor -%}
 
