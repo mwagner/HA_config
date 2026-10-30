@@ -1557,7 +1557,7 @@ views:
             cards:
               - type: custom:mushroom-template-card
                 primary: Master Bedroom
-                secondary: '{{ states(''light.masterbedroom_lights'') }}'
+                secondary: '{{ states(''light.masterbedroom_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.masterbedroom_lights
                 badge_icon: >-
@@ -1604,7 +1604,7 @@ views:
                   rows: auto
               - type: custom:mushroom-template-card
                 primary: Kids Room
-                secondary: '{{ states(''light.kidsroom_lights'') }}'
+                secondary: '{{ states(''light.kidsroom_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.kidsroom_lights
                 badge_icon: >-
@@ -1651,7 +1651,7 @@ views:
                   rows: auto
               - type: custom:mushroom-template-card
                 primary: Guest Room
-                secondary: '{{ states(''light.guestroom_lights'') }}'
+                secondary: '{{ states(''light.guestroom_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.guestroom_lights
                 badge_icon: >-
@@ -1698,7 +1698,7 @@ views:
                   rows: auto
               - type: custom:mushroom-template-card
                 primary: Office
-                secondary: '{{ states(''light.office_lights'') }}'
+                secondary: '{{ states(''light.office_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.office_lights
                 badge_icon: >-
@@ -1743,7 +1743,7 @@ views:
                   rows: auto
               - type: custom:mushroom-template-card
                 primary: Hallway
-                secondary: '{{ states(''light.hallway_lights'') }}'
+                secondary: '{{ states(''light.hallway_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.hallway_lights
                 badge_icon: >-
@@ -1788,7 +1788,7 @@ views:
                   rows: auto
               - type: custom:mushroom-template-card
                 primary: Living Room
-                secondary: '{{ states(''light.livingroom_lights'') }}'
+                secondary: '{{ states(''light.livingroom_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.livingroom_lights
                 badge_icon: >-
@@ -1835,7 +1835,7 @@ views:
                   rows: auto
               - type: custom:mushroom-template-card
                 primary: Kitchen
-                secondary: '{{ states(''light.kitchen_lights'') }}'
+                secondary: '{{ states(''light.kitchen_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.kitchen_lights
                 badge_icon: >-
@@ -1880,7 +1880,7 @@ views:
                   rows: auto
               - type: custom:mushroom-template-card
                 primary: Patio
-                secondary: '{{ states(''light.patio_lights'') }}'
+                secondary: '{{ states(''light.patio_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.patio_lights
                 badge_icon: >-
@@ -1923,7 +1923,7 @@ views:
                   rows: auto
               - type: custom:mushroom-template-card
                 primary: Garden
-                secondary: '{{ states(''light.garden_lights'') }}'
+                secondary: '{{ states(''light.garden_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.garden_lights
                 badge_icon: >-
@@ -2012,7 +2012,7 @@ views:
             cards:
               - type: custom:mushroom-template-card
                 primary: All lights in Master Bedroom
-                secondary: '{{ states(''light.masterbedroom_lights'') }}'
+                secondary: '{{ states(''light.masterbedroom_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.masterbedroom_lights
                 icon_color: |-
@@ -2358,7 +2358,7 @@ views:
             cards:
               - type: custom:mushroom-template-card
                 primary: All lights in Kids Room
-                secondary: '{{ states(''light.kidsroom_lights'') }}'
+                secondary: '{{ states(''light.kidsroom_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.kidsroom_lights
                 icon_color: |-
@@ -2584,7 +2584,7 @@ views:
             cards:
               - type: custom:mushroom-template-card
                 primary: All lights in Office
-                secondary: '{{ states(''light.office_lights'') }}'
+                secondary: '{{ states(''light.office_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.office_lights
                 icon_color: |-
@@ -2823,7 +2823,7 @@ views:
             cards:
               - type: custom:mushroom-template-card
                 primary: All lights in Kitchen
-                secondary: '{{ states(''light.kitchen_lights'') }}'
+                secondary: '{{ states(''light.kitchen_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.kitchen_lights
                 icon_color: |-
@@ -3023,7 +3023,7 @@ views:
             cards:
               - type: custom:mushroom-template-card
                 primary: All lights in Living Room
-                secondary: '{{ states(''light.livingroom_lights'') }}'
+                secondary: '{{ states(''light.livingroom_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.livingroom_lights
                 icon_color: |-
@@ -3329,7 +3329,7 @@ views:
             cards:
               - type: custom:mushroom-template-card
                 primary: All lights in Hallway
-                secondary: '{{ states(''light.hallway_lights'') }}'
+                secondary: '{{ states(''light.hallway_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.hallway_lights
                 icon_color: |-
@@ -3484,7 +3484,7 @@ views:
             cards:
               - type: custom:mushroom-template-card
                 primary: All lights on Patio
-                secondary: '{{ states(''light.patio_lights'') }}'
+                secondary: '{{ states(''light.patio_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.patio_lights
                 icon_color: |-
@@ -3514,7 +3514,7 @@ views:
                     }
               - type: custom:mushroom-template-card
                 primary: All lights in Garden
-                secondary: '{{ states(''light.garden_lights'') }}'
+                secondary: '{{ states(''light.garden_lights'') | capitalize }}'
                 icon: mdi:lightbulb-group
                 entity: light.garden_lights
                 icon_color: |-
