@@ -3783,16 +3783,6 @@ views:
                           border: none !important;
                           box-shadow: none !important;
                         }
-              - type: tile
-                entity: switch.patio_power_switch
-                name: Patio Power Switch
-                card_mod:
-                  style: |
-                    ha-card {
-                      background: none !important;
-                      border: none !important;
-                      box-shadow: none !important;
-                    }
         column_span: 1
     cards: []
     max_columns: 3
