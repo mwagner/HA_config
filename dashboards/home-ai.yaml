@@ -5874,6 +5874,79 @@ views:
       - type: grid
         cards:
           - type: heading
+            heading_style: title
+            heading: Xmas Lights Settings
+          - type: tile
+            entity: input_datetime.xmas_lights_start
+            features:
+              - type: date-set
+            features_position: bottom
+            tap_action:
+              action: none
+            icon_tap_action:
+              action: none
+          - type: tile
+            entity: input_datetime.xmas_lights_end
+            features:
+              - type: date-set
+            features_position: bottom
+            tap_action:
+              action: none
+            icon_tap_action:
+              action: none
+      - type: grid
+        cards:
+          - type: heading
+            icon: mdi:fridge
+            heading: Software Updates
+            heading_style: title
+            visibility:
+              - condition: state
+                entity: group.updates_software
+                state: 'on'
+          - type: custom:auto-entities
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              template: |-
+                {{ expand('group.updates_software')|
+                  selectattr('state','eq','on')|
+                  map(attribute='entity_id')|
+                  list|
+                  sort|
+                  join(', ')
+                }}
+            visibility:
+              - condition: state
+                entity: group.updates_software
+                state: 'on'
+            show_empty: false
+          - type: heading
+            icon: mdi:fridge
+            heading: Firmware Updates
+            heading_style: title
+            visibility:
+              - condition: state
+                entity: group.updates_firmware
+                state: 'on'
+          - type: custom:auto-entities
+            card:
+              type: entities
+              show_header_toggle: false
+            filter:
+              template: |-
+                {{ expand('group.updates_firmware')|
+                  selectattr('state','eq','on')|
+                  map(attribute='entity_id')|
+                  list|
+                  sort|
+                  join(', ')
+                }}
+            show_empty: false
+      - type: grid
+        cards:
+          - type: heading
             heading: Battery levels
             heading_style: title
             icon: mdi:battery-50
@@ -5973,56 +6046,6 @@ views:
             hide_state: false
             icon_tap_action:
               action: none
-      - type: grid
-        cards:
-          - type: heading
-            icon: mdi:fridge
-            heading: Software Updates
-            heading_style: title
-            visibility:
-              - condition: state
-                entity: group.updates_software
-                state: 'on'
-          - type: custom:auto-entities
-            card:
-              type: entities
-              show_header_toggle: false
-            filter:
-              template: |-
-                {{ expand('group.updates_software')|
-                  selectattr('state','eq','on')|
-                  map(attribute='entity_id')|
-                  list|
-                  sort|
-                  join(', ')
-                }}
-            visibility:
-              - condition: state
-                entity: group.updates_software
-                state: 'on'
-            show_empty: false
-          - type: heading
-            icon: mdi:fridge
-            heading: Firmware Updates
-            heading_style: title
-            visibility:
-              - condition: state
-                entity: group.updates_firmware
-                state: 'on'
-          - type: custom:auto-entities
-            card:
-              type: entities
-              show_header_toggle: false
-            filter:
-              template: |-
-                {{ expand('group.updates_firmware')|
-                  selectattr('state','eq','on')|
-                  map(attribute='entity_id')|
-                  list|
-                  sort|
-                  join(', ')
-                }}
-            show_empty: false
     badges: []
     cards: []
   - title: By Rooms
