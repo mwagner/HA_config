@@ -27,6 +27,7 @@
 .storage
 custom_components
 esphome
+ha_vibecode_git
 lovelace/sample
 dashboards/development
 www/community

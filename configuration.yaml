@@ -141,4 +141,6 @@ logger:
   #   homeassistant.components.device_tracker.unifi: info
   #   homeassistant.components.switch.unifi: info
 
+lovelace:
+  dashboards: !include dashboards/dashboards.yaml
 my:
