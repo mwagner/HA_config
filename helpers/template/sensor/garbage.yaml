@@ -22,16 +22,16 @@
       icon: mdi:trash-can
       state: >
         {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
-        {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Altpapier') | list | first %}
-        {{ speak_the_days(nextevent.start) }}
+        {% set events = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Altpapier') | list %}
+        {{ speak_the_days(events[0].start) if events else none }}
       attributes:
         next_events: >
           {% set nextevents = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Altpapier') | list %}
           {{ nextevents }}
         next_event: >
           {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
-          {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Altpapier') | list | first %}
-          {{ speak_the_days(nextevent.start) }}
+          {% set events = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Altpapier') | list %}
+          {{ speak_the_days(events[0].start) if events else none }}
         last_data_refresh: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
         last_refresh_trigger: "{{ trigger.platform }}"
 
@@ -40,16 +40,16 @@
       icon: mdi:trash-can
       state: >
         {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
-        {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Karton') | list | first %}
-        {{ speak_the_days(nextevent.start) }}
+        {% set events = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Karton') | list %}
+        {{ speak_the_days(events[0].start) if events else none }}
       attributes:
         next_events: >
           {% set nextevents = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Karton') | list %}
           {{ nextevents }}
         next_event: >
           {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
-          {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Karton') | list | first %}
-          {{ speak_the_days(nextevent.start) }}
+          {% set events = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Karton') | list %}
+          {{ speak_the_days(events[0].start) if events else none }}
         last_data_refresh: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
         last_refresh_trigger: "{{ trigger.platform }}"
 
@@ -58,16 +58,16 @@
       icon: mdi:trash-can
       state: >
         {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
-        {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Grünabfuhr') | list | first %}
-        {{ speak_the_days(nextevent.start) }}
+        {% set events = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Grünabfuhr') | list %}
+        {{ speak_the_days(events[0].start) if events else none }}
       attributes:
         next_events: >
           {% set nextevents = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Grünabfuhr') | list %}
           {{ nextevents }}
         next_event: >
           {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
-          {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Grünabfuhr') | list | first %}
-          {{ speak_the_days(nextevent.start) }}
+          {% set events = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Grünabfuhr') | list %}
+          {{ speak_the_days(events[0].start) if events else none }}
         last_data_refresh: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
         last_refresh_trigger: "{{ trigger.platform }}"
 
@@ -76,16 +76,16 @@
       icon: mdi:trash-can
       state: >
         {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
-        {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Kehrichtabfuhr') | list | first %}
-        {{ speak_the_days(nextevent.start) }}
+        {% set events = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Kehrichtabfuhr') | list %}
+        {{ speak_the_days(events[0].start) if events else none }}
       attributes:
         next_events: >
           {% set nextevents = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Kehrichtabfuhr') | list %}
           {{ nextevents }}
         next_event: >
           {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
-          {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Kehrichtabfuhr') | list | first %}
-          {{ speak_the_days(nextevent.start) }}
+          {% set events = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Kehrichtabfuhr') | list %}
+          {{ speak_the_days(events[0].start) if events else none }}
         last_data_refresh: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
         last_refresh_trigger: "{{ trigger.platform }}"
 
@@ -94,16 +94,16 @@
       icon: mdi:trash-can
       state: >
         {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
-        {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sonderabfall') | list | first %}
-        {{ speak_the_days(nextevent.start) }}
+        {% set events = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sonderabfall') | list %}
+        {{ speak_the_days(events[0].start) if events else none }}
       attributes:
         next_events: >
           {% set nextevents = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sonderabfall') | list %}
           {{ nextevents }}
         next_event: >
           {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
-          {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sonderabfall') | list | first %}
-          {{ speak_the_days(nextevent.start) }}
+          {% set events = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sonderabfall') | list %}
+          {{ speak_the_days(events[0].start) if events else none }}
         last_data_refresh: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
         last_refresh_trigger: "{{ trigger.platform }}"
 
@@ -112,15 +112,15 @@
       icon: mdi:trash-can
       state: >
         {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
-        {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sperrgut') | list | first %}
-        {{ speak_the_days(nextevent.start) }}
+        {% set events = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sperrgut') | list %}
+        {{ speak_the_days(events[0].start) if events else none }}
       attributes:
         next_events: >
           {% set nextevents = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sperrgut') | list %}
           {{ nextevents }}
         next_event: >
           {% from 'easy_time.jinja' import count_the_days, speak_the_days %}
-          {% set nextevent = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sperrgut') | list | first %}
-          {{ speak_the_days(nextevent.start) }}
+          {% set events = scheduled_events['calendar.abfallkalender'].events | selectattr('summary', 'search', 'Sperrgut') | list %}
+          {{ speak_the_days(events[0].start) if events else none }}
         last_data_refresh: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
         last_refresh_trigger: "{{ trigger.platform }}"
